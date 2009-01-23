@@ -1,11 +1,11 @@
 import FWCore.ParameterSet.Config as cms
 
 # import config for event selection, event print-out and analysis sequence
-from ElectroWeakAnalysis.EWKTau.analyzerForMuTau_cfi import *
+from TauAnalysis.Configuration.zMuTau.analyzeZtoMuTau_cfi import *
 
-analyzeMuTau = cms.EDAnalyzer("EWKTauAnalyzer",
+analyzeZtoMuTau = cms.EDAnalyzer("GenericAnalyzer",
   
-  name = cms.string('MuTauAnalyzer'), 
+  name = cms.string('zMuTauAnalyzer'), 
                             
   eventSelection = cms.VPSet(
     # generator level selection of Z --> mu + tau-jet events

@@ -1,18 +1,18 @@
 import FWCore.ParameterSet.Config as cms
 
 # import config for event selection, event print-out and analysis sequence
-from ElectroWeakAnalysis.EWKTau.analyzerForElecTau_cfi import *
+from TauAnalysis.Configuration.zElecTau.analyzeZtoElecTau_cfi import *
 
-analyzeElecTau = cms.EDAnalyzer("EWKTauAnalyzer",
+analyzeZtoElecTau = cms.EDAnalyzer("GenericAnalyzer",
   
-  name = cms.string('ElecTauAnalyzer'), 
+  name = cms.string('zElecTauAnalyzer'), 
                             
   eventSelection = cms.VPSet(
     # generator level selection of Z --> e + tau-jet events
     # passing basic acceptance and kinematic cuts
     # (NOTE: to be used for efficiency studies only !!)
-    genElectronCut,
-    genTauCut,
+    #genElectronCut,
+    #genTauCut,
     
     # trigger selection
     Trigger,
@@ -39,7 +39,7 @@ analyzeElecTau = cms.EDAnalyzer("EWKTauAnalyzer",
     tauElectronVeto,
 
     # require common event vertex for electron and tau-jet candidate
-    elecTauEventVertex,
+    #elecTauEventVertex,
         
     # acoplanarity cut between electron and tau-jet candidate
     # ( dPhi(elec,tau) < 2.4 rad; not implemented yet)

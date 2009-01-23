@@ -1,10 +1,10 @@
 import FWCore.ParameterSet.Config as cms
 
 # import config for muon histogram manager
-from ElectroWeakAnalysis.EWKTau.muForEWKTau.muForEWKTauHistManager_cfi import *
+from TauAnalysis.Configuration.plots.muon.muonHistManager_cfi import *
 
 # import config for tau histogram manager
-from ElectroWeakAnalysis.EWKTau.tauForEWKTau.tauForEWKTauHistManager_cfi import *
+from TauAnalysis.Configuration.plots.tau.pftauHistManager_cfi import *
 
 muTauHistManagers = cms.vstring('muonHistManager', 'tauHistManager')
 
@@ -187,8 +187,8 @@ muTauEventDump = cms.PSet(
       
   genParticleSource = cms.InputTag('genParticles'),
   genTauJetSource = cms.InputTag('tauGenJets'),
-  muonSource = cms.InputTag('allLayer1MuonsSelForEWKTau'),
-  tauSource = cms.InputTag('allLayer1PFTausSelForEWKTau'),
+  muonSource = cms.InputTag('allLayer1MuonsSelForTauAnalyses'),
+  tauSource = cms.InputTag('allLayer1PFTausSelForTauAnalyses'),
   metSource = cms.InputTag('allLayer1METs'),
 
   #output = cms.string("muTauEventDump.txt"),

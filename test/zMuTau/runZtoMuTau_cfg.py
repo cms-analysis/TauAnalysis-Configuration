@@ -12,7 +12,7 @@ process.load('Configuration/StandardSequences/Reconstruction_cff')
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'IDEAL_V9::All'
 
-process.load("TauAnalysis.Configuration.producePatLayer1_cff")
+process.load("TauAnalysis.Configuration.reco.producePatLayer1_cff")
 
 process.load("TauAnalysis.Configuration.zMuTau.analyzeZtoMuTau_cff")
 
@@ -39,6 +39,7 @@ process.source = cms.Source("PoolSource",
         '/store/relval/CMSSW_2_2_3/RelValZTT/GEN-SIM-RECO/STARTUP_V7_v4/0003/F01E4F34-BDCB-DD11-B87D-001617C3B77C.root',
         '/store/relval/CMSSW_2_2_3/RelValZTT/GEN-SIM-RECO/STARTUP_V7_v4/0004/1CAA08F8-D3CB-DD11-ADF9-000423D6B358.root',
         '/store/relval/CMSSW_2_2_3/RelValZTT/GEN-SIM-RECO/STARTUP_V7_v4/0004/2800478C-08CC-DD11-94BB-0019B9F72BAA.root'
+    )
 )
 
 process.p = cms.Path( process.producePatLayer1ForTauAnalyses

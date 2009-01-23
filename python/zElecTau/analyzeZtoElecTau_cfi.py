@@ -1,10 +1,10 @@
 import FWCore.ParameterSet.Config as cms
 
 # import config for electron histogram manager
-from ElectroWeakAnalysis.EWKTau.elecForEWKTau.elecForEWKTauHistManager_cfi import *
+from TauAnalysis.Configuration.plots.electron.electronHistManager_cfi import *
 
 # import config for tau histogram manager
-from ElectroWeakAnalysis.EWKTau.tauForEWKTau.tauForEWKTauHistManager_cfi import *
+from TauAnalysis.Configuration.plots.tau.pftauHistManager_cfi import *
 
 elecTauHistManagers = cms.vstring('electronHistManager', 'tauHistManager')
 
@@ -15,18 +15,18 @@ elecTauHistManagers = cms.vstring('electronHistManager', 'tauHistManager')
 # generator level selection of Z --> e + tau-jet events
 # passing basic acceptance and kinematic cuts
 # (NOTE: to be used for efficiency studies only !!)
-genElectronCut = cms.PSet(
-  name = cms.string('genElectronCut'),
-  type = cms.string('TauGenJetMinEventSelector'),
-  src = cms.InputTag('selectedGenTauDecaysToElectronPt15Cumulative'),
-  minNumber = cms.uint32(1)
-)
-genTauCut = cms.PSet(
-  name = cms.string('genTauCut'),
-  type = cms.string('TauGenJetMinEventSelector'),
-  src = cms.InputTag('selectedGenTauDecaysToHadronsPt20Cumulative'),
-  minNumber = cms.uint32(1)
-)
+#genElectronCut = cms.PSet(
+#  name = cms.string('genElectronCut'),
+#  type = cms.string('TauGenJetMinEventSelector'),
+#  src = cms.InputTag('selectedGenTauDecaysToElectronPt15Cumulative'),
+#  minNumber = cms.uint32(1)
+#)
+#genTauCut = cms.PSet(
+#  name = cms.string('genTauCut'),
+#  type = cms.string('TauGenJetMinEventSelector'),
+#  src = cms.InputTag('selectedGenTauDecaysToHadronsPt20Cumulative'),
+#  minNumber = cms.uint32(1)
+#)
 
 # trigger selection
 Trigger = cms.PSet(
@@ -158,18 +158,18 @@ tauElectronVeto = cms.PSet(
 )
 
 # require common event vertex for electron and tau-jet candidate
-elecTauEventVertex = cms.PSet(
-  name = cms.string('elecTauEventVertex'),
-  type = cms.string('VertexEventSelector'),
-  src1 = cms.InputTag('selectedLayer1ElectronsTrkIPcumulative'),
-  src2 = cms.InputTag('selectedLayer1TausElectronVetoCumulative'),
-  dXYmax = cms.double(0.5),
-  dZmax = cms.double(5.),
-  zMin1 = cms.double(-50.),
-  zMax1 = cms.double(50.),
-  zMin2 = cms.double(-50.),
-  zMax2 = cms.double(50.)
-)
+#elecTauEventVertex = cms.PSet(
+#  name = cms.string('elecTauEventVertex'),
+#  type = cms.string('VertexEventSelector'),
+#  src1 = cms.InputTag('selectedLayer1ElectronsTrkIPcumulative'),
+#  src2 = cms.InputTag('selectedLayer1TausElectronVetoCumulative'),
+#  dXYmax = cms.double(0.5),
+#  dZmax = cms.double(5.),
+#  zMin1 = cms.double(-50.),
+#  zMax1 = cms.double(50.),
+#  zMin2 = cms.double(-50.),
+#  zMax2 = cms.double(50.)
+#)
 
 # acoplanarity cut between electron and tau-jet candidate
 # ( dPhi(elec,tau) < 2.4 rad; not implemented yet)
@@ -187,8 +187,8 @@ elecTauEventDump = cms.PSet(
 
   genParticleSource = cms.InputTag('genParticles'),
   genTauJetSource = cms.InputTag('tauGenJets'),
-  electronSource = cms.InputTag('allLayer1ElectronsSelForEWKTau'),
-  tauSource = cms.InputTag('allLayer1PFTausSelForEWKTau'),
+  electronSource = cms.InputTag('allLayer1ElectronsSelForTauAnalyses'),
+  tauSource = cms.InputTag('allLayer1PFTausSelForTauAnalyses'),
   metSource = cms.InputTag('allLayer1METs'),
 
   #output = cms.string("elecTauEventDump.txt"),
@@ -211,17 +211,17 @@ elecTauAnalysisSequence = cms.VPSet(
   # generator level selection of Z --> e + tau-jet events
   # passing basic acceptance and kinematic cuts
   # (NOTE: to be used for efficiency studies only !!)
-  cms.PSet(
-    filter = cms.string('genElectronCut'),
-    title = cms.string('gen. Electron'),
-  ),
-  cms.PSet(
-    filter = cms.string('genTauCut'),
-    title = cms.string('gen. Tau'),
-  ),
-  cms.PSet(
-    histManagers = elecTauHistManagers
-  ),
+  #cms.PSet(
+  #  filter = cms.string('genElectronCut'),
+  #  title = cms.string('gen. Electron'),
+  #),
+  #cms.PSet(
+  #  filter = cms.string('genTauCut'),
+  #  title = cms.string('gen. Tau'),
+  #),
+  #cms.PSet(
+  #  histManagers = elecTauHistManagers
+  #),
   
   # trigger selection
   cms.PSet(
@@ -393,11 +393,11 @@ elecTauAnalysisSequence = cms.VPSet(
   ),
 
   # require common event vertex for electron and tau-jet candidate
-  cms.PSet(
-    filter = cms.string('elecTauEventVertex'),
-    title = cms.string('Vertex'),
-    saveRunEventNumbers = cms.vstring('exclRejected', 'passed_cumulative')
-  )
+  #cms.PSet(
+  #  filter = cms.string('elecTauEventVertex'),
+  #  title = cms.string('Vertex'),
+  #  saveRunEventNumbers = cms.vstring('exclRejected', 'passed_cumulative')
+  #)
   
   # acoplanarity cut between electron and tau-jet candidate
   # (not implemented yet)
