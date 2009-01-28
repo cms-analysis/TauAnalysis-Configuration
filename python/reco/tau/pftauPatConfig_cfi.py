@@ -6,8 +6,12 @@ from PhysicsTools.PatAlgos.producersLayer1.tauProducer_cfi import *
 #####################  PAT LAYER 0  #########################
 
 allLayer0PFTausForTauAnalyses = cms.EDFilter("PATPFTauCleaner",
+     # EWK tau analysis specific tau reconstruction                                        
      tauSource              = cms.InputTag("pfRecoTauProducerForTauAnalyses"),
      tauDiscriminatorSource = cms.InputTag("pfRecoTauIsoDiscrForTauAnalyses"),
+     # CMS "standard" tau reconstruction                                       
+     #tauSource              = cms.InputTag("pfRecoTauProducer"),
+     #tauDiscriminatorSource = cms.InputTag("pfRecoTauDiscriminationByIsolation"),
  
      removeOverlaps = cms.PSet(
        # Flag or discard taus that match with clean electrons
@@ -23,7 +27,7 @@ allLayer0PFTausForTauAnalyses = cms.EDFilter("PATPFTauCleaner",
      ),
 
      markItems    = cms.bool(True),
-     bitsToIgnore = cms.vstring(''),
+     bitsToIgnore = cms.vstring('Core/Preselection'),
      saveRejected = cms.string(''),
      saveAll      = cms.string('')
 )
