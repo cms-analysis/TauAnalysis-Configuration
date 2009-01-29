@@ -1,10 +1,10 @@
 import FWCore.ParameterSet.Config as cms
 
 # import config for muon histogram manager
-from TauAnalysis.Configuration.plots.muon.muonHistManager_cfi import *
+from TauAnalysis.DQMTools.muonHistManager_cfi import *
 
 # import config for tau histogram manager
-from TauAnalysis.Configuration.plots.tau.pftauHistManager_cfi import *
+from TauAnalysis.DQMTools.pftauHistManager_cfi import *
 
 muTauHistManagers = cms.vstring('muonHistManager', 'tauHistManager')
 

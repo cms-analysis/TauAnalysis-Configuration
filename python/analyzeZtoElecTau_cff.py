@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 # import config for event selection, event print-out and analysis sequence
-from TauAnalysis.Configuration.zElecTau.analyzeZtoElecTau_cfi import *
+from TauAnalysis.Configuration.analyzeZtoElecTau_cfi import *
 
 analyzeZtoElecTau = cms.EDAnalyzer("GenericAnalyzer",
   

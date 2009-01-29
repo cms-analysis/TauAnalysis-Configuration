@@ -1,10 +1,10 @@
 import FWCore.ParameterSet.Config as cms
 
 # import config for electron histogram manager
-from TauAnalysis.Configuration.plots.electron.electronHistManager_cfi import *
+from TauAnalysis.DQMTools.electronHistManager_cfi import *
 
 # import config for tau histogram manager
-from TauAnalysis.Configuration.plots.tau.pftauHistManager_cfi import *
+from TauAnalysis.DQMTools.pftauHistManager_cfi import *
 
 elecTauHistManagers = cms.vstring('electronHistManager', 'tauHistManager')
 
