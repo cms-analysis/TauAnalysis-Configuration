@@ -29,6 +29,7 @@ analyzeZtoElecTau = cms.EDAnalyzer("GenericAnalyzer",
     electronTrkIPcut,
 
     # tau candidate selection
+    tauAntiOverlapWithElectronsVeto,
     tauEtaCut,
     tauPtCut,
     tauLeadTrkCut,

@@ -29,6 +29,7 @@ analyzeZtoMuTau = cms.EDAnalyzer("GenericAnalyzer",
     muonTrkIPcut,
         
     # tau candidate selection
+    tauAntiOverlapWithMuonsVeto,
     tauEtaCut,
     tauPtCut,
     tauLeadTrkCut,

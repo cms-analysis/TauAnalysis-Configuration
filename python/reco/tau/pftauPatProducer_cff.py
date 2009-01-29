@@ -4,6 +4,8 @@ import copy
 from TauAnalysis.Configuration.reco.tau.pftauReconstruction_cff import *
 from TauAnalysis.Configuration.reco.tau.pftauPatConfig_cfi import *
 from TauAnalysis.Configuration.reco.tau.pftauPatSelector_cfi import *
+from TauAnalysis.Configuration.reco.tau.pftauPatSelectorForElecTau_cfi import *
+from TauAnalysis.Configuration.reco.tau.pftauPatSelectorForMuTau_cfi import *
 
 allLayer1PFTausSelForTauAnalyses = cms.EDProducer("PATTauSelProducer",
 
@@ -11,7 +13,7 @@ allLayer1PFTausSelForTauAnalyses = cms.EDProducer("PATTauSelProducer",
 
   selFlags = cms.PSet(
     tauAnalysisSelTauEta21 = cms.PSet(
-      src = cms.InputTag('selectedLayer1TausEta21')
+      src = cms.InputTag('selectedLayer1TausEta21Individual')
     ),
     tauAnalysisSelTauPt20 = cms.PSet(
       src = cms.InputTag('selectedLayer1TausPt20Individual')
@@ -41,7 +43,7 @@ allLayer1PFTausSelForTauAnalyses = cms.EDProducer("PATTauSelProducer",
 )
 
 producePFTausForTauAnalyses = cms.Sequence( pfRecoTauProducerForTauAnalyses
-                                           *pfRecoTauIsoDiscrForTauAnalyses 
+                                           *pfRecoTauIsoDiscrForTauAnalyses
                                            *allLayer0PFTausForTauAnalyses
                                            *pfRecoTauLdgTrkFindForTauAnalyses
                                            *pfRecoTauLdgTrkPtCutForTauAnalyses
@@ -51,6 +53,8 @@ producePFTausForTauAnalyses = cms.Sequence( pfRecoTauProducerForTauAnalyses
                                            *pfRecoTauMuonRejDiscrForTauAnalyses
                                            *allLayer1PFTausForTauAnalyses
                                            *selectPFTausForTauAnalyses
+                                           *selectPFTausForElecTau
+                                           *selectPFTausForMuTau
                                            *allLayer1PFTausSelForTauAnalyses )
 
 
