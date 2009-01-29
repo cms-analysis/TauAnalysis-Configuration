@@ -12,7 +12,7 @@ process.load('Configuration/StandardSequences/Reconstruction_cff')
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.GlobalTag.globaltag = 'IDEAL_V9::All'
 
-process.load("TauAnalysis.Configuration.reco.producePatLayer1_cff.py")
+process.load("TauAnalysis.Configuration.reco.producePatLayer1_cff")
 
 process.load("TauAnalysis.Configuration.zElecTau.analyzeZtoElecTau_cff")
 
