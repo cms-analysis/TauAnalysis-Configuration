@@ -1,11 +1,12 @@
 import FWCore.ParameterSet.Config as cms
 
 # import sequences for production of EWK tau specific
-# pat::Electron, Muon, Tau and MET collections
+# pat::Electron, Muon, Tau, MET and Jet collections
 from TauAnalysis.RecoTools.electronPatProducer_cff import *
 from TauAnalysis.RecoTools.muonPatProducer_cff import *
 from TauAnalysis.RecoTools.pftauPatProducer_cff import *
 from TauAnalysis.RecoTools.metPatProducer_cff import *
+from TauAnalysis.RecoTools.jetPatProducer_cff import *
 
 #import sequence for production of generator level tau-decay information
 from TauAnalysis.GenSimTools.tauGenJetProducer_cff import *
@@ -18,4 +19,5 @@ producePatLayer1ForTauAnalyses = cms.Sequence( produceTauGenJetsForTauAnalyses
                                               +produceElectronsForTauAnalyses
                                               +produceMuonsForTauAnalyses          
                                               +producePFTausForTauAnalyses
-                                              +produceMissingEtForTauAnalyses )
+                                              +produceMissingEtForTauAnalyses
+                                              +produceJetsForTauAnalyses )
