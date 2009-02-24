@@ -48,7 +48,7 @@ batchScript="#!/bin/csh\n"
 batchScript=$batchScript"cd $directory\n"
 batchScript=$batchScript"eval \`scramv1 runtime -csh\`\n"
 batchScript=$batchScript"cmsRun $configFileName\n"
-printf "%b\n" "$batchScript"
+#printf "%b\n" "$batchScript"
 printf "%b\n" "$batchScript" > $scriptFileName
 
 # make shell script executable
