@@ -1,5 +1,13 @@
 import FWCore.ParameterSet.Config as cms
 
+# import sequence for production of generator level information about phase-space simulated in Monte Carlo
+# (needed to avoid overlap in phase-space simulated in different QCD background Monte Carlo samples)
+from TauAnalysis.GenSimTools.genPhaseSpaceEventInfoProducer_cff import *
+
+# import sequence for selection of PFChargedHadrons, PFNeutralHadrons and PFGammas
+# needed to compute particle flow based isolation for pat::Electrons, Muons and Taus
+from PhysicsTools.PatAlgos.recoLayer0.pfCandidateIsoDepositSelection_cff import *
+
 # import sequences for production of EWK tau specific
 # pat::Electron, Muon, Tau, MET and Jet collections
 from TauAnalysis.RecoTools.electronPatProducer_cff import *
@@ -19,7 +27,9 @@ from TauAnalysis.GenSimTools.genMETWithMu_cff import *
 #import sequence for selection of primary event vertex candidates
 from TauAnalysis.RecoTools.eventVertexSelector_cfi import *
 
-producePatLayer1ForTauAnalyses = cms.Sequence( produceTauGenJetsForTauAnalyses
+producePatLayer1ForTauAnalyses = cms.Sequence( produceGenPhaseSpaceEventInfo
+                                              +patAODPFCandidateIsoDepositSelection
+                                              +produceTauGenJetsForTauAnalyses
                                               +produceGenMETwithMu
                                               +selectPrimaryVertexForTauAnalyses   
                                               +produceElectronsForTauAnalyses
