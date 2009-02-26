@@ -31,23 +31,23 @@ sh submitToBatch.csh ZtoElecMu Ztautau -1 1nd
 sh submitToBatch.csh ZtoElecMu Zee -1 1nd
 sh submitToBatch.csh ZtoElecMu Zmumu -1 1nd
 
-sh submitToBatch.csh ZtoElecMu WplusJets_part1 -1 1nd
-sh submitToBatch.csh ZtoElecMu WplusJets_part2 -1 1nd
+sh submitToBatch.csh ZtoElecMu WplusJets_part01 -1 1nd
+sh submitToBatch.csh ZtoElecMu WplusJets_part02 -1 1nd
 
 sh submitToBatch.csh ZtoElecMu QCD_BCtoE_Pt20to30 -1 1nd
 sh submitToBatch.csh ZtoElecMu QCD_BCtoE_Pt30to80 -1 1nd
 
 sh submitToBatch.csh ZtoElecMu InclusivePPmuX -1 1nd
 
-sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part1 -1 1nd
-sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part2 -1 1nd
-sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part3 -1 1nd
-sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part4 -1 1nd
-sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part5 -1 1nd
-sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part6 -1 1nd
-sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part7 -1 1nd
-sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part8 -1 1nd
-sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part9 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part01 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part02 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part03 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part04 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part05 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part06 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part07 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part08 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part09 -1 1nd
 sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part10 -1 1nd
 sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part11 -1 1nd
 sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part12 -1 1nd
