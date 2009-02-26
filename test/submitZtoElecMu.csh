@@ -26,15 +26,37 @@
 #           (and also because the length of vstrings is limited to 255 entries);
 #           see TauAnalysis/Configuration/python/sampleDefinitionsZtoElecMu_cfi.py for definition of the four parts
 #
+
 sh submitToBatch.csh ZtoElecMu Ztautau -1 1nd
 sh submitToBatch.csh ZtoElecMu Zee -1 1nd
 sh submitToBatch.csh ZtoElecMu Zmumu -1 1nd
-sh submitToBatch.csh ZtoElecMu WplusJets -1 1nd
+
+sh submitToBatch.csh ZtoElecMu WplusJets_part1 -1 1nd
+sh submitToBatch.csh ZtoElecMu WplusJets_part2 -1 1nd
+
 sh submitToBatch.csh ZtoElecMu QCD_BCtoE_Pt20to30 -1 1nd
 sh submitToBatch.csh ZtoElecMu QCD_BCtoE_Pt30to80 -1 1nd
+
 sh submitToBatch.csh ZtoElecMu InclusivePPmuX -1 1nd
+
 sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part1 -1 1nd
 sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part2 -1 1nd
 sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part3 -1 1nd
 sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part4 -1 1nd
-
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part5 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part6 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part7 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part8 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part9 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part10 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part11 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part12 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part13 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part14 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part15 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part16 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part17 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part18 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part19 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part20 -1 1nd
+sh submitToBatch.csh ZtoElecMu PPmuXptGt20_part21 -1 1nd
