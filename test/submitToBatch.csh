@@ -45,6 +45,7 @@ rm -f $scriptFileName
 
 # create shell script for submission of cmsRun job to the CERN batch system
 batchScript="#!/bin/csh\n"
+batchScript=$batchScript"limit vmem unlim\n"
 batchScript=$batchScript"cd $directory\n"
 batchScript=$batchScript"eval \`scramv1 runtime -csh\`\n"
 batchScript=$batchScript"cmsRun $configFileName\n"
