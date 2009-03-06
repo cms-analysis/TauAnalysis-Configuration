@@ -3,6 +3,8 @@
 # small cmsRun job for testing purposes...
 #sh submitToBatch.csh ZtoElecMu Ztautau 100 1nh
 
+#--------------------------------------------------------------------------------
+#
 # Monte Carlo samples from Summer'08 production
 # reprocessed with CMSSW_2_2_3, skimmed by Sunil
 #
@@ -21,11 +23,12 @@
 #           which allows for an execution time of the cmsRun jobs of up to 24 hours
 #           (the queues are {'1nh' (1 hour), '1nd' (24 hours) and '1nw' (1 week execution time limit);
 #            see https://twiki.cern.ch/twiki/bin/view/CMS/CMSUKCMSSWBatch for details about the CERN batch system)           
-#       (3) the submission of the PPmuXptGt20 sample is split into four parts,
+#       (3) the submission of the PPmuXptGt20 sample is split into multiple parts,
 #           in order to reduce the execution time of individual cmsRun jobs
 #           (and also because the length of vstrings is limited to 255 entries);
 #           see TauAnalysis/Configuration/python/sampleDefinitionsZtoElecMu_cfi.py for definition of the four parts
 #
+#--------------------------------------------------------------------------------
 
 sh submitToBatch.csh ZtoElecMu Ztautau -1 1nd
 sh submitToBatch.csh ZtoElecMu Zee -1 1nd
