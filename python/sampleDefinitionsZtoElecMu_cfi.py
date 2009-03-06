@@ -9,8 +9,24 @@ import copy
 # Z --> tau+ tau- sample
 #
 fileNamesZtautau = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/elecMuSkim_4.root',
-    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/elecMuSkim_25.root'
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_1.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_2.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_3.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_4.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_5.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_6.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_7.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_8.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_9.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_10.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_11.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_12.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_13.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_14.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_15.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_16.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_17.root',
+    'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_18.root'
 )
 
 genPhaseSpaceCutZtautau = cms.string('')
