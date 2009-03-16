@@ -17,4 +17,19 @@
 
 sh submitToBatch.csh ZtoMuTau Ztautau -1 1nd
 
+sh submitToBatch.csh ZtoMuTau Zmumu_part01 -1 1nd
+sh submitToBatch.csh ZtoMuTau Zmumu_part02 -1 1nd
+
+
+sh submitToBatch.csh ZtoMuTau WplusJets_part01 -1 1nd
+sh submitToBatch.csh ZtoMuTau WplusJets_part02 -1 1nd
+sh submitToBatch.csh ZtoMuTau WplusJets_part03 -1 1nd
+sh submitToBatch.csh ZtoMuTau WplusJets_part04 -1 1nd
+
+sh submitToBatch.csh ZtoMuTau QCD_InclusivePPMuX -1 1nd
+
+sh submitToBatch.csh ZtoMuTau QCD_IncMuPt15_part01 -1 1nd
+sh submitToBatch.csh ZtoMuTau QCD_IncMuPt15_part02 -1 1nd
+
+
 sh submitToBatch.csh ZtoMuTau InclusivePPmuX -1 1nd
