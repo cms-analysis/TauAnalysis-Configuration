@@ -33,7 +33,8 @@ producePatLayer1ForTauAnalyses = cms.Sequence( produceGenPhaseSpaceEventInfo
                                               +produceGenMETwithMu
                                               +selectPrimaryVertexForTauAnalyses   
                                               +produceElectronsForTauAnalyses
-                                              +produceMuonsForTauAnalyses          
+                                              +produceMuonsForTauAnalyses
+                                              +selectMuonsForTauAnalysesLooseMuonIsolation
                                               +producePFTausForTauAnalyses
                                               +selectPFTausForDiTau # produce collection of tau-jet excluded from central jet veto
                                               +produceMissingEtForTauAnalyses
