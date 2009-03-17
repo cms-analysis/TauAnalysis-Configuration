@@ -12,16 +12,19 @@
 #      (3) number of events to be processed
 #      (4) name of queue on CERN batch system 
 #          to which cmsRun job is to be submitted
+#      (5) keyword to enable factorization
+#          of muon isolation efficiencies from other event selection criteria,
+#          in order to avoid problems with limited Monte Carlo statistics [optional parameter]
 #
-#       e.g. 'sh submitToBatch.sh ZtoElecMu Ztautau 100 lnh'
+#       e.g. 'sh submitToBatch.csh ZtoElecMu Ztautau 100 lnh factorized'
 #
 # Author: Christian Veelken, UC Davis
 #
 #--------------------------------------------------------------------------------
 
 # check number of command-line parameters
-if [ $# -ne 4 ]; then
-  echo "Usage: sh $0 ZtoElecMu Ztautau 100 lnh"
+if [ $# -lt 4 ]; then
+  echo "Usage: sh $0 ZtoElecMu Ztautau 100 lnh [factorized]"
   exit 1
 fi
 
@@ -36,7 +39,11 @@ configFileName="$directory/run$1_$2@Batch_cfg.py"
 rm -f $configFileName
 
 # create new python configuration file for execution of cmsRun
-sh prepareConfigFile.csh $1 $2 $3
+if [ $# -ge 4 ]; then
+  sh prepareConfigFile.csh $1 $2 $3
+elif [ $# -ge 5 ]; then
+  sh prepareConfigFile.csh $1 $2 $3 $5
+fi
 
 # delete previous version of shell script if it exists
 scriptFileName="$directory/run$1_$2@Batch.csh"
