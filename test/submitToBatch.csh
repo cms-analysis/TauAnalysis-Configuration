@@ -9,22 +9,22 @@
 #
 #      (1) name of channel to be analyzed
 #      (2) name of Monte Carlo sample to be opened
-#      (3) number of events to be processed
-#      (4) name of queue on CERN batch system 
-#          to which cmsRun job is to be submitted
-#      (5) keyword to enable factorization
+#      (3) keyword to enable factorization
 #          of muon isolation efficiencies from other event selection criteria,
-#          in order to avoid problems with limited Monte Carlo statistics [optional parameter]
+#          in order to avoid problems with limited Monte Carlo statistics 
+#      (4) number of events to be processed
+#      (5) name of queue on CERN batch system 
+#          to which cmsRun job is to be submitted
 #
-#       e.g. 'sh submitToBatch.csh ZtoElecMu Ztautau 100 lnh factorized'
+#       e.g. 'sh submitToBatch.csh ZtoElecMu Ztautau factorized 100 1nh'
 #
 # Author: Christian Veelken, UC Davis
 #
 #--------------------------------------------------------------------------------
 
 # check number of command-line parameters
-if [ $# -lt 4 ]; then
-  echo "Usage: sh $0 ZtoElecMu Ztautau 100 lnh [factorized]"
+if [ $# -ne 5 ]; then
+  echo "Usage: sh $0 ZtoElecMu Ztautau factorized 100 1nh"
   exit 1
 fi
 
@@ -39,11 +39,7 @@ configFileName="$directory/run$1_$2@Batch_cfg.py"
 rm -f $configFileName
 
 # create new python configuration file for execution of cmsRun
-if [ $# -ge 4 ]; then
-  sh prepareConfigFile.csh $1 $2 $3
-elif [ $# -ge 5 ]; then
-  sh prepareConfigFile.csh $1 $2 $3 $5
-fi
+sh prepareConfigFile.csh $1 $2 $3 $4
 
 # delete previous version of shell script if it exists
 scriptFileName="$directory/run$1_$2@Batch.csh"
@@ -65,7 +61,7 @@ chmod 744 $scriptFileName
 # finally, submit job to the CERN batch system
 logFileName="$directory/run$1_$2@Batch.out"
 #echo "logFileName = $logFileName"
-jobName="job$1_$2_$3"
+jobName="job$1_$2"
 #echo "jobName = $jobName"
 
-bsub -q $4 -J $jobName -L /bin/csh -eo $logFileName -oo $logFileName < $scriptFileName
+bsub -q $5 -J $jobName -L /bin/csh -eo $logFileName -oo $logFileName < $scriptFileName

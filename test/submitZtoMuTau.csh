@@ -1,7 +1,13 @@
 #!/bin/csh -f
 
+factorizationMode_Ztautau="noFactorization"
+factorizationMode_Zmumu="noFactorization"
+factorizationMode_WplusJets="noFactorization"
+factorizationMode_InclusivePPmuX="factorized"
+factorizationMode_PPmuXptGt20="factorized"
+
 # small cmsRun job for testing purposes...
-#sh submitToBatch.csh ZtoMuTau Ztautau 100 1nh
+#sh submitToBatch.csh ZtoMuTau Ztautau $factorizationMode_Ztautau 100 1nh
 
 #--------------------------------------------------------------------------------
 #
@@ -15,54 +21,54 @@
 #
 #--------------------------------------------------------------------------------
 
-sh submitToBatch.csh ZtoMuTau Ztautau_part01 -1 1nd
-sh submitToBatch.csh ZtoMuTau Ztautau_part02 -1 1nd
+sh submitToBatch.csh ZtoMuTau Ztautau_part01 $factorizationMode_Ztautau -1 1nd
+sh submitToBatch.csh ZtoMuTau Ztautau_part02 $factorizationMode_Ztautau -1 1nd
 
-sh submitToBatch.csh ZtoMuTau Zmumu_part01 -1 1nd
-sh submitToBatch.csh ZtoMuTau Zmumu_part02 -1 1nd
-sh submitToBatch.csh ZtoMuTau Zmumu_part03 -1 1nd
+sh submitToBatch.csh ZtoMuTau Zmumu_part01 $factorizationMode_Zmumu -1 1nd
+sh submitToBatch.csh ZtoMuTau Zmumu_part02 $factorizationMode_Zmumu -1 1nd
+sh submitToBatch.csh ZtoMuTau Zmumu_part03 $factorizationMode_Zmumu -1 1nd
 
-sh submitToBatch.csh ZtoMuTau WplusJets_part01 -1 1nd
-sh submitToBatch.csh ZtoMuTau WplusJets_part02 -1 1nd
-sh submitToBatch.csh ZtoMuTau WplusJets_part03 -1 1nd
-sh submitToBatch.csh ZtoMuTau WplusJets_part04 -1 1nd
-sh submitToBatch.csh ZtoMuTau WplusJets_part05 -1 1nd
-sh submitToBatch.csh ZtoMuTau WplusJets_part06 -1 1nd
+sh submitToBatch.csh ZtoMuTau WplusJets_part01 $factorizationMode_WplusJets -1 1nd
+sh submitToBatch.csh ZtoMuTau WplusJets_part02 $factorizationMode_WplusJets -1 1nd
+sh submitToBatch.csh ZtoMuTau WplusJets_part03 $factorizationMode_WplusJets -1 1nd
+sh submitToBatch.csh ZtoMuTau WplusJets_part04 $factorizationMode_WplusJets -1 1nd
+sh submitToBatch.csh ZtoMuTau WplusJets_part05 $factorizationMode_WplusJets -1 1nd
+sh submitToBatch.csh ZtoMuTau WplusJets_part06 $factorizationMode_WplusJets -1 1nd
 
-sh submitToBatch.csh ZtoMuTau InclusivePPmuX -1 1nd factorized
+sh submitToBatch.csh ZtoMuTau InclusivePPmuX $factorizationMode_InclusivePPmuX -1 1nd
 
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part01 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part02 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part03 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part04 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part05 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part06 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part07 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part08 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part09 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part10 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part11 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part12 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part13 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part14 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part15 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part16 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part17 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part18 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part19 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part20 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part21 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part22 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part23 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part24 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part25 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part26 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part27 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part28 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part29 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part30 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part31 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part32 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part33 -1 1nd factorized
-#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part34 -1 1nd factorized
-sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part35 -1 1nd factorized
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part01 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part02 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part03 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part04 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part05 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part06 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part07 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part08 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part09 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part10 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part11 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part12 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part13 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part14 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part15 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part16 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part17 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part18 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part19 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part20 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part21 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part22 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part23 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part24 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part25 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part26 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part27 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part28 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part29 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part30 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part31 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part32 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part33 $factorizationMode_PPmuXptGt20 -1 1nd
+#sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part34 $factorizationMode_PPmuXptGt20 -1 1nd
+sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part35 $factorizationMode_PPmuXptGt20 -1 1nd

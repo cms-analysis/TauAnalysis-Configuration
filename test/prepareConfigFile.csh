@@ -7,20 +7,20 @@
 #
 #      (1) name of channel to be analyzed
 #      (2) name of Monte Carlo sample to be opened
-#      (3) number of events to be processed
-#      (4) keyword to enable factorization
+#      (3) keyword to enable factorization
 #          of muon isolation efficiencies from other event selection criteria,
-#          in order to avoid problems with limited Monte Carlo statistics [optional parameter]
+#          in order to avoid problems with limited Monte Carlo statistics
+#      (4) number of events to be processed
 #
-#       e.g. 'sh prepareConfigFile.csh ZtoElecMu Ztautau 100 factorized'
+#       e.g. 'sh prepareConfigFile.csh ZtoElecMu Ztautau factorized 100'
 #
 # Author: Christian Veelken, UC Davis
 #
 #--------------------------------------------------------------------------------
 
 # check number of command-line parameters
-if [ $# -lt 3 ]; then
-  echo "Usage: sh $0 ZtoElecMu Ztautau 100 [factorized]"
+if [ $# -ne 4 ]; then
+  echo "Usage: sh $0 ZtoElecMu Ztautau factorized 100"
   exit 1
 fi
 
@@ -34,7 +34,7 @@ enableFactorization_hook2="#enableFactorization_run"$1"(process)"
 
 # define values for substitutions
 fileNames_param="fileNames"$2
-maxEvents_param=$3
+maxEvents_param=$4
 genPhaseSpaceCut_param="genPhaseSpaceCut"$2
 outputFileName_param="outputFileName"$2
 enableFactorization_param1="from TauAnalysis.Configuration.factorizationTools import enableFactorization_run"$1
@@ -52,9 +52,12 @@ sedArgument=$sedArgument"process.analyze$1.eventSelection[0].cut = $genPhaseSpac
 # substitute outputFileName parameter
 sedArgument=$sedArgument"; ""s/$outputFileName_hook/$outputFileName_hook\n"
 sedArgument=$sedArgument"process.save$1.outputFileName = $outputFileName_param/"
-if [ $# -ge 4 ]; then
+if [ $3 == "factorized" ]; then
   sedArgument=$sedArgument"; ""s/$enableFactorization_hook1/$enableFactorization_param1/"
   sedArgument=$sedArgument"; ""s/$enableFactorization_hook2/$enableFactorization_param2/"
+elif [ $3 != "noFactorization" ]; then
+  echo "Error: factorizationMode needs to be set to either 'factorized' or 'noFactorization'."
+  exit 1
 fi
 #echo "sedArgument = $sedArgument"
 
