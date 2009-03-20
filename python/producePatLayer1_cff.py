@@ -1,5 +1,9 @@
 import FWCore.ParameterSet.Config as cms
 
+# import sequence for selection of generated particles
+# produced in Z decays to electrons, muons and tau leptons
+from TauAnalysis.GenSimTools.gen_decaysFromZs_cfi import *
+
 # import sequence for production of generator level information about phase-space simulated in Monte Carlo
 # (needed to avoid overlap in phase-space simulated in different QCD background Monte Carlo samples)
 from TauAnalysis.GenSimTools.genPhaseSpaceEventInfoProducer_cff import *
@@ -27,7 +31,8 @@ from TauAnalysis.GenSimTools.genMETWithMu_cff import *
 #import sequence for selection of primary event vertex candidates
 from TauAnalysis.RecoTools.eventVertexSelector_cfi import *
 
-producePatLayer1ForTauAnalyses = cms.Sequence( produceGenPhaseSpaceEventInfo
+producePatLayer1ForTauAnalyses = cms.Sequence( produceGenDecayProductsFromZs
+                                              +produceGenPhaseSpaceEventInfo
                                               +patAODPFCandidateIsoDepositSelection
                                               +produceTauGenJetsForTauAnalyses
                                               +produceGenMETwithMu
