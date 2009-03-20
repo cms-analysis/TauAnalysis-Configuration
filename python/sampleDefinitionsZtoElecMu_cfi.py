@@ -29,7 +29,12 @@ fileNamesZtautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_18.root'
 )
 
-genPhaseSpaceCutZtautau = cms.string('')
+genPhaseSpaceCutZtautau = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+)
 
 outputFileNameZtautau = cms.string('plotsZtoElecMu_Ztautau.root')
 #--------------------------------------------------------------------------------
@@ -49,7 +54,12 @@ fileNamesZee = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/Zee/elecMuSkim_11.root'
 )
 
-genPhaseSpaceCutZee = cms.string('')
+genPhaseSpaceCutZee = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+)
 
 outputFileNameZee = cms.string('plotsZtoElecMu_Zee.root')
 #--------------------------------------------------------------------------------
@@ -69,7 +79,12 @@ fileNamesZmumu = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/Zmumu/elecMuSkim_11.root'
 )
 
-genPhaseSpaceCutZmumu = cms.string('')
+genPhaseSpaceCutZmumu = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+)
 
 outputFileNameZmumu = cms.string('plotsZtoElecMu_Zmumu.root')
 #--------------------------------------------------------------------------------
@@ -100,7 +115,12 @@ fileNamesWplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/WJets-madgraph/elecMuSkim_19.root'
 )
 
-genPhaseSpaceCutWplusJets_part01 = cms.string('')
+genPhaseSpaceCutWplusJets_part01 = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+)
 
 outputFileNameWplusJets_part01 = cms.string('plotsZtoElecMu_WplusJets_part01.root')
 
@@ -138,7 +158,12 @@ fileNamesQCD_BCtoE_Pt20to30 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/QCD_BC_E_20_30/elecMuSkim_10.root'
 )
 
-genPhaseSpaceCutQCD_BCtoE_Pt20to30 = cms.string('ptHat < 30.')
+genPhaseSpaceCutQCD_BCtoE_Pt20to30 = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('ptHat < 30.')
+)
 
 outputFileNameQCD_BCtoE_Pt20to30 = cms.string('plotsZtoElecMu_QCD_BCtoE_Pt20to30.root')
 #--------------------------------------------------------------------------------
@@ -156,7 +181,12 @@ fileNamesQCD_BCtoE_Pt30to80 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/QCD_BC_E_30_80/elecMuSkim_11.root'
 )
 
-genPhaseSpaceCutQCD_BCtoE_Pt30to80 = cms.string('ptHat > 30.')
+genPhaseSpaceCutQCD_BCtoE_Pt30to80 = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('ptHat > 30.')
+)
 
 outputFileNameQCD_BCtoE_Pt30to80 = cms.string('plotsZtoElecMu_QCD_BCtoE_Pt30to80.root')
 #--------------------------------------------------------------------------------
@@ -171,7 +201,12 @@ fileNamesInclusivePPmuX = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusivePPmuX/elecMuSkim_3.root'
 )
 
-genPhaseSpaceCutInclusivePPmuX = cms.string('ptHat < 20. | leadingGenMuon.pt < 15.')
+genPhaseSpaceCutInclusivePPmuX = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('ptHat < 20. | leadingGenMuon.pt < 15.')
+)
 
 outputFileNameInclusivePPmuX = cms.string('plotsZtoElecMu_InclusivePPmuX.root')
 #--------------------------------------------------------------------------------
@@ -203,7 +238,12 @@ fileNamesPPmuXptGt20_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_20.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part01 = cms.string('ptHat > 20.')
+genPhaseSpaceCutPPmuXptGt20_part01 = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('ptHat > 20.')
+)
 
 outputFileNamePPmuXptGt20_part01 = cms.string('plotsZtoElecMu_PPmuXptGt20_part01.root')
 
