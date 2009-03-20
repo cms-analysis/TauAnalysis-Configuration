@@ -30,7 +30,12 @@ fileNamesZtautau_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/ZtautauSkimMuPFCaloTauComplStatis/muTauSkim_20.root'
 )
 
-genPhaseSpaceCutZtautau_part01 = cms.string('')
+genPhaseSpaceCutZtautau_part01 = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+)
 
 outputFileNameZtautau_part01 = cms.string('plotsZtoMuTau_Ztautau_part01.root')
 
@@ -73,7 +78,12 @@ fileNamesZmumu_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_20.root'
 )
 
-genPhaseSpaceCutZmumu_part01 = cms.string('')
+genPhaseSpaceCutZmumu_part01 = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+)
 
 outputFileNameZmumu_part01 = cms.string('plotsZtoMuTau_Zmumu_part01.root')
 
@@ -115,7 +125,101 @@ fileNamesZmumu_part03 = cms.untracked.vstring(
 genPhaseSpaceCutZmumu_part03 = copy.deepcopy(genPhaseSpaceCutZmumu_part01)
 
 outputFileNameZmumu_part03 = cms.string('plotsZtoMuTau_Zmumu_part03.root')
+#--------------------------------------------------------------------------------
 
+
+#--------------------------------------------------------------------------------
+# Z + jets sample
+#
+fileNamesZplusJets_part01 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_1.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_2.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_3.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_4.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_5.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_6.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_7.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_8.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_10.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_11.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_12.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_13.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_14.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_16.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_17.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_18.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_19.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_20.root'
+)
+
+genPhaseSpaceCutZplusJets_part01 = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('AndEventSelector'),
+  selectors = cms.VPSet(
+    cms.PSet(
+      name = cms.string('genElectronsFromZsVeto'),
+      type = cms.string('PATCandViewMaxEventSelector'),
+      src = cms.InputTag('genMuonsFromZs'),
+      maxNumber = cms.uint32(0)
+    ),
+    cms.PSet(
+      name = cms.string('genTausFromZsVeto'),
+      type = cms.string('PATCandViewMaxEventSelector'),
+      src = cms.InputTag('genTausFromZs'),
+      maxNumber = cms.uint32(0)
+    )
+  )
+)
+
+outputFileNameZplusJets_part01 = cms.string('plotsZtoMuTau_ZplusJets_part01.root')
+
+fileNamesZplusJets_part02 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_21.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_22.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_23.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_24.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_25.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_26.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_27.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_28.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_30.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_31.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_33.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_34.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_35.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_36.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_37.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_38.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_40.root'
+)
+
+genPhaseSpaceCutZplusJets_part02 = copy.deepcopy(genPhaseSpaceCutZplusJets_part01)
+
+outputFileNameZplusJets_part02 = cms.string('plotsZtoMuTau_ZplusJets_part02.root')
+
+fileNamesZplusJets_part03 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_41.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_42.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_44.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_45.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_46.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_47.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_48.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_49.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_50.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_51.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_52.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_53.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_55.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_56.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_57.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_58.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_59.root'
+)
+
+genPhaseSpaceCutZplusJets_part03 = copy.deepcopy(genPhaseSpaceCutZplusJets_part01)
+
+outputFileNameZplusJets_part03 = cms.string('plotsZtoMuTau_ZplusJets_part03.root')
 #--------------------------------------------------------------------------------
 
 
@@ -145,7 +249,12 @@ fileNamesWplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_20.root'
 )
 
-genPhaseSpaceCutWplusJets_part01 = cms.string('')
+genPhaseSpaceCutWplusJets_part01 = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+)
 
 outputFileNameWplusJets_part01 = cms.string('plotsZtoMuTau_WplusJets_part01.root')
 
@@ -287,7 +396,12 @@ fileNamesInclusivePPmuX = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/InclusivePPmuXFromMon/skim_MuTau_17.root'
 )
 
-genPhaseSpaceCutInclusivePPmuX = cms.string('ptHat < 20. | leadingGenMuon.pt < 15.')
+genPhaseSpaceCutInclusivePPmuX = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('ptHat < 20. | leadingGenMuon.pt < 15.')
+)
 
 outputFileNameInclusivePPmuX = cms.string('plotsZtoMuTau_InclusivePPmuX.root')
 #--------------------------------------------------------------------------------
@@ -303,7 +417,12 @@ fileNamesPPmuXptGt20_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_20.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part01 = cms.string('ptHat > 20.')
+genPhaseSpaceCutPPmuXptGt20_part01 = cms.PSet(
+  name = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('ptHat > 20.')
+)
 
 outputFileNamePPmuXptGt20_part01 = cms.string('plotsZtoMuTau_PPmuXptGt20_part01.root')
 
