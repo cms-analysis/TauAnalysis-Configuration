@@ -2,6 +2,7 @@
 
 factorizationMode_Ztautau="noFactorization"
 factorizationMode_Zmumu="noFactorization"
+factorizationMode_ZplusJets="noFactorization"
 factorizationMode_WplusJets="noFactorization"
 factorizationMode_InclusivePPmuX="factorized"
 factorizationMode_PPmuXptGt20="factorized"
@@ -27,6 +28,10 @@ sh submitToBatch.csh ZtoMuTau Ztautau_part02 $factorizationMode_Ztautau -1 1nd
 sh submitToBatch.csh ZtoMuTau Zmumu_part01 $factorizationMode_Zmumu -1 1nd
 sh submitToBatch.csh ZtoMuTau Zmumu_part02 $factorizationMode_Zmumu -1 1nd
 sh submitToBatch.csh ZtoMuTau Zmumu_part03 $factorizationMode_Zmumu -1 1nd
+
+sh submitToBatch.csh ZtoMuTau ZplusJets_part01 $factorizationMode_ZplusJets -1 1nd
+sh submitToBatch.csh ZtoMuTau ZplusJets_part02 $factorizationMode_ZplusJets -1 1nd
+sh submitToBatch.csh ZtoMuTau ZplusJets_part03 $factorizationMode_ZplusJets -1 1nd
 
 sh submitToBatch.csh ZtoMuTau WplusJets_part01 $factorizationMode_WplusJets -1 1nd
 sh submitToBatch.csh ZtoMuTau WplusJets_part02 $factorizationMode_WplusJets -1 1nd
