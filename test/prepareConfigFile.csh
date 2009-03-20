@@ -48,7 +48,7 @@ sedArgument=$sedArgument"; ""s/$maxEvents_hook/$maxEvents_hook\n"
 sedArgument=$sedArgument"process.maxEvents.input = cms.untracked.int32($maxEvents_param)/"
 # substitute genPhaseSpaceCut parameter
 sedArgument=$sedArgument"; ""s/$genPhaseSpaceCut_hook/$genPhaseSpaceCut_hook\n"
-sedArgument=$sedArgument"process.analyze$1.eventSelection[0].cut = $genPhaseSpaceCut_param/"
+sedArgument=$sedArgument"process.analyze$1.eventSelection[0] = copy.deepcopy($genPhaseSpaceCut_param)/"
 # substitute outputFileName parameter
 sedArgument=$sedArgument"; ""s/$outputFileName_hook/$outputFileName_hook\n"
 sedArgument=$sedArgument"process.save$1.outputFileName = $outputFileName_param/"
