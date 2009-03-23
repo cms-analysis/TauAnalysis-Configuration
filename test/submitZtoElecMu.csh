@@ -5,10 +5,10 @@ factorizationMode_Zee="noFactorization"
 factorizationMode_Zmumu="noFactorization"
 factorizationMode_ZplusJets="noFactorization"
 factorizationMode_WplusJets="noFactorization"
-factorizationMode_QCD_BCtoE_Pt20to30="factorized" 
-factorizationMode_QCD_BCtoE_Pt30to80="factorized"
-factorizationMode_InclusivePPmuX="factorized"
-factorizationMode_PPmuXptGt20="factorized"
+factorizationMode_QCD_BCtoE_Pt20to30="noFactorization"
+factorizationMode_QCD_BCtoE_Pt30to80="noFactorization"
+factorizationMode_InclusivePPmuX="noFactorization"
+factorizationMode_PPmuXptGt20="noFactorization"
 
 # small cmsRun job for testing purposes...
 #sh submitToBatch.csh ZtoElecMu Ztautau $factorizationMode_Ztautau 100 1nh
