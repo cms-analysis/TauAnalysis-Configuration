@@ -65,5 +65,8 @@ processZtoMuTau_PPmuXptGt20.config_dqmFileLoader.inputFileNames = cms.vstring('p
                                                                               'plotsZtoMuTau_PPmuXptGt20_part35.root')
 # correct scaleFactor for missing PPmuXptGt20 Monte Carlo files
 processZtoMuTau_PPmuXptGt20.config_dqmFileLoader.scaleFactor = cms.double(10.5*dataIntLumi/49.7)
+#processZtoMuTau_PPmuXptGt20.config_dqmFileLoader.scaleFactor = value(processZtoMuTau_PPmuXptGt20.config_dqmFileLoader.scaleFactor)
 
+a = cms.double(5.)
+b = cms.double(a.value()*10.)
 
