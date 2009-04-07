@@ -157,7 +157,7 @@ genPhaseSpaceCutZplusJets_part01 = cms.PSet(
   type = cms.string('AndEventSelector'),
   selectors = cms.VPSet(
     cms.PSet(
-      name = cms.string('genElectronsFromZsVeto'),
+      name = cms.string('genMuonsFromZsVeto'),
       type = cms.string('PATCandViewMaxEventSelector'),
       src = cms.InputTag('genMuonsFromZs'),
       maxNumber = cms.uint32(0)
