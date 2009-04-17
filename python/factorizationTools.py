@@ -2,15 +2,33 @@ import FWCore.ParameterSet.Config as cms
 import copy
 
 #--------------------------------------------------------------------------------
+# generic utility functions for factorization
+# usable for all channels
+#--------------------------------------------------------------------------------
+
+def switchHistManagers(analysisSequence, histManagers):
+    for pset in analysisSequence:
+        if hasattr(pset, "histManagers") : setattr(pset, "histManagers", histManagers)
+
+#def replaceEventSelection(eventSelection, evtSelOld, evtSelNew):
+#    index = eventSelection.index(evtSelOld)
+#    eventSelection.insert(index, evtSelNew)
+#    eventSelection.remove(evtSelOld)
+
+#--------------------------------------------------------------------------------
 # utility functions specific to factorization
 # of muon isolation efficiencies in Z --> mu + tau-jet channel
 #--------------------------------------------------------------------------------
 
 def enableFactorization_runZtoMuTau(process):
+    process.load("TauAnalysis.Configuration.selectZtoMuTau_factorized_cff")
+    process.selectZtoMuTauEvents_factorized = cms.Sequence( process.selectZtoMuTauEvents
+                                                           *process.selectZtoMuTauEventsLooseMuonIsolation )
+    process.p.replace(process.selectZtoMuTauEvents, process.selectZtoMuTauEvents_factorized)
     process.load("TauAnalysis.Configuration.analyzeZtoMuTau_factorized_cff")
-    process.analyzeZtoMuTau_factorized = cms.Sequence( process.analyzeZtoMuTau_factorizedWithoutMuonIsolation
-                                                      *process.analyzeZtoMuTau_factorizedWithMuonIsolation )
-    process.p.replace(process.analyzeZtoMuTau, process.analyzeZtoMuTau_factorized)
+    process.analyzeZtoMuTauEvents_factorized = cms.Sequence( process.analyzeZtoMuTauEvents_factorizedWithoutMuonIsolation
+                                                            *process.analyzeZtoMuTauEvents_factorizedWithMuonIsolation )
+    process.p.replace(process.analyzeZtoMuTauEvents, process.analyzeZtoMuTauEvents_factorized)
 
 def makeZtoMuTauPlots_b1(inputDirectory,outputDirectory):
     analyzer_b1 = cms.EDAnalyzer("DQMHistScaler",
