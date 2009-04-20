@@ -10,11 +10,6 @@ def switchHistManagers(analysisSequence, histManagers):
     for pset in analysisSequence:
         if hasattr(pset, "histManagers") : setattr(pset, "histManagers", histManagers)
 
-#def replaceEventSelection(eventSelection, evtSelOld, evtSelNew):
-#    index = eventSelection.index(evtSelOld)
-#    eventSelection.insert(index, evtSelNew)
-#    eventSelection.remove(evtSelOld)
-
 #--------------------------------------------------------------------------------
 # utility functions specific to factorization
 # of muon isolation efficiencies in Z --> mu + tau-jet channel
