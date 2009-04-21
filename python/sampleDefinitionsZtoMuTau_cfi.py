@@ -31,10 +31,10 @@ fileNamesZtautau_part01 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutZtautau_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 
 outputFileNameZtautau_part01 = cms.string('plotsZtoMuTau_Ztautau_part01.root')
@@ -79,10 +79,10 @@ fileNamesZmumu_part01 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutZmumu_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 
 outputFileNameZmumu_part01 = cms.string('plotsZtoMuTau_Zmumu_part01.root')
@@ -153,22 +153,22 @@ fileNamesZplusJets_part01 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutZplusJets_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('AndEventSelector'),
-  selectors = cms.VPSet(
-    cms.PSet(
-      name = cms.string('genMuonsFromZsVeto'),
-      type = cms.string('PATCandViewMaxEventSelector'),
-      src = cms.InputTag('genMuonsFromZs'),
-      maxNumber = cms.uint32(0)
-    ),
-    cms.PSet(
-      name = cms.string('genTausFromZsVeto'),
-      type = cms.string('PATCandViewMaxEventSelector'),
-      src = cms.InputTag('genTausFromZs'),
-      maxNumber = cms.uint32(0)
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('AndEventSelector'),
+    selectors = cms.VPSet(
+        cms.PSet(
+            pluginName = cms.string('genMuonsFromZsVeto'),
+            pluginType = cms.string('PATCandViewMaxEventSelector'),
+            src = cms.InputTag('genMuonsFromZs'),
+            maxNumber = cms.uint32(0)
+        ),
+        cms.PSet(
+            pluginName = cms.string('genTausFromZsVeto'),
+            pluginType = cms.string('PATCandViewMaxEventSelector'),
+            src = cms.InputTag('genTausFromZs'),
+            maxNumber = cms.uint32(0)
+        )
     )
-  )
 )
 
 outputFileNameZplusJets_part01 = cms.string('plotsZtoMuTau_ZplusJets_part01.root')
@@ -250,10 +250,10 @@ fileNamesWplusJets_part01 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutWplusJets_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 
 outputFileNameWplusJets_part01 = cms.string('plotsZtoMuTau_WplusJets_part01.root')
@@ -396,10 +396,10 @@ fileNamesInclusivePPmuX = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutInclusivePPmuX = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('ptHat < 20. | leadingGenMuon.pt < 15.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('ptHat < 20. | leadingGenMuon.pt < 15.')
 )
 
 outputFileNameInclusivePPmuX = cms.string('plotsZtoMuTau_InclusivePPmuX.root')
@@ -417,10 +417,10 @@ fileNamesPPmuXptGt20_part01 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutPPmuXptGt20_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('ptHat > 20.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('ptHat > 20.')
 )
 
 outputFileNamePPmuXptGt20_part01 = cms.string('plotsZtoMuTau_PPmuXptGt20_part01.root')

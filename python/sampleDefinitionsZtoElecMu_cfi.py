@@ -30,8 +30,8 @@ fileNamesZtautau = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutZtautau = cms.PSet(
-    name = cms.string('genPhaseSpaceCut'),
-    type = cms.string('GenPhaseSpaceEventInfoSelector'),
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
     src = cms.InputTag('genPhaseSpaceEventInfo'),
     cut = cms.string('')
 )
@@ -55,8 +55,8 @@ fileNamesZee = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutZee = cms.PSet(
-    name = cms.string('genPhaseSpaceCut'),
-    type = cms.string('GenPhaseSpaceEventInfoSelector'),
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
     src = cms.InputTag('genPhaseSpaceEventInfo'),
     cut = cms.string('')
 )
@@ -80,8 +80,8 @@ fileNamesZmumu = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutZmumu = cms.PSet(
-    name = cms.string('genPhaseSpaceCut'),
-    type = cms.string('GenPhaseSpaceEventInfoSelector'),
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
     src = cms.InputTag('genPhaseSpaceEventInfo'),
     cut = cms.string('')
 )
@@ -116,10 +116,10 @@ fileNamesWplusJets_part01 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutWplusJets_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 
 outputFileNameWplusJets_part01 = cms.string('plotsZtoElecMu_WplusJets_part01.root')
@@ -164,8 +164,8 @@ fileNamesZplusJets = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutZplusJets = cms.PSet(
-    name = cms.string('genPhaseSpaceCut'),
-    type = cms.string('PATCandViewMaxEventSelector'),
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('PATCandViewMaxEventSelector'),
     src = cms.InputTag('genTausFromZs'),
     maxNumber = cms.uint32(0)
 )
@@ -200,8 +200,8 @@ fileNamesTTplusJets_part01 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutTTplusJets_part01 = cms.PSet(
-    name = cms.string('genPhaseSpaceCut'),
-    type = cms.string('GenPhaseSpaceEventInfoSelector'),
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
     src = cms.InputTag('genPhaseSpaceEventInfo'),
     cut = cms.string('')
 )
@@ -236,8 +236,8 @@ fileNamesTTplusJets_part02 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutTTplusJets_part02 = cms.PSet(
-    name = cms.string('genPhaseSpaceCut'),
-    type = cms.string('GenPhaseSpaceEventInfoSelector'),
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
     src = cms.InputTag('genPhaseSpaceEventInfo'),
     cut = cms.string('')
 )
@@ -262,10 +262,10 @@ fileNamesQCD_BCtoE_Pt20to30 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutQCD_BCtoE_Pt20to30 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('ptHat < 30.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('ptHat < 30.')
 )
 
 outputFileNameQCD_BCtoE_Pt20to30 = cms.string('plotsZtoElecMu_QCD_BCtoE_Pt20to30.root')
@@ -285,10 +285,10 @@ fileNamesQCD_BCtoE_Pt30to80 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutQCD_BCtoE_Pt30to80 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('ptHat > 30.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('ptHat > 30.')
 )
 
 outputFileNameQCD_BCtoE_Pt30to80 = cms.string('plotsZtoElecMu_QCD_BCtoE_Pt30to80.root')
@@ -305,10 +305,10 @@ fileNamesInclusivePPmuX = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutInclusivePPmuX = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('ptHat < 20. | leadingGenMuon.pt < 15.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('ptHat < 20. | leadingGenMuon.pt < 15.')
 )
 
 outputFileNameInclusivePPmuX = cms.string('plotsZtoElecMu_InclusivePPmuX.root')
@@ -342,10 +342,10 @@ fileNamesPPmuXptGt20_part01 = cms.untracked.vstring(
 )
 
 genPhaseSpaceCutPPmuXptGt20_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('ptHat > 20.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('ptHat > 20.')
 )
 
 outputFileNamePPmuXptGt20_part01 = cms.string('plotsZtoElecMu_PPmuXptGt20_part01.root')

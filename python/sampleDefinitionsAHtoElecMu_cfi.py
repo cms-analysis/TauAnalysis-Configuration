@@ -43,10 +43,10 @@ fileNamesAH115tautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115_tautau_1.root'
 )
 genPhaseSpaceCutAH115tautau = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameAH115tautau = cms.string('plotsAHtoElecMu_AH115tautau.root')
 #--------------------------------------------------------------------------------
@@ -62,10 +62,10 @@ fileNamesAH115bbtautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_5.root'
 )
 genPhaseSpaceCutAH115bbtautau = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameAH115bbtautau = cms.string('plotsAHtoElecMu_AH115bbtautau.root')
 #--------------------------------------------------------------------------------
@@ -79,10 +79,10 @@ fileNamesAH115tautau2l = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115_tautau_2l_3.root'
 )
 genPhaseSpaceCutAH115tautau2l = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameAH115tautau2l = cms.string('plotsAHtoElecMu_AH115tautau2l.root')
 #--------------------------------------------------------------------------------
@@ -93,10 +93,10 @@ outputFileNameAH115tautau2l = cms.string('plotsAHtoElecMu_AH115tautau2l.root')
 fileNamesAH115bbtautau2l = cms.untracked.vstring(
 )
 genPhaseSpaceCutAH115bbtautau2l = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameAH115bbtautau2l = cms.string('plotsAHtoElecMu_AH115bbtautau2l.root')
 #--------------------------------------------------------------------------------
@@ -108,10 +108,10 @@ fileNamesAH160tautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160_tautau_1.root'
 )
 genPhaseSpaceCutAH160tautau = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameAH160tautau = cms.string('plotsAHtoElecMu_AH160tautau.root')
 #--------------------------------------------------------------------------------
@@ -127,10 +127,10 @@ fileNamesAH160bbtautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_5.root'
 )
 genPhaseSpaceCutAH160bbtautau = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameAH160bbtautau = cms.string('plotsAHtoElecMu_AH160bbtautau.root')
 #--------------------------------------------------------------------------------
@@ -144,10 +144,10 @@ fileNamesAH160tautau2l = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160_tautau_2l_3.root'
 )
 genPhaseSpaceCutAH160tautau2l = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameAH160tautau2l = cms.string('plotsAHtoElecMu_AH160tautau2l.root')
 #--------------------------------------------------------------------------------
@@ -161,10 +161,10 @@ fileNamesAH160bbtautau2l_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_3.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameAH160bbtautau2l_part01 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part01.root')
 fileNamesAH160bbtautau2l_part02 = cms.untracked.vstring(
@@ -313,10 +313,10 @@ fileNamesVQQ = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_VQQ_21.root'
 )
 genPhaseSpaceCutVQQ = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameVQQ = cms.string('plotsAHtoElecMu_VQQ.root')
 #--------------------------------------------------------------------------------
@@ -332,10 +332,10 @@ fileNamesWW = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_WW_5.root'
 )
 genPhaseSpaceCutWW = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameWW = cms.string('plotsAHtoElecMu_WW.root')
 #--------------------------------------------------------------------------------
@@ -350,10 +350,10 @@ fileNamesTW = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TW_4.root'
 )
 genPhaseSpaceCutTW = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameTW = cms.string('plotsAHtoElecMu_TW.root')
 #--------------------------------------------------------------------------------
@@ -368,10 +368,10 @@ fileNamesTTJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_4.root'
 )
 genPhaseSpaceCutTTJets_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameTTJets_part01 = cms.string('plotsAHtoElecMu_TTJets_part01.root')
 
@@ -488,10 +488,10 @@ fileNamesZplusJets = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/ZJets-madgraph/elecMuSkim_16.root'
 )
 genPhaseSpaceCutZplusJets = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
 )
 outputFileNameZplusJets = cms.string('plotsAHtoElecMu_ZplusJets.root')
 #--------------------------------------------------------------------------------
@@ -510,11 +510,11 @@ fileNamesPhotonJet15 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_PhotonJet15_7.root'
 )
 genPhaseSpaceCutPhotonJet15 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
-#  cut = cms.string('ptHat > 15.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
+#    cut = cms.string('ptHat > 15.')
 )
 outputFileNamePhotonJet15 = cms.string('plotsAHtoElecMu_PhotonJet15.root')
 #--------------------------------------------------------------------------------
@@ -525,11 +525,11 @@ outputFileNamePhotonJet15 = cms.string('plotsAHtoElecMu_PhotonJet15.root')
 fileNamesPhotonJet30 = cms.untracked.vstring(
 )
 genPhaseSpaceCutPhotonJet30 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
-#  cut = cms.string('ptHat > 30.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
+#    cut = cms.string('ptHat > 30.')
 )
 outputFileNamePhotonJet30 = cms.string('plotsAHtoElecMu_PhotonJet30.root')
 #--------------------------------------------------------------------------------
@@ -687,11 +687,11 @@ fileNamesQCDem20to30 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_QCDem20to30_147.root'
 )
 genPhaseSpaceCutQCDem20to30 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
-#  cut = cms.string('ptHat < 30.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
+#    cut = cms.string('ptHat < 30.')
 )
 outputFileNameQCDem20to30 = cms.string('plotsAHtoElecMu_QCDem20to30.root')
 #--------------------------------------------------------------------------------
@@ -840,11 +840,11 @@ fileNamesQCDem30to80_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_QCDem30to80_138.root'
 )
 genPhaseSpaceCutQCDem30to80_part01 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
-#  cut = cms.string('ptHat > 30. & ptHat < 80. ')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
+#    cut = cms.string('ptHat > 30. & ptHat < 80. ')
 )
 outputFileNameQCDem30to80_part01 = cms.string('plotsAHtoElecMu_QCDem30to80_part01.root')
 
@@ -1043,11 +1043,11 @@ fileNamesQCDem80to170 = cms.untracked.vstring(
 #    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_QCDem80to170_45.root'
 )
 genPhaseSpaceCutQCDem80to170 = cms.PSet(
-  name = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
-  src = cms.InputTag('genPhaseSpaceEventInfo'),
-  cut = cms.string('')
-#  cut = cms.string('ptHat > 80.')
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
+#    cut = cms.string('ptHat > 80.')
 )
 outputFileNameQCDem80to170 = cms.string('plotsAHtoElecMu_QCDem80to170.root')
 #--------------------------------------------------------------------------------
