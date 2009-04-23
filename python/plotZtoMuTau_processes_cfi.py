@@ -67,6 +67,3 @@ processZtoMuTau_PPmuXptGt20.config_dqmFileLoader.inputFileNames = cms.vstring('p
 processZtoMuTau_PPmuXptGt20.config_dqmFileLoader.scaleFactor = cms.double(10.5*dataIntLumi/49.7)
 #processZtoMuTau_PPmuXptGt20.config_dqmFileLoader.scaleFactor = value(processZtoMuTau_PPmuXptGt20.config_dqmFileLoader.scaleFactor)
 
-a = cms.double(5.)
-b = cms.double(a.value()*10.)
-
