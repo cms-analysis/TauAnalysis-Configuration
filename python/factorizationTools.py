@@ -27,84 +27,92 @@ def enableFactorization_runZtoMuTau(process):
 
 def makeZtoMuTauPlots_b1(inputDirectory,outputDirectory):
     analyzer_b1 = cms.EDAnalyzer("DQMHistScaler",
-      dqmDirectory_input = inputDirectory,
-      dqmSubDirectories_input = cms.vstring( 'afterPrimaryEventVertex_beforePrimaryEventVertexQuality',
-                                             'afterPrimaryEventVertexQuality_beforePrimaryEventVertexPosition',
-                                             'afterPrimaryEventVertexPosition_beforeGlobalMuonCut',
-                                             'afterGlobalMuonCut_beforeMuonEtaCut',
-                                             'afterMuonEtaCut_beforeMuonPtCut',
-                                             'afterMuonPtCut_beforeMuonTrkIsoCut',
-                                             'afterMuonTrkIsoCut_beforeMuonEcalIsoCut',
-                                             'afterMuonEcalIsoCut_beforeMuonAntiPionCut' ),
-      scaleFactor = cms.double(1.),
-      dqmDirectory_output = outputDirectory
+        dqmDirectory_input = inputDirectory,
+        dqmSubDirectories_input = cms.vstring(
+            'afterEvtSelPrimaryEventVertex_beforeEvtSelPrimaryEventVertexQuality',
+            'afterEvtSelPrimaryEventVertexQuality_beforeEvtSelPrimaryEventVertexPosition',
+            'afterEvtSelPrimaryEventVertexPosition_beforeEvtSelGlobalMuon',
+            'afterEvtSelGlobalMuon_beforeEvtSelMuonEta',
+            'afterEvtSelMuonEta_beforeEvtSelMuonPt',
+            'afterEvtSelMuonPt_beforeEvtSelMuonTrkIso',
+            'afterEvtSelMuonTrkIso_beforeEvtSelMuonEcalIso',
+            'afterEvtSelMuonEcalIso_beforeEvtSelMuonAntiPion'
+        ),
+        scaleFactor = cms.double(1.),
+        dqmDirectory_output = outputDirectory
     )
     return analyzer_b1
 def makeZtoMuTauPlots_b2(inputDirectory,outputDirectory):
     analyzer_b2 = cms.EDAnalyzer("DQMHistScaler",
-      dqmDirectory_input = copy.deepcopy(inputDirectory),
-      dqmSubDirectories_input = cms.vstring( 'Trigger'
-                                             'primaryEventVertex',
-                                             'primaryEventVertexQuality',
-                                             'primaryEventVertexPosition',
-                                             'globalMuonCut',
-                                             'muonEtaCut',
-                                             'muonPtCut',
-                                             'muonTrkIsoCut',
-                                             'muonEcalIsoCut' ),
-      scaleFactor = cms.double(1.),
-      dqmDirectory_output = copy.deepcopy(outputDirectory)
+        dqmDirectory_input = copy.deepcopy(inputDirectory),
+        dqmSubDirectories_input = cms.vstring(
+            'evtSelTrigger'
+            'evtSelPrimaryEventVertex',
+            'evtSelPrimaryEventVertexQuality',
+            'evtSelPrimaryEventVertexPosition',
+            'evtSelGlobalMuon',
+            'evtSelMuonEta',
+            'evtSelMuonPt',
+            'evtSelMuonTrkIso',
+            'evtSelMuonEcalIso'
+        ),
+        scaleFactor = cms.double(1.),
+        dqmDirectory_output = copy.deepcopy(outputDirectory)
     )
     return analyzer_b2
 def makeZtoMuTauPlots_a1(inputDirectory,outputDirectory,directoryLooseSel,directoryTightSel):    
     analyzer_a1 = cms.EDAnalyzer("DQMHistScaler",
-      dqmDirectory_input = copy.deepcopy(inputDirectory),
-      dqmSubDirectories_input = cms.vstring( 'afterMuonAntiPionCut_beforeMuonTrkIPcut',
-                                             'afterMuonTrkIPcut_beforeTauAntiOverlapWithMuonsVeto',
-                                             'afterTauAntiOverlapWithMuonsVeto_beforeTauEtaCut',
-                                             'afterTauEtaCut_beforeTauPtCut',
-                                             'afterTauPtCut_beforeTauLeadTrkCut',
-                                             'afterTauLeadTrkCut_beforeTauLeadTrkPtCut',
-                                             'afterTauLeadTrkPtCut_beforeTauTrkIsoCut',
-                                             'afterTauTrkIsoCut_beforeTauEcalIsoCut',
-                                             'afterTauEcalIsoCut_beforeTauProngCut',
-                                             'afterTauProngCut_beforeTauMuonVeto',
-                                             'afterTauMuonVeto_beforeDiTauCandidateForMuTauAntiOverlapVeto',
-                                             'afterDiTauCandidateForMuTauAntiOverlapVeto_beforeDiTauCandidateForMuTauZeroChargeCut',
-                                             'afterDiTauCandidateForMuTauZeroChargeCut_beforeDiTauCandidateForMuTauMt1METCut',
-                                             'afterDiTauCandidateForMuTauMt1METCut' ),
-      dqmDirectory_factorizedLooseSel = copy.deepcopy(directoryLooseSel),
-      dqmDirectory_factorizedTightSel = copy.deepcopy(directoryTightSel),
-      meNameNumerator = cms.string('muonEcalIsoCut/passed_cumulative_numWeighted'),
-      meNameDenominator = cms.string('muonTrkIsoCut/processed_cumulative_numWeighted'),
-      meType = cms.string("real"),
-      dqmDirectory_output = copy.deepcopy(outputDirectory)
+        dqmDirectory_input = copy.deepcopy(inputDirectory),
+        dqmSubDirectories_input = cms.vstring(
+            'afterEvtSelMuonAntiPion_beforeEvtSelMuonTrkIP',
+            'afterEvtSelMuonTrkIP_beforeEvtSelTauAntiOverlapWithMuonsVeto',
+            'afterEvtSelTauAntiOverlapWithMuonsVeto_beforeEvtSelTauEta',
+            'afterEvtSelTauEta_beforeEvtSelTauPt',
+            'afterEvtSelTauPt_beforeEvtSelTauLeadTrk',
+            'afterEvtSelTauLeadTrk_beforeEvtSelTauLeadTrkPt',
+            'afterEvtSelTauLeadTrkPt_beforeEvtSelTauTrkIso',
+            'afterEvtSelTauTrkIso_beforeEvtSelTauEcalIso',
+            'afterEvtSelTauEcalIso_beforeEvtSelTauProng',
+            'afterEvtSelTauProng_beforeEvtSelTauMuonVeto',
+            'afterEvtSelTauMuonVeto_beforeEvtSelDiTauCandidateForMuTauAntiOverlapVeto',
+            'afterEvtSelDiTauCandidateForMuTauAntiOverlapVeto_beforeEvtSelDiTauCandidateForMuTauZeroCharge',
+            'afterEvtSelDiTauCandidateForMuTauZeroCharge_beforeEvtSelDiTauCandidateForMuTauMt1MET',
+            'afterEvtSelDiTauCandidateForMuTauMt1MET'
+        ),
+        dqmDirectory_factorizedLooseSel = copy.deepcopy(directoryLooseSel),
+        dqmDirectory_factorizedTightSel = copy.deepcopy(directoryTightSel),
+        meNameNumerator = cms.string('evtSelMuonEcalIso/passed_cumulative_numWeighted'),
+        meNameDenominator = cms.string('evtSelMuonTrkIso/processed_cumulative_numWeighted'),
+        meType = cms.string("real"),
+        dqmDirectory_output = copy.deepcopy(outputDirectory)
     )
     return analyzer_a1
 def makeZtoMuTauPlots_a2(inputDirectory,outputDirectory,directoryLooseSel,directoryTightSel):    
     analyzer_a2 = cms.EDAnalyzer("DQMHistScaler",    
-      dqmDirectory_input = copy.deepcopy(inputDirectory),
-      dqmSubDirectories_input = cms.vstring( 'muonAntiPionCut',
-                                             'muonTrkIPcut',
-                                             'tauAntiOverlapWithMuonsVeto',
-                                             'tauEtaCut',
-                                             'tauPtCut',
-                                             'tauLeadTrkCut',
-                                             'tauLeadTrkPtCut',
-                                             'tauTrkIsoCut',
-                                             'tauEcalIsoCut',
-                                             'tauProngCut',
-                                             'tauMuonVeto',
-                                             'diTauCandidateForMuTauAntiOverlapVeto',
-                                             'diTauCandidateForMuTauAcoplanarityCut',
-                                             'diTauCandidateForMuTauZeroChargeCut',
-                                             'diTauCandidateForMuTauMt1METCut' ),
-      dqmDirectory_factorizedLooseSel = copy.deepcopy(directoryLooseSel),
-      dqmDirectory_factorizedTightSel = copy.deepcopy(directoryTightSel),
-      meNameNumerator = cms.string('muonEcalIsoCut/passed_cumulative_numWeighted'),
-      meNameDenominator = cms.string('muonTrkIsoCut/processed_cumulative_numWeighted'),
-      meType = cms.string("real"),
-      dqmDirectory_output = copy.deepcopy(outputDirectory)
+        dqmDirectory_input = copy.deepcopy(inputDirectory),
+        dqmSubDirectories_input = cms.vstring(
+            'evtSelMuonAntiPion',
+            'evtSelMuonTrkIP',
+            'evtSelTauAntiOverlapWithMuonsVeto',
+            'evtSelTauEta',
+            'evtSelTauPt',
+            'evtSelTauLeadTrk',
+            'evtSelTauLeadTrkPt',
+            'evtSelTauTrkIso',
+            'evtSelTauEcalIso',
+            'evtSelTauProng',
+            'evtSelTauMuonVeto',
+            'evtSelDiTauCandidateForMuTauAntiOverlapVeto',
+            'evtSelDiTauCandidateForMuTauAcoplanarity',
+            'evtSelDiTauCandidateForMuTauZeroCharge',
+            'evtSelDiTauCandidateForMuTauMt1MET'
+        ),
+        dqmDirectory_factorizedLooseSel = copy.deepcopy(directoryLooseSel),
+        dqmDirectory_factorizedTightSel = copy.deepcopy(directoryTightSel),
+        meNameNumerator = cms.string('evtSelMuonEcalIso/passed_cumulative_numWeighted'),
+        meNameDenominator = cms.string('evtSelMuonTrkIso/processed_cumulative_numWeighted'),
+        meType = cms.string("real"),
+        dqmDirectory_output = copy.deepcopy(outputDirectory)
     )
     return analyzer_a2
 def enableFactorization_makeZtoMuTauPlots(process):
@@ -179,78 +187,86 @@ def enableFactorization_runZtoElecMu(process):
 
 def makeZtoElecMuPlots_b1(inputDirectory,outputDirectory):
     analyzer_b1 = cms.EDAnalyzer("DQMHistScaler",
-      dqmDirectory_input = inputDirectory,
-      dqmSubDirectories_input = cms.vstring( 'afterPrimaryEventVertex_beforePrimaryEventVertexQuality',
-                                             'afterPrimaryEventVertexQuality_beforePrimaryEventVertexPosition',
-                                             'afterPrimaryEventVertexPosition_beforeTightElectronIdCut',
-                                             'afterTightElectronIdCut_beforeElectronAntiCrackCut',
-                                             'afterElectronAntiCrackCut_beforeElectronEtaCut',
-                                             'afterElectronEtaCut_beforeElectronPtCut',
-                                             'afterElectronPtCut_beforeElectronTrkIsoCut',
-                                             'afterElectronTrkIsoCut_beforeElectronEcalIsoCut',
-                                             'afterElectronEcalIsoCut_beforeElectronTrkCut' ),
-      scaleFactor = cms.double(1.),
-      dqmDirectory_output = outputDirectory
+        dqmDirectory_input = inputDirectory,
+        dqmSubDirectories_input = cms.vstring(
+            'afterEvtSelPrimaryEventVertex_beforeEvtSelPrimaryEventVertexQuality',
+            'afterEvtSelPrimaryEventVertexQuality_beforeEvtSelPrimaryEventVertexPosition',
+            'afterEvtSelPrimaryEventVertexPosition_beforeEvtSelTightElectronId',
+            'afterEvtSelTightElectronId_beforeEvtSelElectronAntiCrack',
+            'afterEvtSelElectronAntiCrack_beforeEvtSelElectronEta',
+            'afterEvtSelElectronEta_beforeEvtSelElectronPt',
+            'afterEvtSelElectronPt_beforeEvtSelElectronTrkIso',
+            'afterEvtSelElectronTrkIso_beforeEvtSelElectronEcalIso',
+            'afterEvtSelElectronEcalIso_beforeEvtSelElectronTrk'
+        ),
+        scaleFactor = cms.double(1.),
+        dqmDirectory_output = outputDirectory
     )
     return analyzer_b1
 def makeZtoElecMuPlots_b2(inputDirectory,outputDirectory):
     analyzer_b2 = cms.EDAnalyzer("DQMHistScaler",
-      dqmDirectory_input = copy.deepcopy(inputDirectory),
-      dqmSubDirectories_input = cms.vstring( 'Trigger'
-                                             'primaryEventVertex',
-                                             'primaryEventVertexQuality',
-                                             'primaryEventVertexPosition',
-                                             'tightElectronIdCut',
-                                             'electronAntiCrackCut',
-                                             'electronEtaCut',
-                                             'electronPtCut',
-                                             'electronTrkIsoCut',
-                                             'electronEcalIsoCut' ),
-      scaleFactor = cms.double(1.),
-      dqmDirectory_output = copy.deepcopy(outputDirectory)
+        dqmDirectory_input = copy.deepcopy(inputDirectory),
+        dqmSubDirectories_input = cms.vstring(
+            'evtSelTrigger'
+            'evtSelPrimaryEventVertex',
+            'evtSelPrimaryEventVertexQuality',
+            'evtSelPrimaryEventVertexPosition',
+            'evtSelTightElectronId',
+            'evtSelElectronAntiCrack',
+            'evtSelElectronEta',
+            'evtSelElectronPt',
+            'evtSelElectronTrkIso',
+            'evtSelElectronEcalIso'
+        ),
+        scaleFactor = cms.double(1.),
+        dqmDirectory_output = copy.deepcopy(outputDirectory)
     )
     return analyzer_b2
 def makeZtoElecMuPlots_a1(inputDirectory,outputDirectory,directoryLooseSel,directoryTightSel):    
     analyzer_a1 = cms.EDAnalyzer("DQMHistScaler",
-      dqmDirectory_input = copy.deepcopy(inputDirectory),
-      dqmSubDirectories_input = cms.vstring( 'afterElectronTrkCut_beforeElectronTrkIPcut',
-                                             'afterElectronTrkIPcut_beforeGlobalMuonCut',
-                                             'afterGlobalMuonCut_beforeMuonEtaCut',
-                                             'afterMuonEtaCut_beforeMuonPtCut',
-                                             'afterMuonPtCut_beforeMuonTrkIsoCut',
-                                             'afterMuonTrkIsoCut_beforeMuonEcalIsoCut',
-                                             'afterMuonEcalIsoCut_beforeMuonAntiPionCut',
-                                             'afterMuonAntiPionCut_beforeMuonTrkIPcut',
-                                             'afterMuonTrkIPcut_beforeDiTauCandidateForElecMuAcoplanarityCut',
-                                             'afterDiTauCandidateForElecMuAcoplanarityCut_beforeDiTauCandidateForElecMuZeroChargeCut' ),
-      dqmDirectory_factorizedLooseSel = copy.deepcopy(directoryLooseSel),
-      dqmDirectory_factorizedTightSel = copy.deepcopy(directoryTightSel),
-      meNameNumerator = cms.string('electronEcalIsoCut/passed_cumulative_numWeighted'),
-      meNameDenominator = cms.string('electronTrkIsoCut/processed_cumulative_numWeighted'),
-      meType = cms.string("real"),
-      dqmDirectory_output = copy.deepcopy(outputDirectory)
+        dqmDirectory_input = copy.deepcopy(inputDirectory),
+        dqmSubDirectories_input = cms.vstring(
+            'afterEvtSelElectronTrk_beforeEvtSelElectronTrkIP',
+            'afterEvtSelElectronTrkIP_beforeEvtSelGlobalMuon',
+            'afterEvtSelGlobalMuon_beforeEvtSelMuonEta',
+            'afterEvtSelMuonEta_beforeEvtSelMuonPt',
+            'afterEvtSelMuonPt_beforeEvtSelMuonTrkIso',
+            'afterEvtSelMuonTrkIso_beforeEvtSelMuonEcalIso',
+            'afterEvtSelMuonEcalIso_beforeEvtSelMuonAntiPion',
+            'afterEvtSelMuonAntiPion_beforeEvtSelMuonTrkIP',
+            'afterEvtSelMuonTrkIP_beforeEvtSelDiTauCandidateForElecMuAcoplanarity',
+            'afterEvtSelDiTauCandidateForElecMuAcoplanarity_beforeEvtSelDiTauCandidateForElecMuZeroCharge'
+        ),
+        dqmDirectory_factorizedLooseSel = copy.deepcopy(directoryLooseSel),
+        dqmDirectory_factorizedTightSel = copy.deepcopy(directoryTightSel),
+        meNameNumerator = cms.string('evtSelElectronEcalIso/passed_cumulative_numWeighted'),
+        meNameDenominator = cms.string('evtSelElectronTrkIso/processed_cumulative_numWeighted'),
+        meType = cms.string("real"),
+        dqmDirectory_output = copy.deepcopy(outputDirectory)
     )
     return analyzer_a1
 def makeZtoElecMuPlots_a2(inputDirectory,outputDirectory,directoryLooseSel,directoryTightSel):    
     analyzer_a2 = cms.EDAnalyzer("DQMHistScaler",    
-      dqmDirectory_input = copy.deepcopy(inputDirectory),
-      dqmSubDirectories_input = cms.vstring( 'electronTrkCut',
-                                             'electronTrkIPcut',
-                                             'globalMuonCut',
-                                             'muonEtaCut',
-                                             'muonPtCut',
-                                             'muonTrkIsoCut',
-                                             'muonEcalIsoCut',
-                                             'muonAntiPionCut',
-                                             'muonTrkIPcut',
-                                             'diTauCandidateForElecMuAcoplanarityCut',
-                                             'diTauCandidateForElecMuZeroChargeCut' ),
-      dqmDirectory_factorizedLooseSel = copy.deepcopy(directoryLooseSel),
-      dqmDirectory_factorizedTightSel = copy.deepcopy(directoryTightSel),
-      meNameNumerator = cms.string('electronEcalIsoCut/passed_cumulative_numWeighted'),
-      meNameDenominator = cms.string('electronTrkIsoCut/processed_cumulative_numWeighted'),
-      meType = cms.string("real"),
-      dqmDirectory_output = copy.deepcopy(outputDirectory)
+        dqmDirectory_input = copy.deepcopy(inputDirectory),
+        dqmSubDirectories_input = cms.vstring(
+            'evtSelElectronTrk',
+            'evtSelElectronTrkIP',
+            'evtSelGlobalMuon',
+            'evtSelMuonEta',
+            'evtSelMuonPt',
+            'evtSelMuonTrkIso',
+            'evtSelMuonEcalIso',
+            'evtSelMuonAntiPion',
+            'evtSelMuonTrkIP',
+            'evtSelDiTauCandidateForElecMuAcoplanarity',
+            'evtSelDiTauCandidateForElecMuZeroCharge'
+        ),
+        dqmDirectory_factorizedLooseSel = copy.deepcopy(directoryLooseSel),
+        dqmDirectory_factorizedTightSel = copy.deepcopy(directoryTightSel),
+        meNameNumerator = cms.string('evtSelElectronEcalIso/passed_cumulative_numWeighted'),
+        meNameDenominator = cms.string('evtSelElectronTrkIso/processed_cumulative_numWeighted'),
+        meType = cms.string("real"),
+        dqmDirectory_output = copy.deepcopy(outputDirectory)
     )
     return analyzer_a2
 def enableFactorization_makeZtoElecMuPlots(process):
