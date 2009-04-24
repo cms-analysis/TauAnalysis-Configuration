@@ -46,7 +46,8 @@ def makeZtoMuTauPlots_b2(inputDirectory,outputDirectory):
     analyzer_b2 = cms.EDAnalyzer("DQMHistScaler",
         dqmDirectory_input = copy.deepcopy(inputDirectory),
         dqmSubDirectories_input = cms.vstring(
-            'evtSelTrigger'
+            'genPhaseSpaceCut',
+            'evtSelTrigger',
             'evtSelPrimaryEventVertex',
             'evtSelPrimaryEventVertexQuality',
             'evtSelPrimaryEventVertexPosition',
@@ -169,6 +170,8 @@ def enableFactorization_makeZtoMuTauPlots(process):
                                        +process.scaleZtoMuTau_PPmuXptGt20b1 + process.scaleZtoMuTau_PPmuXptGt20b2
                                        +process.scaleZtoMuTau_PPmuXptGt20a1 + process.scaleZtoMuTau_PPmuXptGt20a2 
                                        +process.addZtoMuTau_qcdSum + process.addZtoMuTau_smSum )
+
+    process.dumpZtoMuTau.dqmDirectories.QCD = cms.string('qcdSum_factorized/zMuTauAnalyzer/FilterStatistics/')
     
     process.plotZtoMuTau.processes.InclusivePPmuX.dqmDirectory = cms.string('InclusivePPmuX_factorized')
     process.plotZtoMuTau.processes.PPmuXptGt20.dqmDirectory = cms.string('PPmuXptGt20_factorized')
