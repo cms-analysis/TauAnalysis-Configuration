@@ -28,7 +28,8 @@ fi
 fileNames_hook="#---This_is_a_Hook_for_Replacement_of_fileNames_Parameter"
 maxEvents_hook="#---This_is_a_Hook_for_Replacement_of_maxEvents_Parameter"
 genPhaseSpaceCut_hook="#---This_is_a_Hook_for_Replacement_of_genPhaseSpaceCut_Parameter"
-outputFileName_hook="#---This_is_a_Hook_for_Replacement_of_outputFileName_Parameter"
+plotsOutputFileName_hook="#---This_is_a_Hook_for_Replacement_of_outputFileName_Parameter_of_DQMSimpleFileSaver"
+patTupleOutputFileName_hook="#---This_is_a_Hook_for_Replacement_of_fileName_Parameter_of_PoolOutputModule"
 enableFactorization_hook1="#from TauAnalysis.Configuration.factorizationTools import enableFactorization_run"$1
 enableFactorization_hook2="#enableFactorization_run"$1"(process)"
 
@@ -36,7 +37,8 @@ enableFactorization_hook2="#enableFactorization_run"$1"(process)"
 fileNames_param="fileNames"$2
 maxEvents_param=$4
 genPhaseSpaceCut_param="genPhaseSpaceCut"$2
-outputFileName_param="outputFileName"$2
+plotsOutputFileName_param="plotsOutputFileName"$2
+patTupleOutputFileName_param="patTupleOutputFileName"$2
 enableFactorization_param1="from TauAnalysis.Configuration.factorizationTools import enableFactorization_run"$1
 enableFactorization_param2="enableFactorization_run"$1"(process)"
 
@@ -49,9 +51,12 @@ sedArgument=$sedArgument"process.maxEvents.input = cms.untracked.int32($maxEvent
 # substitute genPhaseSpaceCut parameter
 sedArgument=$sedArgument"; ""s/$genPhaseSpaceCut_hook/$genPhaseSpaceCut_hook\n"
 sedArgument=$sedArgument"process.analyze$1Events.eventSelection[0] = copy.deepcopy($genPhaseSpaceCut_param)/"
-# substitute outputFileName parameter
-sedArgument=$sedArgument"; ""s/$outputFileName_hook/$outputFileName_hook\n"
-sedArgument=$sedArgument"process.save$1Plots.outputFileName = $outputFileName_param/"
+# substitute plotsOutputFileName parameter
+sedArgument=$sedArgument"; ""s/$plotsOutputFileName_hook/$plotsOutputFileName_hook\n"
+sedArgument=$sedArgument"process.save$1Plots.outputFileName = $plotsOutputFileName_param/"
+# substitute patTupleOutputFileName parameter
+sedArgument=$sedArgument"; ""s/$patTupleOutputFileName_hook/$patTupleOutputFileName_hook\n"
+sedArgument=$sedArgument"process.save$1PatTuple.fileName = $patTupleOutputFileName_param/"
 if [ $3 == "factorized" ]; then
   sedArgument=$sedArgument"; ""s/$enableFactorization_hook1/$enableFactorization_param1/"
   sedArgument=$sedArgument"; ""s/$enableFactorization_hook2/$enableFactorization_param2/"

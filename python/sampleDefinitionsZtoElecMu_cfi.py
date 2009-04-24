@@ -4,6 +4,7 @@ import copy
 # define configuration parameters for submission of Z --> e + mu jobs to CERN batch system
 # (running over skimmed samples stored on CASTOR)
 
+patTupleOutputDirectoryName = cms.string('/castor/cern.ch/user/v/veelken/CMSSW_2_2_7/')
 
 #--------------------------------------------------------------------------------
 # Z --> tau+ tau- sample
@@ -36,7 +37,8 @@ genPhaseSpaceCutZtautau = cms.PSet(
     cut = cms.string('')
 )
 
-outputFileNameZtautau = cms.string('plotsZtoElecMu_Ztautau.root')
+plotsOutputFileNameZtautau = cms.string('plotsZtoElecMu_Ztautau.root')
+patTupleOutputFileNameZtautau = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_Ztautau.root')
 #--------------------------------------------------------------------------------
 
 
@@ -61,7 +63,8 @@ genPhaseSpaceCutZee = cms.PSet(
     cut = cms.string('')
 )
 
-outputFileNameZee = cms.string('plotsZtoElecMu_Zee.root')
+plotsOutputFileNameZee = cms.string('plotsZtoElecMu_Zee.root')
+patTupleOutputFileNameZee = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_Zee.root')
 #--------------------------------------------------------------------------------
 
 
@@ -86,7 +89,8 @@ genPhaseSpaceCutZmumu = cms.PSet(
     cut = cms.string('')
 )
 
-outputFileNameZmumu = cms.string('plotsZtoElecMu_Zmumu.root')
+plotsOutputFileNameZmumu = cms.string('plotsZtoElecMu_Zmumu.root')
+patTupleOutputFileNameZmumu = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_Zmumu.root')
 #--------------------------------------------------------------------------------
 
 
@@ -122,7 +126,8 @@ genPhaseSpaceCutWplusJets_part01 = cms.PSet(
     cut = cms.string('')
 )
 
-outputFileNameWplusJets_part01 = cms.string('plotsZtoElecMu_WplusJets_part01.root')
+plotsOutputFileNameWplusJets_part01 = cms.string('plotsZtoElecMu_WplusJets_part01.root')
+patTupleOutputFileNameWplusJets_part01 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_WplusJets_part01.root')
 
 fileNamesWplusJets_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/WJets-madgraph/elecMuSkim_21.root',
@@ -139,7 +144,8 @@ fileNamesWplusJets_part02 = cms.untracked.vstring(
 
 genPhaseSpaceCutWplusJets_part02 = copy.deepcopy(genPhaseSpaceCutWplusJets_part01)
 
-outputFileNameWplusJets_part02 = cms.string('plotsZtoElecMu_WplusJets_part02.root')
+plotsOutputFileNameWplusJets_part02 = cms.string('plotsZtoElecMu_WplusJets_part02.root')
+patTupleOutputFileNameWplusJets_part02 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_WplusJets_part02.root')
 #--------------------------------------------------------------------------------
 
 
@@ -170,7 +176,8 @@ genPhaseSpaceCutZplusJets = cms.PSet(
     maxNumber = cms.uint32(0)
 )
 
-outputFileNameZplusJets = cms.string('plotsZtoElecMu_ZplusJets.root')
+plotsOutputFileNameZplusJets = cms.string('plotsZtoElecMu_ZplusJets.root')
+patTupleOutputFileNameZplusJets = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_ZplusJets.root')
 #--------------------------------------------------------------------------------
 
 
@@ -206,7 +213,8 @@ genPhaseSpaceCutTTplusJets_part01 = cms.PSet(
     cut = cms.string('')
 )
 
-outputFileNameTTplusJets_part01 = cms.string('plotsZtoElecMu_TTplusJets_part01.root')
+plotsOutputFileNameTTplusJets_part01 = cms.string('plotsZtoElecMu_TTplusJets_part01.root')
+patTupleOutputFileNameTTplusJets_part01 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_TTplusJets_part01.root')
 
 fileNamesTTplusJets_part02 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_21.root',
@@ -242,7 +250,8 @@ genPhaseSpaceCutTTplusJets_part02 = cms.PSet(
     cut = cms.string('')
 )
 
-outputFileNameTTplusJets_part02 = cms.string('plotsZtoElecMu_TTplusJets_part02.root')
+plotsOutputFileNameTTplusJets_part02 = cms.string('plotsZtoElecMu_TTplusJets_part02.root')
+patTupleOutputFileNameTTplusJets_part02 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_TTplusJets_part02.root')
 #--------------------------------------------------------------------------------
 
 
@@ -268,7 +277,8 @@ genPhaseSpaceCutQCD_BCtoE_Pt20to30 = cms.PSet(
     cut = cms.string('ptHat < 30.')
 )
 
-outputFileNameQCD_BCtoE_Pt20to30 = cms.string('plotsZtoElecMu_QCD_BCtoE_Pt20to30.root')
+plotsOutputFileNameQCD_BCtoE_Pt20to30 = cms.string('plotsZtoElecMu_QCD_BCtoE_Pt20to30.root')
+patTupleOutputFileNameQCD_BCtoE_Pt20to30 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_QCD_BCtoE_Pt20to30.root')
 #--------------------------------------------------------------------------------
 
 
@@ -291,7 +301,8 @@ genPhaseSpaceCutQCD_BCtoE_Pt30to80 = cms.PSet(
     cut = cms.string('ptHat > 30.')
 )
 
-outputFileNameQCD_BCtoE_Pt30to80 = cms.string('plotsZtoElecMu_QCD_BCtoE_Pt30to80.root')
+plotsOutputFileNameQCD_BCtoE_Pt30to80 = cms.string('plotsZtoElecMu_QCD_BCtoE_Pt30to80.root')
+patTupleOutputFileNameQCD_BCtoE_Pt30to80 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_QCD_BCtoE_Pt30to80.root')
 #--------------------------------------------------------------------------------
 
 
@@ -311,7 +322,8 @@ genPhaseSpaceCutInclusivePPmuX = cms.PSet(
     cut = cms.string('ptHat < 20. | leadingGenMuon.pt < 15.')
 )
 
-outputFileNameInclusivePPmuX = cms.string('plotsZtoElecMu_InclusivePPmuX.root')
+plotsOutputFileNameInclusivePPmuX = cms.string('plotsZtoElecMu_InclusivePPmuX.root')
+patTupleOutputFileNameInclusivePPmuX = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_InclusivePPmuX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -348,7 +360,8 @@ genPhaseSpaceCutPPmuXptGt20_part01 = cms.PSet(
     cut = cms.string('ptHat > 20.')
 )
 
-outputFileNamePPmuXptGt20_part01 = cms.string('plotsZtoElecMu_PPmuXptGt20_part01.root')
+plotsOutputFileNamePPmuXptGt20_part01 = cms.string('plotsZtoElecMu_PPmuXptGt20_part01.root')
+patTupleOutputFileNamePPmuXptGt20_part01 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part01.root')
 
 fileNamesPPmuXptGt20_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_22.root',
@@ -370,7 +383,8 @@ fileNamesPPmuXptGt20_part02 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part02 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part02 = cms.string('plotsZtoElecMu_PPmuXptGt20_part02.root')
+plotsOutputFileNamePPmuXptGt20_part02 = cms.string('plotsZtoElecMu_PPmuXptGt20_part02.root')
+patTupleOutputFileNamePPmuXptGt20_part02 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part02.root')
 
 fileNamesPPmuXptGt20_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_41.root',
@@ -395,7 +409,8 @@ fileNamesPPmuXptGt20_part03 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part03 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part03 = cms.string('plotsZtoElecMu_PPmuXptGt20_part03.root')
+plotsOutputFileNamePPmuXptGt20_part03 = cms.string('plotsZtoElecMu_PPmuXptGt20_part03.root')
+patTupleOutputFileNamePPmuXptGt20_part03 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part03.root')
 
 fileNamesPPmuXptGt20_part04 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_62.root',
@@ -421,6 +436,9 @@ genPhaseSpaceCutPPmuXptGt20_part04 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_p
 
 outputFileNamePPmuXptGt20_part04 = cms.string('plotsZtoElecMu_PPmuXptGt20_part04.root')
 
+plotsOutputFileNamePPmuXptGt20_part04 = cms.string('plotsZtoElecMu_PPmuXptGt20_part04.root')
+patTupleOutputFileNamePPmuXptGt20_part04 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part04.root')
+
 fileNamesPPmuXptGt20_part05 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_81.root',
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_83.root',
@@ -441,7 +459,8 @@ fileNamesPPmuXptGt20_part05 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part05 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part05 = cms.string('plotsZtoElecMu_PPmuXptGt20_part05.root')
+plotsOutputFileNamePPmuXptGt20_part05 = cms.string('plotsZtoElecMu_PPmuXptGt20_part05.root')
+patTupleOutputFileNamePPmuXptGt20_part05 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part05.root')
 
 fileNamesPPmuXptGt20_part06 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_100.root',
@@ -466,7 +485,8 @@ fileNamesPPmuXptGt20_part06 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part06 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part06 = cms.string('plotsZtoElecMu_PPmuXptGt20_part06.root')
+plotsOutputFileNamePPmuXptGt20_part06 = cms.string('plotsZtoElecMu_PPmuXptGt20_part06.root')
+patTupleOutputFileNamePPmuXptGt20_part06 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part06.root')
 
 fileNamesPPmuXptGt20_part07 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_122.root',
@@ -489,7 +509,8 @@ fileNamesPPmuXptGt20_part07 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part07 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part07 = cms.string('plotsZtoElecMu_PPmuXptGt20_part07.root')
+plotsOutputFileNamePPmuXptGt20_part07 = cms.string('plotsZtoElecMu_PPmuXptGt20_part07.root')
+patTupleOutputFileNamePPmuXptGt20_part07 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part07.root')
 
 fileNamesPPmuXptGt20_part08 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_142.root',
@@ -509,7 +530,8 @@ fileNamesPPmuXptGt20_part08 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part08 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part08 = cms.string('plotsZtoElecMu_PPmuXptGt20_part08.root')
+plotsOutputFileNamePPmuXptGt20_part08 = cms.string('plotsZtoElecMu_PPmuXptGt20_part08.root')
+patTupleOutputFileNamePPmuXptGt20_part08 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part08.root')
 
 fileNamesPPmuXptGt20_part09 = cms.untracked.vstring(      
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_162.root',
@@ -532,7 +554,8 @@ fileNamesPPmuXptGt20_part09 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part09 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part09 = cms.string('plotsZtoElecMu_PPmuXptGt20_part09.root')
+plotsOutputFileNamePPmuXptGt20_part09 = cms.string('plotsZtoElecMu_PPmuXptGt20_part09.root')
+patTupleOutputFileNamePPmuXptGt20_part09 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part09.root')
 
 fileNamesPPmuXptGt20_part10 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_181.root',
@@ -558,7 +581,8 @@ fileNamesPPmuXptGt20_part10 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part10 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part10 = cms.string('plotsZtoElecMu_PPmuXptGt20_part10.root')
+plotsOutputFileNamePPmuXptGt20_part10 = cms.string('plotsZtoElecMu_PPmuXptGt20_part10.root')
+patTupleOutputFileNamePPmuXptGt20_part10 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part10.root')
 
 fileNamesPPmuXptGt20_part11 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_200.root',
@@ -584,7 +608,8 @@ fileNamesPPmuXptGt20_part11 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part11 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part11 = cms.string('plotsZtoElecMu_PPmuXptGt20_part11.root')
+plotsOutputFileNamePPmuXptGt20_part11 = cms.string('plotsZtoElecMu_PPmuXptGt20_part11.root')
+patTupleOutputFileNamePPmuXptGt20_part11 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part11.root')
 
 fileNamesPPmuXptGt20_part12 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_221.root',
@@ -606,7 +631,8 @@ fileNamesPPmuXptGt20_part12 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part12 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part12 = cms.string('plotsZtoElecMu_PPmuXptGt20_part12.root')
+plotsOutputFileNamePPmuXptGt20_part12 = cms.string('plotsZtoElecMu_PPmuXptGt20_part12.root')
+patTupleOutputFileNamePPmuXptGt20_part12 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part12.root')
 
 fileNamesPPmuXptGt20_part13 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_241.root',
@@ -630,7 +656,8 @@ fileNamesPPmuXptGt20_part13 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part13 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part13 = cms.string('plotsZtoElecMu_PPmuXptGt20_part13.root')
+plotsOutputFileNamePPmuXptGt20_part13 = cms.string('plotsZtoElecMu_PPmuXptGt20_part13.root')
+patTupleOutputFileNamePPmuXptGt20_part13 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part13.root')
 
 fileNamesPPmuXptGt20_part14 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_261.root',
@@ -654,7 +681,8 @@ fileNamesPPmuXptGt20_part14 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part14 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part14 = cms.string('plotsZtoElecMu_PPmuXptGt20_part14.root')
+plotsOutputFileNamePPmuXptGt20_part14 = cms.string('plotsZtoElecMu_PPmuXptGt20_part14.root')
+patTupleOutputFileNamePPmuXptGt20_part14 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part14.root')
 
 fileNamesPPmuXptGt20_part15 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_281.root',
@@ -680,7 +708,8 @@ fileNamesPPmuXptGt20_part15 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part15 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part15 = cms.string('plotsZtoElecMu_PPmuXptGt20_part15.root')
+plotsOutputFileNamePPmuXptGt20_part15 = cms.string('plotsZtoElecMu_PPmuXptGt20_part15.root')
+patTupleOutputFileNamePPmuXptGt20_part15 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part15.root')
 
 fileNamesPPmuXptGt20_part16 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_300.root',
@@ -706,7 +735,8 @@ fileNamesPPmuXptGt20_part16 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part16 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part16 = cms.string('plotsZtoElecMu_PPmuXptGt20_part16.root')
+plotsOutputFileNamePPmuXptGt20_part16 = cms.string('plotsZtoElecMu_PPmuXptGt20_part16.root')
+patTupleOutputFileNamePPmuXptGt20_part16 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part16.root')
 
 fileNamesPPmuXptGt20_part17 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_321.root',
@@ -731,7 +761,8 @@ fileNamesPPmuXptGt20_part17 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part17 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part17 = cms.string('plotsZtoElecMu_PPmuXptGt20_part17.root')
+plotsOutputFileNamePPmuXptGt20_part17 = cms.string('plotsZtoElecMu_PPmuXptGt20_part17.root')
+patTupleOutputFileNamePPmuXptGt20_part17 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part17.root')
 
 fileNamesPPmuXptGt20_part18 = cms.untracked.vstring(     
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_341.root',
@@ -757,7 +788,8 @@ fileNamesPPmuXptGt20_part18 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part18 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part18 = cms.string('plotsZtoElecMu_PPmuXptGt20_part18.root')
+plotsOutputFileNamePPmuXptGt20_part18 = cms.string('plotsZtoElecMu_PPmuXptGt20_part18.root')
+patTupleOutputFileNamePPmuXptGt20_part18 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part18.root')
 
 fileNamesPPmuXptGt20_part19 = cms.untracked.vstring(        
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_361.root',
@@ -782,7 +814,8 @@ fileNamesPPmuXptGt20_part19 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part19 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part19 = cms.string('plotsZtoElecMu_PPmuXptGt20_part19.root')
+plotsOutputFileNamePPmuXptGt20_part19 = cms.string('plotsZtoElecMu_PPmuXptGt20_part19.root')
+patTupleOutputFileNamePPmuXptGt20_part19 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part19.root')
 
 fileNamesPPmuXptGt20_part20 = cms.untracked.vstring(     
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_381.root',
@@ -805,7 +838,8 @@ fileNamesPPmuXptGt20_part20 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part20 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part20 = cms.string('plotsZtoElecMu_PPmuXptGt20_part20.root')
+plotsOutputFileNamePPmuXptGt20_part20 = cms.string('plotsZtoElecMu_PPmuXptGt20_part20.root')
+patTupleOutputFileNamePPmuXptGt20_part20 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part20.root')
 
 fileNamesPPmuXptGt20_part21 = cms.untracked.vstring(       
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_401.root',
@@ -820,5 +854,6 @@ fileNamesPPmuXptGt20_part21 = cms.untracked.vstring(
 
 genPhaseSpaceCutPPmuXptGt20_part21 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
 
-outputFileNamePPmuXptGt20_part21 = cms.string('plotsZtoElecMu_PPmuXptGt20_part21.root')
+plotsOutputFileNamePPmuXptGt20_part21 = cms.string('plotsZtoElecMu_PPmuXptGt20_part21.root')
+patTupleOutputFileNamePPmuXptGt20_part21 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoElecMu_PPmuXptGt20_part21.root')
 #--------------------------------------------------------------------------------
