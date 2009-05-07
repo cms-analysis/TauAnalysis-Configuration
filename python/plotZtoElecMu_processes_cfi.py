@@ -20,11 +20,21 @@ processZtoElecMu_WplusJets = copy.deepcopy(process_WplusJets)
 processZtoElecMu_WplusJets.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_WplusJets_part01.root',
                                                                              'plotsZtoElecMu_WplusJets_part02.root')
 
-processZtoElecMu_QCD_BCtoE_Pt20to30 = copy.deepcopy(process_QCD_BCtoE_Pt20to30)
-processZtoElecMu_QCD_BCtoE_Pt20to30.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_QCD_BCtoE_Pt20to30.root')
+#processZtoElecMu_ZplusJets = copy.deepcopy(process_ZplusJets)
+#processZtoElecMu_ZplusJets.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_ZplusJets.root'
+#)
 
-processZtoElecMu_QCD_BCtoE_Pt30to80 = copy.deepcopy(process_QCD_BCtoE_Pt30to80)
-processZtoElecMu_QCD_BCtoE_Pt30to80.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_QCD_BCtoE_Pt30to80.root')
+processZtoElecMu_TTplusJets = copy.deepcopy(process_TTplusJets)
+processZtoElecMu_TTplusJets.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_TTplusJets_part01.root',
+ 									      'plotsZtoElecMu_TTplusJets_part02.root'	
+)
+
+
+#processZtoElecMu_QCD_BCtoE_Pt20to30 = copy.deepcopy(process_QCD_BCtoE_Pt20to30)
+#processZtoElecMu_QCD_BCtoE_Pt20to30.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_QCD_BCtoE_Pt20to30.root')
+
+#processZtoElecMu_QCD_BCtoE_Pt30to80 = copy.deepcopy(process_QCD_BCtoE_Pt30to80)
+#processZtoElecMu_QCD_BCtoE_Pt30to80.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_QCD_BCtoE_Pt30to80.root')
 
 processZtoElecMu_InclusivePPmuX = copy.deepcopy(process_InclusivePPmuX)
 processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_InclusivePPmuX.root')
