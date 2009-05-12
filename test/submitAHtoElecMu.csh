@@ -62,7 +62,29 @@ factorizationMode_PPmuXptGt20="noFactorization"
 sh submitToBatch.csh AHtoElecMu AH115tautau $factorizationMode_AH115tautau -1 1nd
 sh submitToBatch.csh AHtoElecMu AH115bbtautau $factorizationMode_AH115bbtautau -1 1nd
 sh submitToBatch.csh AHtoElecMu AH115tautau2l $factorizationMode_AH115tautau2l -1 1nd
-sh submitToBatch.csh AHtoElecMu AH115bbtautau2l $factorizationMode_AH115bbtautau2l -1 1nd
+
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part01 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part02 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part03 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part04 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part05 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part06 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part07 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part08 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part09 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part10 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part11 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part12 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part13 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part14 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part15 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part16 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part17 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part18 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part19 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part20 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part21 $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l_part22 $factorizationMode_AH115bbtautau2l -1 1nd
 
 sh submitToBatch.csh AHtoElecMu AH160tautau $factorizationMode_AH160tautau -1 1nd
 sh submitToBatch.csh AHtoElecMu AH160bbtautau $factorizationMode_AH160bbtautau -1 1nd
@@ -86,6 +108,14 @@ sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part15 $factorizationMode_AH160b
 sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part16 $factorizationMode_AH160bbtautau2l -1 1nd
 sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part17 $factorizationMode_AH160bbtautau2l -1 1nd
 sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part18 $factorizationMode_AH160bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part19 $factorizationMode_AH160bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part20 $factorizationMode_AH160bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part21 $factorizationMode_AH160bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part22 $factorizationMode_AH160bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part23 $factorizationMode_AH160bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part24 $factorizationMode_AH160bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part25 $factorizationMode_AH160bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH160bbtautau2l_part26 $factorizationMode_AH160bbtautau2l -1 1nd
 
 sh submitToBatch.csh AHtoElecMu VQQ $factorizationMode_VQQ -1 1nd
 
