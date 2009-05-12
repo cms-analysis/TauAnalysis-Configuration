@@ -43,10 +43,10 @@ fileNamesAH115tautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115_tautau_1.root'
 )
 genPhaseSpaceCutAH115tautau = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameAH115tautau = cms.string('plotsAHtoElecMu_AH115tautau.root')
 #--------------------------------------------------------------------------------
@@ -62,10 +62,10 @@ fileNamesAH115bbtautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_5.root'
 )
 genPhaseSpaceCutAH115bbtautau = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameAH115bbtautau = cms.string('plotsAHtoElecMu_AH115bbtautau.root')
 #--------------------------------------------------------------------------------
@@ -79,10 +79,10 @@ fileNamesAH115tautau2l = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115_tautau_2l_3.root'
 )
 genPhaseSpaceCutAH115tautau2l = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameAH115tautau2l = cms.string('plotsAHtoElecMu_AH115tautau2l.root')
 #--------------------------------------------------------------------------------
@@ -90,15 +90,141 @@ outputFileNameAH115tautau2l = cms.string('plotsAHtoElecMu_AH115tautau2l.root')
 #--------------------------------------------------------------------------------
 # AH115bb --> tau+ tau- --> 2l sample
 #
-fileNamesAH115bbtautau2l = cms.untracked.vstring(
+fileNamesAH115bbtautau2l_part01 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_1.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_2.root'
 )
-genPhaseSpaceCutAH115bbtautau2l = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+genPhaseSpaceCutAH115bbtautau2l_part01 = cms.PSet(
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
-outputFileNameAH115bbtautau2l = cms.string('plotsAHtoElecMu_AH115bbtautau2l.root')
+outputFileNameAH115bbtautau2l_part01 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part01.root')
+fileNamesAH115bbtautau2l_part02 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_3.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_4.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part02 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part02 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part02.root')
+fileNamesAH115bbtautau2l_part03 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_5.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_6.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part03 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part03 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part03.root')
+fileNamesAH115bbtautau2l_part04 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_7.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_8.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part04 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part04 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part04.root')
+fileNamesAH115bbtautau2l_part05 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_9.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_10.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part05 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part05 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part05.root')
+fileNamesAH115bbtautau2l_part06 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_11.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_12.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part06 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part06 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part06.root')
+fileNamesAH115bbtautau2l_part07 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_13.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_14.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part07 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part07 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part07.root')
+fileNamesAH115bbtautau2l_part08 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_15.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_16.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part08 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part08 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part08.root')
+fileNamesAH115bbtautau2l_part09 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_17.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_18.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part09 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part09 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part09.root')
+fileNamesAH115bbtautau2l_part10 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_19.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_20.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part10 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part10 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part10.root')
+fileNamesAH115bbtautau2l_part11 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_21.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_22.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part11 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part11 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part11.root')
+fileNamesAH115bbtautau2l_part12 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_23.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_24.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part12 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part12 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part12.root')
+fileNamesAH115bbtautau2l_part13 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_25.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_26.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part13 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part13 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part13.root')
+fileNamesAH115bbtautau2l_part14 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_27.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_28.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part14 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part14 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part14.root')
+fileNamesAH115bbtautau2l_part15 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_29.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_30.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part15 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part15 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part15.root')
+fileNamesAH115bbtautau2l_part16 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_31.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_32.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part16 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part16 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part16.root')
+fileNamesAH115bbtautau2l_part17 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_33.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_34.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part17 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part17 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part17.root')
+fileNamesAH115bbtautau2l_part18 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_35.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_36.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part18 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part18 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part18.root')
+fileNamesAH115bbtautau2l_part19 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_37.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_38.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part19 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part19 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part19.root')
+fileNamesAH115bbtautau2l_part20 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_39.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_40.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part20 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part20 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part20.root')
+fileNamesAH115bbtautau2l_part21 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_41.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_42.root'
+)
+genPhaseSpaceCutAH115bbtautau2l_part21 = copy.deepcopy(genPhaseSpaceCutAH115bbtautau2l_part01)
+outputFileNameAH115bbtautau2l_part21 = cms.string('plotsAHtoElecMu_AH115bbtautau2l_part21.root')
+fileNamesAH115bbtautau2l_part22 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_43.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH115bb_tautau_2l_44.root'
+)
 #--------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------
@@ -108,10 +234,10 @@ fileNamesAH160tautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160_tautau_1.root'
 )
 genPhaseSpaceCutAH160tautau = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameAH160tautau = cms.string('plotsAHtoElecMu_AH160tautau.root')
 #--------------------------------------------------------------------------------
@@ -127,10 +253,10 @@ fileNamesAH160bbtautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_5.root'
 )
 genPhaseSpaceCutAH160bbtautau = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameAH160bbtautau = cms.string('plotsAHtoElecMu_AH160bbtautau.root')
 #--------------------------------------------------------------------------------
@@ -144,10 +270,10 @@ fileNamesAH160tautau2l = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160_tautau_2l_3.root'
 )
 genPhaseSpaceCutAH160tautau2l = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameAH160tautau2l = cms.string('plotsAHtoElecMu_AH160tautau2l.root')
 #--------------------------------------------------------------------------------
@@ -157,133 +283,165 @@ outputFileNameAH160tautau2l = cms.string('plotsAHtoElecMu_AH160tautau2l.root')
 #
 fileNamesAH160bbtautau2l_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_1.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_2.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_3.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_2.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part01 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameAH160bbtautau2l_part01 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part01.root')
 fileNamesAH160bbtautau2l_part02 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_4.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_5.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_6.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_3.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_4.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part02 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part02 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part02.root')
 fileNamesAH160bbtautau2l_part03 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_7.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_8.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_9.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_5.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_6.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part03 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part03 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part03.root')
 fileNamesAH160bbtautau2l_part04 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_10.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_11.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_12.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_7.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_8.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part04 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part04 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part04.root')
 fileNamesAH160bbtautau2l_part05 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_13.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_14.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_15.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_9.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_10.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part05 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part05 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part05.root')
 fileNamesAH160bbtautau2l_part06 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_16.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_17.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_18.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_11.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_12.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part06 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part06 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part06.root')
 fileNamesAH160bbtautau2l_part07 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_19.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_20.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_21.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_13.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_14.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part07 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part07 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part07.root')
 fileNamesAH160bbtautau2l_part08 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_22.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_23.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_24.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_15.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_16.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part08 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part08 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part08.root')
 fileNamesAH160bbtautau2l_part09 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_25.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_26.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_27.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_17.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_18.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part09 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part09 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part09.root')
 fileNamesAH160bbtautau2l_part10 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_28.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_29.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_30.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_19.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_20.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part10 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part10 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part10.root')
 fileNamesAH160bbtautau2l_part11 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_31.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_32.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_33.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_21.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_22.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part11 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
-outputFileNameAH160bbtautau2l_part1 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part11.root')
+outputFileNameAH160bbtautau2l_part11 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part11.root')
 fileNamesAH160bbtautau2l_part12 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_34.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_35.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_36.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_23.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_24.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part12 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part12 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part12.root')
-fileNamesAH160bbtautau2l_part013 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_37.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_38.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_39.root'
+fileNamesAH160bbtautau2l_part13 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_25.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_26.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part13 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part13 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part13.root')
 fileNamesAH160bbtautau2l_part14 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_40.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_41.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_42.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_27.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_28.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part14 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part14 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part14.root')
 fileNamesAH160bbtautau2l_part15 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_43.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_44.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_45.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_29.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_30.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part15 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part15 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part15.root')
 fileNamesAH160bbtautau2l_part16 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_46.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_47.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_48.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_31.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_32.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part16 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part16 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part16.root')
 fileNamesAH160bbtautau2l_part17 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_49.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_50.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_33.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_34.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part17 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part17 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part17.root')
 fileNamesAH160bbtautau2l_part18 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_51.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_52.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_35.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_36.root'
 )
 genPhaseSpaceCutAH160bbtautau2l_part18 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
 outputFileNameAH160bbtautau2l_part18 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part18.root')
+fileNamesAH160bbtautau2l_part19 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_37.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_38.root'
+)
+genPhaseSpaceCutAH160bbtautau2l_part19 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
+outputFileNameAH160bbtautau2l_part19 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part19.root')
+fileNamesAH160bbtautau2l_part20 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_39.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_40.root'
+)
+genPhaseSpaceCutAH160bbtautau2l_part20 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
+outputFileNameAH160bbtautau2l_part20 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part20.root')
+fileNamesAH160bbtautau2l_part21 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_41.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_42.root'
+)
+genPhaseSpaceCutAH160bbtautau2l_part21 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
+outputFileNameAH160bbtautau2l_part21 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part21.root')
+fileNamesAH160bbtautau2l_part22 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_43.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_44.root'
+)
+genPhaseSpaceCutAH160bbtautau2l_part22 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
+outputFileNameAH160bbtautau2l_part22 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part22.root')
+fileNamesAH160bbtautau2l_part23 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_45.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_46.root'
+)
+genPhaseSpaceCutAH160bbtautau2l_part23 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
+outputFileNameAH160bbtautau2l_part23 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part23.root')
+fileNamesAH160bbtautau2l_part24 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_47.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_48.root'
+)
+genPhaseSpaceCutAH160bbtautau2l_part24 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
+outputFileNameAH160bbtautau2l_part24 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part24.root')
+fileNamesAH160bbtautau2l_part25 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_49.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_50.root'
+)
+genPhaseSpaceCutAH160bbtautau2l_part25 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
+outputFileNameAH160bbtautau2l_part25 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part25.root')
+fileNamesAH160bbtautau2l_part26 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_51.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_AH160bb_tautau_2l_52.root'
+)
+genPhaseSpaceCutAH160bbtautau2l_part26 = copy.deepcopy(genPhaseSpaceCutAH160bbtautau2l_part01)
+outputFileNameAH160bbtautau2l_part26 = cms.string('plotsAHtoElecMu_AH160bbtautau2l_part26.root')
 #--------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------
@@ -313,10 +471,10 @@ fileNamesVQQ = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_VQQ_21.root'
 )
 genPhaseSpaceCutVQQ = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameVQQ = cms.string('plotsAHtoElecMu_VQQ.root')
 #--------------------------------------------------------------------------------
@@ -332,10 +490,10 @@ fileNamesWW = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_WW_5.root'
 )
 genPhaseSpaceCutWW = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameWW = cms.string('plotsAHtoElecMu_WW.root')
 #--------------------------------------------------------------------------------
@@ -350,10 +508,10 @@ fileNamesTW = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TW_4.root'
 )
 genPhaseSpaceCutTW = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameTW = cms.string('plotsAHtoElecMu_TW.root')
 #--------------------------------------------------------------------------------
@@ -363,107 +521,162 @@ outputFileNameTW = cms.string('plotsAHtoElecMu_TW.root')
 #
 fileNamesTTJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_1.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_2.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_3.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_4.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_2.root'
 )
 genPhaseSpaceCutTTJets_part01 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameTTJets_part01 = cms.string('plotsAHtoElecMu_TTJets_part01.root')
 
 fileNamesTTJets_part02 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_5.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_6.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_7.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_8.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_3.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_4.root'
 )
 genPhaseSpaceCutTTJets_part02 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part02 = cms.string('plotsAHtoElecMu_TTJets_part02.root')
 
 fileNamesTTJets_part03 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_9.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_10.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_11.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_12.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_5.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_6.root'
 )
 genPhaseSpaceCutTTJets_part03 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part03 = cms.string('plotsAHtoElecMu_TTJets_part03.root')
 
 fileNamesTTJets_part04 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_13.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_14.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_15.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_16.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_7.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_8.root'
 )
 genPhaseSpaceCutTTJets_part04 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part04 = cms.string('plotsAHtoElecMu_TTJets_part04.root')
 
 fileNamesTTJets_part05 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_17.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_18.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_19.root'
-#    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_20.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_9.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_10.root'
 )
 genPhaseSpaceCutTTJets_part05 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part05 = cms.string('plotsAHtoElecMu_TTJets_part05.root')
 
 fileNamesTTJets_part06 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_21.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_22.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_23.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_24.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_11.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_12.root'
 )
 genPhaseSpaceCutTTJets_part06 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part06 = cms.string('plotsAHtoElecMu_TTJets_part06.root')
 
 fileNamesTTJets_part07 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_25.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_26.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_27.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_28.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_13.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_14.root'
 )
 genPhaseSpaceCutTTJets_part07 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part07 = cms.string('plotsAHtoElecMu_TTJets_part07.root')
 
 fileNamesTTJets_part08 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_29.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_30.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_31.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_32.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_15.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_16.root'
 )
 genPhaseSpaceCutTTJets_part08 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part08 = cms.string('plotsAHtoElecMu_TTJets_part08.root')
 
 fileNamesTTJets_part09 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_33.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_34.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_35.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_36.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_17.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_18.root'
 )
 genPhaseSpaceCutTTJets_part09 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part09 = cms.string('plotsAHtoElecMu_TTJets_part09.root')
 
 fileNamesTTJets_part10 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_37.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_38.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_39.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_40.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_19.root'
+#    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_20.root'
 )
 genPhaseSpaceCutTTJets_part10 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part10 = cms.string('plotsAHtoElecMu_TTJets_part10.root')
 
 fileNamesTTJets_part11 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_41.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_42.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_43.root',
-    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_44.root'
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_21.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_22.root'
 )
 genPhaseSpaceCutTTJets_part11 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
 outputFileNameTTJets_part11 = cms.string('plotsAHtoElecMu_TTJets_part11.root')
+
+fileNamesTTJets_part12 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_23.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_24.root'
+)
+genPhaseSpaceCutTTJets_part12 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part12 = cms.string('plotsAHtoElecMu_TTJets_part12.root')
+
+fileNamesTTJets_part13 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_25.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_26.root'
+)
+genPhaseSpaceCutTTJets_part13 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part13 = cms.string('plotsAHtoElecMu_TTJets_part13.root')
+
+fileNamesTTJets_part14 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_27.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_28.root'
+)
+genPhaseSpaceCutTTJets_part14 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part14 = cms.string('plotsAHtoElecMu_TTJets_part14.root')
+
+fileNamesTTJets_part15 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_29.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_30.root'
+)
+genPhaseSpaceCutTTJets_part15 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part15 = cms.string('plotsAHtoElecMu_TTJets_part15.root')
+
+fileNamesTTJets_part16 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_31.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_32.root'
+)
+genPhaseSpaceCutTTJets_part16 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part16 = cms.string('plotsAHtoElecMu_TTJets_part16.root')
+
+fileNamesTTJets_part17 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_33.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_34.root'
+)
+genPhaseSpaceCutTTJets_part17 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part17 = cms.string('plotsAHtoElecMu_TTJets_part17.root')
+
+fileNamesTTJets_part18 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_35.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_36.root'
+)
+genPhaseSpaceCutTTJets_part18 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part18 = cms.string('plotsAHtoElecMu_TTJets_part18.root')
+
+fileNamesTTJets_part19 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_37.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_38.root'
+)
+genPhaseSpaceCutTTJets_part19 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part19 = cms.string('plotsAHtoElecMu_TTJets_part19.root')
+
+fileNamesTTJets_part20 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_39.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_40.root'
+)
+genPhaseSpaceCutTTJets_part20 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part20 = cms.string('plotsAHtoElecMu_TTJets_part20.root')
+
+fileNamesTTJets_part21 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_41.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_42.root'
+)
+genPhaseSpaceCutTTJets_part21 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part21 = cms.string('plotsAHtoElecMu_TTJets_part21.root')
+
+fileNamesTTJets_part22 = cms.untracked.vstring(
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_43.root',
+    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_44.root'
+)
+genPhaseSpaceCutTTJets_part22 = copy.deepcopy(genPhaseSpaceCutTTJets_part01)
+outputFileNameTTJets_part22 = cms.string('plotsAHtoElecMu_TTJets_part22.root')
 #--------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------
@@ -488,10 +701,10 @@ fileNamesZplusJets = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/ZJets-madgraph/elecMuSkim_16.root'
 )
 genPhaseSpaceCutZplusJets = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
 )
 outputFileNameZplusJets = cms.string('plotsAHtoElecMu_ZplusJets.root')
 #--------------------------------------------------------------------------------
@@ -510,11 +723,11 @@ fileNamesPhotonJet15 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_PhotonJet15_7.root'
 )
 genPhaseSpaceCutPhotonJet15 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
-#    cut = cms.string('ptHat > 15.')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+#  cut = cms.string('ptHat > 15.')
 )
 outputFileNamePhotonJet15 = cms.string('plotsAHtoElecMu_PhotonJet15.root')
 #--------------------------------------------------------------------------------
@@ -525,11 +738,11 @@ outputFileNamePhotonJet15 = cms.string('plotsAHtoElecMu_PhotonJet15.root')
 fileNamesPhotonJet30 = cms.untracked.vstring(
 )
 genPhaseSpaceCutPhotonJet30 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
-#    cut = cms.string('ptHat > 30.')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+#  cut = cms.string('ptHat > 30.')
 )
 outputFileNamePhotonJet30 = cms.string('plotsAHtoElecMu_PhotonJet30.root')
 #--------------------------------------------------------------------------------
@@ -687,11 +900,11 @@ fileNamesQCDem20to30 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_QCDem20to30_147.root'
 )
 genPhaseSpaceCutQCDem20to30 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
-#    cut = cms.string('ptHat < 30.')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+#  cut = cms.string('ptHat < 30.')
 )
 outputFileNameQCDem20to30 = cms.string('plotsAHtoElecMu_QCDem20to30.root')
 #--------------------------------------------------------------------------------
@@ -840,11 +1053,11 @@ fileNamesQCDem30to80_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_QCDem30to80_138.root'
 )
 genPhaseSpaceCutQCDem30to80_part01 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
-#    cut = cms.string('ptHat > 30. & ptHat < 80. ')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+#  cut = cms.string('ptHat > 30. & ptHat < 80. ')
 )
 outputFileNameQCDem30to80_part01 = cms.string('plotsAHtoElecMu_QCDem30to80_part01.root')
 
@@ -1043,11 +1256,11 @@ fileNamesQCDem80to170 = cms.untracked.vstring(
 #    'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_QCDem80to170_45.root'
 )
 genPhaseSpaceCutQCDem80to170 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
-#    cut = cms.string('ptHat > 80.')
+  pluginName = cms.string('genPhaseSpaceCut'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+  src = cms.InputTag('genPhaseSpaceEventInfo'),
+  cut = cms.string('')
+#  cut = cms.string('ptHat > 80.')
 )
 outputFileNameQCDem80to170 = cms.string('plotsAHtoElecMu_QCDem80to170.root')
 #--------------------------------------------------------------------------------

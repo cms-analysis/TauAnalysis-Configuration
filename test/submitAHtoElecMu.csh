@@ -62,7 +62,7 @@ factorizationMode_PPmuXptGt20="noFactorization"
 sh submitToBatch.csh AHtoElecMu AH115tautau $factorizationMode_AH115tautau -1 1nd
 sh submitToBatch.csh AHtoElecMu AH115bbtautau $factorizationMode_AH115bbtautau -1 1nd
 sh submitToBatch.csh AHtoElecMu AH115tautau2l $factorizationMode_AH115tautau2l -1 1nd
-#sh submitToBatch.csh AHtoElecMu AH115bbtautau2l $factorizationMode_AH115bbtautau2l -1 1nd
+sh submitToBatch.csh AHtoElecMu AH115bbtautau2l $factorizationMode_AH115bbtautau2l -1 1nd
 
 sh submitToBatch.csh AHtoElecMu AH160tautau $factorizationMode_AH160tautau -1 1nd
 sh submitToBatch.csh AHtoElecMu AH160bbtautau $factorizationMode_AH160bbtautau -1 1nd
@@ -104,6 +104,17 @@ sh submitToBatch.csh AHtoElecMu TTJets_part08 $factorizationMode_TTJets -1 1nd
 sh submitToBatch.csh AHtoElecMu TTJets_part09 $factorizationMode_TTJets -1 1nd
 sh submitToBatch.csh AHtoElecMu TTJets_part10 $factorizationMode_TTJets -1 1nd
 sh submitToBatch.csh AHtoElecMu TTJets_part11 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part12 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part13 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part14 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part15 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part16 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part17 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part18 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part19 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part20 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part21 $factorizationMode_TTJets -1 1nd
+sh submitToBatch.csh AHtoElecMu TTJets_part22 $factorizationMode_TTJets -1 1nd
 
 sh submitToBatch.csh AHtoElecMu Ztautau $factorizationMode_Ztautau -1 1nd
 
