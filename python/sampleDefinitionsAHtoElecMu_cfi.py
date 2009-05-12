@@ -44,7 +44,7 @@ fileNamesAH115tautau = cms.untracked.vstring(
 )
 genPhaseSpaceCutAH115tautau = cms.PSet(
   pluginName = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
   src = cms.InputTag('genPhaseSpaceEventInfo'),
   cut = cms.string('')
 )
@@ -63,7 +63,7 @@ fileNamesAH115bbtautau = cms.untracked.vstring(
 )
 genPhaseSpaceCutAH115bbtautau = cms.PSet(
   pluginName = cms.string('genPhaseSpaceCut'),
-  type = cms.string('GenPhaseSpaceEventInfoSelector'),
+  pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
   src = cms.InputTag('genPhaseSpaceEventInfo'),
   cut = cms.string('')
 )
