@@ -55,7 +55,7 @@ factorizationMode_PPmuXptGt20="noFactorization"
 #       (3) the submission of the PPmuXptGt20 sample is split into multiple parts,
 #           in order to reduce the execution time of individual cmsRun jobs
 #           (and also because the length of vstrings is limited to 255 entries);
-#           see TauAnalysis/Configuration/python/sampleDefinitionsAHtoElecMu_cfi.py for definition of the four parts
+#           see TauAnalysis/Configuration/python/recoSampleDefinitionsAHtoElecMu_cfi.py for definition of the four parts
 #
 #--------------------------------------------------------------------------------
 

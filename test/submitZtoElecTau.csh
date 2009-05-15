@@ -17,7 +17,7 @@
 #       (3) the submission of the certain samples is split into multiple parts,
 #           in order to reduce the execution time of individual cmsRun jobs
 #           (and also because the length of vstrings is limited to 255 entries);
-#           see TauAnalysis/Configuration/python/sampleDefinitionsZtoElecTau_cfi.py for definition of the four parts
+#           see TauAnalysis/Configuration/python/recoSampleDefinitionsZtoElecTau_cfi.py for definition of the four parts
 #
 #--------------------------------------------------------------------------------
 

@@ -4,7 +4,8 @@ import copy
 # define configuration parameters for submission of AH --> e + mu jobs to CERN batch system
 # (running over skimmed samples stored on CASTOR)
 
-from TauAnalysis.Configuration.sampleDefinitionsZtoElecMu_cfi import *
+from TauAnalysis.Configuration.recoSampleDefinitionsZtoElecMu_cfi import *
+
 outputFileNameZtautau = cms.string('plotsAHtoElecMu_Ztautau.root')
 outputFileNameWplusJets_part01 = cms.string('plotsAHtoElecMu_WplusJets_part01.root')
 outputFileNameWplusJets_part02 = cms.string('plotsAHtoElecMu_WplusJets_part02.root')
