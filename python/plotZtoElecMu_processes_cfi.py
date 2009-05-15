@@ -2,6 +2,7 @@ import FWCore.ParameterSet.Config as cms
 import copy
 
 from TauAnalysis.Configuration.plotterProcessDefinitions_cfi import *
+from TauAnalysis.Configuration.sampleDefinitionsZtoElecMu_cfi import *
 
 #--------------------------------------------------------------------------------
 # define for Z --> e + mu analysis names of .root files containing histograms
@@ -9,35 +10,29 @@ from TauAnalysis.Configuration.plotterProcessDefinitions_cfi import *
 
 processZtoElecMu_Ztautau = copy.deepcopy(process_Ztautau)
 processZtoElecMu_Ztautau.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_Ztautau.root')
+processZtoElecMu_Ztautau.config_dqmFileLoader.scaleFactor = cms.double(intDataLumi/intLumiZtautau)
 
 processZtoElecMu_Zee = copy.deepcopy(process_Zee)
 processZtoElecMu_Zee.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_Zee.root')
+processZtoElecMu_Zee.config_dqmFileLoader.scaleFactor = cms.double(intDataLumi/intLumiZee)
 
 processZtoElecMu_Zmumu = copy.deepcopy(process_Zmumu)
 processZtoElecMu_Zmumu.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_Zmumu.root')
+processZtoElecMu_Zmumu.config_dqmFileLoader.scaleFactor = cms.double(intDataLumi/intLumiZmumu)
 
 processZtoElecMu_WplusJets = copy.deepcopy(process_WplusJets)
 processZtoElecMu_WplusJets.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_WplusJets_part01.root',
                                                                              'plotsZtoElecMu_WplusJets_part02.root')
-
-#processZtoElecMu_ZplusJets = copy.deepcopy(process_ZplusJets)
-#processZtoElecMu_ZplusJets.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_ZplusJets.root'
-#)
+processZtoElecMu_WplusJets.config_dqmFileLoader.scaleFactor = cms.double(intDataLumi/intLumiWplusJets)
 
 processZtoElecMu_TTplusJets = copy.deepcopy(process_TTplusJets)
 processZtoElecMu_TTplusJets.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_TTplusJets_part01.root',
- 									      'plotsZtoElecMu_TTplusJets_part02.root'	
-)
-
-
-#processZtoElecMu_QCD_BCtoE_Pt20to30 = copy.deepcopy(process_QCD_BCtoE_Pt20to30)
-#processZtoElecMu_QCD_BCtoE_Pt20to30.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_QCD_BCtoE_Pt20to30.root')
-
-#processZtoElecMu_QCD_BCtoE_Pt30to80 = copy.deepcopy(process_QCD_BCtoE_Pt30to80)
-#processZtoElecMu_QCD_BCtoE_Pt30to80.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_QCD_BCtoE_Pt30to80.root')
+ 									      'plotsZtoElecMu_TTplusJets_part02.root')
+processZtoElecMu_TTplusJets.config_dqmFileLoader.scaleFactor = cms.double(intDataLumi/intLumiTTplusJets)
 
 processZtoElecMu_InclusivePPmuX = copy.deepcopy(process_InclusivePPmuX)
 processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_InclusivePPmuX.root')
+processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.scaleFactor = cms.double(intDataLumi/intLumiInclusivePPmuX)
 
 processZtoElecMu_PPmuXptGt20 = copy.deepcopy(process_PPmuXptGt20)
 processZtoElecMu_PPmuXptGt20.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_PPmuXptGt20_part01.root',
@@ -61,4 +56,5 @@ processZtoElecMu_PPmuXptGt20.config_dqmFileLoader.inputFileNames = cms.vstring('
                                                                                'plotsZtoElecMu_PPmuXptGt20_part19.root',
                                                                                'plotsZtoElecMu_PPmuXptGt20_part20.root',
                                                                                'plotsZtoElecMu_PPmuXptGt20_part21.root')
+processZtoElecMu_PPmuXptGt20.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiPPmuXptGt20)
 
