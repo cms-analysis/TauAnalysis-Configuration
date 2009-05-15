@@ -13,7 +13,7 @@ patTupleOutputDirectoryName = cms.string('/castor/cern.ch/user/v/veelken/CMSSW_2
 #  integrated luminosity = 1135 pb^-1
 # (to be corrected for missing files)
 #
-intLumiZtautau = cms.double(1135.4)
+intLumiZtautau = float(1135.4)
 
 fileNamesZtautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_1.root',
@@ -53,7 +53,7 @@ patTupleOutputFileNameZtautau = cms.string(patTupleOutputDirectoryName.value() +
 #  integrated luminosity = 90 pb^-1
 # (to be corrected for missing files)
 #
-intLumiZee = cms.double(90.)
+intLumiZee = float(90.)
 
 fileNamesZee = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/Zee/elecMuSkim_1.root',
@@ -83,7 +83,7 @@ patTupleOutputFileNameZee = cms.string(patTupleOutputDirectoryName.value() + 'pa
 #  integrated luminosity = 633 pb^-1
 # (to be corrected for missing files)
 #
-intLumiZmumu = cms.double(633.)
+intLumiZmumu = float(633.)
 
 fileNamesZmumu = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/Zmumu/elecMuSkim_2.root',
@@ -117,7 +117,7 @@ patTupleOutputFileNameZmumu = cms.string(patTupleOutputDirectoryName.value() + '
 #        the filter efficiency is already included in the cross-sections
 #        listed at https://twiki.cern.ch/twiki/bin/view/CMS/ProductionSummer2008 !!)
 #
-intLumiWplusJets = cms.double(297.)
+intLumiWplusJets = float(297.)
 
 fileNamesWplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/WJets-madgraph/elecMuSkim_1.root',
@@ -180,7 +180,7 @@ patTupleOutputFileNameWplusJets_part02 = cms.string(patTupleOutputDirectoryName.
 #        the filter efficiency is already included in the cross-sections
 #        listed at https://twiki.cern.ch/twiki/bin/view/CMS/ProductionSummer2008 !!)
 #
-intLumiZplusJets = cms.double(197.)
+intLumiZplusJets = float(197.)
 
 fileNamesZplusJets = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/ZJets-madgraph/elecMuSkim_3.root',
@@ -216,7 +216,7 @@ patTupleOutputFileNameZplusJets = cms.string(patTupleOutputDirectoryName.value()
 #  integrated luminosity = 1145 pb^-1
 # (to be corrected for missing files)
 #
-intLumiTTplusJets = cms.double(1145.)
+intLumiTTplusJets = float(1145.)
 
 fileNamesTTplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_1.root',
@@ -294,7 +294,7 @@ patTupleOutputFileNameTTplusJets_part02 = cms.string(patTupleOutputDirectoryName
 #  integrated luminosity = 8.24 pb^-1
 # (to be corrected by scale factor for missing files)
 #
-intLumiQCD_BCtoE_Pt20to30 = cms.double(8.24)
+intLumiQCD_BCtoE_Pt20to30 = float(8.24)
 
 fileNamesQCD_BCtoE_Pt20to30 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/QCD_BC_E_20_30/elecMuSkim_1.root',
@@ -325,7 +325,7 @@ patTupleOutputFileNameQCD_BCtoE_Pt20to30 = cms.string(patTupleOutputDirectoryNam
 #  integrated luminosity = 3.67 pb^-1
 # (to be corrected by scale factor for missing files)
 #
-intLumiQCD_BCtoE_Pt30to80 = cms.double(3.67)
+intLumiQCD_BCtoE_Pt30to80 = float(3.67)
 
 fileNamesQCD_BCtoE_Pt30to80 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/QCD_BC_E_30_80/elecMuSkim_2.root',
@@ -353,7 +353,7 @@ patTupleOutputFileNameQCD_BCtoE_Pt30to80 = cms.string(patTupleOutputDirectoryNam
 #  integrated luminosity = 0.044 pb^-1
 # (to be corrected for missing files)
 #
-intLumiInclusivePPmuX = cms.double(0.044)
+intLumiInclusivePPmuX = float(0.044)
 
 fileNamesInclusivePPmuX = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusivePPmuX/elecMuSkim_1.root',
@@ -378,7 +378,7 @@ patTupleOutputFileNameInclusivePPmuX = cms.string(patTupleOutputDirectoryName.va
 #  integrated luminosity = 42 pb^-1
 # (to be corrected by scale factor for missing files)
 #
-intLumiPPmuXptGt20 = cms.double(42.0)
+intLumiPPmuXptGt20 = float(42.0)
 
 fileNamesPPmuXptGt20_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_1.root',

@@ -13,7 +13,7 @@ patTupleOutputDirectoryName = cms.string('/castor/cern.ch/user/v/veelken/CMSSW_2
 #  integrated luminosity = 1135 pb^-1
 # (to be corrected for missing files)
 #
-intLumiZtautau = cms.double(1135.4)
+intLumiZtautau = float(1135.4)
 
 fileNamesZtautau_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/ZtautauSkimMuPFCaloTauComplStatis/muTauSkim_1.root',
@@ -65,7 +65,7 @@ patTupleOutputFileNameZtautau_part02 = cms.string(patTupleOutputDirectoryName.va
 #  integrated luminosity = 633 pb^-1
 # (to be corrected for missing files)
 #
-intLumiZmumu = cms.double(633.)
+intLumiZmumu = float(633.)
 
 fileNamesZmumu_part01 = cms.untracked.vstring(
     #'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_1.root',
@@ -150,7 +150,7 @@ patTupleOutputFileNameZmumu_part03 = cms.string(patTupleOutputDirectoryName.valu
 #        the filter efficiency is already included in the cross-sections
 #        listed at https://twiki.cern.ch/twiki/bin/view/CMS/ProductionSummer2008 !!)
 #
-intLumiZplusJets = cms.double(197.)
+intLumiZplusJets = float(197.)
 
 fileNamesZplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_1.root',
@@ -256,7 +256,7 @@ patTupleOutputFileNameZplusJets_part03 = cms.string(patTupleOutputDirectoryName.
 #        the filter efficiency is already included in the cross-sections
 #        listed at https://twiki.cern.ch/twiki/bin/view/CMS/ProductionSummer2008 !!)
 #
-intLumiWplusJets = cms.double(297.)
+intLumiWplusJets = float(297.)
 
 fileNamesWplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_1.root',
@@ -418,7 +418,7 @@ patTupleOutputFileNameWplusJets_part06 = cms.string(patTupleOutputDirectoryName.
 #  integrated luminosity = 0.044 pb^-1
 # (to be corrected for missing files)
 #
-intLumiInclusivePPmuX = cms.double(0.044)
+intLumiInclusivePPmuX = float(0.044)
 
 fileNamesInclusivePPmuX = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/InclusivePPmuXFromMon/skim_MuTau_3.root',
@@ -454,8 +454,8 @@ patTupleOutputFileNameInclusivePPmuX = cms.string(patTupleOutputDirectoryName.va
 #  integrated luminosity = 42 pb^-1
 # (corrected by scale factor of 10.5(!!) for missing files)
 #
-intLumiPPmuXptGt20 = cms.double(42.0)
-corrFactorPPmuXptGt20 = cms.double(10.5)
+intLumiPPmuXptGt20 = float(42.0)
+corrFactorPPmuXptGt20 = float(10.5)
 
 fileNamesPPmuXptGt20_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_1.root',
