@@ -2,15 +2,6 @@ import FWCore.ParameterSet.Config as cms
 import copy
 
 #--------------------------------------------------------------------------------
-# generic utility functions for factorization
-# usable for all channels
-#--------------------------------------------------------------------------------
-
-def switchHistManagers(analysisSequence, histManagers):
-    for pset in analysisSequence:
-        if hasattr(pset, "histManagers") : setattr(pset, "histManagers", histManagers)
-
-#--------------------------------------------------------------------------------
 # utility functions specific to factorization
 # of muon isolation efficiencies in Z --> mu + tau-jet channel
 #--------------------------------------------------------------------------------
