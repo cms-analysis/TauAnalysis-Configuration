@@ -60,7 +60,7 @@ sh submitToBatch.csh ZtoElecTau PhotonJets_Pt15to20 "noFactorization" -1 1nh
 sh submitToBatch.csh ZtoElecTau PhotonJets_Pt20to25 "noFactorization" -1 1nh
 sh submitToBatch.csh ZtoElecTau PhotonJets_Pt25to30 "noFactorization" -1 1nh
 sh submitToBatch.csh ZtoElecTau PhotonJets_Pt30to35 "noFactorization" -1 8nh
-sh submitToBatch.csh ZtoElecTau PhotonJets_Pt35     "noFactorization" -1 8nh
+sh submitToBatch.csh ZtoElecTau PhotonJets_PtGt35   "noFactorization" -1 8nh
 
 #sh submitToBatch.csh ZtoElecTau QCD_BCtoE_Pt20to30_part01  "noFactorization" -1 1nd
 #sh submitToBatch.csh ZtoElecTau QCD_BCtoE_Pt20to30_part02  "noFactorization" -1 1nd
