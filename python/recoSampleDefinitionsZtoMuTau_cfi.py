@@ -34,16 +34,6 @@ fileNamesZtautau_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/ZtautauSkimMuPFCaloTauComplStatis/muTauSkim_20.root'
 )
 
-genPhaseSpaceCutZtautau_part01 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
-)
-
-plotsOutputFileNameZtautau_part01 = cms.string('plotsZtoMuTau_Ztautau_part01.root')
-patTupleOutputFileNameZtautau_part01 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_Ztautau_part01.root')
-
 fileNamesZtautau_part02 = cms.untracked.vstring(   
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/ZtautauSkimMuPFCaloTauComplStatis/muTauSkim_21.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/ZtautauSkimMuPFCaloTauComplStatis/muTauSkim_22.root',
@@ -53,10 +43,15 @@ fileNamesZtautau_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/ZtautauSkimMuPFCaloTauComplStatis/muTauSkim_28.root'
 )
 
-genPhaseSpaceCutZtautau_part02 = copy.deepcopy(genPhaseSpaceCutZtautau_part01)
+genPhaseSpaceCutZtautau = cms.PSet(
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
+)
 
-plotsOutputFileNameZtautau_part02 = cms.string('plotsZtoMuTau_Ztautau_part02.root')
-patTupleOutputFileNameZtautau_part02 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_Ztautau_part02.root')
+plotsOutputFileNameZtautau = cms.string('plotsZtoMuTau_Ztautau_partXX.root')
+patTupleOutputFileNameZtautau = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_Ztautau_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -88,16 +83,6 @@ fileNamesZmumu_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_20.root'
 )
 
-genPhaseSpaceCutZmumu_part01 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
-)
-
-plotsOutputFileNameZmumu_part01 = cms.string('plotsZtoMuTau_Zmumu_part01.root')
-patTupleOutputFileNameZmumu_part01 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_Zmumu_part01.root')
-
 fileNamesZmumu_part02 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_21.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_23.root',
@@ -117,11 +102,6 @@ fileNamesZmumu_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_39.root'
 )
 
-genPhaseSpaceCutZmumu_part02 = copy.deepcopy(genPhaseSpaceCutZmumu_part01)
-
-plotsOutputFileNameZmumu_part02 = cms.string('plotsZtoMuTau_Zmumu_part02.root')
-patTupleOutputFileNameZmumu_part02 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_Zmumu_part02.root')
-
 fileNamesZmumu_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_41.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_42.root',
@@ -134,10 +114,15 @@ fileNamesZmumu_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_51.root'
 )
 
-genPhaseSpaceCutZmumu_part03 = copy.deepcopy(genPhaseSpaceCutZmumu_part01)
+genPhaseSpaceCutZmumu = cms.PSet(
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
+)
 
-plotsOutputFileNameZmumu_part03 = cms.string('plotsZtoMuTau_Zmumu_part03.root')
-patTupleOutputFileNameZmumu_part03 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_Zmumu_part03.root')
+plotsOutputFileNameZmumu = cms.string('plotsZtoMuTau_Zmumu_partXX.root')
+patTupleOutputFileNameZmumu = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_Zmumu_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -173,28 +158,6 @@ fileNamesZplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_20.root'
 )
 
-genPhaseSpaceCutZplusJets_part01 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('AndEventSelector'),
-    selectors = cms.VPSet(
-        cms.PSet(
-            pluginName = cms.string('genMuonsFromZsVeto'),
-            pluginType = cms.string('PATCandViewMaxEventSelector'),
-            src = cms.InputTag('genMuonsFromZs'),
-            maxNumber = cms.uint32(0)
-        ),
-        cms.PSet(
-            pluginName = cms.string('genTausFromZsVeto'),
-            pluginType = cms.string('PATCandViewMaxEventSelector'),
-            src = cms.InputTag('genTausFromZs'),
-            maxNumber = cms.uint32(0)
-        )
-    )
-)
-
-plotsOutputFileNameZplusJets_part01 = cms.string('plotsZtoMuTau_ZplusJets_part01.root')
-patTupleOutputFileNameZplusJets_part01 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_ZplusJets_part01.root')
-
 fileNamesZplusJets_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_21.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_22.root',
@@ -214,11 +177,6 @@ fileNamesZplusJets_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_38.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_40.root'
 )
-
-genPhaseSpaceCutZplusJets_part02 = copy.deepcopy(genPhaseSpaceCutZplusJets_part01)
-
-plotsOutputFileNameZplusJets_part02 = cms.string('plotsZtoMuTau_ZplusJets_part02.root')
-patTupleOutputFileNameZplusJets_part02 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_ZplusJets_part02.root')
 
 fileNamesZplusJets_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_41.root',
@@ -240,10 +198,27 @@ fileNamesZplusJets_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_59.root'
 )
 
-genPhaseSpaceCutZplusJets_part03 = copy.deepcopy(genPhaseSpaceCutZplusJets_part01)
+genPhaseSpaceCutZplusJets = cms.PSet(
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('AndEventSelector'),
+    selectors = cms.VPSet(
+        cms.PSet(
+            pluginName = cms.string('genMuonsFromZsVeto'),
+            pluginType = cms.string('PATCandViewMaxEventSelector'),
+            src = cms.InputTag('genMuonsFromZs'),
+            maxNumber = cms.uint32(0)
+        ),
+        cms.PSet(
+            pluginName = cms.string('genTausFromZsVeto'),
+            pluginType = cms.string('PATCandViewMaxEventSelector'),
+            src = cms.InputTag('genTausFromZs'),
+            maxNumber = cms.uint32(0)
+        )
+    )
+)
 
-plotsOutputFileNameZplusJets_part03 = cms.string('plotsZtoMuTau_ZplusJets_part03.root')
-patTupleOutputFileNameZplusJets_part03 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_ZplusJets_part03.root')
+plotsOutputFileNameZplusJets = cms.string('plotsZtoMuTau_ZplusJets_partXX.root')
+patTupleOutputFileNameZplusJets = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_ZplusJets_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -281,16 +256,6 @@ fileNamesWplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_20.root'
 )
 
-genPhaseSpaceCutWplusJets_part01 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('')
-)
-
-plotsOutputFileNameWplusJets_part01 = cms.string('plotsZtoMuTau_WplusJets_part01.root')
-patTupleOutputFileNameWplusJets_part01 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_WplusJets_part01.root')
-
 fileNamesWplusJets_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_21.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_23.root'
@@ -309,11 +274,6 @@ fileNamesWplusJets_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_39.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_40.root'
 )
-
-genPhaseSpaceCutWplusJets_part02 = copy.deepcopy(genPhaseSpaceCutWplusJets_part01)
-
-plotsOutputFileNameWplusJets_part02 = cms.string('plotsZtoMuTau_WplusJets_part02.root')
-patTupleOutputFileNameWplusJets_part02 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_WplusJets_part02.root')
 
 fileNamesWplusJets_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_41.root',
@@ -334,11 +294,6 @@ fileNamesWplusJets_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_59.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_60.root'
 )
-
-genPhaseSpaceCutWplusJets_part03 = copy.deepcopy(genPhaseSpaceCutWplusJets_part01)
-
-plotsOutputFileNameWplusJets_part03 = cms.string('plotsZtoMuTau_WplusJets_part03.root')
-patTupleOutputFileNameWplusJets_part03 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_WplusJets_part03.root')
 
 fileNamesWplusJets_part04 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_61.root',
@@ -361,11 +316,6 @@ fileNamesWplusJets_part04 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_80.root'
 )
 
-genPhaseSpaceCutWplusJets_part04 = copy.deepcopy(genPhaseSpaceCutWplusJets_part01)
-
-plotsOutputFileNameWplusJets_part04 = cms.string('plotsZtoMuTau_WplusJets_part04.root')
-patTupleOutputFileNameWplusJets_part04 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_WplusJets_part04.root')
-
 fileNamesWplusJets_part05 = cms.untracked.vstring(   
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_81.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_83.root',
@@ -387,11 +337,6 @@ fileNamesWplusJets_part05 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_100.root'
 )
 
-genPhaseSpaceCutWplusJets_part05 = copy.deepcopy(genPhaseSpaceCutWplusJets_part01)
-
-plotsOutputFileNameWplusJets_part05 = cms.string('plotsZtoMuTau_WplusJets_part05.root')
-patTupleOutputFileNameWplusJets_part05 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_WplusJets_part05.root')
-
 fileNamesWplusJets_part06 = cms.untracked.vstring(   
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_101.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_102.root',
@@ -406,10 +351,15 @@ fileNamesWplusJets_part06 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_111.root'
 )
 
-genPhaseSpaceCutWplusJets_part06 = copy.deepcopy(genPhaseSpaceCutWplusJets_part01)
+genPhaseSpaceCutWplusJets = cms.PSet(
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('')
+)
 
-plotsOutputFileNameWplusJets_part06 = cms.string('plotsZtoMuTau_WplusJets_part06.root')
-patTupleOutputFileNameWplusJets_part06 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_WplusJets_part06.root')
+plotsOutputFileNameWplusJets = cms.string('plotsZtoMuTau_WplusJets_partXX.root')
+patTupleOutputFileNameWplusJets = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_WplusJets_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -464,16 +414,6 @@ fileNamesPPmuXptGt20_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_20.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part01 = cms.PSet(
-    pluginName = cms.string('genPhaseSpaceCut'),
-    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
-    src = cms.InputTag('genPhaseSpaceEventInfo'),
-    cut = cms.string('ptHat > 20.')
-)
-
-plotsOutputFileNamePPmuXptGt20_part01 = cms.string('plotsZtoMuTau_PPmuXptGt20_part01.root')
-patTupleOutputFileNamePPmuXptGt20_part01 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part01.root')
-
 fileNamesPPmuXptGt20_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_23.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_24.root',
@@ -481,40 +421,21 @@ fileNamesPPmuXptGt20_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_40.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part02 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part02 = cms.string('plotsZtoMuTau_PPmuXptGt20_part02.root')
-patTupleOutputFileNamePPmuXptGt20_part02 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part02.root')
-
 fileNamesPPmuXptGt20_part03 = cms.untracked.vstring(
     #'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_41.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_42.root'
 )
-
-genPhaseSpaceCutPPmuXptGt20_part03 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-outputFileNamePPmuXptGt20_part03 = cms.string('plotsZtoMuTau_PPmuXptGt20_part03.root')
 
 fileNamesPPmuXptGt20_part04 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_62.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_79.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part04 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part04 = cms.string('plotsZtoMuTau_PPmuXptGt20_part04.root')
-patTupleOutputFileNamePPmuXptGt20_part04 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part04.root')
-
 fileNamesPPmuXptGt20_part05 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_81.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_91.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_96.root'
 )
-
-genPhaseSpaceCutPPmuXptGt20_part05 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part05 = cms.string('plotsZtoMuTau_PPmuXptGt20_part05.root')
-patTupleOutputFileNamePPmuXptGt20_part05 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part05.root')
 
 fileNamesPPmuXptGt20_part06 = cms.untracked.vstring( 
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_102.root',
@@ -527,22 +448,12 @@ fileNamesPPmuXptGt20_part06 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_118.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part06 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part06 = cms.string('plotsZtoMuTau_PPmuXptGt20_part06.root')
-patTupleOutputFileNamePPmuXptGt20_part06 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part06.root')
-
 fileNamesPPmuXptGt20_part07 = cms.untracked.vstring(     
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_126.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_129.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_132.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_137.root'
 )
-
-genPhaseSpaceCutPPmuXptGt20_part07 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part07 = cms.string('plotsZtoMuTau_PPmuXptGt20_part07.root')
-patTupleOutputFileNamePPmuXptGt20_part07 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part07.root')
 
 fileNamesPPmuXptGt20_part08 = cms.untracked.vstring(      
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_145.root',
@@ -552,11 +463,6 @@ fileNamesPPmuXptGt20_part08 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_156.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_158.root'
 )
-
-genPhaseSpaceCutPPmuXptGt20_part08 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part08 = cms.string('plotsZtoMuTau_PPmuXptGt20_part08.root')
-patTupleOutputFileNamePPmuXptGt20_part08 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part08.root')
 
 fileNamesPPmuXptGt20_part09 = cms.untracked.vstring(      
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_165.root',
@@ -569,11 +475,6 @@ fileNamesPPmuXptGt20_part09 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_180.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part09 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part09 = cms.string('plotsZtoMuTau_PPmuXptGt20_part09.root')
-patTupleOutputFileNamePPmuXptGt20_part09 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part09.root')
-
 fileNamesPPmuXptGt20_part10 = cms.untracked.vstring(      
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_186.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_187.root',
@@ -584,11 +485,6 @@ fileNamesPPmuXptGt20_part10 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_198.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_200.root'
 )
-
-genPhaseSpaceCutPPmuXptGt20_part10 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part10 = cms.string('plotsZtoMuTau_PPmuXptGt20_part10.root')
-patTupleOutputFileNamePPmuXptGt20_part10 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part10.root')
 
 fileNamesPPmuXptGt20_part11 = cms.untracked.vstring(  
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_201.root',
@@ -602,11 +498,6 @@ fileNamesPPmuXptGt20_part11 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_219.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part11 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part11 = cms.string('plotsZtoMuTau_PPmuXptGt20_part11.root')
-patTupleOutputFileNamePPmuXptGt20_part11 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part11.root')
-
 fileNamesPPmuXptGt20_part12 = cms.untracked.vstring(     
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_225.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_226.root',
@@ -619,30 +510,15 @@ fileNamesPPmuXptGt20_part12 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_239.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part12 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part12 = cms.string('plotsZtoMuTau_PPmuXptGt20_part12.root')
-patTupleOutputFileNamePPmuXptGt20_part12 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part12.root')
-
 fileNamesPPmuXptGt20_part13 = cms.untracked.vstring( 
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_250.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_251.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_252.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part13 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part13 = cms.string('plotsZtoMuTau_PPmuXptGt20_part13.root')
-patTupleOutputFileNamePPmuXptGt20_part13 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part13.root')
-
 fileNamesPPmuXptGt20_part14 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_262.root'
 )
-
-genPhaseSpaceCutPPmuXptGt20_part14 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part14 = cms.string('plotsZtoMuTau_PPmuXptGt20_part14.root')
-patTupleOutputFileNamePPmuXptGt20_part14 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part14.root')
 
 fileNamesPPmuXptGt20_part16 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_322.root',
@@ -650,93 +526,53 @@ fileNamesPPmuXptGt20_part16 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_326.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part16 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part16 = cms.string('plotsZtoMuTau_PPmuXptGt20_part16.root')
-patTupleOutputFileNamePPmuXptGt20_part16 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part16.root')
-
 fileNamesPPmuXptGt20_part17 = cms.untracked.vstring( 
     #'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_343.root'
 )
-
-genPhaseSpaceCutPPmuXptGt20_part17 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part17 = cms.string('plotsZtoMuTau_PPmuXptGt20_part17.root')
-patTupleOutputFileNamePPmuXptGt20_part17 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part17.root')
 
 fileNamesPPmuXptGt20_part18 = cms.untracked.vstring(     
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_371.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_375.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part18 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part18 = cms.string('plotsZtoMuTau_PPmuXptGt20_part18.root')
-patTupleOutputFileNamePPmuXptGt20_part18 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part18.root')
-
 fileNamesPPmuXptGt20_part19 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_389.root'
 )
-
-genPhaseSpaceCutPPmuXptGt20_part19 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part19 = cms.string('plotsZtoMuTau_PPmuXptGt20_part19.root')
-patTupleOutputFileNamePPmuXptGt20_part19 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part19.root')
 
 fileNamesPPmuXptGt20_part21 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_418.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part21 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part21 = cms.string('plotsZtoMuTau_PPmuXptGt20_part21.root')
-patTupleOutputFileNamePPmuXptGt20_part21 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part21.root')
-
 fileNamesPPmuXptGt20_part27 = cms.untracked.vstring( 
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_525.root'
 )
-
-genPhaseSpaceCutPPmuXptGt20_part27 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part27 = cms.string('plotsZtoMuTau_PPmuXptGt20_part27.root')
-patTupleOutputFileNamePPmuXptGt20_part27 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part27.root')
 
 fileNamesPPmuXptGt20_part28 = cms.untracked.vstring( 
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_542.root',
 )
 
-genPhaseSpaceCutPPmuXptGt20_part28 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part28 = cms.string('plotsZtoMuTau_PPmuXptGt20_part28.root')
-patTupleOutputFileNamePPmuXptGt20_part28 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part28.root')
-
 fileNamesPPmuXptGt20_part30 = cms.untracked.vstring( 
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_584.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part30 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part30 = cms.string('plotsZtoMuTau_PPmuXptGt20_part30.root')
-patTupleOutputFileNamePPmuXptGt20_part30 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part30.root')
-
 fileNamesPPmuXptGt20_part31 = cms.untracked.vstring(     
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_605.root',
 )
-
-genPhaseSpaceCutPPmuXptGt20_part31 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
-
-plotsOutputFileNamePPmuXptGt20_part31 = cms.string('plotsZtoMuTau_PPmuXptGt20_part31.root')
-patTupleOutputFileNamePPmuXptGt20_part31 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part31.root')
 
 fileNamesPPmuXptGt20_part35 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_684.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_687.root'
 )
 
-genPhaseSpaceCutPPmuXptGt20_part35 = copy.deepcopy(genPhaseSpaceCutPPmuXptGt20_part01)
+genPhaseSpaceCutPPmuXptGt20 = cms.PSet(
+    pluginName = cms.string('genPhaseSpaceCut'),
+    pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
+    src = cms.InputTag('genPhaseSpaceEventInfo'),
+    cut = cms.string('ptHat > 20.')
+)
 
-plotsOutputFileNamePPmuXptGt20_part35 = cms.string('plotsZtoMuTau_PPmuXptGt20_part35.root')
-patTupleOutputFileNamePPmuXptGt20_part35 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_part35.root')
+plotsOutputFileNamePPmuXptGt20 = cms.string('plotsZtoMuTau_PPmuXptGt20_partXX.root')
+patTupleOutputFileNamePPmuXptGt20 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_partXX.root')
 #--------------------------------------------------------------------------------
 
 

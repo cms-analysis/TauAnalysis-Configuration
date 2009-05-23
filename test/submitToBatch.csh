@@ -5,7 +5,7 @@
 # shell script for submission of cmsRun job to the CERN batch system,
 # then submit the job :o)
 #
-# NOTE: script needs to be passed three command-line parameters
+# NOTE: script needs to be passed five command-line parameters
 #
 #      (1) name of channel to be analyzed
 #      (2) name of Monte Carlo sample to be opened
