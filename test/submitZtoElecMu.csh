@@ -5,10 +5,11 @@ factorizationMode_Zee="noFactorization"
 factorizationMode_Zmumu="noFactorization"
 factorizationMode_ZplusJets="noFactorization"
 factorizationMode_WplusJets="noFactorization"
-factorizationMode_QCD_BCtoE_Pt20to30="noFactorization"
-factorizationMode_QCD_BCtoE_Pt30to80="noFactorization"
-factorizationMode_InclusivePPmuX="noFactorization"
-factorizationMode_PPmuXptGt20="noFactorization"
+factorizationMode_TTplusJets="noFactorization"
+factorizationMode_QCD_BCtoE_Pt20to30="factorized"
+factorizationMode_QCD_BCtoE_Pt30to80="factorized"
+factorizationMode_InclusivePPmuX="factorized"
+factorizationMode_PPmuXptGt20="factorized"
 
 # small cmsRun job for testing purposes...
 #sh submitToBatch.csh ZtoElecMu Ztautau $factorizationMode_Ztautau 100 1nh
@@ -46,6 +47,9 @@ sh submitToBatch.csh ZtoElecMu Zmumu $factorizationMode_Zmumu -1 1nd
 
 sh submitToBatch.csh ZtoElecMu WplusJets_part01 $factorizationMode_WplusJets -1 1nd
 sh submitToBatch.csh ZtoElecMu WplusJets_part02 $factorizationMode_WplusJets -1 1nd
+
+sh submitToBatch.csh ZtoElecMu TTplusJets_part01 $factorizationMode_TTplusJets -1 1nd
+sh submitToBatch.csh ZtoElecMu TTplusJets_part02 $factorizationMode_TTplusJets -1 1nd
 
 sh submitToBatch.csh ZtoElecMu QCD_BCtoE_Pt20to30 $factorizationMode_QCD_BCtoE_Pt20to30 -1 1nd
 sh submitToBatch.csh ZtoElecMu QCD_BCtoE_Pt30to80 $factorizationMode_QCD_BCtoE_Pt30to80 -1 1nd
