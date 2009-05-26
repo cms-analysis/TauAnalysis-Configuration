@@ -3,6 +3,7 @@ import copy
 
 from TauAnalysis.DQMTools.drawJobConfigurator import *
 from TauAnalysis.Configuration.analyzeZtoMuTau_cfi import *
+from TauAnalysis.Configuration.analyzeZtoElecMu_cfi import *
 
 #--------------------------------------------------------------------------------
 # generic utility functions for factorization
