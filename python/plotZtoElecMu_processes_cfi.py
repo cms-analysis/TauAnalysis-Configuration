@@ -27,7 +27,14 @@ processZtoElecMu_WplusJets.config_dqmFileLoader.scaleFactor = cms.double(intLumi
 
 processZtoElecMu_TTplusJets = copy.deepcopy(process_TTplusJets)
 processZtoElecMu_TTplusJets.config_dqmFileLoader.inputFileNames = cms.vstring('plotsZtoElecMu_TTplusJets_part01.root',
- 									      'plotsZtoElecMu_TTplusJets_part02.root')
+ 									      'plotsZtoElecMu_TTplusJets_part02.root',
+                                                                              'plotsZtoElecMu_TTplusJets_part03.root',
+ 									      'plotsZtoElecMu_TTplusJets_part04.root',
+                                                                              'plotsZtoElecMu_TTplusJets_part05.root',
+ 									      'plotsZtoElecMu_TTplusJets_part06.root',
+                                                                              'plotsZtoElecMu_TTplusJets_part07.root',
+ 									      'plotsZtoElecMu_TTplusJets_part08.root',
+                                                                              'plotsZtoElecMu_TTplusJets_part09.root')
 processZtoElecMu_TTplusJets.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiTTplusJets)
 
 processZtoElecMu_InclusivePPmuX = copy.deepcopy(process_InclusivePPmuX)

@@ -50,6 +50,13 @@ sh submitToBatch.csh ZtoElecMu WplusJets_part02 $factorizationMode_WplusJets -1 
 
 sh submitToBatch.csh ZtoElecMu TTplusJets_part01 $factorizationMode_TTplusJets -1 1nd
 sh submitToBatch.csh ZtoElecMu TTplusJets_part02 $factorizationMode_TTplusJets -1 1nd
+sh submitToBatch.csh ZtoElecMu TTplusJets_part03 $factorizationMode_TTplusJets -1 1nd
+sh submitToBatch.csh ZtoElecMu TTplusJets_part04 $factorizationMode_TTplusJets -1 1nd
+sh submitToBatch.csh ZtoElecMu TTplusJets_part05 $factorizationMode_TTplusJets -1 1nd
+sh submitToBatch.csh ZtoElecMu TTplusJets_part06 $factorizationMode_TTplusJets -1 1nd
+sh submitToBatch.csh ZtoElecMu TTplusJets_part07 $factorizationMode_TTplusJets -1 1nd
+sh submitToBatch.csh ZtoElecMu TTplusJets_part08 $factorizationMode_TTplusJets -1 1nd
+sh submitToBatch.csh ZtoElecMu TTplusJets_part09 $factorizationMode_TTplusJets -1 1nd
 
 sh submitToBatch.csh ZtoElecMu QCD_BCtoE_Pt20to30 $factorizationMode_QCD_BCtoE_Pt20to30 -1 1nd
 sh submitToBatch.csh ZtoElecMu QCD_BCtoE_Pt30to80 $factorizationMode_QCD_BCtoE_Pt30to80 -1 1nd
