@@ -207,7 +207,7 @@ patTupleOutputFileNameZplusJets = cms.string(patTupleOutputDirectoryName.value()
 
 
 #--------------------------------------------------------------------------------
-# ttbar sample
+# TTbar + Jets (madgraph) sample
 #  integrated luminosity = 1145 pb^-1
 # (to be corrected for missing files)
 #
