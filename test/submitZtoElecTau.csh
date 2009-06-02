@@ -1,7 +1,7 @@
 #!/bin/csh -f
 
 # small cmsRun job for testing purposes...
-#sh submitToBatch.csh ZtoElecTau Ztautau "noFactorization"_Ztautau 100 1nh
+#sh submitToBatch.csh ZtoElecTau Ztautau "noFactorization" 100 1nh
 
 #--------------------------------------------------------------------------------
 #
@@ -32,7 +32,7 @@ do
 	sh submitToBatch.csh ZtoElecTau Zee_part${num} "noFactorization" -1 1nd
 done
 
-#Photon + jets samples
+# Photon + jets samples
 sh submitToBatch.csh ZtoElecTau PhotonJets_Pt15to20 "noFactorization" -1 1nd
 sh submitToBatch.csh ZtoElecTau PhotonJets_Pt20to25 "noFactorization" -1 1nd
 sh submitToBatch.csh ZtoElecTau PhotonJets_Pt25to30 "noFactorization" -1 1nd
@@ -53,7 +53,7 @@ do
 	sh submitToBatch.csh ZtoElecTau QCD_BCtoE_Pt80to170_part${num} "noFactorization" -1 1nd
 done
 
-#QCD_EMenriched samples
+# QCD_EMenriched samples
 for num in {1..16} 
 do
 	sh submitToBatch.csh ZtoElecTau QCD_EMenriched_Pt20to30_part${num} "noFactorization" -1 1nd
@@ -74,8 +74,8 @@ do
 done
 for num in {1..13} 
 do
-	sh submitToBatch.csh ZtoElecTau ZeePlus_part${num} "noFactorization" -1 1nd
-	sh submitToBatch.csh ZtoElecTau ZtautauPlus_part${num} "noFactorization" -1 1nd
+	sh submitToBatch.csh ZtoElecTau ZeePlusJets_part${num} "noFactorization" -1 1nd
+	sh submitToBatch.csh ZtoElecTau ZtautauPlusJets_part${num} "noFactorization" -1 1nd
 done
 
 # TT + jets jobs
