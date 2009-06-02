@@ -55,7 +55,8 @@ if [[ $2 =~ _part[0-9]* ]]; then
     part=_part${2##*_part}
     plotsOutputFileName_pyReplaceCode=${plotsOutputFileName_param}" = cms.string("${plotsOutputFileName_param}".value()"
     plotsOutputFileName_pyReplaceCode=$plotsOutputFileName_pyReplaceCode".replace(\"_partXX\", \""${part}"\"))"
-    patTupleOutputFileName_pyReplaceCode=${patTupleOutputFileName_param}" = cms.string("${patTupleOutputFileName_param}".value()"
+    patTupleOutputFileName_pyReplaceCode=${patTupleOutputFileName_param}" = cms.untracked.string("
+    patTupleOutputFileName_pyReplaceCode=$patTupleOutputFileName_pyReplaceCode${patTupleOutputFileName_param}".value()"
     patTupleOutputFileName_pyReplaceCode=$patTupleOutputFileName_pyReplaceCode".replace(\"_partXX\", \""${part}"\"))"
 fi
 
