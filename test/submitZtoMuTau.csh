@@ -30,7 +30,7 @@ done
 # pp --> mu X QCD jobs
 sh submitToBatch.csh ZtoMuTau InclusivePPmuX "factorized" -1 1nd
 
-for num in {1..3} 
+for num in {1..35} 
 do
 	sh submitToBatch.csh ZtoMuTau PPmuXptGt20_part${num} "factorized" -1 1nd
 done
