@@ -6,7 +6,7 @@ import copy
 
 intLumiData = float(200.)
 
-patTupleOutputDirectoryName = cms.string('/castor/cern.ch/user/v/veelken/bgEstPatTuples/')
+plotDirectoryName = cms.string("rfio:/castor/cern.ch/user/v/veelken/plots/ZtoMuTau/")
 
 #--------------------------------------------------------------------------------
 # Z --> tau+ tau- sample generated with Pythia + Tauola (all decay modes)
@@ -53,7 +53,7 @@ genPhaseSpaceCutZtautau = cms.PSet(
 )
 
 plotsOutputFileNameZtautau = cms.string('plotsZtoMuTau_Ztautau_partXX.root')
-patTupleOutputFileNameZtautau = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_Ztautau_partXX.root')
+patTupleOutputFileNameZtautau = cms.string('patTupleZtoMuTau_Ztautau_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -125,7 +125,7 @@ genPhaseSpaceCutZmumu = cms.PSet(
 )
 
 plotsOutputFileNameZmumu = cms.string('plotsZtoMuTau_Zmumu_partXX.root')
-patTupleOutputFileNameZmumu = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_Zmumu_partXX.root')
+patTupleOutputFileNameZmumu = cms.string('patTupleZtoMuTau_Zmumu_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -209,7 +209,7 @@ fileNamesZeePlusJets_part01 = fileNamesZplusJets_part01
 fileNamesZeePlusJets_part02 = fileNamesZplusJets_part02
 fileNamesZeePlusJets_part03 = fileNamesZplusJets_part03
 
-patTupleOutputFileNameZeePlusJets = cms.untracked.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_ZeePlusJets_partXX.root')
+patTupleOutputFileNameZeePlusJets = cms.untracked.string('patTupleZtoMuTau_ZeePlusJets_partXX.root')
 
 plotsOutputFileNameZeePlusJets = cms.string('plotsZtoMuTau_ZeePlusJets_partXX.root')
 
@@ -227,7 +227,7 @@ fileNamesZmumuPlusJets_part01 = fileNamesZplusJets_part01
 fileNamesZmumuPlusJets_part02 = fileNamesZplusJets_part02
 fileNamesZmumuPlusJets_part03 = fileNamesZplusJets_part03
 
-patTupleOutputFileNameZmumuPlusJets = cms.untracked.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_ZmumuPlusJets_partXX.root')
+patTupleOutputFileNameZmumuPlusJets = cms.untracked.string('patTupleZtoMuTau_ZmumuPlusJets_partXX.root')
 
 plotsOutputFileNameZmumuPlusJets = cms.string('plotsZtoMuTau_ZmumuPlusJets_partXX.root')
 
@@ -245,7 +245,7 @@ fileNamesZtautauPlusJets_part01 = fileNamesZplusJets_part01
 fileNamesZtautauPlusJets_part02 = fileNamesZplusJets_part02
 fileNamesZtautauPlusJets_part03 = fileNamesZplusJets_part03
 
-patTupleOutputFileNameZtautauPlusJets = cms.untracked.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_ZtautauPlusJets_partXX.root')
+patTupleOutputFileNameZtautauPlusJets = cms.untracked.string('patTupleZtoMuTau_ZtautauPlusJets_partXX.root')
 
 plotsOutputFileNameZtautauPlusJets = cms.string('plotsZtoMuTau_ZtautauPlusJets_partXX.root')
 
@@ -396,7 +396,7 @@ genPhaseSpaceCutWplusJets = cms.PSet(
 )
 
 plotsOutputFileNameWplusJets = cms.string('plotsZtoMuTau_WplusJets_partXX.root')
-patTupleOutputFileNameWplusJets = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_WplusJets_partXX.root')
+patTupleOutputFileNameWplusJets = cms.string('patTupleZtoMuTau_WplusJets_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -433,7 +433,7 @@ genPhaseSpaceCutInclusivePPmuX = cms.PSet(
 )
 
 plotsOutputFileNameInclusivePPmuX = cms.string('plotsZtoMuTau_InclusivePPmuX.root')
-patTupleOutputFileNameInclusivePPmuX = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_InclusivePPmuX.root')
+patTupleOutputFileNameInclusivePPmuX = cms.string('patTupleZtoMuTau_InclusivePPmuX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -610,7 +610,7 @@ genPhaseSpaceCutPPmuXptGt20 = cms.PSet(
 )
 
 plotsOutputFileNamePPmuXptGt20 = cms.string('plotsZtoMuTau_PPmuXptGt20_partXX.root')
-patTupleOutputFileNamePPmuXptGt20 = cms.string(patTupleOutputDirectoryName.value() + 'patTupleZtoMuTau_PPmuXptGt20_partXX.root')
+patTupleOutputFileNamePPmuXptGt20 = cms.string('patTupleZtoMuTau_PPmuXptGt20_partXX.root')
 #--------------------------------------------------------------------------------
 
 
