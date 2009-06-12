@@ -24,20 +24,20 @@ outputDirectory = "/castor/cern.ch/user/v/veelken/plots/ZtoElecMu/"
 #
 #--------------------------------------------------------------------------------
 
-### Z --> tau tau jobs
-##submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "Ztautau",
-##              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
-##              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+# Z --> tau tau jobs
+submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "Ztautau",
+              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
-### Z --> e e jobs
-##submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "Zee",
-##              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
-##              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+# Z --> e e jobs
+submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "Zee",
+              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
-### Z --> mu mu jobs
-##submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "Zmumu",
-##              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
-##              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+# Z --> mu mu jobs
+submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "Zmumu",
+              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
 # pp --> mu X QCD jobs
 submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "InclusivePPmuX",
@@ -66,18 +66,18 @@ for i in range(2):
                   replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
-##submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "ZeePlusJets",
-##              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
-##              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
-##submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "ZmumuPlusJets",
-##              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
-##              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
-##submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "ZtautauPlusJets",
-##              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
-##              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "ZeePlusJets",
+              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "ZmumuPlusJets",
+              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "ZtautauPlusJets",
+              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
-### TT + jets jobs
-##for i in range(9):
-##    submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "TTplusJets_part%(i)02d" % {"i" : (i + 1)},
-##                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
-##                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+# TT + jets jobs
+for i in range(9):
+    submitToBatch(configFile = "runZtoElecMu_cfg.py", channel = "ZtoElecMu", sample = "TTplusJets_part%(i)02d" % {"i" : (i + 1)},
+                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
