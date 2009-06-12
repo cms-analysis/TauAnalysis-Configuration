@@ -203,7 +203,7 @@ patTupleOutputFileNameZeePlusJets = cms.untracked.string('patTupleZtoElecMu_ZeeP
 plotsOutputFileNameZeePlusJets = cms.string('plotsZtoElecMu_ZeePlusJets.root')
 
 genPhaseSpaceCutZeePlusJets = cms.PSet(
-    pluginName = cms.string('genElectronsFromZs'),
+    pluginName = cms.string('genPhaseSpaceCut'),
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src = cms.InputTag('genElectronsFromZs'),
     minNumber = cms.uint32(2)
@@ -218,7 +218,7 @@ patTupleOutputFileNameZmumuPlusJets = cms.untracked.string('patTupleZtoElecMu_Zm
 plotsOutputFileNameZmumuPlusJets = cms.string('plotsZtoElecMu_ZmumuPlusJets.root')
 
 genPhaseSpaceCutZmumuPlusJets = cms.PSet(
-    pluginName = cms.string('genMuonsFromZs'),
+    pluginName = cms.string('genPhaseSpaceCut'),
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src = cms.InputTag('genMuonsFromZs'),
     minNumber = cms.uint32(2)
@@ -233,7 +233,7 @@ patTupleOutputFileNameZtautauPlusJets = cms.untracked.string('patTupleZtoElecMu_
 plotsOutputFileNameZtautauPlusJets = cms.string('plotsZtoElecMu_ZtautauPlusJets.root')
 
 genPhaseSpaceCutZtautauPlusJets = cms.PSet(
-    pluginName = cms.string('genTausFromZs'),
+    pluginName = cms.string('genPhaseSpaceCut'),
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src = cms.InputTag('genTausFromZs'),
     minNumber = cms.uint32(2)
