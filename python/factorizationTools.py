@@ -24,8 +24,8 @@ def replaceEventSelections(analyzer, evtSel_replacements):
         evtSel_tight = evtSel_replacement[0]
         evtSel_loose = evtSel_replacement[1]
 
-        analyzer.eventSelection.remove(evtSel_tight)
-        analyzer.eventSelection.append(evtSel_loose)
+        analyzer.filters.remove(evtSel_tight)
+        analyzer.filters.append(evtSel_loose)
 
 #
 #--------------------------------------------------------------------------------
@@ -214,8 +214,10 @@ def enableFactorization_makeZtoMuTauPlots(process):
     )
 
     # compute QCD background sum using factorized histograms and FilterStatistics objects
-    process.addZtoMuTau_qcdSum.qcdSum.dqmDirectories_input = cms.vstring('InclusivePPmuX_factorized',
-                                                                         'PPmuXptGt20_factorized')
+    process.addZtoMuTau_qcdSum.qcdSum.dqmDirectories_input = cms.vstring(
+        'InclusivePPmuX_factorized',
+        'PPmuXptGt20_factorized'
+    )
 
     process.addZtoMuTau = cms.Sequence( process.scaleZtoMuTau_InclusivePPmuX + process.scaleZtoMuTau_PPmuXptGt20
                                        +process.addZtoMuTau_qcdSum + process.addZtoMuTau_smSum )
@@ -306,8 +308,10 @@ def enableFactorization_makeZtoElecMuPlots(process):
     )
 
     # compute QCD background sum using factorized histograms and FilterStatistics objects
-    process.addZtoElecMu_qcdSum.qcdSum.dqmDirectories_input = cms.vstring('InclusivePPmuX_factorized',
-                                                                          'PPmuXptGt20_factorized')
+    process.addZtoElecMu_qcdSum.qcdSum.dqmDirectories_input = cms.vstring(
+        'InclusivePPmuX_factorized',
+        'PPmuXptGt20_factorized'
+    )
 
     process.addZtoElecMu = cms.Sequence( process.scaleZtoElecMu_InclusivePPmuX + process.scaleZtoElecMu_PPmuXptGt20
                                         +process.addZtoElecMu_qcdSum + process.addZtoElecMu_smSum )

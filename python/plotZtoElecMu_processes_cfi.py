@@ -59,6 +59,13 @@ processZtoElecMu_WplusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
 )
 processZtoElecMu_WplusJets.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiWplusJets)
 
+processZtoElecMu_WplusJetsSum = copy.deepcopy(process_WplusJets)
+processZtoElecMu_WplusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoElecMu_WplusJetsSum.root'
+)
+processZtoElecMu_WplusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoElecMu_WplusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
+
 #--------------------------------------------------------------------------------
 
 processZtoElecMu_TTplusJets = copy.deepcopy(process_TTplusJets)
@@ -75,10 +82,19 @@ processZtoElecMu_TTplusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
 )
 processZtoElecMu_TTplusJets.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiTTplusJets)
 
+processZtoElecMu_TTplusJetsSum = copy.deepcopy(process_TTplusJets)
+processZtoElecMu_TTplusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoElecMu_TTplusSum.root'
+)
+processZtoElecMu_TTplusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoElecMu_TTplusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
+
 #--------------------------------------------------------------------------------
 
 processZtoElecMu_InclusivePPmuX = copy.deepcopy(process_InclusivePPmuX)
-processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.inputFileNames = cms.vstring(plotDirectoryName.value() + 'plotsZtoElecMu_InclusivePPmuX.root')
+processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoElecMu_InclusivePPmuX.root'
+)
 processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiInclusivePPmuX)
 
 processZtoElecMu_PPmuXptGt20 = copy.deepcopy(process_PPmuXptGt20)
@@ -92,18 +108,24 @@ processZtoElecMu_PPmuXptGt20.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part07.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part08.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part09.root',
-    plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part10.root',
+    #plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part10.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part11.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part12.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part13.root',
-    plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part14.root',
+    #plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part14.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part15.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part16.root',
-    plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part17.root',
+    #plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part17.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part18.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part19.root',
-    plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part20.root',
-    plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part21.root'
+    plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part20.root'
+    #plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part21.root'
 )
 processZtoElecMu_PPmuXptGt20.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiPPmuXptGt20)
 
+processZtoElecMu_PPmuXptGt20Sum = copy.deepcopy(process_PPmuXptGt20)
+processZtoElecMu_PPmuXptGt20Sum.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20Sum.root'
+)
+processZtoElecMu_PPmuXptGt20Sum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoElecMu_PPmuXptGt20Sum.config_dqmFileLoader.scaleFactor = cms.double(1.)

@@ -8,7 +8,7 @@ import copy
 
 def switchHistManagers(analysisSequence, histManagers):
     for pset in analysisSequence:
-        if hasattr(pset, "histManagers") : setattr(pset, "histManagers", histManagers)
+        if hasattr(pset, "analyzers") : setattr(pset, "analyzers", histManagers)
 
 def replaceHistManagerInputTags(analysisSequence, replacements):
     # check that replacement is a list of type [ replace_1, replace_2 .. replace_N ]
