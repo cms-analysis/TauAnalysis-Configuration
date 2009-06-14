@@ -30,7 +30,7 @@ submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", 
               job = "harvesting", queue = "1nh", outputDirectory = outputDirectory)
 
 # harvest PPmuXptGt20
-submitToBatch(configFile = "harvestZtoElecMuPlots_cfg.py", channel = "ZtoElecMu", sample = "PPmuXptGt20",
+submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "PPmuXptGt20",
               replFunction = makeReplacementsHarvesting, replacements = "",
               job = "harvesting", queue = "1nh", outputDirectory = outputDirectory)
 
