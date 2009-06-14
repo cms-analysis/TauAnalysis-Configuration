@@ -19,15 +19,15 @@ processZtoMuTau_ZtautauSum = copy.deepcopy(process_Ztautau)
 processZtoMuTau_ZtautauSum.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoMuTau_ZtautauSum.root'
 )
-processZtoMuTau_ZtautauSum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoMuTau_ZtautauSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_ZtautauSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 #--------------------------------------------------------------------------------
 
 processZtoMuTau_Zmumu = copy.deepcopy(process_Zmumu)
 processZtoMuTau_Zmumu.config_dqmFileLoader.inputFileNames = cms.vstring(
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part01.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part02.root',
+    #plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part01.root',
+    #plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part02.root',
     plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part03.root'
 )
 processZtoMuTau_Zmumu.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZmumu*intLumiData/intLumiZmumu)
@@ -36,7 +36,7 @@ processZtoMuTau_ZmumuSum = copy.deepcopy(process_Zmumu)
 processZtoMuTau_ZmumuSum.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoEprocessZtoMuTau_ZmumuSum.root'
 )
-processZtoMuTau_ZmumuSum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoMuTau_ZmumuSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_ZmumuSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 #--------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ processZtoMuTau_ZeePlusJetsSum = copy.deepcopy(process_ZeePlusJets)
 processZtoMuTau_ZeePlusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoMuTau_ZeePlusJetsSum.root'
 )
-processZtoMuTau_ZeePlusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoMuTau_ZeePlusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_ZeePlusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 processZtoMuTau_ZmumuPlusJets = copy.deepcopy(process_ZmumuPlusJets)
@@ -68,7 +68,7 @@ processZtoMuTau_ZmumuPlusJetsSum = copy.deepcopy(process_ZmumuPlusJets)
 processZtoMuTau_ZmumuPlusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoMuTau_ZmumuPlusJetsSum.root'
 )
-processZtoMuTau_ZmumuPlusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoMuTau_ZmumuPlusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_ZmumuPlusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 processZtoMuTau_ZtautauPlusJets = copy.deepcopy(process_ZtautauPlusJets)
@@ -83,7 +83,7 @@ processZtoMuTau_ZtautauPlusJetsSum = copy.deepcopy(process_ZtautauPlusJets)
 processZtoMuTau_ZtautauPlusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoMuTau_ZtautauPlusJetsSum.root'
 )
-processZtoMuTau_ZtautauPlusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoMuTau_ZtautauPlusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_ZtautauPlusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 #--------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ processZtoMuTau_WplusJetsSum = copy.deepcopy(process_WplusJets)
 processZtoMuTau_WplusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoMuTau_WplusJetsSum.root'
 )
-processZtoMuTau_WplusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoMuTau_WplusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_WplusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 #--------------------------------------------------------------------------------
@@ -161,5 +161,5 @@ processZtoMuTau_PPmuXptGt20Sum = copy.deepcopy(process_PPmuXptGt20)
 processZtoMuTau_PPmuXptGt20Sum.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoMuTau_PPmuXptGt20Sum.root'
 )
-processZtoMuTau_PPmuXptGt20Sum.config_dqmFileLoader.dqmDirectory_store = cms.string('/')
+processZtoMuTau_PPmuXptGt20Sum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_PPmuXptGt20Sum.config_dqmFileLoader.scaleFactor = cms.double(1.)
