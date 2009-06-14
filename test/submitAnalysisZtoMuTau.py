@@ -54,12 +54,12 @@ for i in range(6):
 
 for i in range(3):
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "ZeePlusJets_part%(i)02d" % {"i" : (i + 1)},
-                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = 100; applyFactorization = false",
-                  job = "analysis", queue = "1nh", outputDirectory = outputDirectory)
+                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "ZmumuPlusJets_part%(i)02d" % {"i" : (i + 1)},
-                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = 100; applyFactorization = false",
-                  job = "analysis", queue = "1nh", outputDirectory = outputDirectory)
+                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "ZtautauPlusJets_part%(i)02d" % {"i" : (i + 1)},
-                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = 100; applyFactorization = false",
-                  job = "analysis", queue = "1nh", outputDirectory = outputDirectory)
+                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
