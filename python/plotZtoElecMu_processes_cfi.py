@@ -36,19 +36,19 @@ processZtoElecMu_ZeePlusJets = copy.deepcopy(process_ZeePlusJets)
 processZtoElecMu_ZeePlusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_ZeePlusJets.root'
 )
-processZtoElecMu_ZeePlusJets.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiZeePlusJets)
+processZtoElecMu_ZeePlusJets.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZeePlusJets*intLumiData/intLumiZeePlusJets)
 
 processZtoElecMu_ZmumuPlusJets = copy.deepcopy(process_ZmumuPlusJets)
 processZtoElecMu_ZmumuPlusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_ZmumuPlusJets.root'
 )
-processZtoElecMu_ZmumuPlusJets.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiZmumuPlusJets)
+processZtoElecMu_ZmumuPlusJets.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZmumuPlusJets*intLumiData/intLumiZmumuPlusJets)
 
 processZtoElecMu_ZtautauPlusJets = copy.deepcopy(process_ZtautauPlusJets)
 processZtoElecMu_ZtautauPlusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_ZtautauPlusJets.root'
 )
-processZtoElecMu_ZtautauPlusJets.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiZtautauPlusJets)
+processZtoElecMu_ZtautauPlusJets.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZtautauPlusJets*intLumiData/intLumiZtautauPlusJets)
 
 #--------------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ processZtoElecMu_WplusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_WplusJets_part01.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_WplusJets_part02.root'
 )
-processZtoElecMu_WplusJets.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiWplusJets)
+processZtoElecMu_WplusJets.config_dqmFileLoader.scaleFactor = cms.double(corrFactorWplusJets*intLumiData/intLumiWplusJets)
 
 processZtoElecMu_WplusJetsSum = copy.deepcopy(process_WplusJets)
 processZtoElecMu_WplusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
