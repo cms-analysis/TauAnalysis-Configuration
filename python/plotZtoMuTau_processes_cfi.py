@@ -26,9 +26,11 @@ processZtoMuTau_ZtautauSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 processZtoMuTau_Zmumu = copy.deepcopy(process_Zmumu)
 processZtoMuTau_Zmumu.config_dqmFileLoader.inputFileNames = cms.vstring(
-    #plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part01.root',
-    #plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part02.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part03.root'
+    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part01.root',
+    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part02.root',
+    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part03.root',
+    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part04.root',
+    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part05.root'
 )
 processZtoMuTau_Zmumu.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZmumu*intLumiData/intLumiZmumu)
 
