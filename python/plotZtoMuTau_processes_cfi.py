@@ -26,17 +26,15 @@ processZtoMuTau_ZtautauSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 processZtoMuTau_Zmumu = copy.deepcopy(process_Zmumu)
 processZtoMuTau_Zmumu.config_dqmFileLoader.inputFileNames = cms.vstring(
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part01.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part02.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part03.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part04.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part05.root'
+    #plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part01.root',
+    #plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part02.root',
+    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part03.root'
 )
 processZtoMuTau_Zmumu.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZmumu*intLumiData/intLumiZmumu)
 
 processZtoMuTau_ZmumuSum = copy.deepcopy(process_Zmumu)
 processZtoMuTau_ZmumuSum.config_dqmFileLoader.inputFileNames = cms.vstring(
-    plotDirectoryName.value() + 'plotsZtoMuTau_ZmumuSum.root'
+    plotDirectoryName.value() + 'plotsZtoEprocessZtoMuTau_ZmumuSum.root'
 )
 processZtoMuTau_ZmumuSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_ZmumuSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
@@ -165,3 +163,21 @@ processZtoMuTau_PPmuXptGt20Sum.config_dqmFileLoader.inputFileNames = cms.vstring
 )
 processZtoMuTau_PPmuXptGt20Sum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_PPmuXptGt20Sum.config_dqmFileLoader.scaleFactor = cms.double(1.)
+
+
+#--------------------------------------------------------------------------------
+
+processZtoMuTau_TTbar = copy.deepcopy(process_TTbar)
+processZtoMuTau_TTbar.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoMuTau_TTbar_part01.root',
+    plotDirectoryName.value() + 'plotsZtoMuTau_TTbar_part02.root',
+    plotDirectoryName.value() + 'plotsZtoMuTau_TTbar_part03.root'
+)
+processZtoMuTau_TTbar.config_dqmFileLoader.scaleFactor = cms.double(corrFactorTTbar*intLumiData/intLumiTTbar)
+
+processZtoMuTau_TTbarSum = copy.deepcopy(process_TTbar)
+processZtoMuTau_TTbarSum.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoMuTau_TTbarSum.root'
+)
+processZtoMuTau_TTbarSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
+processZtoMuTau_TTbarSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
