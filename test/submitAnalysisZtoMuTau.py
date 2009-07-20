@@ -5,8 +5,8 @@ from TauAnalysis.Configuration.makeReplacementsAnalysis import makeReplacementsA
 
 # name of the directory (either on afs area or castor)
 # to which all .root files produced by the cmsRun job will be copied
-outputDirectory = "/castor/cern.ch/user/v/veelken/plots/ZtoMuTau/"
-
+#outputDirectory = "/castor/cern.ch/user/v/veelken/plots/ZtoMuTau/"
+outputDirectory = "/castor/cern.ch/user/l/lusito/ZMuTauAnalysis/"
 # small cmsRun job for testing purposes...
 #submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "Ztautau_part01",
 #              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = 100; applyFactorization = false",
@@ -63,3 +63,8 @@ for i in range(3):
                   replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
+# TTbar  jobs
+for i in range(2):
+    submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "TTbar_part%(i)02d" % {"i" : (i + 1)},
+                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
+                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
