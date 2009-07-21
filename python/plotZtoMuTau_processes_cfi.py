@@ -167,17 +167,17 @@ processZtoMuTau_PPmuXptGt20Sum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 #--------------------------------------------------------------------------------
 
-processZtoMuTau_TTbar = copy.deepcopy(process_TTbar)
-processZtoMuTau_TTbar.config_dqmFileLoader.inputFileNames = cms.vstring(
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTbar_part01.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTbar_part02.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTbar_part03.root'
+processZtoMuTau_TTplusJets = copy.deepcopy(process_TTplusJets)
+processZtoMuTau_TTplusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part01.root',
+    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part02.root',
+    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part03.root'
 )
-processZtoMuTau_TTbar.config_dqmFileLoader.scaleFactor = cms.double(corrFactorTTbar*intLumiData/intLumiTTbar)
+processZtoMuTau_TTplusJets.config_dqmFileLoader.scaleFactor = cms.double(corrFactorTTplusJets*intLumiData/intLumiTTplusJets)
 
-processZtoMuTau_TTbarSum = copy.deepcopy(process_TTbar)
-processZtoMuTau_TTbarSum.config_dqmFileLoader.inputFileNames = cms.vstring(
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTbarSum.root'
+processZtoMuTau_TTplusJetsSum = copy.deepcopy(process_TTplusJets)
+processZtoMuTau_TTplusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJetsSum.root'
 )
-processZtoMuTau_TTbarSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
-processZtoMuTau_TTbarSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
+processZtoMuTau_TTplusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
+processZtoMuTau_TTplusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
