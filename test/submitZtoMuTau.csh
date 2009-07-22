@@ -46,3 +46,9 @@ do
 	sh submitToBatch.csh ZtoMuTau ZmumuPlusJets_part${num} "noFactorization" -1 1nd
 	sh submitToBatch.csh ZtoMuTau ZtautauPlusJets_part${num} "noFactorization" -1 1nd
 done
+
+# TT + jets jobs
+for num in {1..3} 
+do
+	sh submitToBatch.csh ZtoMuTau TTplusJets_part${num} "noFactorization" -1 1nd
+done
