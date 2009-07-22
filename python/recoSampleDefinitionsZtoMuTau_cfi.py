@@ -619,10 +619,10 @@ patTupleOutputFileNamePPmuXptGt20 = cms.string('patTupleZtoMuTau_PPmuXptGt20_par
 #  
 # 
 #
-intLumiTTbar = float(1.)
-corrFactorZtautau = float(1.)
+intLumiTTplusJets = float(1.)
+corrFactorTTplusJets = float(1.)
 
-fileNamesTTbar_part01 = cms.untracked.vstring(
+fileNamesTTplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_1.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_2.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_3.root',
@@ -636,7 +636,7 @@ fileNamesTTbar_part01 = cms.untracked.vstring(
     
 )
 
-fileNamesTTbar_part02 = cms.untracked.vstring(
+fileNamesTTplusJets_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_11.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_12.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_13.root',
@@ -651,7 +651,7 @@ fileNamesTTbar_part02 = cms.untracked.vstring(
     
 )
 
-fileNamesTTbar_part03 = cms.untracked.vstring(
+fileNamesTTplusJets_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_21.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_22.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_23.root',
@@ -667,14 +667,14 @@ fileNamesTTbar_part03 = cms.untracked.vstring(
 )
 
 
-genPhaseSpaceCutTTbar = cms.PSet(
+genPhaseSpaceCutTTplusJets = cms.PSet(
     pluginName = cms.string('genPhaseSpaceCut'),
     pluginType = cms.string('GenPhaseSpaceEventInfoSelector'),
     src = cms.InputTag('genPhaseSpaceEventInfo'),
     cut = cms.string('')
 )
 
-plotsOutputFileNameTTbar = cms.string('plotsZtoMuTau_TTbar_partXX.root')
-patTupleOutputFileNameTTbar = cms.string('patTupleZtoMuTau_TTbar_partXX.root')
+plotsOutputFileNameTTplusJets = cms.string('plotsZtoMuTau_TTplusJets_partXX.root')
+patTupleOutputFileNameTTplusJets = cms.string('patTupleZtoMuTau_TTplusJets_partXX.root')
 #--------------------------------------------------------------------------------
 
