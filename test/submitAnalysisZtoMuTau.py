@@ -63,8 +63,8 @@ for i in range(3):
                   replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
-# TTbar  jobs
+# TTplusJets  jobs
 for i in range(2):
-    submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "TTbar_part%(i)02d" % {"i" : (i + 1)},
+    submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "TTplusJets_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)

@@ -49,7 +49,7 @@ submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", 
               replFunction = makeReplacementsHarvesting, replacements = "",
               job = "harvesting", queue = "1nh", outputDirectory = outputDirectory)
 
-# harvest TTbar
-submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "TTbar",
+# harvest TTplusJets
+submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "TTplusJets",
               replFunction = makeReplacementsHarvesting, replacements = "",
               job = "harvesting", queue = "1nh", outputDirectory = outputDirectory)
