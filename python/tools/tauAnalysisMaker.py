@@ -37,8 +37,6 @@ GenericAnalyzer
 There are probably many problems outstanding. Ideally much of what is currently done by the options dictionary could be done by introspection, but there is a difficult balance here between allowing flexibility while still making sure the syntax is simple enough people will use it...
 
 Known issues (lots...)
-Trigger and Genphasespace classes don't actually work yet...
-Eventdump trigger conditions need to be set manually (with knowledge of what labels the script assigns) since unlike all the other $last() entries which are "selected...Cumulative" we need "evtSel..."
 Untested except with elec+tau.
 Haven't worked out how yet to deal with cases where you want to apply a minNumber and maxNumber step to one cut.
 Haven't worked out how yet to integrate plot scripting.
@@ -67,33 +65,10 @@ Make wrapper functions like ElectronCut() to allow people to use python function
 import FWCore.ParameterSet.Mixins
 import FWCore.ParameterSet.Config as cms
 import re
-from TauAnalysis.RecoTools.eventSelFlagProdConfigurator import *
-from TauAnalysis.RecoTools.objSelConfigurator import *
-from TauAnalysis.Core.genPhaseSpaceEventInfoHistManager_cfi import genPhaseSpaceEventInfoHistManager
-from TauAnalysis.Core.electronHistManager_cfi import electronHistManager
-from TauAnalysis.Core.pftauHistManager_cfi import tauHistManager
-from TauAnalysis.Core.diTauCandidateHistManager_cfi import diTauCandidateHistManager
-from TauAnalysis.Core.metHistManager_cfi import metHistManager
-from TauAnalysis.Core.vertexHistManager_cfi import vertexHistManager
-from TauAnalysis.Core.triggerHistManager_cfi import triggerHistManager
-from TauAnalysis.Core.jetHistManager_cfi import jetHistManager
 
-# END imports
-
-# Set up HistManagers
-diTauCandidateHistManagerForElecTau = copy.deepcopy(diTauCandidateHistManager)
-diTauCandidateHistManagerForElecTau.pluginName = cms.string('diTauCandidateHistManagerForElecTau')
-diTauCandidateHistManagerForElecTau.pluginType = cms.string('PATElecTauPairHistManager')
-diTauCandidateHistManagerForElecTau.diTauCandidateSource = cms.InputTag('allElecTauPairs')
-# Possibly all possible pair managers need to be defined here...
-
-metHistManager.metSource = cms.InputTag("layer1PFMETs")
-
-triggerHistManager.l1Bits = cms.vstring('L1_SingleEG5', 'L1_SingleEG8', 'L1_SingleEG10', 'L1_SingleEG12', 'L1_SingleEG15',
-                                        'L1_SingleIsoEG5', 'L1_SingleIsoEG8', 'L1_SingleIsoEG10', 'L1_SingleIsoEG12', 'L1_SingleIsoEG15')
-triggerHistManager.hltPaths = cms.vstring('HLT_IsoEle15_L1I')
-triggerHistManager.l1GtObjectMapRecordSource = cms.InputTag('hltL1GtObjectMap::HLT')
-triggerHistManager.l1GtReadoutRecordSource = cms.InputTag('hltGtDigis::HLT')
+from TauAnalysis.Configuration.tools.tauAnalysisMakerDefinitions import elecTauEventDump, muTauEventDump, elecMuEventDump, diTauEventDump
+from TauAnalysis.Configuration.tools.tauAnalysisMakerDefinitions import diTauCandidateHistManagerForElecTau, diTauCandidateHistManagerForDiTau, diTauCandidateHistManagerForMuTau, diTauCandidateHistManagerForElecMu
+from TauAnalysis.Configuration.tools.tauAnalysisMakerDefinitions import electronHistManager, tauHistManager, metHistManager, vertexHistManager, triggerHistManager, genPhaseSpaceEventInfoHistManager, jetHistManager, muonHistManager
 
 """
 Define the cut list. This is a list of python dictionary objects containing the cuts we'll make. This should be a dictionary like so...
@@ -113,6 +88,10 @@ Define the cut list. This is a list of python dictionary objects containing the 
 
 # A fairly stupid example.
 cuts = [
+  {'object':'genPhaseSpace'},
+  {'object':'trigger','triggerPaths':cms.vstring('HLT_IsoEle15_L1I')},
+  {'object':'vertex','title':'Highest Pt Vertex','class':'PATSingleVertexSelector','mode':cms.string('firstVertex'),'vertices':cms.InputTag('$last(vertex)'),'filter':cms.bool(False)},
+  {'object':'vertex','class':'VertexSelector','cut':cms.string('z > -25 & z < 25'),'filter':cms.bool(False)},
   {'title':'Electron anticrack', 'object':'electron','class':'PATElectronSelector','cut':cms.string('abs(superCluster.eta) < 1.442 | abs(superCluster.eta) > 1.560'),'filter':cms.bool(False)},
   {'title':'Electron eta', 'object':'electron','class':'PATElectronSelector', 'cut':cms.string('abs(eta)<2.1'), 'filter':cms.bool(False)},
   {'title':'Electron robust', 'object':'electron','class':'PATElectronSelector', 'cut':cms.string('electronID("robust") > 0'), 'filter':cms.bool(False)},
@@ -120,15 +99,16 @@ cuts = [
   {'title':'Tau pt', 'object':'tau','class':'PATTauSelector','cut':cms.string('pt > 20'), 'filter':cms.bool(False)},
   {'title':'Tau trackiso', 'object':'tau','class':'PATTauSelector','cut':cms.string('tauID("trackIsolation") > 0.5'), 'filter':cms.bool(False)},
   {'title':'B-tagging vertex','object':'jet','class':'PATJetSelector','cut':cms.string('bDiscriminator("simpleSecondaryVertexBJetTags")>2 || bDiscriminator("combinedSecondaryVertexBJetTags")>0.4'),'filter':cms.bool(False)},
-  {'title':'ZeroCharge','class':'PATElecTauPairSelector','object':'electau','cut':cms.string('charge = 0'),'filter':cms.bool(False)},
+  {'title':'ZeroCharge','class':'PATElecTauPairSelector','object':'elecTau','cut':cms.string('charge = 0'),'filter':cms.bool(False)},
   {'title':'B-tagging tracks','object':'jet','class':'PATJetSelector','cut':cms.string('bDiscriminator("trackCountingHighEffBJetTags")>2.5'),'filter':cms.bool(False)}
 ]
+
 
 """
 Define the options dictionary. This is a string-indexed dictionary of configuration options (mostly mandatory).
 
 """
-options = {
+defaults = {
   'name': 'bbAHtoElecTau', # Name of the process. Mandatory.
   'objects': { # Dictionary of the 'objects' in the process. Must contain all the objects referred to in the cut list above.
     'electron':{ # Definition for the 'electron' object.
@@ -141,9 +121,9 @@ options = {
       'replace':'tauHistManager.tauSource = $last(tau)',
       'individual':True
     },
-    'electau': { # Define the 'electau' pair object.
+    'elecTau': { # Define the 'electau' pair object.
       'source':'allElecTauPairs',
-      'replace':'diTauCandidateHistManagerForElecTau.diTauCandidateSource = $last(electau)',
+      'replace':'diTauCandidateHistManagerForElecTau.diTauCandidateSource = $last(elecTau)',
       'individual':True,
       'producer':{ # Optional producer definition. This is used if you need to generate the object after some other selections have occurred. The name of the producer will be the same as the 'source' setting - 'allElecTauPairs' in this case.
         'class':'PATElecTauPairProducer', #class to use
@@ -151,7 +131,52 @@ options = {
         'srcLeg1':cms.InputTag('$last(electron)'),
         'srcLeg2':cms.InputTag('$last(tau)'),
         'dRmin12':cms.double(0.3),
-        'srcMET':cms.InputTag('layer1METs'),
+        'srcMET':cms.InputTag('$last(met)'),
+        'recoMode':cms.string(''),
+        'verbosity':cms.untracked.int32(0)
+      }
+    },
+    'diTau': { # Define the 'electau' pair object.
+      'source':'allDiTauPairs',
+      'replace':'diTauCandidateHistManagerForDiTau.diTauCandidateSource = $last(diTau)',
+      'individual':True,
+      'producer':{ # Optional producer definition. This is used if you need to generate the object after some other selections have occurred. The name of the producer will be the same as the 'source' setting - 'allElecTauPairs' in this case.
+        'class':'PATDiTauPairProducer', #class to use
+        'useLeadingTausOnly':cms.bool(False), # CMS parameters for producer
+        'srcLeg1':cms.InputTag('$last(tau)'),
+        'srcLeg2':cms.InputTag('$last(tau)'),
+        'dRmin12':cms.double(0.3),
+        'srcMET':cms.InputTag('$last(met)'),
+        'recoMode':cms.string(''),
+        'verbosity':cms.untracked.int32(0)
+      }
+    },
+    'muTau': { # Define the 'electau' pair object.
+      'source':'allMuTauPairs',
+      'replace':'diTauCandidateHistManagerForMuTau.diTauCandidateSource = $last(muTau)',
+      'individual':True,
+      'producer':{ # Optional producer definition. This is used if you need to generate the object after some other selections have occurred. The name of the producer will be the same as the 'source' setting - 'allElecTauPairs' in this case.
+        'class':'PATMuTauPairProducer', #class to use
+        'useLeadingTausOnly':cms.bool(False), # CMS parameters for producer
+        'srcLeg1':cms.InputTag('$last(muon)'),
+        'srcLeg2':cms.InputTag('$last(tau)'),
+        'dRmin12':cms.double(0.3),
+        'srcMET':cms.InputTag('$last(met)'),
+        'recoMode':cms.string(''),
+        'verbosity':cms.untracked.int32(0)
+      }
+    },
+    'elecMu': { # Define the 'electau' pair object.
+      'source':'allElecMuPairs',
+      'replace':'diTauCandidateHistManagerForElecMu.diTauCandidateSource = $last(elecMu)',
+      'individual':True,
+      'producer':{ # Optional producer definition. This is used if you need to generate the object after some other selections have occurred. The name of the producer will be the same as the 'source' setting - 'allElecTauPairs' in this case.
+        'class':'PATElecMuPairProducer', #class to use
+        'useLeadingTausOnly':cms.bool(False), # CMS parameters for producer
+        'srcLeg1':cms.InputTag('$last(electron)'),
+        'srcLeg2':cms.InputTag('$last(muon)'),
+        'dRmin12':cms.double(0.3),
+        'srcMET':cms.InputTag('$last(met)'),
         'recoMode':cms.string(''),
         'verbosity':cms.untracked.int32(0)
       }
@@ -160,9 +185,32 @@ options = {
       'source':'cleanLayer1Jets',
       'replace':'jetHistManager.jetSource = $last(jet)',
       'individual':True
+    },
+    'met':{
+      'source':'layer1PFMETs',
+      'replace':'metHistManager.metSource = $last(met)',
+      'individual':True
+    },
+    'vertex':{
+      'source':'offlinePrimaryVerticesWithBS',
+      'replace':'vertexHistManager.vertexSource = $last(vertex)',
+      'individual':False
+    },
+    'muon':{
+      'source':'cleanLayer1Muons',
+      'replace':'muonHistManager.muonSource = $last(muon)',
+      'individual':True
+    },
+    'genPhaseSpace':{
+      'source':'',
+      'individual':False
+    },
+    'trigger':{
+      'source':'',
+      'individual':False
     }
   },
-  'object_order':['electron','tau','jet','electau'], # Object order definition. Optional. This is important if some selection or production steps depend on others. In this case 'electau' needs to come after 'electron' and 'tau' sinceit requires the last electron and tau as the 'srcLegX' parameters. If you don't specify this objects will be loaded in hash order of the object dictionary (which is NOT the same as the order you have written them...).
+  'object_order':['vertex','electron','tau','jet','elecTau'], # Object order definition. Optional. This is important if some selection or production steps depend on others. In this case 'electau' needs to come after 'electron' and 'tau' sinceit requires the last electron and tau as the 'srcLegX' parameters. If you don't specify this objects will be loaded in hash order of the object dictionary (which is NOT the same as the order you have written them...).
   'histmanagers': cms.VPSet( # VPSet of histogram managers, as the GenericAnalyzer parameter.
     genPhaseSpaceEventInfoHistManager,
     electronHistManager,
@@ -173,32 +221,8 @@ options = {
     triggerHistManager,
     jetHistManager
   ),
-  'eventDumps': cms.VPSet(cms.PSet( # VPSet of eventdumps, as the GenericAnalyzer parameter
-    pluginName = cms.string('elecTauEventDump'),
-    pluginType = cms.string('ElecTauEventDump'),
-
-    l1GtReadoutRecordSource = cms.InputTag('hltGtDigis::HLT'),
-    l1GtObjectMapRecordSource = cms.InputTag('hltL1GtObjectMap::HLT'),
-    l1BitsToPrint = cms.vstring('L1_SingleEG5', 'L1_SingleEG8', 'L1_SingleEG10', 'L1_SingleEG12', 'L1_SingleEG15',
-                                'L1_SingleIsoEG5', 'L1_SingleIsoEG8', 'L1_SingleIsoEG10', 'L1_SingleIsoEG12', 'L1_SingleIsoEG15'),
-    
-    hltResultsSource = cms.InputTag('TriggerResults::HLT'),
-    hltPathsToPrint = cms.vstring('HLT_IsoEle10_L1I'),
-
-    genParticleSource = cms.InputTag('genParticles'),
-    genTauJetSource = cms.InputTag('tauGenJets'),
-    electronSource = cms.InputTag('$last(electron)'),
-    tauSource = cms.InputTag('$last(tau)'),
-    diTauCandidateSource = cms.InputTag('$last(electau)'),
-    metSource = cms.InputTag('layer1METs'),
-    genMEtSource = cms.InputTag('genMETWithMu'),
-    jetSource = cms.InputTag('allLayer1Jets'),
-    recoTrackSource = cms.InputTag('generalTracks'),
-    pfChargedHadronSource = cms.InputTag('pfAllChargedHadrons'),
-    pfGammaSource = cms.InputTag('pfAllPhotons'),
-    pfNeutralHadronSource = cms.InputTag('pfAllNeutralHadrons'),
-    output = cms.string("std::cout"),
-    triggerConditions = cms.vstring("evtSeljetbDiscriminatortrackCountingHighEffBJetTags25: passed_cumulative")) # This currently has to be set manually, since $last(jet) would give you 'selected...Cumulative', which is wrong here. FIXME.
+  'eventDumps': cms.VPSet(
+    elecTauEventDump
   )
 }
 
@@ -217,15 +241,16 @@ class TauAnalysisMaker:
     TODO: Validate cuts, options at this point.
     """
     self.cuts = cuts
-    self.name = options['name'] # Name of the process.
+    self.cut_objs = []
     self.options = options
-    self.histmanagers = options['histmanagers']
-    self.histmanagers_vstring = cms.vstring(*[hm.pluginName.value() for hm in self.histmanagers]) # Create a string version of the histogram manager list for HistManagerPSets in GenericAnalyzer
-    self.eventdumps = options['eventDumps']
+    self._checkOptions()
+    self.name = self.options['name'] # Name of the process.
+    
     self.namespace = namespace
     self.all_labels = set()
     self.object_counts = {}  
     self.last_obj = {}
+    self.last_evtsel = ''
     
     self.bool_selector_sequence=[] # Flat list [module, ...]
     self.pat_selector_sequences={} # object -> [selectedobjectCUTCumulative,etc]
@@ -235,10 +260,85 @@ class TauAnalysisMaker:
     
     self.namespace_objects = {}
     
-    for o in options['objects']:
-      self.last_obj[o]=options['objects'][o]['source']
+    self.processed = False
+    
+    for o in self.objects:
+      self.last_obj[o]=self.objects[o]['source']
   
-      
+  def _checkOptions(self):
+    if not 'name' in self.options:
+      print "ERROR: No 'name' specified in options"
+      print "You should specify an process name like 'ZToElecTau' or 'bbAHtoDiTau'"
+      raise
+    if not 'objects' in self.options:
+      self.objects = defaults['objects']
+    else:
+      self.objects = {}
+      for o,v in self.options['objects'].items():
+        if not 'source' in v:
+          print "ERROR: No 'source' definition found in object declaration '%s'"%o
+          print "This should be the original collection before extra selections, such as 'cleanLayer1Electrons'. For a produced collection such as 'electau' this is the name that will be assigned to the producer."
+          raise
+        if not 'replace' in v:
+          print "WARNING: No 'replace' definition found in object declaration '%s'"%o
+          print "Histogram managers will not be updated for this object. (This may be intentional.)"
+        if not 'individual' in v:
+          v['individual'] = True
+        self.objects[o] = v
+      for o,v in defaults['objects'].items():
+        if not o in self.objects:
+          self.objects[o] = v
+    if 'object_order' in self.options:
+      self.obj_list = self.options['object_order']
+    else:
+      self.obj_list = self.objects.keys()
+    if 'histmanagers' in self.options:
+      if isinstance(self.options['histmanagers'],cms.VPSet):
+        self.histmanagers = self.options['histmanagers']
+      else:
+        print "ERROR: 'histmanagers' definition is not a cms.VPSet"
+        raise
+    else:
+      hm = cms.VPSet(genPhaseSpaceEventInfoHistManager,triggerHistManager)
+      if 'electron' in self.obj_list:
+        hm.append(electronHistManager)
+      if 'tau' in self.obj_list:
+        hm.append(tauHistManager)
+      if 'muon' in self.obj_list:
+        hm.append(muonHistManager)
+      if 'jet' in self.obj_list:
+        hm.append(jetHistManager)
+      if 'vertex' in self.obj_list:
+        hm.append(vertexHistManager)
+      if 'met' in self.obj_list:
+        hm.append(metHistManager)
+      if 'elecTau' in self.obj_list:
+        hm.append(diTauCandidateHistManagerForElecTau)
+      if 'diTau' in self.obj_list:
+        hm.append(diTauCandidateHistManagerForDiTau)
+      if 'muTau' in self.obj_list:
+        hm.append(diTauCandidateHistManagerForMuTau)
+      if 'elecMu' in self.obj_list:
+        hm.append(diTauCandidateHistManagerForElecMu)
+      self.histmanagers = hm
+    self.histmanagers_vstring = cms.vstring(*[hm.pluginName.value() for hm in self.histmanagers]) # Create a string version of the histogram manager list for HistManagerPSets in GenericAnalyzer
+    if 'eventDumps' in self.options:
+      if isinstance(self.options['eventDumps'],cms.VPSet):
+        self.eventdumps = self.options['eventDumps']
+      else:
+        print "ERROR: 'eventDumps' definition is not a cms.VPSet"
+        raise
+    else:
+      self.eventdumps = cms.VPSet()
+      if 'elecTau' in self.obj_list:
+        self.eventdumps.append(elecTauEventDump)
+      if 'diTau' in self.obj_list:
+        self.eventdumps.append(diTauEventDump)
+      if 'muTau' in self.obj_list:
+        self.eventdumps.append(muTauEventDump)
+      if 'elecMu' in self.obj_list:
+        self.eventdumps.append(elecTauEventDump)
+          
   def _addToNamespace(self,name,object):
     """
     Add a named object to the TauAnalysisMaker namespace. Keeps it in the dictionary of added objects.
@@ -295,9 +395,13 @@ class TauAnalysisMaker:
         object = c['object']
         del c['object']
         cut_obj = TauAnalysisCutFactory(object)(self,object,**c) # Get the appropriate cut class.
+        self.cut_objs.append(cut_obj)
         self._genBoolSelector(cut_obj)
         self._genAnalyzerPSets(cut_obj)
-        self.last_obj[object]=self._genPATSelector(cut_obj) # genPATSelector returns the new 'last' object of this type
+        last_obj = self._genPATSelector(cut_obj) # genPATSelector returns the new 'last' object of this type
+        if last_obj:
+          self.last_obj[object] = last_obj
+        self.last_evtsel = 'evtSel%s'%cut_obj.label
         
 
   def _genAnalyzerPSets(self,cut):
@@ -316,6 +420,8 @@ class TauAnalysisMaker:
     """
     Return a GenericAnalyzer object using the accumulated PSets and EventDumps/HistManagers from the options dict.
     """
+    for e in self.eventdumps:
+      e.triggerConditions = cms.vstring(self.last_evtsel+': passed_cumulative')
     return cms.EDAnalyzer("GenericAnalyzer",
       name = cms.string('%sAnalyzer'%self.name),
       #filters = cms.VPSet(*[cut.genAnalyzerSelectorPSet() for cut in self.cut_obj if cut.genAnalyzerSelectorPSet()]),
@@ -358,61 +464,21 @@ class TauAnalysisMaker:
       self._addToNamespace(pluginname,module)
       self.bool_selector_sequence.append(module)
     
-  """   
-  def genBoolSelectors(self):
-    sequence_items = []
-    namespace_items = {}
-    cuts = [cut.genBoolSelectorPSet() for cut in self.cut_obj if cut.genBoolSelectorPSet()]
-    for cut in cuts:
-      pset = cut.parameters_()
-      pluginname = pset['pluginName'].value()
-      if 'src_individual' in pset and 'src_cumulative' in pset:
-        src_individual = pset['src_individual']
-        src_cumulative = pset['src_cumulative']
-        del pset['src_individual']
-        del pset['src_cumulative']
-        module = cms.EDFilter('BoolEventSelFlagProducer',
-          selectors = cms.VPSet(
-            cms.PSet(
-              src = src_cumulative,
-              instanceName = cms.string('cumulative'),
-              **pset
-            ),
-            cms.PSet(
-              src = src_individual,
-              instanceName = cms.string('individual'),
-              **pset
-            )
-          )
-        )
-      else:
-        module = cms.EDFilter('BoolEventSelFlagProducer',**pset)
-      namespace_items[pluginname] = module
-      sequence_items.append(module)  
-    for n,m in namespace_items.items():
-      self._addToNamespace(n,m)
-    
-    return cms.Sequence(reduce(lambda x,y:x*y,sequence_items))
-    #return eventSelFlagProdConfigurator(
-    #  [cut.genBoolSelectorPSet() for cut in self.cut_obj if cut.genBoolSelectorPSet()],
-    #  boolEventSelFlagProducer = "BoolEventSelFlagProducer",
-    #  pyModuleName = __name__
-    #).configure()
-  """
+
   def _genPATProducers(self):
     """
     If an object has a 'producer' definition, create the class for this.
     At the moment, these produce distinct sequences - ie, although the order of objects can be changed, production must occur after previous objects have entirely finished, and the $last syntax only allows the last object to be selected. The upshot of this is there is currently no way to use anything but the last electron, tau, etc as the srcLegs. FIXME?
     """
-    for object in self.options['objects']:
-      if 'producer' in self.options['objects'][object]:
-        prod = self.options['objects'][object]['producer']
+    for object in self.objects:
+      if 'producer' in self.objects[object]:
+        prod = self.objects[object]['producer']
         cppclass = prod['class']
         module = cms.EDProducer(cppclass)
         for attr_name,attr_val in prod.items():
           if isinstance(attr_val,cms._ParameterTypeBase):
             setattr(module,attr_name,self._replaceLast(attr_val))
-        self._addToNamespace(self.options['objects'][object]['source'],module)
+        self._addToNamespace(self.objects[object]['source'],module)
         self.pat_producer_sequences[object]=cms.Sequence(module)
   
   def _genPATSelector(self,cut):
@@ -426,103 +492,41 @@ class TauAnalysisMaker:
       self.pat_selector_sequences[object] = []
     
     s = cut.genPATSelector()
-      
-    if self.options['objects'][object]['individual']:
-      name = s[0]+'Individual'
+    if s:
+      if self.objects[object]['individual']:
+        name = s[0]+'Individual'
+        module = cms.EDFilter(s[1].type_())
+        for attr_name in dir(s[1]):
+          attr_val = getattr(s[1],attr_name)
+          if isinstance(attr_val,cms._ParameterTypeBase):
+            setattr(module,attr_name,self._replaceLast(attr_val))
+        module.src = cms.InputTag(self.objects[object]['source'])
+        self._addToNamespace(name,module)
+        self.pat_selector_sequences[object].append(module)
+    
+      name = s[0]+'Cumulative'
       module = cms.EDFilter(s[1].type_())
       for attr_name in dir(s[1]):
         attr_val = getattr(s[1],attr_name)
         if isinstance(attr_val,cms._ParameterTypeBase):
           setattr(module,attr_name,self._replaceLast(attr_val))
-      module.src = cms.InputTag(self.options['objects'][object]['source'])
+      module.src = cms.InputTag(self.last_obj[object])
       self._addToNamespace(name,module)
       self.pat_selector_sequences[object].append(module)
     
-    name = s[0]+'Cumulative'
-    module = cms.EDFilter(s[1].type_())
-    for attr_name in dir(s[1]):
-      attr_val = getattr(s[1],attr_name)
-      if isinstance(attr_val,cms._ParameterTypeBase):
-        setattr(module,attr_name,self._replaceLast(attr_val))
-    module.src = cms.InputTag(self.last_obj[object])
-    self._addToNamespace(name,module)
-    self.pat_selector_sequences[object].append(module)
-    
-    return name
-    
-  """
-  def genPATSelectors(self):
-    sequences = []
-    if 'object_order' in self.options:
-      obj_list = self.options['object_order']
-    else:
-      obj_list = self.options['objects']
-    
-    for object in obj_list:
-      if 'producer' in self.options['objects'][object]:
-        prod = self.options['objects'][object]['producer']
-        cppclass = prod['class']
-        module = cms.EDProducer(cppclass)
-        for attr_name,attr_val in prod.items():
-          if isinstance(attr_val,cms._ParameterTypeBase):
-            setattr(module,attr_name,self._replaceLast(attr_val))
-        self._addToNamespace(self.options['objects'][object]['source'],module)
-        sequences.append(['produce%sFor%s'%(object.title(),self.name),cms.Sequence(module)])
-    
-    
-    
-      cuts = self.object_cuts[object]
-      if len(cuts)>0:
-        sequence_items = []
-        namespace_items = {}
-        selectors = [cut.genPATSelector() for cut in cuts if cut.genPATSelector()]
-        last_module = self.options['objects'][object]['source']
-        for s in selectors:
-          if self.options['objects'][object]['individual']:
-            name = s[0]+'Individual'
-            module = cms.EDFilter(s[1].type_())
-            for attr_name in dir(s[1]):
-              attr_val = getattr(s[1],attr_name)
-              if isinstance(attr_val,cms._ParameterTypeBase):
-                setattr(module,attr_name,self._replaceLast(attr_val))
-            module.src = cms.InputTag(self.options['objects'][object]['source'])
-            sequence_items.append(module)
-            namespace_items[name]=module
-          name = s[0]+'Cumulative'
-          module = cms.EDFilter(s[1].type_())
-          for attr_name in dir(s[1]):
-            attr_val = getattr(s[1],attr_name)
-            if isinstance(attr_val,cms._ParameterTypeBase):
-              setattr(module,attr_name,self._replaceLast(attr_val))
-          module.src = cms.InputTag(last_module)
-          sequence_items.append(module)
-          namespace_items[name]=module
-          last_module = name
-        for n,m in namespace_items.items():
-          self._addToNamespace(n,m)
-        #sequences['select%sFor%s'%(object.title(),self.name)]=cms.Sequence(reduce(lambda x,y:x*y,sequence_items))
-        sequences.append(['select%sFor%s'%(object.title(),self.name),cms.Sequence(reduce(lambda x,y:x*y,sequence_items))])
+      return name
+    return None
 
-    return sequences
-        #for s in selectors:
-        #  setattr(pymodule,s[0],s[1])
-        #objSelConfigurators['selectLayer1%sFor%s'%(object.title(),self.name)] = objSelConfigurator(
-        #  [s[1] for s in selectors],
-        #  src = self.options['objects'][object]['source'],
-        #  pyModuleName=__name__,
-        #  doSelIndividual = True
-        #).configure()
-    #return objSelConfigurators
-  """
   def histManagerReplaceString(self):
     """
     Generate the "histManager.objSource = ..." strings for use in the analyzer PSet, using the most recent set of objects (and replacement definitions).
     """
     result = cms.vstring()
-    for o in self.options['objects']:
-      if 'replace' in self.options['objects'][o]:
-        result.append(self._replaceLast(self.options['objects'][o]['replace']))
+    for o in self.obj_list:
+      if 'replace' in self.objects[o]:
+        result.append(self._replaceLast(self.objects[o]['replace']))
     return result
+    
   def createObjects(self):
     """
     The only other function the user should have to call. Generates all the remaining objects, adds them to the namespace and finally returns a sequence of everything that has been created.
@@ -537,13 +541,8 @@ class TauAnalysisMaker:
     boolselect = make_sequence(self.bool_selector_sequence) # Build the bool-selector sequence.
     self._addToNamespace('select%s'%self.name,boolselect) # And add it to namespace. Is this necessary for sequences except the top level one?
     
-    if 'object_order' in self.options: # If 'object_order' has been defined, use it. Otherwise use the keys in hash order. Order is important here.
-      obj_list = self.options['object_order']
-    else:
-      obj_list = self.options['objects'].keys()
-    
     pat_seq = []
-    for obj in obj_list: #For each object, however the list is ordered, produce the producer and selector sequences, if applicable.
+    for obj in self.obj_list: #For each object, however the list is ordered, produce the producer and selector sequences, if applicable.
       if obj in self.pat_producer_sequences:
         produce_seq = self.pat_producer_sequences[obj]
         self._addToNamespace('produce%sFor%s'%(obj.title(),self.name),produce_seq)
@@ -556,7 +555,28 @@ class TauAnalysisMaker:
     
     total_seq = make_sequence(pat_seq+[boolselect,analyzer]) #Build the final sequence. This one does need to be added to the namespace...
     self._addToNamespace('tauAnalysisSequence%s'%self.name,total_seq)
+    
+    self.processed = True
+    
     return total_seq # The end.
+  
+  def __str__(self):
+    """
+    Make a printout of what has been made.
+    """
+    result  = "== TauAnalysisMaker Summary ==\n\n"
+    if not self.processed:
+      result += "== WARNING: Processing has not run so this information will be incomplete! ==\n"
+    result += "= Object Summary =\n"
+    result += "Object\t\tSource\t\t\tFilters\tProducer?\n"
+    for o in self.obj_list:
+      result += "%s\t\t%s\t\t\t%s\t%s\n" % (o,self.objects[o]['source'],self.object_counts[o],'producer' in self.objects[o])
+    result += "\n= Cut Summary =\n"
+    for c in self.cut_objs:
+      result += str(c) + '\n'
+    return result
+    
+        
     
     
     
@@ -581,7 +601,9 @@ class TauAnalysisCut:
       self.cppclass = kwargs['class']
       del kwargs['class']
     else:
-      self.cppclass = 'PAT%sSelector'%object.title()
+      self.cppclass = 'PAT%sSelector'%(object[0].title()+object[1:])
+      if not 'filter' in kwargs:
+        kwargs['filter'] = cms.bool(False)
     
     if 'title' in kwargs: 
       self.title = kwargs['title']
@@ -609,11 +631,9 @@ class TauAnalysisCut:
         
   
   def __str__(self):
-    result = "TauAnalysis Cut\n"
-    result += "Label:\t%s\n"%self.label
-    result += "Title:\t%s\n"%self.title
-    result += "Class:\t%s\n"%self.cppclass
-    result += "PSet:\t%s\n"%self.pset
+    result  = "CUT: %s\n"%self.title
+    result += "%s -> %s\n"%(self.label,self.cppclass)
+    result += "%s\n"%self._filterPSet()
     return result
   
   def _testLabel(self,label):
@@ -640,9 +660,9 @@ class TauAnalysisCut:
         self.maker.all_labels.add(label)
         return label
     else:
-      label = re.sub(r'[^a-zA-Z0-9]','',self.object + '_%02d'%(object_counts[self.object]))
-      if not label in all_labels:
-        all_labels.add(label)
+      label = re.sub(r'[^a-zA-Z0-9]','',self.object + '_%02d'%(self.maker.object_counts[self.object]))
+      if not label in self.maker.all_labels:
+        self.maker.all_labels.add(label)
         return label
     raise "Unable to find a unique name for module"
       
@@ -652,7 +672,7 @@ class TauAnalysisCut:
     Convert the 'cut' param into a title if none is specified.
     """
     if 'cut' in self.pset:
-      return self.object+': '+self.pset['cut']
+      return self.object+': '+self.pset['cut'].value()
     raise "Cannot generate a title without a cut"
     
   def genAnalysisSequenceFilterPSet(self):
@@ -685,7 +705,7 @@ class TauAnalysisCut:
     """
     Generate the analyzer filter PSet. Cases for individual and non-individual selection.
     """
-    if self.maker.options['objects'][self.object]['individual']:
+    if self.maker.objects[self.object]['individual']:
       return cms.PSet(
         pluginName = cms.string('evtSel%s'%self.label),
         pluginType = cms.string('BoolEventSelector'),
@@ -703,7 +723,7 @@ class TauAnalysisCut:
     """
     Generate the boolSelector PSet. As with genPATSelector, since we now control this process entirely in TauAnalysisMaker this might be a bit redundant.
     """
-    if self.maker.options['objects'][self.object]['individual']:
+    if self.maker.objects[self.object]['individual']:
       return cms.PSet(
         pluginName = cms.string(self.label),
         pluginType = cms.string('PATCandViewMinEventSelector'),
@@ -726,29 +746,40 @@ def TauAnalysisCutFactory(object):
   """
   cutSelector = {
   'trigger':TriggerCut,
-  'genphasespace':GenPhaseSpaceCut,
+  'genPhaseSpace':GenPhaseSpaceCut,
+  'vertex':VertexCut
   }
   if object in cutSelector:
     return cutSelector[object]
   return TauAnalysisCut
 
-#FIXME
+
+class VertexCut(TauAnalysisCut):
+  def genAnalyzerSelectorPSet(self):
+    return cms.PSet(
+      pluginName = cms.string('evtSel%s'%self.label),
+      pluginType = cms.string('BoolEventSelector'),
+      src = cms.InputTag(self.label)
+    )
+  
+  def genBoolSelectorPSet(self):
+    return cms.PSet(
+      pluginName = cms.string(self.label),
+      pluginType = cms.string('VertexMinEventSelector'),
+      src = cms.InputTag('selected%sCumulative'%self.label),
+      minNumber = cms.uint32(1)
+    )
+  
 class TriggerCut(TauAnalysisCut):
   def genLabel(self):
-    return "Trigger%s" % ''.join(self.pset['triggerPaths'])
+    return "trigger%s" % re.sub(r'[^a-zA-Z0-9]','',''.join(self.pset['triggerPaths']))
   def genTitle(self):
     return "Trigger: %s" ', '.join(self.pset['triggerPaths'])
-  def genAnalysisSequenceFilterPSet(self):
-    return cms.PSet(
-      filter = cms.string('evtSel_%s'%self.label),
-      title = cms.string(self.title),
-      saveRunEventNumbers = cms.vstring('')
-    )
   def genPATSelector(self):
     return None
   def genAnalyzerSelectorPSet(self):
     return cms.PSet(
-      pluginName = cms.string('evtSel_%s'%self.label),
+      pluginName = cms.string('evtSel%s'%self.label),
       pluginType = cms.string('BoolEventSelector'),
       src = cms.InputTag(self.label),
     )
@@ -760,12 +791,13 @@ class TriggerCut(TauAnalysisCut):
       triggerPaths = self.pset['triggerPaths']
     )
 
-#FIXME  
 class GenPhaseSpaceCut(TauAnalysisCut):
   def genLabel(self):
     return "genPhaseSpaceCut"
   def genTitle(self):
     return "Phase-Space Cut"
+  def __str__(self):
+    return "CUT: Phase-Space Cut\n"
   def genAnalysisSequenceFilterPSet(self):
     return cms.PSet(
       filter = cms.string('genPhaseSpaceCut'),
@@ -787,6 +819,7 @@ class GenPhaseSpaceCut(TauAnalysisCut):
 # Print out the parameterset if run with python tauAnalysisMaker.py   
 if __name__ == '__main__':
   process = cms.Process('test')
-  maker = TauAnalysisMaker(cuts,options,process)
+  maker = TauAnalysisMaker(cuts,defaults,process)
   process.p = cms.Path(maker.createObjects())
   print process.dumpPython()
+  print maker
