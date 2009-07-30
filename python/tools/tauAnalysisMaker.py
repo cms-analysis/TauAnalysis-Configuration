@@ -57,7 +57,6 @@ cut:{
 I think the cut dictionary can be allowed the grow, the main advantage is that it is all defined in one place...
 Methods are probably needed to access the list of created objects, names it has generated etc.
 The label-generation method doesn't really handle conflicts in any sensible way yet.
-Make wrapper functions like ElectronCut() to allow people to use python function syntax instead of dictionary syntax - ElectronCut(class=..., cut=...) etc.
 """
 
 # BEGIN imports
@@ -77,7 +76,7 @@ Define the cut list. This is a list of python dictionary objects containing the 
   'object': 'OBJECT'  # The name of the object we're working with. Except for a few special cases like 'trigger' and 'genphasespace', this is any name you like - it's just a way of associating objects that should be chained together. Note that any object names you define also need to appear in options['objects']
   'label': 'LABEL'  # Optional. The internal label used (eg selectedlabelCumulative, evtSellabel). This will be generated from the cut/title/index if not specified.
   'title': 'TITLE'  # Optional. The title for this cut (for the filter table, etc). Generated from the label/cut if not specified.
-  'class': 'CLASS'  # Optional. The (EDFilter) C++ class to use. Defaults to "PATobjectSelector.
+  'cppclass': 'CLASS'  # Optional. The (EDFilter) C++ class to use. Defaults to "PATobjectSelector.
   
   Any other parameters supplied will be added to the parameterset of the EDFilter, so they should be cms.* types. Eg..
   'cut': cms.string('CUT')
@@ -111,16 +110,33 @@ Define the options dictionary. This is a string-indexed dictionary of configurat
 """
 defaults = {
   'name': 'bbAHtoElecTau', # Name of the process. Mandatory.
+  'plots':[],
+  'endplots':[{'meName':'DiTauCandidateQuantities/Mt1MET'},
+        {'meName':'DiTauCandidateQuantities/Mt2MET'},
+        {'meName':'DiTauCandidateQuantities/Mt12MET'},
+        {'meName':'DiTauCandidateQuantities/CDFmethodMass'},
+        {'meName':'DiTauCandidateQuantities/CollinearApproxMass'},
+        {'meName':'DiTauCandidateQuantities/VisMass'},],
   'objects': { # Dictionary of the 'objects' in the process. Must contain all the objects referred to in the cut list above.
     'electron':{ # Definition for the 'electron' object.
       'source':'cleanLayer1Electrons',  # The source to use. This is the collection that the first filter will use as its 'src'.
       'replace': 'electronHistManager.electronSource = $last(electron)', # Optional. If a histogram-manager should be updated each time this object changes.
-      'individual':True # Mandatory. Specify whether to produce just Cumulative selection or Cumulative and Individual. The former (False) is untested.
+      'individual':True, # Mandatory. Specify whether to produce just Cumulative selection or Cumulative and Individual. The former (False) is untested.
+      'plots': [
+        #{'meName':'ElectronQuantities/ElectronEta'},
+        #{'meName':'ElectronQuantities/ElectronPt'},
+        #{'meName':'ElectronQuantities/ElectronPhi'} 
+      ]
     },
     'tau': {
       'source':'cleanLayer1Taus',
       'replace':'tauHistManager.tauSource = $last(tau)',
-      'individual':True
+      'individual':True,
+      'plots': [
+        #{'meName':'TauQuantities/TauEta'},
+        #{'meName':'TauQuantities/TauPt'},
+        #{'meName':'TauQuantities/TauPhi'} 
+      ]
     },
     'elecTauPair': { # Define the 'electau' pair object.
       'source':'allElecTauPairs',
@@ -135,7 +151,15 @@ defaults = {
         'srcMET':cms.InputTag('$last(met)'),
         'recoMode':cms.string(''),
         'verbosity':cms.untracked.int32(0)
-      }
+      },
+      'plots': [
+        #{'meName':'DiTauCandidateQuantities/Mt1MET'},
+        #{'meName':'DiTauCandidateQuantities/Mt2MET'},
+        #{'meName':'DiTauCandidateQuantities/Mt12MET'},
+        #{'meName':'DiTauCandidateQuantities/CDFmethodMass'},
+        #{'meName':'DiTauCandidateQuantities/CollinearApproxMass'},
+        #{'meName':'DiTauCandidateQuantities/VisMass'},
+      ]
     },
     'diTauPair': { # Define the 'electau' pair object.
       'source':'allDiTauPairs',
@@ -289,6 +313,11 @@ class TauAnalysisMaker:
       for o,v in defaults['objects'].items():
         if not o in self.objects:
           self.objects[o] = v
+    if not 'plots' in self.options:
+      self.options['plots']=defaults['plots']
+    if not 'endplots' in self.options:
+      self.options['endplots']=defaults['endplots']
+    
     if 'object_order' in self.options:
       self.obj_list = self.options['object_order']
     else:
@@ -578,8 +607,92 @@ class TauAnalysisMaker:
       result += str(c) + '\n'
     return result
     
-        
+  def generateDrawJobs(self, djc):
+    """
+    Generate DrawJobs for plotting using a drawJobConfigurator object.
+    This should be moved away from dJC dependency at some point, but for the moment, it'll do.
     
+    Plot definitions are dictionaries that look like:
+      {'meName':'monitorElementName',...}
+      (name, title and xAxis are optional - for title you can use $title for the current cut title)
+      
+    A Plot(meName, ...) helper function is available.
+    
+    Plot definitions are the sum of those found from 4 different sources:
+    
+    options['plots'] -> for all cuts
+    options['endplots'] -> for after the last cut
+    objects[obj]['plots'] -> for cuts on 'obj'
+    cut['plots'] -> for that cut
+    
+    """
+    print "Starting TauAnalysisMaker drawJob creation\n"
+    
+    class drawjob:
+      def __init__(self,**kwargs):
+        for k,v in kwargs.items():
+          setattr(self,k,v)
+    if not self.processed:
+      print "Warning: Object processing has not run so this probably isn't going to work."
+      raise Exception
+    validCuts = [c for c in self.cut_objs if c.genAnalyzerSelectorPSet()]
+    for i,afterCut in enumerate(validCuts):
+      obj = afterCut.object
+      afterCutPSet = afterCut.genAnalyzerSelectorPSet()
+      beforeCut = None
+      plots = self.options['plots']+afterCut.plots
+      if i!=len(validCuts)-1:
+        beforeCut = validCuts[i+1]
+        beforeCutPSet = validCuts[i+1].genAnalyzerSelectorPSet()
+      else:
+        plots += self.options['endplots']
+      job_plots = []
+      if 'plots' in self.objects[obj]:
+        plots += self.objects[obj]['plots']
+        
+      print "\nAfter cut %s"%afterCut.label
+        
+      for plot in plots:
+        if not 'meName' in plot:
+          print "ERROR: Plot definition for object %s has no 'meName'"%obj
+          raise Exception
+        meName = plot['meName']
+        print "Plotting monitorElement %s"%meName
+        if 'title' in plot:
+          title = plot['title'].replace('$title',afterCut.title)
+        else:
+          title = "%s: %s" % (afterCut.title, meName.split('/')[-1])
+        if 'xAxis' in plot:
+          xAxis = plot['xAxis']
+        else:
+          xAxis = 'M'#meName.split('/')[-1]
+        if 'name' in plot:
+          name = plot['name']
+        else:
+          name = 'after%s_%s'%(afterCut.label,meName.split('/')[-1])
+    
+        job_plots.append(drawjob(
+          meName=meName,
+          title=title,
+          xAxis=xAxis,
+          name=name
+        ))
+      
+      if len(job_plots)>0:
+        
+        if beforeCut:
+          djc.add(
+            afterCut=afterCutPSet,
+            beforeCut=beforeCutPSet,
+            plots=job_plots
+          )
+        else:
+          djc.add(
+            afterCut=afterCutPSet,
+            plots=job_plots
+          )
+        
+          
     
     
     
@@ -606,7 +719,10 @@ class TauAnalysisCut:
       self.cppclass = 'PAT%sSelector'%(object[0].title()+object[1:])
       if not 'filter' in kwargs:
         kwargs['filter'] = cms.bool(False)
-    
+    if 'plots' in kwargs:
+      self.plots = kwargs['plots']
+    else:
+      self.plots = []
     if 'title' in kwargs: 
       self.title = kwargs['title']
     if 'label' in kwargs:
@@ -868,11 +984,24 @@ def MuTauPairCut(**kwargs):
   
 def ElecMuPairCut(**kwargs):
   return Cut('elecMuPair',**kwargs)
+  
+def Plot(meName, **kwargs):
+  kwargs['meName']=meName
+  return kwargs
          
 # Print out the parameterset if run with python tauAnalysisMaker.py   
 if __name__ == '__main__':
   process = cms.Process('test')
   maker = TauAnalysisMaker(cuts,defaults,process)
   process.p = cms.Path(maker.createObjects())
-  print process.dumpPython()
-  print maker
+  #print process.dumpPython()
+  #print maker
+  from TauAnalysis.DQMTools.drawJobConfigurator import *
+  from TauAnalysis.Configuration.plotbbAHtoElecTau_drawJobs_cfi import plots_bbAHtoElecTau
+  drawJobConfigurator_bbAHtoElecTau = drawJobConfigurator(
+    template = plots_bbAHtoElecTau,
+    dqmDirectory = '#PROCESSDIR#/bbAHElecTauAnalyzer/'
+  )
+  maker.generateDrawJobs(drawJobConfigurator_bbAHtoElecTau)
+  #print drawJobConfigurator_bbAHtoElecTau.configure()
+  
