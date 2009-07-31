@@ -111,32 +111,17 @@ Define the options dictionary. This is a string-indexed dictionary of configurat
 defaults = {
   'name': 'bbAHtoElecTau', # Name of the process. Mandatory.
   'plots':[],
-  'endplots':[{'meName':'DiTauCandidateQuantities/Mt1MET'},
-        {'meName':'DiTauCandidateQuantities/Mt2MET'},
-        {'meName':'DiTauCandidateQuantities/Mt12MET'},
-        {'meName':'DiTauCandidateQuantities/CDFmethodMass'},
-        {'meName':'DiTauCandidateQuantities/CollinearApproxMass'},
-        {'meName':'DiTauCandidateQuantities/VisMass'},],
+  'endplots':[],
   'objects': { # Dictionary of the 'objects' in the process. Must contain all the objects referred to in the cut list above.
     'electron':{ # Definition for the 'electron' object.
       'source':'cleanLayer1Electrons',  # The source to use. This is the collection that the first filter will use as its 'src'.
       'replace': 'electronHistManager.electronSource = $last(electron)', # Optional. If a histogram-manager should be updated each time this object changes.
       'individual':True, # Mandatory. Specify whether to produce just Cumulative selection or Cumulative and Individual. The former (False) is untested.
-      'plots': [
-        #{'meName':'ElectronQuantities/ElectronEta'},
-        #{'meName':'ElectronQuantities/ElectronPt'},
-        #{'meName':'ElectronQuantities/ElectronPhi'} 
-      ]
     },
     'tau': {
       'source':'cleanLayer1Taus',
       'replace':'tauHistManager.tauSource = $last(tau)',
       'individual':True,
-      'plots': [
-        #{'meName':'TauQuantities/TauEta'},
-        #{'meName':'TauQuantities/TauPt'},
-        #{'meName':'TauQuantities/TauPhi'} 
-      ]
     },
     'elecTauPair': { # Define the 'electau' pair object.
       'source':'allElecTauPairs',
@@ -152,14 +137,6 @@ defaults = {
         'recoMode':cms.string(''),
         'verbosity':cms.untracked.int32(0)
       },
-      'plots': [
-        #{'meName':'DiTauCandidateQuantities/Mt1MET'},
-        #{'meName':'DiTauCandidateQuantities/Mt2MET'},
-        #{'meName':'DiTauCandidateQuantities/Mt12MET'},
-        #{'meName':'DiTauCandidateQuantities/CDFmethodMass'},
-        #{'meName':'DiTauCandidateQuantities/CollinearApproxMass'},
-        #{'meName':'DiTauCandidateQuantities/VisMass'},
-      ]
     },
     'diTauPair': { # Define the 'electau' pair object.
       'source':'allDiTauPairs',
@@ -665,7 +642,7 @@ class TauAnalysisMaker:
         if 'xAxis' in plot:
           xAxis = plot['xAxis']
         else:
-          xAxis = 'M'#meName.split('/')[-1]
+          xAxis = 'unlabeled'#meName.split('/')[-1]
         if 'name' in plot:
           name = plot['name']
         else:
