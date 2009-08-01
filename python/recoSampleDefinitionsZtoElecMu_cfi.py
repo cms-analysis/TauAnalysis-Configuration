@@ -6,8 +6,6 @@ import copy
 
 intLumiData = float(200.)
 
-plotDirectoryName = cms.string("rfio:/castor/cern.ch/user/v/veelken/plots/ZtoElecMu/")
-
 #--------------------------------------------------------------------------------
 # Z --> tau+ tau- sample generated with Pythia + Tauola (all decay modes)
 #  integrated luminosity = 1135 pb^-1

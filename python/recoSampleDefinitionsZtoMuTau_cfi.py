@@ -6,8 +6,6 @@ import copy
 
 intLumiData = float(200.)
 
-plotDirectoryName = cms.string("rfio:/castor/cern.ch/user/l/lusito/ZtoMuTauAnalysis/")
-
 #--------------------------------------------------------------------------------
 # Z --> tau+ tau- sample generated with Pythia + Tauola (all decay modes)
 #  integrated luminosity = 1135 pb^-1
@@ -617,10 +615,8 @@ patTupleOutputFileNamePPmuXptGt20 = cms.string('patTupleZtoMuTau_PPmuXptGt20_par
 #--------------------------------------------------------------------------------
 # TTbar sample generated with Madgraph
 #  
-# 
-#
-intLumiTTplusJets = float(1.)
-corrFactorTTplusJets = float(1.)
+intLumiTTplusJets = float(2986)
+corrFactorTTplusJets = float(1.0)
 
 fileNamesTTplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_1.root',
@@ -632,8 +628,7 @@ fileNamesTTplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_7.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_8.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_9.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_10.root',
-    
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_10.root'    
 )
 
 fileNamesTTplusJets_part02 = cms.untracked.vstring(
@@ -646,9 +641,7 @@ fileNamesTTplusJets_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_17.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_18.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_19.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_20.root',
-    
-    
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_20.root'    
 )
 
 fileNamesTTplusJets_part03 = cms.untracked.vstring(
@@ -662,10 +655,8 @@ fileNamesTTplusJets_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_28.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_29.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_30.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_31.root',
-    
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_31.root'    
 )
-
 
 genPhaseSpaceCutTTplusJets = cms.PSet(
     pluginName = cms.string('genPhaseSpaceCut'),

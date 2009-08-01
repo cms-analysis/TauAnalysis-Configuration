@@ -4,6 +4,8 @@ import copy
 from TauAnalysis.Configuration.plotterProcessDefinitions_cfi import *
 from TauAnalysis.Configuration.recoSampleDefinitionsZtoElecMu_cfi import *
 
+plotDirectoryName = cms.string("rfio:/castor/cern.ch/user/v/veelken/plots/ZtoElecMu/")
+
 #--------------------------------------------------------------------------------
 # define for Z --> e + mu analysis names of .root files containing histograms
 #--------------------------------------------------------------------------------
