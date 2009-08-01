@@ -50,6 +50,15 @@ cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation.pluginName = "diTauCa
 cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation.src_cumulative = cms.InputTag('selectedElecTauPairsMt1METlooseElectronIsolationCumulative')
 cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation.src_individual = cms.InputTag('selectedElecTauPairsMt1METlooseElectronIsolationIndividual')
 
+cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation = copy.deepcopy(cfgDiTauCandidateForElecTauPzetaDiffCut)
+cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation.pluginName = "diTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation"
+cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation.src_cumulative = cms.InputTag('selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative')
+cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation.src_individual = cms.InputTag('selectedElecTauPairsPzetaDiffLooseElectronIsolationIndividual')
+
+cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation = copy.deepcopy(cfgElecTauPairZeeHypothesisVeto)
+cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation.pluginName = "elecTauPairZeeHypothesisVetoLooseElectronIsolation"
+cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation.src = cms.InputTag('selectedElecTauPairZeeHypothesesLooseElectronIsolation')
+
 zToElecTauEventSelConfiguratorLooseElectronIsolation = eventSelFlagProdConfigurator(
     [ cfgElectronTrkIsoCutLooseIsolation,
       cfgElectronEcalIsoCutLooseIsolation,
@@ -57,7 +66,9 @@ zToElecTauEventSelConfiguratorLooseElectronIsolation = eventSelFlagProdConfigura
       cfgElectronTrkIPcutLooseIsolation,
       cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation,
       cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation,
-      cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation ],
+      cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation,
+      cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation,
+      cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation ],
     boolEventSelFlagProducer = "BoolEventSelFlagProducer",
     pyModuleName = __name__
 )

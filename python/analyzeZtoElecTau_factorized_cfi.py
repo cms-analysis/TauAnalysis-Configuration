@@ -55,6 +55,13 @@ evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation = copy.deepcopy(evtSe
 evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauMt1METCutLooseElectronIsolation', 'cumulative')
 evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauMt1METCutLooseElectronIsolation', 'individual')
 
+evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation = copy.deepcopy(evtSelDiTauCandidateForElecTauPzetaDiff)
+evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation', 'cumulative')
+evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation', 'individual')
+
+evtSelElecTauPairZeeHypothesisVetoLooseElectronIsolation = copy.deepcopy(evtSelElecTauPairZeeHypothesisVeto)
+evtSelElecTauPairZeeHypothesisVetoLooseElectronIsolation.src = cms.InputTag('elecTauPairZeeHypothesisVetoLooseElectronIsolation')
+
 #--------------------------------------------------------------------------------
 # define event print-out
 #--------------------------------------------------------------------------------
@@ -83,7 +90,9 @@ replaceHistManagerInputTags(elecTauAnalysisSequence_factorizedWithoutElectronIso
       ["selectedLayer1ElectronsTrkIPcumulative", "selectedLayer1ElectronsTrkIPlooseIsolationCumulative"],
       ["selectedElecTauPairsAntiOverlapVetoCumulative", "selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative"],
       ["selectedElecTauPairsZeroChargeCumulative", "selectedElecTauPairsZeroChargeLooseElectronIsolationCumulative"],
-      ["selectedElecTauPairsMt1METcumulative", "selectedElecTauPairsMt1METlooseElectronIsolationCumulative"] ]
+      ["selectedElecTauPairsMt1METcumulative", "selectedElecTauPairsMt1METlooseElectronIsolationCumulative"],
+      ["selectedElecTauPairsPzetaDiffCumulative", "selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative"],
+      ["selectedElecTauPairZeeHypotheses", "selectedElecTauPairZeeHypothesesLooseElectronIsolation"] ]
 ) 
 elecTauAnalysisSequence_factorizedWithElectronIsolation = copy.deepcopy(elecTauAnalysisSequence)
 switchHistManagers(elecTauAnalysisSequence_factorizedWithElectronIsolation, elecTauHistManagers_factorizedWithElectronIsolation)

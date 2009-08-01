@@ -48,7 +48,9 @@ replaceEventSelections(analyzeZtoElecTauEvents_factorizedWithoutElectronIsolatio
       [ evtSelElectronTrkIP, evtSelElectronTrkIPlooseIsolation ],
       [ evtSelDiTauCandidateForElecTauAntiOverlapVeto, evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation ],
       [ evtSelDiTauCandidateForElecTauZeroCharge, evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation ],
-      [ evtSelDiTauCandidateForElecTauMt1MET, evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation ] ]
+      [ evtSelDiTauCandidateForElecTauMt1MET, evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation ],
+      [ evtSelDiTauCandidateForElecTauPzetaDiff, evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation ],
+      [ evtSelElecTauPairZeeHypothesisVeto, evtSelElecTauPairZeeHypothesisVetoLooseElectronIsolation ] ]
 )                       
 analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
 analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.analysisSequence = elecTauAnalysisSequence_factorizedWithoutElectronIsolation
