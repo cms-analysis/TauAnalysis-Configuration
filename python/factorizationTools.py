@@ -369,9 +369,11 @@ def enableFactorization_makeZtoElecTauPlots(process):
         evtSelTauProng,
         evtSelTauElectronVeto,
         evtSelTauEcalCrackVeto,
-		evtSelDiTauCandidateForElecTauAntiOverlapVeto,
+        evtSelDiTauCandidateForElecTauAntiOverlapVeto,
         evtSelDiTauCandidateForElecTauZeroCharge,
-        evtSelDiTauCandidateForElecTauMt1MET
+        evtSelDiTauCandidateForElecTauMt1MET,
+        evtSelDiTauCandidateForElecTauPzetaDiff,
+        evtSelElecTauPairZeeHypothesisVeto
     ]
 
     # defines names of MonitorElements used as numerator and denominator
