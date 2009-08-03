@@ -51,6 +51,10 @@ evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation = copy.deepcopy(e
 evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauZeroChargeCutLooseElectronIsolation', 'cumulative')
 evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauZeroChargeCutLooseElectronIsolation', 'individual')
 
+evtSelDiTauCandidateForElecTauAcoplanarity12LooseElectronIsolation = copy.deepcopy(evtSelDiTauCandidateForElecTauAcoplanarity12)
+evtSelDiTauCandidateForElecTauAcoplanarity12LooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation', 'cumulative')
+evtSelDiTauCandidateForElecTauAcoplanarity12LooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation', 'individual')
+
 evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation = copy.deepcopy(evtSelDiTauCandidateForElecTauMt1MET)
 evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauMt1METCutLooseElectronIsolation', 'cumulative')
 evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauMt1METCutLooseElectronIsolation', 'individual')
@@ -90,6 +94,7 @@ replaceHistManagerInputTags(elecTauAnalysisSequence_factorizedWithoutElectronIso
       ["selectedLayer1ElectronsTrkIPcumulative", "selectedLayer1ElectronsTrkIPlooseIsolationCumulative"],
       ["selectedElecTauPairsAntiOverlapVetoCumulative", "selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative"],
       ["selectedElecTauPairsZeroChargeCumulative", "selectedElecTauPairsZeroChargeLooseElectronIsolationCumulative"],
+      ["selectedElecTauPairsAcoplanarity12Cumulative", "selectedElecTauPairsAcoplanarity12LooseElectronIsolationCumulative"],
       ["selectedElecTauPairsMt1METcumulative", "selectedElecTauPairsMt1METlooseElectronIsolationCumulative"],
       ["selectedElecTauPairsPzetaDiffCumulative", "selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative"],
       ["selectedElecTauPairZeeHypotheses", "selectedElecTauPairZeeHypothesesLooseElectronIsolation"] ]

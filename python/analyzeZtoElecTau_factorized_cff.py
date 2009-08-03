@@ -48,6 +48,7 @@ replaceEventSelections(analyzeZtoElecTauEvents_factorizedWithoutElectronIsolatio
       [ evtSelElectronTrkIP, evtSelElectronTrkIPlooseIsolation ],
       [ evtSelDiTauCandidateForElecTauAntiOverlapVeto, evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation ],
       [ evtSelDiTauCandidateForElecTauZeroCharge, evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation ],
+      [ evtSelDiTauCandidateForElecTauAcoplanarity12, evtSelDiTauCandidateForElecTauAcoplanarity12LooseElectronIsolation ],
       [ evtSelDiTauCandidateForElecTauMt1MET, evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation ],
       [ evtSelDiTauCandidateForElecTauPzetaDiff, evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation ],
       [ evtSelElecTauPairZeeHypothesisVeto, evtSelElecTauPairZeeHypothesisVetoLooseElectronIsolation ] ]
