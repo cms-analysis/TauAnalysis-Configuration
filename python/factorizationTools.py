@@ -180,6 +180,7 @@ def enableFactorization_makeZtoMuTauPlots(process):
         evtSelTauMuonVeto,
         evtSelDiTauCandidateForMuTauAntiOverlapVeto,
         evtSelDiTauCandidateForMuTauZeroCharge,
+        evtSelDiTauCandidateForMuTauAcoplanarity12,
         evtSelDiTauCandidateForMuTauMt1MET,
         evtSelDiTauCandidateForMuTauPzetaDiff
     ]
@@ -274,8 +275,10 @@ def enableFactorization_makeZtoElecMuPlots(process):
         evtSelMuonTrkIP,
         evtSelDiTauCandidateForElecMuAntiOverlapVeto,
         evtSelDiTauCandidateForElecMuZeroCharge,
+        evtSelDiTauCandidateForElecMuAcoplanarity12,
         evtSelDiTauCandidateForElecMuMt1MET,
-        evtSelDiTauCandidateForElecMuMt2MET
+        evtSelDiTauCandidateForElecMuMt2MET,
+        evtSelDiTauCandidateForElecMuPzetaDiff
     ]
 
     # defines names of MonitorElements used as numerator and denominator
@@ -371,6 +374,7 @@ def enableFactorization_makeZtoElecTauPlots(process):
         evtSelTauEcalCrackVeto,
         evtSelDiTauCandidateForElecTauAntiOverlapVeto,
         evtSelDiTauCandidateForElecTauZeroCharge,
+        evtSelDiTauCandidateForElecTauAcoplanarity12,
         evtSelDiTauCandidateForElecTauMt1MET,
         evtSelDiTauCandidateForElecTauPzetaDiff,
         evtSelElecTauPairZeeHypothesisVeto
@@ -538,18 +542,18 @@ def enableFactorization_makeZtoElecTauPlots(process):
         'QCD_EMenriched_Pt80to170_factorized'
     )
     process.addZtoElecTau = cms.Sequence( process.scaleZtoElecTau_QCD_EMenriched_Pt20to30
-									    + process.scaleZtoElecTau_QCD_EMenriched_Pt30to80
-										+ process.scaleZtoElecTau_QCD_EMenriched_Pt80to170
-										+ process.scaleZtoElecTau_QCD_BCtoE_Pt20to30
-										+ process.scaleZtoElecTau_QCD_BCtoE_Pt30to80
-										+ process.scaleZtoElecTau_QCD_BCtoE_Pt80to170
-										+ process.scaleZtoElecTau_gammaPlusJets_Pt15to20
-										+ process.scaleZtoElecTau_gammaPlusJets_Pt20to25
-										+ process.scaleZtoElecTau_gammaPlusJets_Pt25to30
-										+ process.scaleZtoElecTau_gammaPlusJets_Pt30to35
-										+ process.scaleZtoElecTau_gammaPlusJets_PtGt35
-                                        + process.addZtoElecTau_qcdSum 
-										+ process.addZtoElecTau_gammaPlusJetsSum 
-										+ process.addZtoElecTau_smSum )
+					 + process.scaleZtoElecTau_QCD_EMenriched_Pt30to80
+					 + process.scaleZtoElecTau_QCD_EMenriched_Pt80to170
+					 + process.scaleZtoElecTau_QCD_BCtoE_Pt20to30
+					 + process.scaleZtoElecTau_QCD_BCtoE_Pt30to80
+					 + process.scaleZtoElecTau_QCD_BCtoE_Pt80to170
+					 + process.scaleZtoElecTau_gammaPlusJets_Pt15to20
+					 + process.scaleZtoElecTau_gammaPlusJets_Pt20to25
+					 + process.scaleZtoElecTau_gammaPlusJets_Pt25to30
+					 + process.scaleZtoElecTau_gammaPlusJets_Pt30to35
+					 + process.scaleZtoElecTau_gammaPlusJets_PtGt35
+                                         + process.addZtoElecTau_qcdSum 
+					 + process.addZtoElecTau_gammaPlusJetsSum 
+					 + process.addZtoElecTau_smSum )
 
 	
