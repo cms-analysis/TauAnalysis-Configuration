@@ -64,10 +64,13 @@ The label-generation method doesn't really handle conflicts in any sensible way 
 import FWCore.ParameterSet.Mixins
 import FWCore.ParameterSet.Config as cms
 import re
+import copy
 
 from TauAnalysis.Configuration.tools.tauAnalysisMakerDefinitions import elecTauEventDump, muTauEventDump, elecMuEventDump, diTauEventDump
 from TauAnalysis.Configuration.tools.tauAnalysisMakerDefinitions import diTauCandidateHistManagerForElecTau, diTauCandidateHistManagerForDiTau, diTauCandidateHistManagerForMuTau, diTauCandidateHistManagerForElecMu
 from TauAnalysis.Configuration.tools.tauAnalysisMakerDefinitions import electronHistManager, tauHistManager, metHistManager, vertexHistManager, triggerHistManager, genPhaseSpaceEventInfoHistManager, jetHistManager, muonHistManager
+
+from TauAnalysis.DQMTools.drawJobConfigurator import drawJobConfigurator
 
 """
 Define the cut list. This is a list of python dictionary objects containing the cuts we'll make. This should be a dictionary like so...
@@ -228,6 +231,8 @@ defaults = {
   )
 }
 
+class FakeNamespace:
+  pass
 
 class TauAnalysisMaker:
   """
@@ -248,7 +253,11 @@ class TauAnalysisMaker:
     self._checkOptions()
     self.name = self.options['name'] # Name of the process.
     
-    self.namespace = namespace
+    if namespace==None:
+      print "WARNING: Using a fake namespace. This works for plotting scripts but not for selection."
+      self.namespace = FakeNamespace()
+    else:
+      self.namespace = namespace
     self.all_labels = set()
     self.object_counts = {}  
     self.last_obj = {}
@@ -609,9 +618,11 @@ class TauAnalysisMaker:
       def __init__(self,**kwargs):
         for k,v in kwargs.items():
           setattr(self,k,v)
+    #if not self.processed:
+    #  print "Warning: Object processing has not run so this probably isn't going to work."
+    #  raise Exception
     if not self.processed:
-      print "Warning: Object processing has not run so this probably isn't going to work."
-      raise Exception
+      self._processCuts()
     validCuts = [c for c in self.cut_objs if c.genAnalyzerSelectorPSet()]
     for i,afterCut in enumerate(validCuts):
       obj = afterCut.object
@@ -668,7 +679,140 @@ class TauAnalysisMaker:
             afterCut=afterCutPSet,
             plots=job_plots
           )
+  
+  def makeDQMDump(self,processes):
+    process_pset = cms.PSet()
+    for p in processes:
+      setattr(process_pset,p,cms.string("%s/%sAnalyzer/FilterStatistics/"%(p,self.name)))
+  
+    dumper = cms.EDAnalyzer("DQMDumpFilterStatisticsTables",
+      dqmDirectories = process_pset
+    )
+    
+    self._addToNamespace("dump%s"%self.name,dumper)
+    
+    return cms.Sequence(dumper)
+    
+  def makeDQMFileLoad(self,processes,g):
+    
+    loader = cms.EDAnalyzer("DQMFileLoader")
+    
+    for p in processes:
+      setattr(loader,p,copy.deepcopy(g['process%s_%s'%(self.name,p)].config_dqmFileLoader))
+    
+    self._addToNamespace("load%s"%(self.name),loader)
+    
+    return cms.Sequence(loader)
+    
+  def makeDQMFileAdd(self,adds):
+    adders = []
+    for a in adds:
+      adder = cms.EDAnalyzer("DQMHistAdder")
+      setattr(adder,a,cms.PSet(
+        dqmDirectories_input = cms.vstring(
+          *adds[a]
+        ),
+        dqmDirectory_output = cms.string(a)
+      ))
+      self._addToNamespace("add%s_%s"%(self.name,a),adder)
+      adders.append(adder)
+    make_sequence = lambda x: cms.Sequence(reduce(lambda y,z: y*z,x))
+    if len(adders)>0:
+      return make_sequence(adders)
+    else:
+      return FWCore.ParameterSet.SequenceTypes._Sequenceable()
+    
+  def makeDrawJobConfigurator(self,processes):
+    return drawJobConfigurator(
+      template = cms.PSet(
+        plots = cms.PSet(
+          dqmMonitorElements = cms.vstring(''),
+          processes = cms.vstring(
+            processes
+          )
+        ),
+        xAxis = cms.string('unlabeled'),
+        yAxis = cms.string('numEntries_linear'),
+        legend = cms.string('regular'),
+        labels = cms.vstring('mcNormScale'),
+        drawOptionSet = cms.string('default'),
+        stack = cms.vstring(
+          processes
+        )
+      ),
+      dqmDirectory = '#PROCESSDIR#/%sAnalyzer/'%self.name
+    )
+  
+  def makeDQMSave(self):
+    saver = cms.EDAnalyzer("DQMSimpleFileSaver",
+      outputFileName=cms.string('plots_%s_all.root'%self.name)
+    )
+    self._addToNamespace("save%s"%self.name,saver)
+    return cms.Sequence(saver)
+  
+  def makeDQMPlotter(self,direct_processes,add_processes,g,canvasSizeX=800,canvasSizeY=640,outputFilePath='./plots/'):
+    
+    analyzer_pset = cms.PSet()
+    for dp in direct_processes:
+      setattr(analyzer_pset,dp,copy.deepcopy(g['process%s_%s'%(self.name,dp)].config_dqmHistPlotter))
+    for ap in add_processes:
+      setattr(analyzer_pset,ap,cms.PSet(
+        dqmDirectory = cms.string(ap),
+        legendEntry = cms.string(ap),
+        type = cms.string('smMC')
+      ))
+      
+    xaxes_pset = cms.PSet()
+    for k in g:
+      if k.startswith('xAxis'):
+        setattr(xaxes_pset,k.split('_',1)[-1],copy.deepcopy(g[k]))
         
+    yaxes_pset = cms.PSet()
+    for k in g:
+      if k.startswith('yAxis'):
+        setattr(yaxes_pset,k.split('_',1)[-1],copy.deepcopy(g[k]))
+        
+    legends_pset = cms.PSet()
+    for k in g:
+      if k.startswith('legend'):
+        setattr(legends_pset,k.split('_',1)[-1],copy.deepcopy(g[k]))
+    
+    labels_pset = cms.PSet()
+    for k in g:
+      if k.startswith('label'):
+        setattr(labels_pset,k.split('_',1)[-1],copy.deepcopy(g[k]))
+        
+    drawopts_pset = cms.PSet()
+    for k in g:
+      if k.startswith('drawOption'):
+        setattr(drawopts_pset,k.split('_',1)[-1],copy.deepcopy(g[k]))
+        
+    dJC = self.makeDrawJobConfigurator(direct_processes+add_processes.keys())
+    self.generateDrawJobs(dJC)
+    
+    
+    plotter = cms.EDAnalyzer("DQMHistPlotter",
+      processes = analyzer_pset,
+      xAxes = xaxes_pset,
+      yAxes = yaxes_pset,
+      legends = legends_pset,
+      labels = labels_pset,
+      drawOptionSets = cms.PSet(default=drawopts_pset),
+      drawJobs = dJC.configure(),
+      canvasSizeX = cms.int32(canvasSizeX),
+      canvasSizeY = cms.int32(canvasSizeY),
+      outputFilePath = cms.string(outputFilePath),
+      indOutputFileName = cms.string('plots%s_#PLOT#.png'%self.name)
+    )
+    
+    self._addToNamespace('plot%s'%self.name,plotter)
+        
+    return cms.Sequence(plotter)
+       
+  
+  
+    
+    
           
     
     
@@ -964,6 +1108,9 @@ def ElecMuPairCut(**kwargs):
   
 def Plot(meName, **kwargs):
   kwargs['meName']=meName
+  return kwargs
+  
+def Options(**kwargs):
   return kwargs
          
 # Print out the parameterset if run with python tauAnalysisMaker.py   
