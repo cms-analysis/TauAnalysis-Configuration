@@ -9,22 +9,20 @@ from TauAnalysis.Configuration.producePatTuple_cff import *
 
 #------------------------------------- met --------------------------------------#
 #******* custom reco ********
-from TauAnalysis.GenSimTools.genMETWithMu_cff import *
-producePrePat.replace( pfAllChargedHadrons, produceGenMETwithMu + pfAllChargedHadrons )
+#Production of custom genMET is not needed with 31X, it provides 'genMetTrue' by default
 from PhysicsTools.PFCandProducer.pfMET_cfi  import *
 #pfMET.verbose = cms.untracked.bool(True)
-patAODExtraReco.replace( patJetMETCorrections, patJetMETCorrections + pfMET )
 ### Use this to add the PF MET side-by-side to the PAT MET
 layer1PFMETs = layer1METs.clone(
     metSource = cms.InputTag("pfMET"),
     addMuonCorrections = cms.bool(False),
     addTrigMatch = cms.bool(False),
-    genMETSource = cms.InputTag("genMETWithMu")
+    genMETSource = cms.InputTag("genMetTrue")
 )
 layer1METs.metSource  = cms.InputTag("corMetType1Icone5Muons")
 #layer1METs.addMuonCorrections = cms.bool(True) ###this is completely dummy!!!!!!!!
-layer1METs.genMETSource = cms.InputTag("genMETWithMu")
-allLayer1Objects.replace( layer1METs, layer1METs + layer1PFMETs)
+layer1METs.genMETSource = cms.InputTag("genMetTrue")
+makeLayer1METs += cms.Sequence(pfMET * layer1PFMETs)
 
 #---------------------------------- electrons -----------------------------------#
 #******* custom reco ********
