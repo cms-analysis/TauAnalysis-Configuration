@@ -75,7 +75,10 @@ fileNamesZmumu_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_6.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_8.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_9.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_10.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_10.root'
+)
+
+fileNamesZmumu_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_11.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_12.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_14.root',
@@ -87,7 +90,7 @@ fileNamesZmumu_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_20.root'
 )
 
-fileNamesZmumu_part02 = cms.untracked.vstring(    
+fileNamesZmumu_part03 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_21.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_23.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_24.root',
@@ -95,19 +98,21 @@ fileNamesZmumu_part02 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_27.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_28.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_29.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_30.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_30.root'
+)
+
+fileNamesZmumu_part04 = cms.untracked.vstring( 
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_31.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_32.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_33.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_34.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_35.root',
-    
-)
-
-fileNamesZmumu_part03 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_37.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_38.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_39.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_39.root'
+)
+
+fileNamesZmumu_part05 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_41.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_42.root',
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_43.root',
@@ -623,105 +628,90 @@ plotsOutputFileNamePPmuXptGt20 = cms.string('plotsZtoMuTau_PPmuXptGt20_partXX.ro
 patTupleOutputFileNamePPmuXptGt20 = cms.string('patTupleZtoMuTau_PPmuXptGt20_partXX.root')
 #--------------------------------------------------------------------------------
 
-
 #--------------------------------------------------------------------------------
 # TTbar sample generated with Madgraph
 #  
-
-# 
-#
-
 intLumiTTplusJets = float(2986)
 corrFactorTTplusJets = float(1.0)
 
-
 fileNamesTTplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_1.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_2.root',   
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_2.root'
 )
 
-fileNamesTTplusJets_part02 = cms.untracked.vstring(
+fileNamesTTplusJets_part02 = cms.untracked.vstring(    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_3.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_4.root',    
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_4.root'
 )
 
-fileNamesTTplusJets_part03 = cms.untracked.vstring(
+fileNamesTTplusJets_part03 = cms.untracked.vstring(     
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_5.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_6.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_6.root'
 )
 
 fileNamesTTplusJets_part04 = cms.untracked.vstring(
-    
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_7.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_8.root',    
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_8.root'
 )
-
 
 fileNamesTTplusJets_part05 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_9.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_10.root',    
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_10.root'
 )
 
 fileNamesTTplusJets_part06 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_11.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_12.root',    
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_12.root'
 )
-
 
 fileNamesTTplusJets_part07 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_13.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_14.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_14.root'
 )
 
 fileNamesTTplusJets_part08 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_15.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_16.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_16.root'
 )
+
 fileNamesTTplusJets_part09 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_17.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_18.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_18.root'
 )
 
 fileNamesTTplusJets_part10 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_19.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_20.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_20.root'
 )
 
 fileNamesTTplusJets_part11 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_21.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_22.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_22.root'
 )
 
-fileNamesTTplusJets_part12 = cms.untracked.vstring(
-   'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_23.root',
-   'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_24.root', 
+fileNamesTTplusJets_part12 = cms.untracked.vstring(    
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_23.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_24.root'
 )
 
 fileNamesTTplusJets_part13 = cms.untracked.vstring(
-   'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_25.root',
-   'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_26.root',  
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_25.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_26.root'
 )
 
 fileNamesTTplusJets_part14 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_27.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_28.root',  
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_28.root'
 )
-
 
 fileNamesTTplusJets_part15 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_29.root',
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_30.root',
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_30.root'
 )
-
 
 fileNamesTTplusJets_part16 = cms.untracked.vstring(
-    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_31.root', 
+    'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/TTbar31/muTauSkim_31.root'    
 )
-
-
-
-
-
 
 genPhaseSpaceCutTTplusJets = cms.PSet(
     pluginName = cms.string('genPhaseSpaceCut'),
@@ -733,4 +723,3 @@ genPhaseSpaceCutTTplusJets = cms.PSet(
 plotsOutputFileNameTTplusJets = cms.string('plotsZtoMuTau_TTplusJets_partXX.root')
 patTupleOutputFileNameTTplusJets = cms.string('patTupleZtoMuTau_TTplusJets_partXX.root')
 #--------------------------------------------------------------------------------
-
