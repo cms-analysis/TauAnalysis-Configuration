@@ -31,6 +31,9 @@ useLeadingTausOnly = True
 # verbosity:
 setVerbose = False
 
+# add run data (run description)
+addRunData = True
+
 # output:
 outputFile = dirName+'analysis_DiTau_PF2PAT.root'
 
@@ -114,7 +117,9 @@ process.out.outputCommands.extend(cms.untracked.vstring('keep *_recoHTauDiTau_*_
 process.out.outputCommands.extend(cms.untracked.vstring('keep *_recoCaloTauDiTau_*_*',
                                                         'keep *_recoCaloMetDiTau_*_*',
                                                         'keep *_recoTcMetDiTau_*_*') )
-
+if addRunData:
+    process.out.outputCommands.extend(cms.untracked.vstring('keep LHERunInfoProduct_*_*_*',
+                                                            'keep GenRunInfoProduct_*_*_*') )
 
 process.outpath = cms.EndPath( process.out )
 

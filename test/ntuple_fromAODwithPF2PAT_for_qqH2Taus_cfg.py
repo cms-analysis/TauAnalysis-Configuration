@@ -44,6 +44,9 @@ addTcMet = True
 # add caloTaus
 addCaloTaus = True
 
+# add run data (run description)
+addRunData = True
+
 addPF2PATProducts = True
 addAODExtraProducts = True
 addTauExtraProducts = True
@@ -191,4 +194,7 @@ if addTcMet:
 if addCaloTaus:
     process.out.outputCommands.extend(cms.untracked.vstring('keep *_selectedLayer1CaloTaus_*_*',
                                                             'keep *_pfTauMatchedLayer1CaloTaus_*_*') )
-    
+if addRunData:
+    process.out.outputCommands.extend(cms.untracked.vstring('keep LHERunInfoProduct_*_*_*',
+                                                            'keep GenRunInfoProduct_*_*_*') )
+        
