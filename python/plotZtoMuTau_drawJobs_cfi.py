@@ -369,7 +369,7 @@ drawJobConfigurator_ZtoMuTau.add(
             name = "finalSamplePlots_muon"
         ),
         drawJobConfigEntry(
-            meName = 'MuonQuantities/MuonMatchingGenParticlePdgId',
+            meName = 'MuonQuantities/hMuonMatchingGenParticlePdgId',
             title = "PdgId of gen. Particle matching Muon (final Event sample)",
             xAxis = 'PdgId',
             name = "finalSamplePlots_pdgIdGenParticleMatchingMuon"
@@ -382,7 +382,7 @@ drawJobConfigurator_ZtoMuTau.add(
             name = "finalSamplePlots_tau"
         ),
         drawJobConfigEntry(
-            meName = 'TauQuantities/TauMatchingGenParticlePdgId',
+            meName = 'TauQuantities/hTauMatchingGenParticlePdgId',
             title = "PdgId of gen. Particle matching Tau (final Event sample)",
             xAxis = 'PdgId',
             name = "finalSamplePlots_pdgIdGenParticleMatchingTau"

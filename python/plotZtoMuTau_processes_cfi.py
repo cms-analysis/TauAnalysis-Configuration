@@ -30,15 +30,13 @@ processZtoMuTau_Zmumu = copy.deepcopy(process_Zmumu)
 processZtoMuTau_Zmumu.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part01.root',
     plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part02.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part03.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part04.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part05.root'
+    plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part03.root'
 )
 processZtoMuTau_Zmumu.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZmumu*intLumiData/intLumiZmumu)
 
 processZtoMuTau_ZmumuSum = copy.deepcopy(process_Zmumu)
 processZtoMuTau_ZmumuSum.config_dqmFileLoader.inputFileNames = cms.vstring(
-    plotDirectoryName.value() + 'plotsZtoMuTau_ZmumuSum.root'
+    plotDirectoryName.value() + 'plotsZtoEprocessZtoMuTau_ZmumuSum.root'
 )
 processZtoMuTau_ZmumuSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processZtoMuTau_ZmumuSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
@@ -115,8 +113,7 @@ processZtoMuTau_WplusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 processZtoMuTau_InclusivePPmuX = copy.deepcopy(process_InclusivePPmuX)
 processZtoMuTau_InclusivePPmuX.config_dqmFileLoader.inputFileNames = cms.vstring(
-    plotDirectoryName.value() + 'plotsZtoMuTau_InclusivePPmuX_part01.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_InclusivePPmuX_part02.root'
+    plotDirectoryName.value() + 'plotsZtoMuTau_InclusivePPmuX.root'
 )
 processZtoMuTau_InclusivePPmuX.config_dqmFileLoader.scaleFactor = cms.double(corrFactorInclusivePPmuX*intLumiData/intLumiInclusivePPmuX)
 
@@ -175,20 +172,7 @@ processZtoMuTau_TTplusJets = copy.deepcopy(process_TTplusJets)
 processZtoMuTau_TTplusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part01.root',
     plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part02.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part03.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part04.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part05.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part06.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part07.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part08.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part09.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part10.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part11.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part12.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part13.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part14.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part15.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part16.root'
+    plotDirectoryName.value() + 'plotsZtoMuTau_TTplusJets_part03.root'
 )
 processZtoMuTau_TTplusJets.config_dqmFileLoader.scaleFactor = cms.double(corrFactorTTplusJets*intLumiData/intLumiTTplusJets)
 

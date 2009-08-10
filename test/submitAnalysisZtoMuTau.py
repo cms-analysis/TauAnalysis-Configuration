@@ -32,7 +32,7 @@ for i in range(2):
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
 # Z --> mu mu jobs
-for i in range(5):
+for i in range(3):
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "Zmumu_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
@@ -65,7 +65,7 @@ for i in range(3):
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
 # TTplusJets  jobs
-for i in range(16):
+for i in range(3):
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "TTplusJets_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
