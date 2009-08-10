@@ -609,7 +609,8 @@ class TauAnalysisMaker:
     options['plots'] -> for all cuts
     options['endplots'] -> for after the last cut
     objects[obj]['plots'] -> for cuts on 'obj'
-    cut['plots'] -> for that cut
+    cut['plots'] -> for that cut (afterwards)
+    cut['preplots'] -> for that cut (beforehand)
     
     """
     print "Starting TauAnalysisMaker drawJob creation\n"
@@ -632,13 +633,15 @@ class TauAnalysisMaker:
       if i!=len(validCuts)-1:
         beforeCut = validCuts[i+1]
         beforeCutPSet = validCuts[i+1].genAnalyzerSelectorPSet()
+        plots += beforeCut.preplots
       else:
         plots += self.options['endplots']
+        
       job_plots = []
       if 'plots' in self.objects[obj]:
         plots += self.objects[obj]['plots']
         
-      print "\nAfter cut %s"%afterCut.label
+      print '\nAfter cut %s ("%s")'%(afterCut.label,afterCut.title)
         
       for plot in plots:
         if not 'meName' in plot:
@@ -680,13 +683,16 @@ class TauAnalysisMaker:
             plots=job_plots
           )
   
-  def makeDQMDump(self,processes):
+  def makeDQMDump(self,processes,columns=None):
+    if columns==None:
+      columns = ["Passed", "cumul. Efficiency", "Efficiency"]
     process_pset = cms.PSet()
     for p in processes:
       setattr(process_pset,p,cms.string("%s/%sAnalyzer/FilterStatistics/"%(p,self.name)))
   
     dumper = cms.EDAnalyzer("DQMDumpFilterStatisticsTables",
-      dqmDirectories = process_pset
+      dqmDirectories = process_pset,
+      columnsSummaryTable = cms.vstring(*columns)
     )
     
     self._addToNamespace("dump%s"%self.name,dumper)
@@ -698,7 +704,7 @@ class TauAnalysisMaker:
     loader = cms.EDAnalyzer("DQMFileLoader")
     
     for p in processes:
-      setattr(loader,p,copy.deepcopy(g['process%s_%s'%(self.name,p)].config_dqmFileLoader))
+      setattr(loader,p,copy.deepcopy(g['process%s_%sSum'%(self.name,p)].config_dqmFileLoader))
     
     self._addToNamespace("load%s"%(self.name),loader)
     
@@ -722,26 +728,31 @@ class TauAnalysisMaker:
     else:
       return FWCore.ParameterSet.SequenceTypes._Sequenceable()
     
-  def makeDrawJobConfigurator(self,processes):
-    return drawJobConfigurator(
-      template = cms.PSet(
-        plots = cms.PSet(
-          dqmMonitorElements = cms.vstring(''),
-          processes = cms.vstring(
-            processes
-          )
-        ),
-        xAxis = cms.string('unlabeled'),
-        yAxis = cms.string('numEntries_linear'),
-        legend = cms.string('regular'),
-        labels = cms.vstring('mcNormScale'),
-        drawOptionSet = cms.string('default'),
-        stack = cms.vstring(
+  def makeDrawJobConfigurator(self,processes,stack=True):
+    template_pset = cms.PSet(
+      plots = cms.PSet(
+        dqmMonitorElements = cms.vstring(''),
+        processes = cms.vstring(
           processes
         )
       ),
+      xAxis = cms.string('unlabeled'),
+      yAxis = cms.string('numEntries_linear'),
+      legend = cms.string('regular'),
+      labels = cms.vstring('mcNormScale'),
+      drawOptionSet = cms.string('default'), 
+    )
+      
+    if stack:
+      setattr(template_pset,'stack',cms.vstring(processes))
+    #if normalize:
+    #  setattr(template_pset,'normalize',cms.bool(True))
+    
+    return drawJobConfigurator(
+      template = template_pset,
       dqmDirectory = '#PROCESSDIR#/%sAnalyzer/'%self.name
     )
+    
   
   def makeDQMSave(self):
     saver = cms.EDAnalyzer("DQMSimpleFileSaver",
@@ -750,7 +761,7 @@ class TauAnalysisMaker:
     self._addToNamespace("save%s"%self.name,saver)
     return cms.Sequence(saver)
   
-  def makeDQMPlotter(self,direct_processes,add_processes,g,canvasSizeX=800,canvasSizeY=640,outputFilePath='./plots/'):
+  def makeDQMPlotter(self,direct_processes,add_processes,g,canvasSizeX=800,canvasSizeY=640,outputFilePath='./plots/',stack=True,normalize=False):
     
     analyzer_pset = cms.PSet()
     for dp in direct_processes:
@@ -783,11 +794,16 @@ class TauAnalysisMaker:
         setattr(labels_pset,k.split('_',1)[-1],copy.deepcopy(g[k]))
         
     drawopts_pset = cms.PSet()
+    i = 0
     for k in g:
       if k.startswith('drawOption'):
-        setattr(drawopts_pset,k.split('_',1)[-1],copy.deepcopy(g[k]))
+        i += 1
+        drawopt = copy.deepcopy(g[k])
+        if not stack:
+          drawopt.fillStyle = cms.int32(3001+i%20)
+        setattr(drawopts_pset,k.split('_',1)[-1],drawopt)
         
-    dJC = self.makeDrawJobConfigurator(direct_processes+add_processes.keys())
+    dJC = self.makeDrawJobConfigurator(direct_processes+add_processes.keys(),stack)
     self.generateDrawJobs(dJC)
     
     
@@ -804,6 +820,10 @@ class TauAnalysisMaker:
       outputFilePath = cms.string(outputFilePath),
       indOutputFileName = cms.string('plots%s_#PLOT#.png'%self.name)
     )
+    
+    if normalize:
+      for plot in plotter.drawJobs.parameters_():
+        getattr(plotter.drawJobs,plot).norm =  cms.double(1.)
     
     self._addToNamespace('plot%s'%self.name,plotter)
         
@@ -844,6 +864,10 @@ class TauAnalysisCut:
       self.plots = kwargs['plots']
     else:
       self.plots = []
+    if 'preplots' in kwargs:
+      self.preplots = kwargs['preplots']
+    else:
+      self.preplots = []
     if 'title' in kwargs: 
       self.title = kwargs['title']
     if 'label' in kwargs:
@@ -1065,9 +1089,11 @@ use ElectronCut(cut=cms.string(...))
 To define a cut for a user-specified object, use 
 Cut('objectname',cut=cms.string...)
 
-Note this does not allow SomeCut(class='abc') since class is a reserved word. Will change this to cppclass. FIXME.
+Note this does not allow SomeCut(class='abc') since class is a reserved word. Will change this to cppclass. 
 Otherwise, you can do the ugly hack:
 SomeCut(cut=cms.string(...),**{'class':'myclass'})P{
+
+Remember that TauAnalysisMaker fundamentally deals in dictionaries, this is just a convienience)
 """    
 def Cut(object,**kwargs):
   kwargs['object']=object

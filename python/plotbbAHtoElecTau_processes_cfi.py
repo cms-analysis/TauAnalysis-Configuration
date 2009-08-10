@@ -145,7 +145,7 @@ processbbAHtoElecTau_Zee.config_dqmFileLoader.scaleFactor = cms.double(corrFacto
 
 processbbAHtoElecTau_ZeeSum = copy.deepcopy(process_Zee)
 processbbAHtoElecTau_ZeeSum.config_dqmFileLoader.inputFileNames = cms.vstring(
-    plotDirectoryName.value() + 'plotsZtoEprocessbbAHtoElecTau_ZeeSum.root'
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeeSum.root'
 )
 processbbAHtoElecTau_ZeeSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processbbAHtoElecTau_ZeeSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
@@ -515,6 +515,56 @@ processbbAHtoElecTau_ZplusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstr
 processbbAHtoElecTau_ZplusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
 processbbAHtoElecTau_ZplusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
+processbbAHtoElecTau_ZeePlusJets = copy.deepcopy(process_ZplusJets)
+processbbAHtoElecTau_ZeePlusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part01.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part02.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part03.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part04.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part05.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part06.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part07.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part08.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part09.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part10.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part11.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part12.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJets_part13.root'
+)
+processbbAHtoElecTau_ZeePlusJets.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZeePlusJets*intLumiData/intLumiZeePlusJets)
+
+processbbAHtoElecTau_ZeePlusJetsSum = copy.deepcopy(process_ZplusJets)
+processbbAHtoElecTau_ZeePlusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZeePlusJetsSum.root'
+)
+processbbAHtoElecTau_ZeePlusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
+processbbAHtoElecTau_ZeePlusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
+
+processbbAHtoElecTau_ZtautauPlusJets = copy.deepcopy(process_ZplusJets)
+processbbAHtoElecTau_ZtautauPlusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part01.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part02.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part03.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part04.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part05.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part06.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part07.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part08.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part09.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part10.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part11.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part12.root',
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJets_part13.root'
+)
+processbbAHtoElecTau_ZtautauPlusJets.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZtautauPlusJets*intLumiData/intLumiZtautauPlusJets)
+
+processbbAHtoElecTau_ZtautauPlusJetsSum = copy.deepcopy(process_ZplusJets)
+processbbAHtoElecTau_ZtautauPlusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsbbAHtoElecTau_ZtautauPlusJetsSum.root'
+)
+processbbAHtoElecTau_ZtautauPlusJetsSum.config_dqmFileLoader.dqmDirectory_store = cms.string('')
+processbbAHtoElecTau_ZtautauPlusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
+
 #--------------------------------------------------------------------------------
 
 processbbAHtoElecTau_TTplusJets = copy.deepcopy(process_TTplusJets)
@@ -527,9 +577,9 @@ processbbAHtoElecTau_TTplusJets.config_dqmFileLoader.inputFileNames = cms.vstrin
     plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part06.root',
     plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part07.root',
     plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part08.root',
-    plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part09.root',
-    plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part10.root',
-    plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part12.root',
+    #plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part09.root',
+    #plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part10.root',
+    #plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part12.root',
     plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part13.root',
     plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part14.root',
     plotDirectoryName.value() + 'plotsbbAHtoElecTau_TTplusJets_part15.root',
