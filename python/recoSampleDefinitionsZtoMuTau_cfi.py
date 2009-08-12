@@ -12,9 +12,8 @@ intLumiData = float(200.)
 #  integrated luminosity = 1135 pb^-1
 # (corrected by scale factor of 1.28 for missing files)
 #
-intLumiZtautau = float(200.)
-corrFactorZtautau = float(0.23)
-#corrFactorZtautau = float(1.)
+intLumiZtautau = float(1135.4)
+corrFactorZtautau = float(1.28)
 
 fileNamesZtautau_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/ZtautauSkimMuPFCaloTauComplStatis/muTauSkim_1.root',
@@ -62,9 +61,8 @@ patTupleOutputFileNameZtautau = cms.string('patTupleZtoMuTau_Ztautau_partXX.root
 #  integrated luminosity = 633 pb^-1
 # (corrected by scale factor of 1.49 for missing files)
 #
-intLumiZmumu = float(200.)
-corrFactorZmumu = float(1.57)
-#corrFactorZmumu = float(1.)
+intLumiZmumu = float(633.)
+corrFactorZmumu = float(1.49)
 
 fileNamesZmumu_part01 = cms.untracked.vstring(
     #'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZMuMu01/muTauSkim_1.root',
@@ -145,9 +143,8 @@ patTupleOutputFileNameZmumu = cms.string('patTupleZtoMuTau_Zmumu_partXX.root')
 #        the filter efficiency is already included in the cross-sections
 #        listed at https://twiki.cern.ch/twiki/bin/view/CMS/ProductionSummer2008 !!)
 #
-intLumiZplusJets = float(200.)
-corrFactorZplusJets = float(0.68)
-#corrFactorZplusJets = float(1.)
+intLumiZplusJets = float(197.)
+corrFactorZplusJets = float(1.)
 
 fileNamesZplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauZjets01/muTauSkim_1.root',
@@ -275,9 +272,8 @@ genPhaseSpaceCutZtautauPlusJets = cms.PSet(
 #        the filter efficiency is already included in the cross-sections
 #        listed at https://twiki.cern.ch/twiki/bin/view/CMS/ProductionSummer2008 !!)
 #
-intLumiWplusJets = float(200.)
-corrFactorWplusJets = float(1.11)
-#corrFactorWplusJets = float(1.)
+intLumiWplusJets = float(297.)
+corrFactorWplusJets = float(1.36)
 
 fileNamesWplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/SkimMuTauWjets01/muTauSkim_1.root',
@@ -414,9 +410,8 @@ patTupleOutputFileNameWplusJets = cms.string('patTupleZtoMuTau_WplusJets_partXX.
 #  integrated luminosity = 0.044 pb^-1
 # (corrected by scale factor of 1.22 for missing files)
 #
-intLumiInclusivePPmuX = float(200.)
-corrFactorInclusivePPmuX = float(5764.)
-#corrFactorInclusivePPmuX = float(1.)
+intLumiInclusivePPmuX = float(0.044)
+corrFactorInclusivePPmuX = float(1.22)
 
 fileNamesInclusivePPmuX_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/InclusivePPmuXFromMon/skim_MuTau_3.root',
@@ -456,9 +451,8 @@ patTupleOutputFileNameInclusivePPmuX = cms.string('patTupleZtoMuTau_InclusivePPm
 #  integrated luminosity = 42 pb^-1
 # (corrected by scale factor of 8.29(!!) for missing files)
 #
-intLumiPPmuXptGt20 = float(200.0)
-corrFactorPPmuXptGt20 = float(36.38)
-#corrFactorPPmuXptGt20 = float(1.)
+intLumiPPmuXptGt20 = float(42.0)
+corrFactorPPmuXptGt20 = float(8.29)
 
 fileNamesPPmuXptGt20_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/l/lusito/SkimJanuary09/IncMuPt1501/muTauSkim_1.root',
@@ -630,7 +624,7 @@ patTupleOutputFileNamePPmuXptGt20 = cms.string('patTupleZtoMuTau_PPmuXptGt20_par
 
 #--------------------------------------------------------------------------------
 # TTbar sample generated with Madgraph
-#  
+#
 intLumiTTplusJets = float(2986)
 corrFactorTTplusJets = float(1.0)
 
