@@ -38,9 +38,10 @@ for i in range(5):
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
 # pp --> mu X QCD jobs
-submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "InclusivePPmuX",
-              replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = true",
-              job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+for i in range(2):
+    submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "InclusivePPmuX_part%(i)02d" % {"i" : (i + 1)},
+                  replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = true",
+                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
 for i in range(35):
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "PPmuXptGt20_part%(i)02d" % {"i" : (i + 1)},
