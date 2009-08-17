@@ -5,7 +5,8 @@ from TauAnalysis.Configuration.makeReplacementsHarvesting import makeReplacement
 
 # name of the directory (either on afs area or castor)
 # to which all .root files produced by the cmsRun job will be copied
-outputDirectory = "/castor/cern.ch/user/l/lusito/ZtoMuTauAnalysis/"
+outputDirectory = "/castor/cern.ch/user/v/veelken/plots/ZtoMuTau/"
+#outputDirectory = "/castor/cern.ch/user/l/lusito/ZtoMuTauAnalysis/"
 
 #--------------------------------------------------------------------------------
 #
@@ -30,9 +31,10 @@ submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", 
               job = "harvesting", queue = "1nh", outputDirectory = outputDirectory)
 
 # harvest PPmuXptGt20
-submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "PPmuXptGt20",
-              replFunction = makeReplacementsHarvesting, replacements = "",
-              job = "harvesting", queue = "1nh", outputDirectory = outputDirectory)
+for i in range(2):
+    submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "PPmuXptGt20_part%(i)02d" % {"i" : (i + 1)},
+                  replFunction = makeReplacementsHarvesting, replacements = "",
+                  job = "harvesting", queue = "1nh", outputDirectory = outputDirectory)
 
 # harvest W/Z + jets
 submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "WplusJets",
