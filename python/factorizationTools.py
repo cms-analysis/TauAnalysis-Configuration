@@ -217,8 +217,8 @@ def enableFactorization_makeZtoMuTauPlots(process):
 
     # compute QCD background sum using factorized histograms and FilterStatistics objects
     process.addZtoMuTau_qcdSum.qcdSum.dqmDirectories_input = cms.vstring(
-        'InclusivePPmuX_factorized',
-        'PPmuXptGt20_factorized'
+        'harvested/InclusivePPmuX_factorized',
+        'harvested/PPmuXptGt20_factorized'
     )
 
     process.addZtoMuTau = cms.Sequence( process.scaleZtoMuTau_InclusivePPmuX + process.scaleZtoMuTau_PPmuXptGt20
@@ -315,8 +315,8 @@ def enableFactorization_makeZtoElecMuPlots(process):
 
     # compute QCD background sum using factorized histograms and FilterStatistics objects
     process.addZtoElecMu_qcdSum.qcdSum.dqmDirectories_input = cms.vstring(
-        'InclusivePPmuX_factorized',
-        'PPmuXptGt20_factorized'
+        'harvested/InclusivePPmuX_factorized',
+        'harvested/PPmuXptGt20_factorized'
     )
 
     process.addZtoElecMu = cms.Sequence( process.scaleZtoElecMu_InclusivePPmuX + process.scaleZtoElecMu_PPmuXptGt20
