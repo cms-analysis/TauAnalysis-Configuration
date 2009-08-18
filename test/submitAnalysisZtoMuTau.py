@@ -43,13 +43,13 @@ for i in range(2):
                   replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = true",
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
-for i in range(35):
+for i in range(51):
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "PPmuXptGt20_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = true",
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
 
 # W/Z + jets jobs
-for i in range(6):
+for i in range(11):
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau", sample = "WplusJets_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements = "maxEvents = -1; applyFactorization = false",
                   job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
