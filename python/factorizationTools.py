@@ -60,7 +60,8 @@ def composeFactorizationSequence(process,
                                  dqmDirectoryIn_factorizedTightEvtSel, evtSel_factorizedTight, 
                                  dqmDirectoryIn_factorizedLooseEvtSel, evtSel_factorizedLoose,
                                  meName_numerator, meName_denominator,
-                                 dqmDirectoryOut):
+                                 dqmDirectoryOut,
+                                 dropInputDirectories = True):
     # compose sequence applying factorization
     # to histograms and FilterStatistics objects
     
@@ -115,6 +116,14 @@ def composeFactorizationSequence(process,
         meType = cms.string("real"),
         dqmDirectory_output = cms.string(dqmDirectoryOut + "FilterStatistics" + "/")
     )                                       
+
+    # delete original histograms and FilterStatistics objects
+    # after applying factorization
+    # (add drop command to last DQMHistScaler module put in sequence)
+    if dropInputDirectories:
+        setattr(dqmHistScaler_filterStatLooseEvtSel, "drop", cms.vstring(
+            [ dqmDirectoryIn_factorizedLooseEvtSel,
+              dqmDirectoryIn_factorizedTightEvtSel ] ))
         
     # add EDAnalyzers copying histograms and FilterStatistics objects
     # to process object
