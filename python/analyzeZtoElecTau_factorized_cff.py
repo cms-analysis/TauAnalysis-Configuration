@@ -17,13 +17,6 @@ from TauAnalysis.Configuration.factorizationTools import replaceEventSelections
 
 analyzeZtoElecTauEvents_factorizedWithElectronIsolation = copy.deepcopy(analyzeZtoElecTauEvents)
 analyzeZtoElecTauEvents_factorizedWithElectronIsolation.name = cms.string('zElecTauAnalyzer_factorizedWithElectronIsolation')
-analyzeZtoElecTauEvents_factorizedWithElectronIsolation.histManagers = cms.VPSet(
-    genPhaseSpaceEventInfoHistManager,
-    electronHistManager,
-    tauHistManager,
-    vertexHistManager,
-    triggerHistManager
-)
 analyzeZtoElecTauEvents_factorizedWithElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithElectronIsolation
 analyzeZtoElecTauEvents_factorizedWithElectronIsolation.analysisSequence = elecTauAnalysisSequence_factorizedWithElectronIsolation
 
