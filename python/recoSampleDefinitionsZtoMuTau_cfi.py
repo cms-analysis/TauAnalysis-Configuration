@@ -52,7 +52,7 @@ genPhaseSpaceCutZtautau = cms.PSet(
 )
 
 plotsOutputFileNameZtautau = cms.string('plotsZtoMuTau_Ztautau_partXX.root')
-patTupleOutputFileNameZtautau = cms.string('patTupleZtoMuTau_Ztautau_partXX.root')
+patTupleOutputFileNameZtautau = cms.untracked.string('patTupleZtoMuTau_Ztautau_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -130,7 +130,7 @@ genPhaseSpaceCutZmumu = cms.PSet(
 )
 
 plotsOutputFileNameZmumu = cms.string('plotsZtoMuTau_Zmumu_partXX.root')
-patTupleOutputFileNameZmumu = cms.string('patTupleZtoMuTau_Zmumu_partXX.root')
+patTupleOutputFileNameZmumu = cms.untracked.string('patTupleZtoMuTau_Zmumu_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -416,7 +416,7 @@ genPhaseSpaceCutWplusJets = cms.PSet(
 )
 
 plotsOutputFileNameWplusJets = cms.string('plotsZtoMuTau_WplusJets_partXX.root')
-patTupleOutputFileNameWplusJets = cms.string('patTupleZtoMuTau_WplusJets_partXX.root')
+patTupleOutputFileNameWplusJets = cms.untracked.string('patTupleZtoMuTau_WplusJets_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -457,7 +457,7 @@ genPhaseSpaceCutInclusivePPmuX = cms.PSet(
 )
 
 plotsOutputFileNameInclusivePPmuX = cms.string('plotsZtoMuTau_InclusivePPmuX_partXX.root')
-patTupleOutputFileNameInclusivePPmuX = cms.string('patTupleZtoMuTau_InclusivePPmuX_partXX.root')
+patTupleOutputFileNameInclusivePPmuX = cms.untracked.string('patTupleZtoMuTau_InclusivePPmuX_partXX.root')
 #--------------------------------------------------------------------------------
 
 
@@ -1116,7 +1116,7 @@ genPhaseSpaceCutPPmuXptGt20 = cms.PSet(
 )
 
 plotsOutputFileNamePPmuXptGt20 = cms.string('plotsZtoMuTau_PPmuXptGt20_partXX.root')
-patTupleOutputFileNamePPmuXptGt20 = cms.string('patTupleZtoMuTau_PPmuXptGt20_partXX.root')
+patTupleOutputFileNamePPmuXptGt20 = cms.untracked.string('patTupleZtoMuTau_PPmuXptGt20_partXX.root')
 #--------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------
@@ -1212,5 +1212,5 @@ genPhaseSpaceCutTTplusJets = cms.PSet(
 )
 
 plotsOutputFileNameTTplusJets = cms.string('plotsZtoMuTau_TTplusJets_partXX.root')
-patTupleOutputFileNameTTplusJets = cms.string('patTupleZtoMuTau_TTplusJets_partXX.root')
+patTupleOutputFileNameTTplusJets = cms.untracked.string('patTupleZtoMuTau_TTplusJets_partXX.root')
 #--------------------------------------------------------------------------------
