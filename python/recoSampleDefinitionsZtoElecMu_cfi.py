@@ -12,6 +12,7 @@ intLumiData = float(200.)
 # (to be corrected for missing files)
 #
 intLumiZtautau = float(1135.4)
+corrFactorZtautau = float(1.)
 
 fileNamesZtautau = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/Ztautau/EMuSkim/elecMuSkim_1.root',
@@ -52,6 +53,7 @@ patTupleOutputFileNameZtautau = cms.untracked.string('patTupleZtoElecMu_Ztautau.
 # (to be corrected for missing files)
 #
 intLumiZee = float(90.)
+corrFactorZee = float(1.)
 
 fileNamesZee = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/Zee/elecMuSkim_1.root',
@@ -82,6 +84,7 @@ patTupleOutputFileNameZee = cms.untracked.string('patTupleZtoElecMu_Zee.root')
 # (to be corrected for missing files)
 #
 intLumiZmumu = float(633.)
+corrFactorZmumu = float(1.)
 
 fileNamesZmumu = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/Zmumu/elecMuSkim_2.root',
@@ -227,9 +230,9 @@ genPhaseSpaceCutZmumuPlusJets = cms.PSet(
 )
 
 intLumiZtautauPlusJets = intLumiZplusJets
+corrFactorZtautauPlusJets = corrFactorZplusJets
 
 fileNamesZtautauPlusJets = fileNamesZplusJets
-corrFactorZtautauPlusJets = corrFactorZplusJets
 
 patTupleOutputFileNameZtautauPlusJets = cms.untracked.string('patTupleZtoElecMu_ZtautauPlusJets.root')
 
@@ -250,6 +253,7 @@ genPhaseSpaceCutZtautauPlusJets = cms.PSet(
 # (to be corrected for missing files)
 #
 intLumiTTplusJets = float(1145.)
+corrFactorTTplusJets = float(1.)
 
 fileNamesTTplusJets_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/c/cerati/SkimmingElecMu/elecMuSkim_TTJets_1.root',
@@ -339,6 +343,7 @@ patTupleOutputFileNameTTplusJets = cms.untracked.string('patTupleZtoElecMu_TTplu
 # (to be corrected by scale factor for missing files)
 #
 intLumiQCD_BCtoE_Pt20to30 = float(8.24)
+corrFactorQCD_BCtoE_Pt20to30 = float(1.)
 
 fileNamesQCD_BCtoE_Pt20to30 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/QCD_BC_E_20_30/elecMuSkim_1.root',
@@ -370,6 +375,7 @@ patTupleOutputFileNameQCD_BCtoE_Pt20to30 = cms.untracked.string('patTupleZtoElec
 # (to be corrected by scale factor for missing files)
 #
 intLumiQCD_BCtoE_Pt30to80 = float(3.67)
+corrFactorQCD_BCtoE_Pt30to80 = float(1.)
 
 fileNamesQCD_BCtoE_Pt30to80 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimJanuary09/ZtautauSkim/QCD_BC_E_30_80/elecMuSkim_2.root',
@@ -398,6 +404,7 @@ patTupleOutputFileNameQCD_BCtoE_Pt30to80 = cms.untracked.string('patTupleZtoElec
 # (to be corrected for missing files)
 #
 intLumiInclusivePPmuX = float(0.044)
+corrFactorInclusivePPmuX = float(1.)
 
 fileNamesInclusivePPmuX = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusivePPmuX/elecMuSkim_1.root',
@@ -423,6 +430,7 @@ patTupleOutputFileNameInclusivePPmuX = cms.untracked.string('patTupleZtoElecMu_I
 # (to be corrected by scale factor for missing files)
 #
 intLumiPPmuXptGt20 = float(42.0)
+corrFactorPPmuXptGt20 = float(1.)
 
 fileNamesPPmuXptGt20_part01 = cms.untracked.vstring(
     'rfio:/castor/cern.ch/user/s/sunil/SkimFabruary09/test2/InclusiveMuPt15/elecMuSkim_1.root',

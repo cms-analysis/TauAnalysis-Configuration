@@ -15,7 +15,7 @@ processZtoElecMu_Ztautau.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_Ztautau.root'
 )
 processZtoElecMu_Ztautau.config_dqmFileLoader.dqmDirectory_store = cms.string('harvested/Ztautau')
-processZtoElecMu_Ztautau.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiZtautau)
+processZtoElecMu_Ztautau.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZtautau*intLumiData/intLumiZtautau)
 
 #--------------------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ processZtoElecMu_Zee.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_Zee.root'
 )
 processZtoElecMu_Zee.config_dqmFileLoader.dqmDirectory_store = cms.string('harvested/Zee')
-processZtoElecMu_Zee.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiZee)
+processZtoElecMu_Zee.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZee*intLumiData/intLumiZee)
 
 #--------------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ processZtoElecMu_Zmumu.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_Zmumu.root'
 )
 processZtoElecMu_Zmumu.config_dqmFileLoader.dqmDirectory_store = cms.string('harvested/Zmumu')
-processZtoElecMu_Zmumu.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiZmumu)
+processZtoElecMu_Zmumu.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZmumu*intLumiData/intLumiZmumu)
 
 #--------------------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ processZtoElecMu_TTplusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_TTplusJets_part08.root',
     plotDirectoryName.value() + 'plotsZtoElecMu_TTplusJets_part09.root'
 )
-processZtoElecMu_TTplusJets.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiTTplusJets)
+processZtoElecMu_TTplusJets.config_dqmFileLoader.scaleFactor = cms.double(corrFactorTTplusJets*intLumiData/intLumiTTplusJets)
 
 processZtoElecMu_TTplusJetsSum = copy.deepcopy(process_TTplusJets)
 processZtoElecMu_TTplusJetsSum.config_dqmFileLoader.inputFileNames = cms.vstring(
@@ -104,7 +104,7 @@ processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.inputFileNames = cms.vstrin
     plotDirectoryName.value() + 'plotsZtoElecMu_InclusivePPmuX.root'
 )
 processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.dqmDirectory_store = cms.string('harvested/InclusivePPmuX')
-processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiInclusivePPmuX)
+processZtoElecMu_InclusivePPmuX.config_dqmFileLoader.scaleFactor = cms.double(corrFactorInclusivePPmuX*intLumiData/intLumiInclusivePPmuX)
 
 processZtoElecMu_PPmuXptGt20 = copy.deepcopy(process_PPmuXptGt20)
 processZtoElecMu_PPmuXptGt20.config_dqmFileLoader.inputFileNames = cms.vstring(
@@ -130,7 +130,7 @@ processZtoElecMu_PPmuXptGt20.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part20.root'
     #plotDirectoryName.value() + 'plotsZtoElecMu_PPmuXptGt20_part21.root'
 )
-processZtoElecMu_PPmuXptGt20.config_dqmFileLoader.scaleFactor = cms.double(intLumiData/intLumiPPmuXptGt20)
+processZtoElecMu_PPmuXptGt20.config_dqmFileLoader.scaleFactor = cms.double(corrFactorPPmuXptGt20*intLumiData/intLumiPPmuXptGt20)
 
 processZtoElecMu_PPmuXptGt20Sum = copy.deepcopy(process_PPmuXptGt20)
 processZtoElecMu_PPmuXptGt20Sum.config_dqmFileLoader.inputFileNames = cms.vstring(
