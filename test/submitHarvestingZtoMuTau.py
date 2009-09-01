@@ -24,6 +24,9 @@ outputDirectory = "/castor/cern.ch/user/v/veelken/plots/ZtoMuTau/"
 submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "Ztautau",
               replFunction = makeReplacementsHarvesting, replacements = "",
               job = "harvesting", queue = "1nh", outputDirectory = outputDirectory)
+submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "Ztautau_from_selZmumu",
+              replFunction = makeReplacementsHarvesting, replacements = "",
+              job = "harvesting", queue = "1nh", outputDirectory = outputDirectory)
 
 # harvest Z --> mu mu
 submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "Zmumu",
