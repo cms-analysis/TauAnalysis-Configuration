@@ -27,6 +27,30 @@ processZtoMuTau_ZtautauSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 #--------------------------------------------------------------------------------
 
+processZtoMuTau_Ztautau_from_selZmumu = copy.deepcopy(process_Ztautau_from_selZmumu)
+processZtoMuTau_Ztautau_from_selZmumu.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part01.root',   
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part02.root',    
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part03.root',    
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part04.root',    
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part05.root',    
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part06.root',    
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part07.root',    
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part08.root',    
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part09.root',    
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumu_part10.root'
+)
+processZtoMuTau_Ztautau_from_selZmumu.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZtautau_from_selZmumu*intLumiData/intLumiZtautau_from_selZmumu)
+
+processZtoMuTau_Ztautau_from_selZmumuSum = copy.deepcopy(process_Ztautau_from_selZmumu)
+processZtoMuTau_Ztautau_from_selZmumuSum.config_dqmFileLoader.inputFileNames = cms.vstring(
+    plotDirectoryName.value() + 'plotsZtoMuTau_Ztautau_from_selZmumuSum.root'
+)
+processZtoMuTau_Ztautau_from_selZmumuSum.config_dqmFileLoader.dqmDirectory_store = cms.string('harvested')
+processZtoMuTau_Ztautau_from_selZmumuSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
+
+#--------------------------------------------------------------------------------
+
 processZtoMuTau_Zmumu = copy.deepcopy(process_Zmumu)
 processZtoMuTau_Zmumu.config_dqmFileLoader.inputFileNames = cms.vstring(
     plotDirectoryName.value() + 'plotsZtoMuTau_Zmumu_part01.root',
@@ -150,7 +174,7 @@ processZtoMuTau_PPmuXptGt20_part01.config_dqmFileLoader.inputFileNames = cms.vst
     plotDirectoryName.value() + 'plotsZtoMuTau_PPmuXptGt20_part17.root',
     plotDirectoryName.value() + 'plotsZtoMuTau_PPmuXptGt20_part18.root',
     plotDirectoryName.value() + 'plotsZtoMuTau_PPmuXptGt20_part19.root',
-    plotDirectoryName.value() + 'plotsZtoMuTau_PPmuXptGt20_part20.root',
+    #plotDirectoryName.value() + 'plotsZtoMuTau_PPmuXptGt20_part20.root',
     plotDirectoryName.value() + 'plotsZtoMuTau_PPmuXptGt20_part21.root',
     plotDirectoryName.value() + 'plotsZtoMuTau_PPmuXptGt20_part22.root',
     plotDirectoryName.value() + 'plotsZtoMuTau_PPmuXptGt20_part23.root',
