@@ -360,6 +360,7 @@ def enableFactorization_makeZtoElecTauPlots(process):
         evtSelPrimaryEventVertexQuality,
         evtSelPrimaryEventVertexPosition,
         evtSelTightElectronId,
+        evtSelElectronConversionVeto,
         evtSelElectronAntiCrack,
         evtSelElectronEta,
         evtSelElectronPt,
@@ -380,6 +381,7 @@ def enableFactorization_makeZtoElecTauPlots(process):
         evtSelTauTrkIso,
         evtSelTauEcalIso,
         evtSelTauProng,
+		evtSelTauCharge,
         evtSelTauElectronVeto,
         evtSelTauEcalCrackVeto,
         evtSelDiTauCandidateForElecTauAntiOverlapVeto,
@@ -573,8 +575,9 @@ def enableFactorization_makeZtoElecTauPlots(process):
 					 + process.scaleZtoElecTau_gammaPlusJets_Pt25to30
 					 + process.scaleZtoElecTau_gammaPlusJets_Pt30to35
 					 + process.scaleZtoElecTau_gammaPlusJets_PtGt35
-                                         + process.addZtoElecTau_qcdSum 
+                     + process.addZtoElecTau_qcdSum 
 					 + process.addZtoElecTau_gammaPlusJetsSum 
-					 + process.addZtoElecTau_smSum )
+					 + process.addZtoElecTau_smSum 
+					 )
 
 	
