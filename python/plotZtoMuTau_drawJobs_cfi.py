@@ -280,31 +280,20 @@ drawJobConfigurator_ZtoMuTau.add(
 
 drawJobConfigurator_ZtoMuTau.add(
     afterCut = evtSelTauProng,
-    beforeCut = evtSelTauCharge,
-    plot = drawJobConfigEntry(
-        meName = 'TauQuantities/TauCharge',
-        title = "Tau Charge (#Sigma Tracks in Signal Cone, after Tau 1-Prong||3-Prong Cut)",
-        xAxis = 'unlabeled',
-        name = "cutFlowControlPlots_tauCharge_afterTauProng"
-    )
-)
-
-drawJobConfigurator_ZtoMuTau.add(
-    afterCut = evtSelTauCharge,
     beforeCut = evtSelTauMuonVeto,
     plots = [
         drawJobConfigEntry(
             meName = 'TauQuantities/Tau#PAR#',
             PAR = [ 'Pt', 'Eta', 'Phi' ],
-            title = "Tau (after Charge(Tau) = +/-1 Cut)",
+            title = "Tau (after Tau 1-Prong||3-Prong Cut)",
             xAxis = '#PAR#',
-            name = "cutFlowControlPlots_tau_afterTauCharge"
+            name = "cutFlowControlPlots_tau_afterTauProng"
         ),
         drawJobConfigEntry(
             meName = 'TauQuantities/TauDiscriminatorAgainstMuons',
-            title = "Tau anti-Muon Discr. (after Charge(Tau) = +/-1 Cut)",
+            title = "Tau anti-Muon Discr. (after Tau 1-Prong||3-Prong Cut)",
             xAxis = 'unlabeled',
-            name = "cutFlowControlPlots_tauAntiMuonDiscr_afterTauCharge"
+            name = "cutFlowControlPlots_tauAntiMuonDiscr_afterTauProng"
         )
     ]
 )
