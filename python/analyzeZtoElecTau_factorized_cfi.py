@@ -86,8 +86,9 @@ replaceHistManagerInputTags(elecTauAnalysisSequence_factorizedWithoutElectronIso
       ["selectedElecTauPairsAcoplanarity12Cumulative", "selectedElecTauPairsAcoplanarity12LooseElectronIsolationCumulative"],
       ["selectedElecTauPairsMt1METcumulative", "selectedElecTauPairsMt1METlooseElectronIsolationCumulative"],
       ["selectedElecTauPairsPzetaDiffCumulative", "selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative"],
-      ["elecTauPairZeeHypotheses", "elecTauPairZeeHypothesesLooseElectronIsolation"],
-      ["selectedElecTauPairZeeHypotheses", "selectedElecTauPairZeeHypothesesLooseElectronIsolation"] ]
+      ["elecTauPairZeeHypotheses", "elecTauPairZeeHypothesesLooseElectronIsolation"],      
+      ["selectedElecTauPairZeeHypotheses", "selectedElecTauPairZeeHypothesesLooseElectronIsolation"],
+      ["elecTauPairVisMassHypotheses", "elecTauPairVisMassHypothesesLooseElectronIsolation"] ]
 ) 
 
 elecTauAnalysisSequence_factorizedWithElectronIsolation = copy.deepcopy(elecTauAnalysisSequence)
