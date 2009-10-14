@@ -32,6 +32,10 @@ evtSelElectronTrkIPlooseIsolation = copy.deepcopy(evtSelElectronTrkIP)
 evtSelElectronTrkIPlooseIsolation.src_cumulative = cms.InputTag('electronTrkIPcutLooseIsolation', 'cumulative')
 evtSelElectronTrkIPlooseIsolation.src_individual = cms.InputTag('electronTrkIPcutLooseIsolation', 'individual')
 
+evtSelElectronConversionVetoLooseIsolation = copy.deepcopy(evtSelElectronConversionVeto)
+evtSelElectronConversionVetoLooseIsolation.src_cumulative = cms.InputTag('electronConversionVetoLooseIsolation', 'cumulative')
+evtSelElectronConversionVetoLooseIsolation.src_individual = cms.InputTag('electronConversionVetoLooseIsolation', 'individual')
+
 # selection of di-tau candidates composed of combination of tau with "loosely" isolated electron 
 evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation = copy.deepcopy(evtSelDiTauCandidateForElecTauAntiOverlapVeto)
 evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation', 'cumulative')
@@ -81,6 +85,7 @@ replaceHistManagerInputTags(elecTauAnalysisSequence_factorizedWithoutElectronIso
       ["selectedLayer1ElectronsEcalIsoCumulative", "selectedLayer1ElectronsEcalIsoLooseIsolationCumulative"],
       ["selectedLayer1ElectronsTrkCumulative", "selectedLayer1ElectronsTrkLooseIsolationCumulative"],
       ["selectedLayer1ElectronsTrkIPcumulative", "selectedLayer1ElectronsTrkIPlooseIsolationCumulative"],
+      ["selectedLayer1ElectronsForElecTauConversionVetoCumulative", "selectedLayer1ElectronsForElecTauConversionVetoLooseIsolationCumulative"],
       ["selectedElecTauPairsAntiOverlapVetoCumulative", "selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative"],
       ["selectedElecTauPairsZeroChargeCumulative", "selectedElecTauPairsZeroChargeLooseElectronIsolationCumulative"],
       ["selectedElecTauPairsAcoplanarity12Cumulative", "selectedElecTauPairsAcoplanarity12LooseElectronIsolationCumulative"],
