@@ -34,6 +34,11 @@ cfgElectronTrkIPcutLooseIsolation.pluginName = "electronTrkIPcutLooseIsolation"
 cfgElectronTrkIPcutLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1ElectronsTrkIPlooseIsolationCumulative')
 cfgElectronTrkIPcutLooseIsolation.src_individual = cms.InputTag('selectedLayer1ElectronsTrkIPlooseIsolationIndividual')
 
+cfgElectronConversionVetoLooseIsolation = copy.deepcopy(cfgElectronConversionVeto)
+cfgElectronConversionVetoLooseIsolation.pluginName = "electronConversionVetoLooseIsolation"
+cfgElectronConversionVetoLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1ElectronsForElecTauConversionVetoLooseIsolationCumulative')
+cfgElectronConversionVetoLooseIsolation.src_individual = cms.InputTag('selectedLayer1ElectronsForElecTauConversionVetoLooseIsolationIndividual')
+
 # selection of di-tau candidates composed of combination of tau-jet with "loosely" isolated electron
 cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation = copy.deepcopy(cfgDiTauCandidateForElecTauAntiOverlapVeto)
 cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation.pluginName = "diTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation"
@@ -69,6 +74,7 @@ zToElecTauEventSelConfiguratorLooseElectronIsolation = eventSelFlagProdConfigura
       cfgElectronEcalIsoCutLooseIsolation,
       cfgElectronTrkCutLooseIsolation,
       cfgElectronTrkIPcutLooseIsolation,
+      cfgElectronConversionVetoLooseIsolation,
       cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation,
       cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation,
       cfgDiTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation,
