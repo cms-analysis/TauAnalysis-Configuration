@@ -4,7 +4,7 @@ import copy
 # define configuration parameters for submission of Z --> e + mu jobs to CERN batch system
 # (running over skimmed samples stored on CASTOR)
 
-intLumiData = float(200.)
+intLumiZtoElecMu_Data = float(200.)
 
 #--------------------------------------------------------------------------------
 # Z --> tau+ tau- sample
