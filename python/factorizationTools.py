@@ -5,6 +5,8 @@ from TauAnalysis.DQMTools.drawJobConfigurator import *
 from TauAnalysis.Configuration.analyzeZtoMuTau_cfi import *
 from TauAnalysis.Configuration.analyzeZtoElecMu_cfi import *
 from TauAnalysis.Configuration.analyzeZtoElecTau_cfi import *
+from TauAnalysis.Configuration.analyzeWtoTauNu_cfi import *
+
 
 #--------------------------------------------------------------------------------
 # generic utility functions for factorization
@@ -575,9 +577,76 @@ def enableFactorization_makeZtoElecTauPlots(process):
 					 + process.scaleZtoElecTau_gammaPlusJets_Pt25to30
 					 + process.scaleZtoElecTau_gammaPlusJets_Pt30to35
 					 + process.scaleZtoElecTau_gammaPlusJets_PtGt35
-                     + process.addZtoElecTau_qcdSum 
+                                         + process.addZtoElecTau_qcdSum 
 					 + process.addZtoElecTau_gammaPlusJetsSum 
-					 + process.addZtoElecTau_smSum 
-					 )
-
+					 + process.addZtoElecTau_smSum
+                                          )
 	
+#--------------------------------------------------------------------------------
+# utility functions specific to factorization
+# of tau isolation efficiencies in W --> tau-jet + nu channel
+#--------------------------------------------------------------------------------
+
+def enableFactorization_runWtoTauNu(process):
+    process.load("TauAnalysis.Configuration.selectWtoTauNu_factorized_cff")
+    process.selectWtoTauNuEvents_factorized = cms.Sequence( process.selectWtoTauNuEvents
+                                                           *process.selectWtoTauNuEventsLooseTauIsolation )
+    process.p.replace(process.selectWtoTauNuEvents, process.selectWtoTauNuEvents_factorized)
+    process.load("TauAnalysis.Configuration.analyzeWtoTauNu_factorized_cff")
+    process.analyzeWtoTauNuEvents_factorized = cms.Sequence( process.analyzeWtoTauNuEvents_factorizedWithoutTauIsolation
+                                                            *process.analyzeWtoTauNuEvents_factorizedWithTauIsolation )
+    process.p.replace(process.analyzeWtoTauNuEvents, process.analyzeWtoTauNuEvents_factorized)
+
+def enableFactorization_makeWtoTauNuPlots(process):
+
+    # define list of event selection criteria on "tight" tau isolation branch of the analysis,
+    # **before** applying factorization of tauTaNC+prong+charge efficiencies
+    evtSelWtoTauNu_factorizedTight = [
+        evtSelPrimaryEventVertex,
+        evtSelPrimaryEventVertexQuality,
+        evtSelPrimaryEventVertexPosition,
+        evtSelTauEta,
+        evtSelTauPt,
+        evtSelMetPt,
+        evtSelTauLeadTrk,
+        evtSelTauLeadTrkPt,
+        evtSelTauTaNC,
+        evtSelTauProng,
+        evtSelTauCharge
+        ]
+
+    # define list of event selection criteria on "loose" muon isolation branch of the analysis,
+    # **after** applying factorization of muon track + ECAL isolation efficiencies
+    evtSelWtoTauNu_factorizedLoose = [
+        evtSelTauMuonVeto,
+        evtSelTauElectronVeto,
+        evtSelTauEcalCrackVeto,
+        evtSelCentralJetVeto,
+        evtSelExplicitElectronVeto,
+        evtSelRecoilEnergyFromCaloTowers
+    ]
+
+    # defines names of MonitorElements used as numerator and denominator
+    # to compute factorization scale-factor
+    meNameWtoTauNu_numerator = "evtSelTauProng/passed_cumulative_numWeighted"
+    meNameWtoTauNu_denominator = "evtSelTauTaNC/processed_cumulative_numWeighted"
+
+   # configure sequence for applying factorization to "qcd_W" process (QCD background sample for Pt(hat) > 15 GeV)
+    process.scaleWtoTauNu_qcd_W = composeFactorizationSequence(
+        process = process,
+        processName = "qcd_W",
+        dqmDirectoryIn_factorizedTightEvtSel = 'harvested/qcd_W/wTauNuAnalyzer_factorizedWithTauIsolation/',
+        evtSel_factorizedTight = evtSelWtoTauNu_factorizedTight,
+        dqmDirectoryIn_factorizedLooseEvtSel = 'harvested/qcd_W/wTauNuAnalyzer_factorizedWithoutTauIsolation/',
+        evtSel_factorizedLoose = evtSelWtoTauNu_factorizedLoose,
+        meName_numerator = meNameWtoTauNu_numerator,
+        meName_denominator = meNameWtoTauNu_denominator,
+        dqmDirectoryOut = 'harvested/qcd_W_factorized/wTauNuAnalyzer/'
+    )
+
+    process.addWtoTauNu_qcd.qcd.dqmDirectories_input = cms.vstring(
+        'harvested/qcd_W_factorized'
+        )
+
+    process.addWtoTauNu = cms.Sequence( process.scaleWtoTauNu_qcd_W + process.addWtoTauNu_qcd + process.addWtoTauNu_smSum  )
+    process.plotWtoTauNu.processes.qcd_W.dqmDirectory = cms.string('harvested/qcd_W_factorized')
