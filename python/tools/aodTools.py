@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 from PhysicsTools.PatAlgos.tools.helpers import massSearchReplaceAnyInputTag 
 
-def switchToAOD(process):
+def switchToAOD(process, triggerHistManager = None):
 
     # switch collection of ECAL recHits used as input for IsoDeposit computation
     # from list of all ECAL recHits in the event to "reduced" collections
@@ -18,5 +18,10 @@ def switchToAOD(process):
     process.allLayer1Taus.addTrigMatch = cms.bool(False)
     process.allLayer1Jets.addTrigMatch = cms.bool(False)
     process.layer1METs.addTrigMatch = cms.bool(False)
+
+    if triggerHistManager is not None:
+        triggerHistManager.hltResultsSource = cms.InputTag('')
+        triggerHistManager.l1Bits = cms.vstring()
+        triggerHistManager.hltPaths = cms.vstring()
 
    
