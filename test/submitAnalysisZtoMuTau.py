@@ -5,8 +5,8 @@ from TauAnalysis.Configuration.makeReplacementsAnalysis import makeReplacementsA
 
 # name of the directory (either on afs area or castor)
 # to which all .root files produced by the cmsRun job will be copied
-outputDirectory = "/castor/cern.ch/user/v/veelken/plots/ZtoMuTau/"
-#outputDirectory = "/castor/cern.ch/user/l/lusito/ZMuTauAnalysis/"
+outputFilePath = "/castor/cern.ch/user/v/veelken/plots/ZtoMuTau/"
+#outputFilePath = "/castor/cern.ch/user/l/lusito/ZMuTauAnalysis/"
 
 inputFileType = "RECO/AOD"
 #inputFileType = "PATTuple"
@@ -18,7 +18,7 @@ inputFilePath = "/castor/cern.ch/user/v/veelken/patTuples/ZtoMuTau/"
 #              sample = "Ztautau_part01",
 #              replFunction = makeReplacementsAnalysis, replacements =
 #              "maxEvents = 100; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = false",
-#              job = "analysis", queue = "1nh", outputDirectory = outputDirectory)
+#              job = "analysis", queue = "1nh", outputFilePath = outputFilePath)
 
 #--------------------------------------------------------------------------------
 #
@@ -38,13 +38,13 @@ for i in range(2):
                   sample = "Ztautau_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = false",
-                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nd", outputFilePath = outputFilePath)
 for i in range(10):
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau",
                   sample = "Ztautau_from_selZmumu_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = false",
-                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nd", outputFilePath = outputFilePath)
 
 # Z --> mu mu jobs
 for i in range(5):
@@ -52,7 +52,7 @@ for i in range(5):
                   sample = "Zmumu_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = false",
-                  job = "analysis", queue = "1nw", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nw", outputFilePath = outputFilePath)
 
 # pp --> mu X QCD jobs
 for i in range(2):
@@ -60,14 +60,14 @@ for i in range(2):
                   sample = "InclusivePPmuX_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = true",
-                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nd", outputFilePath = outputFilePath)
 
 for i in range(51):
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau",
                   sample = "PPmuXptGt20_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = true",
-                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nd", outputFilePath = outputFilePath)
 
 # W/Z + jets jobs
 for i in range(11):
@@ -75,24 +75,24 @@ for i in range(11):
                   sample = "WplusJets_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = false",
-                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nd", outputFilePath = outputFilePath)
 
 for i in range(3):
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau",
                   sample = "ZeePlusJets_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = false",
-                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nd", outputFilePath = outputFilePath)
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau",
                   sample = "ZmumuPlusJets_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = false",
-                  job = "analysis", queue = "1nw", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nw", outputFilePath = outputFilePath)
     submitToBatch(configFile = "runZtoMuTau_cfg.py", channel = "ZtoMuTau",
                   sample = "ZtautauPlusJets_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = false",
-                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nd", outputFilePath = outputFilePath)
 
 # ttbar + jets  jobs
 for i in range(16):
@@ -100,4 +100,4 @@ for i in range(16):
                   sample = "TTplusJets_part%(i)02d" % {"i" : (i + 1)},
                   replFunction = makeReplacementsAnalysis, replacements =
                   "maxEvents = -1; inputFileType = " + inputFileType + "; inputFilePath = " + inputFilePath + "; applyFactorization = false",
-                  job = "analysis", queue = "1nd", outputDirectory = outputDirectory)
+                  job = "analysis", queue = "1nd", outputFilePath = outputFilePath)
