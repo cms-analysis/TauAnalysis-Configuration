@@ -155,7 +155,14 @@ def enableFactorization_runZtoMuTau(process):
                                                             *process.analyzeZtoMuTauEvents_factorizedWithMuonIsolation )
     process.p.replace(process.analyzeZtoMuTauEvents, process.analyzeZtoMuTauEvents_factorized)
 
-def enableFactorization_makeZtoMuTauPlots(process):
+def enableFactorization_makeZtoMuTauPlots(process,
+        dqmDirectoryIn_InclusivePPmuX = 'harvested/InclusivePPmuX/zMuTauAnalyzer',
+        dqmDirectoryOut_InclusivePPmuX = 'harvested/InclusivePPmuX/zMuTauAnalyzer',
+        dqmDirectoryIn_PPmuXptGt20 = 'harvested/PPmuXptGt20/zMuTauAnalyzer',
+        dqmDirectoryOut_PPmuXptGt20 = 'harvested/PPmuXptGt20_factorized/zMuTauAnalyzer',                                  
+        seqName_addZtoMuTau_qcdSum = "addZtoMuTau_qcdSum",
+        seqName_addZtoMuTau_smSum = "addZtoMuTau_smSum",                                
+        seqName_addZtoMuTau = "addZtoMuTau"):
 
     # define list of event selection criteria on "tight" muon isolation branch of the analysis,
     # **before** applying factorization of muon track + ECAL isolation efficiencies
@@ -204,13 +211,13 @@ def enableFactorization_makeZtoMuTauPlots(process):
     process.scaleZtoMuTau_InclusivePPmuX = composeFactorizationSequence(
         process = process,
         processName = "InclusivePPmuX",
-        dqmDirectoryIn_factorizedTightEvtSel = 'harvested/InclusivePPmuX/zMuTauAnalyzer_factorizedWithMuonIsolation/',
+        dqmDirectoryIn_factorizedTightEvtSel = dqmDirectoryIn_InclusivePPmuX + '_factorizedWithMuonIsolation/',
         evtSel_factorizedTight = evtSelZtoMuTau_factorizedTight,
-        dqmDirectoryIn_factorizedLooseEvtSel = 'harvested/InclusivePPmuX/zMuTauAnalyzer_factorizedWithoutMuonIsolation/',
+        dqmDirectoryIn_factorizedLooseEvtSel = dqmDirectoryIn_InclusivePPmuX + '_factorizedWithoutMuonIsolation/',
         evtSel_factorizedLoose = evtSelZtoMuTau_factorizedLoose,
         meName_numerator = meNameZtoMuTau_numerator,
         meName_denominator = meNameZtoMuTau_denominator,
-        dqmDirectoryOut = 'harvested/InclusivePPmuX_factorized/zMuTauAnalyzer/'
+        dqmDirectoryOut = dqmDirectoryOut_InclusivePPmuX + '/'
     )
 
     # configure sequence for applying factorization to "PPmuXPPmuXptGt20" process
@@ -218,26 +225,31 @@ def enableFactorization_makeZtoMuTauPlots(process):
     process.scaleZtoMuTau_PPmuXptGt20 = composeFactorizationSequence(
         process = process,
         processName = "PPmuXptGt20",
-        dqmDirectoryIn_factorizedTightEvtSel = 'harvested/PPmuXptGt20/zMuTauAnalyzer_factorizedWithMuonIsolation/',
+        dqmDirectoryIn_factorizedTightEvtSel = dqmDirectoryIn_PPmuXptGt20 + '_factorizedWithMuonIsolation/',
         evtSel_factorizedTight = evtSelZtoMuTau_factorizedTight,
-        dqmDirectoryIn_factorizedLooseEvtSel = 'harvested/PPmuXptGt20/zMuTauAnalyzer_factorizedWithoutMuonIsolation/',
+        dqmDirectoryIn_factorizedLooseEvtSel = dqmDirectoryIn_PPmuXptGt20 + '_factorizedWithoutMuonIsolation/',
         evtSel_factorizedLoose = evtSelZtoMuTau_factorizedLoose,
         meName_numerator = meNameZtoMuTau_numerator,
         meName_denominator = meNameZtoMuTau_denominator,
-        dqmDirectoryOut = 'harvested/PPmuXptGt20_factorized/zMuTauAnalyzer/'
+        dqmDirectoryOut = dqmDirectoryOut_PPmuXptGt20 + '/'
     )
 
     # compute QCD background sum using factorized histograms and FilterStatistics objects
-    process.addZtoMuTau_qcdSum.qcdSum.dqmDirectories_input = cms.vstring(
-        'harvested/InclusivePPmuX_factorized',
-        'harvested/PPmuXptGt20_factorized'
+    addZtoMuTau_qcdSum = getattr(process, seqName_addZtoMuTau_qcdSum)
+    addZtoMuTau_qcdSum.qcdSum.dqmDirectories_input = cms.vstring(
+        dqmDirectoryOut_InclusivePPmuX + '/',
+        dqmDirectoryOut_PPmuXptGt20 + '/'
     )
 
-    process.addZtoMuTau = cms.Sequence( process.scaleZtoMuTau_InclusivePPmuX + process.scaleZtoMuTau_PPmuXptGt20
-                                       +process.addZtoMuTau_qcdSum + process.addZtoMuTau_smSum )
+    addZtoMuTau = cms.Sequence( process.scaleZtoMuTau_InclusivePPmuX + process.scaleZtoMuTau_PPmuXptGt20 )
+    addZtoMuTau._seq = addZtoMuTau._seq * getattr(process, seqName_addZtoMuTau_qcdSum)
+    if hasattr(process, seqName_addZtoMuTau_smSum):
+        addZtoMuTau._seq = addZtoMuTau._seq * getattr(process, seqName_addZtoMuTau_smSum)
+    setattr(process, seqName_addZtoMuTau, addZtoMuTau)
 
-    process.plotZtoMuTau.processes.InclusivePPmuX.dqmDirectory = cms.string('harvested/InclusivePPmuX_factorized')
-    process.plotZtoMuTau.processes.PPmuXptGt20.dqmDirectory = cms.string('harvested/PPmuXptGt20_factorized')
+    if hasattr(process, "plotZtoMuTau"):
+        process.plotZtoMuTau.processes.InclusivePPmuX.dqmDirectory = cms.string('harvested/InclusivePPmuX_factorized')
+        process.plotZtoMuTau.processes.PPmuXptGt20.dqmDirectory = cms.string('harvested/PPmuXptGt20_factorized')
 
 #--------------------------------------------------------------------------------
 # utility functions specific to factorization
