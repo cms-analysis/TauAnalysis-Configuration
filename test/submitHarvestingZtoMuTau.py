@@ -35,6 +35,11 @@ submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", 
               replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
               job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
 
+# harvest InclusivePPmuX
+submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "InclusivePPmuX",
+              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+              job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
+
 # harvest PPmuXptGt20
 for i in range(2):
     submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "PPmuXptGt20_part%(i)02d" % {"i" : (i + 1)},
