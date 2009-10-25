@@ -7,7 +7,6 @@ from TauAnalysis.Configuration.analyzeZtoElecMu_cfi import *
 from TauAnalysis.Configuration.analyzeZtoElecTau_cfi import *
 from TauAnalysis.Configuration.analyzeWtoTauNu_cfi import *
 
-
 #--------------------------------------------------------------------------------
 # generic utility functions for factorization
 # usable for all channels
