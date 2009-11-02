@@ -11,7 +11,7 @@ from TauAnalysis.RecoTools.eventSelFlagProdConfigurator import *
 #    pluginName = cms.string('Trigger'),
 #    pluginType = cms.string('TriggerResultEventSelector'),
 #    src = cms.InputTag('TriggerResults::HLT'),
-#    triggerPaths = cms.vstring('HLT_Ele15_LW_L1R')
+#    triggerPaths = cms.vstring('HLT_IsoEle15_L1I')
 #)
 
 # primary event vertex selection

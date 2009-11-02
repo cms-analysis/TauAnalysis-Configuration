@@ -24,11 +24,14 @@ diTauCandidateZeeHypothesisHistManagerForElecTau.pluginType = cms.string('ZllHyp
 diTauCandidateZeeHypothesisHistManagerForElecTau.ZllHypothesisSource = cms.InputTag('elecTauPairZeeHypotheses')
 diTauCandidateZeeHypothesisHistManagerForElecTau.dqmDirectory_store = cms.string('DiTauCandidateZeeHypothesisQuantities')
 
-# import config for missing-Et histogram manager
-from TauAnalysis.Core.metHistManager_cfi import *
-
 # import config for central jet veto histogram manager
 from TauAnalysis.Core.jetHistManager_cfi import *
+
+# import config for missing-Et histogram managers
+from TauAnalysis.Core.metHistManager_cfi import *
+
+# import config for particle multiplicity histogram manager
+from TauAnalysis.Core.particleMultiplicityHistManager_cfi import *
 
 # import config for primary event vertex histogram manager
 from TauAnalysis.Core.vertexHistManager_cfi import *
@@ -50,7 +53,7 @@ triggerHistManagerForElecTau.l1Bits = cms.vstring(
     'L1_SingleIsoEG15'
 )
 triggerHistManagerForElecTau.hltPaths = cms.vstring(
-    'HLT_Ele15_LW_L1R'
+    'HLT_IsoEle15_L1I'
 )
 
 # import config for event weight histogram manager
@@ -292,7 +295,7 @@ elecTauEventDump = cms.PSet(
                                 'L1_SingleIsoEG5', 'L1_SingleIsoEG8', 'L1_SingleIsoEG10', 'L1_SingleIsoEG12', 'L1_SingleIsoEG15'),
     
     hltResultsSource = cms.InputTag('TriggerResults::HLT'),
-    hltPathsToPrint = cms.vstring('HLT_Ele15_LW_L1R'),
+    hltPathsToPrint = cms.vstring('HLT_IsoEle15_L1I'),
 
     genParticleSource = cms.InputTag('genParticles'),
     genTauJetSource = cms.InputTag('tauGenJets'),
@@ -302,7 +305,7 @@ elecTauEventDump = cms.PSet(
     #tauSource = cms.InputTag('selectedLayer1TausForElecTauElectronVetoCumulative'),
     diTauCandidateSource = cms.InputTag('allElecTauPairs'),
     metSource = cms.InputTag('layer1METs'),
-    genMEtSource = cms.InputTag('genMetTrue'),
+    genMEtSource = cms.InputTag('genMETWithMu'),
     jetSource = cms.InputTag('selectedLayer1JetsEt20Cumulative'),
     #recoTrackSource = cms.InputTag('generalTracks'),
     #pfChargedHadronSource = cms.InputTag('pfAllChargedHadrons'),
@@ -380,7 +383,7 @@ elecTauAnalysisSequence = cms.VPSet(
     # trigger selection
     #cms.PSet(
     #    filter = cms.string('evtSelTrigger'),
-    #    title = cms.string('Ele15 Trigger'),
+    #    title = cms.string('isoEle15 Trigger'),
     #    saveRunEventNumbers = cms.vstring('')
     #),
     #cms.PSet(
@@ -814,10 +817,11 @@ elecTauAnalysisSequence = cms.VPSet(
             'tauHistManager',
             'diTauCandidateHistManagerForElecTau',
             'diTauCandidateZeeHypothesisHistManagerForElecTau',
+            'jetHistManager',
             'metHistManager',
+            'particleMultiplicityHistManager',
             'vertexHistManager',
-            'triggerHistManagerForElecTau',
-            'jetHistManager'
+            'triggerHistManagerForElecTau'
         ),
         replace = cms.vstring('electronHistManager.electronSource = selectedLayer1ElectronsForElecTauConversionVetoCumulative',
                               'tauHistManager.tauSource = selectedLayer1TausForElecTauEcalCrackVetoCumulative',

@@ -4,6 +4,9 @@ import copy
 # import config for histogram manager filling information about phase-space simulated in Monte Carlo sample
 from TauAnalysis.Core.genPhaseSpaceEventInfoHistManager_cfi import *
 
+# import config for event weight histogram manager
+from TauAnalysis.Core.eventWeightHistManager_cfi import *
+
 # import config for muon histogram manager
 from TauAnalysis.Core.muonHistManager_cfi import *
 
@@ -24,11 +27,14 @@ diTauCandidateZmumuHypothesisHistManagerForMuTau.pluginType = cms.string('ZllHyp
 diTauCandidateZmumuHypothesisHistManagerForMuTau.ZllHypothesisSource = cms.InputTag('muTauPairZmumuHypotheses')
 diTauCandidateZmumuHypothesisHistManagerForMuTau.dqmDirectory_store = cms.string('DiTauCandidateZmumuHypothesisQuantities')
 
+# import config for central jet veto histogram manager
+from TauAnalysis.Core.jetHistManager_cfi import *
+
 # import config for missing-Et histogram managers
 from TauAnalysis.Core.metHistManager_cfi import *
 
-# import config for central jet veto histogram manager
-from TauAnalysis.Core.jetHistManager_cfi import *
+# import config for particle multiplicity histogram manager
+from TauAnalysis.Core.particleMultiplicityHistManager_cfi import *
 
 # import config for primary event vertex histogram manager
 from TauAnalysis.Core.vertexHistManager_cfi import *
@@ -45,8 +51,8 @@ triggerHistManagerForMuTau.l1Bits = cms.vstring(
     'L1_SingleMu14'
 )
 triggerHistManagerForMuTau.hltPaths = cms.vstring(
-    'HLT_IsoMu3',
-    'HLT_Mu9'
+    'HLT_Mu15',
+    'HLT_IsoMu11'
 )
 
 # import config for event weight histogram manager
@@ -260,7 +266,7 @@ muTauEventDump = cms.PSet(
     l1BitsToPrint = cms.vstring('L1_SingleMu3', 'L1_SingleMu5', 'L1_SingleMu7', 'L1_SingleMu10', 'L1_SingleMu14'),
     
     hltResultsSource = cms.InputTag('TriggerResults::HLT'),
-    hltPathsToPrint = cms.vstring('HLT_IsoMu3', 'HLT_Mu9'),
+    hltPathsToPrint = cms.vstring('HLT_Mu15', 'HLT_IsoMu11'),
     
     genParticleSource = cms.InputTag('genParticles'),
     genTauJetSource = cms.InputTag('tauGenJets'),
@@ -271,7 +277,7 @@ muTauEventDump = cms.PSet(
     #tauSource = cms.InputTag('selectedLayer1TausForMuTauMuonVetoCumulative'),
     diTauCandidateSource = cms.InputTag('allMuTauPairs'),
     metSource = cms.InputTag('layer1METs'),
-    genMEtSource = cms.InputTag('genMetTrue'),
+    genMEtSource = cms.InputTag('genMETWithMu'),
     jetSource = cms.InputTag('selectedLayer1JetsEt20Cumulative'),
     #recoTrackSource = cms.InputTag('generalTracks'),
     #pfChargedHadronSource = cms.InputTag('pfAllChargedHadrons'),
@@ -350,7 +356,7 @@ muTauAnalysisSequence = cms.VPSet(
     # trigger selection
     cms.PSet(
         filter = cms.string('evtSelTrigger'),
-        title = cms.string('isoMu3 || Mu9 Trigger'),
+        title = cms.string('mu15 || isoMu11 Trigger'),
         saveRunEventNumbers = cms.vstring('')
     ),
     cms.PSet(
@@ -717,14 +723,16 @@ muTauAnalysisSequence = cms.VPSet(
     cms.PSet(
         analyzers = cms.vstring(
             'genPhaseSpaceEventInfoHistManager',
+            'eventWeightHistManager',
             'muonHistManager',
             'tauHistManager',
             'diTauCandidateHistManagerForMuTau',
             'diTauCandidateZmumuHypothesisHistManagerForMuTau',
+            'jetHistManager',
             'metHistManager',
+            'particleMultiplicityHistManager',
             'vertexHistManager',
-            'triggerHistManagerForMuTau',
-            'jetHistManager'
+            'triggerHistManagerForMuTau'
         ),
         replace = cms.vstring('muonHistManager.muonSource = selectedLayer1MuonsTrkIPcumulative',
                               'tauHistManager.tauSource = selectedLayer1TausForMuTauMuonVetoCumulative',

@@ -11,8 +11,8 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1
 process.load('Configuration/StandardSequences/GeometryIdeal_cff')
 process.load('Configuration/StandardSequences/MagneticField_cff')
 process.load('Configuration/StandardSequences/Reconstruction_cff')
-process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = cms.string('MC_31X_V2::All')
+process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_noesprefer_cff')
+process.GlobalTag.globaltag = 'IDEAL_V9::All'
 
 # import configuration parameters for submission of jobs to CERN batch system
 from TauAnalysis.Configuration.recoSampleDefinitionsWtoTauNu_cfi import *
@@ -89,10 +89,8 @@ process.layer1METs.metSource = cms.InputTag('met')
 
 from TauAnalysis.Configuration.tools.metTools import *
 
-# uncomment to add pfMET
-# set Boolean swich to true in order to apply type-1 corrections
-addPFMet(process, correct = False)
-
+# comment-out the addPFMet() function to add pfMET: first Boolean switch on production of genMET with mu's, second Boolean switch on type-1 corrections
+addPFMet(process,True,False)
 # replace caloMET by pfMET in all tau-Nu objects
 process.load("TauAnalysis.CandidateTools.tauNuPairProduction_cff")
 replaceMETforTauNu(process,
@@ -100,7 +98,9 @@ replaceMETforTauNu(process,
                                         cms.InputTag('layer1PFMETs'))
 
 # comment-out to add genMET with mu's to layer1MET (caloMET)
-#process.layer1METs.genMETSource = cms.InputTag('genMetTrue')
+#process.layer1METs.genMETSource = cms.InputTag('genMETWithMu')
+# note: above line works when the first Boolean in the addPFMET is True, otherwise you need comment-out the following:
+# addGenMetWithMu(process) # comment-out only when the first Boolean in the addPFMET is False
 #--------------------------------------------------------------------------------
 
 from TauAnalysis.Configuration.tools.changeCut import *

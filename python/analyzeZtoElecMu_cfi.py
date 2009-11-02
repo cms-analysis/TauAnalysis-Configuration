@@ -24,11 +24,14 @@ diTauCandidateZmumuHypothesisHistManagerForElecMu.pluginType = cms.string('ZllHy
 diTauCandidateZmumuHypothesisHistManagerForElecMu.ZllHypothesisSource = cms.InputTag('elecMuPairZmumuHypotheses')
 diTauCandidateZmumuHypothesisHistManagerForElecMu.dqmDirectory_store = cms.string('DiTauCandidateZmumuHypothesisQuantities')
 
-# import config for missing-Et histogram manager
-from TauAnalysis.Core.metHistManager_cfi import *
-
 # import config for central jet veto histogram manager
 from TauAnalysis.Core.jetHistManager_cfi import *
+
+# import config for missing-Et histogram managers
+from TauAnalysis.Core.metHistManager_cfi import *
+
+# import config for particle multiplicity histogram manager
+from TauAnalysis.Core.particleMultiplicityHistManager_cfi import *
 
 # import config for primary event vertex histogram manager
 from TauAnalysis.Core.vertexHistManager_cfi import *
@@ -55,9 +58,10 @@ triggerHistManagerForElecMu.l1Bits = cms.vstring(
     'L1_SingleMu14'
 )
 triggerHistManagerForElecMu.hltPaths = cms.vstring(
-    'HLT_Ele15_LW_L1R',
-    'HLT_IsoMu3',
-    'HLT_Mu9'
+    'HLT_IsoEle15_L1I',
+    'HLT_Mu15',
+    'HLT_IsoMu11',
+    'HLT_IsoEle8_IsoMu7'
 )
 
 # import config for event weight histogram manager
@@ -273,8 +277,8 @@ elecMuEventDump = cms.PSet(
                                 'L1_SingleMu3', 'L1_SingleMu5', 'L1_SingleMu7', 'L1_SingleMu10', 'L1_SingleMu14'),
 
     hltResultsSource = cms.InputTag('TriggerResults::HLT'),
-    hltPathsToPrint = cms.vstring('HLT_IsoMu3', 'HLT_Mu9', 'HLT_Ele15_LW_L1R'),
-        
+    hltPathsToPrint = cms.vstring('HLT_IsoEle15_L1I', 'HLT_Mu15', 'HLT_IsoMu11', 'HLT_IsoEle8_IsoMu7'),
+    
     genParticleSource = cms.InputTag('genParticles'),
     genTauJetSource = cms.InputTag('tauGenJets'),
     #electronSource = cms.InputTag('cleanLayer1Electrons'),
@@ -284,7 +288,7 @@ elecMuEventDump = cms.PSet(
     tauSource = cms.InputTag('selectedLayer1TausPt20Cumulative'),
     diTauCandidateSource = cms.InputTag('allElecMuPairs'),
     metSource = cms.InputTag('layer1METs'),
-    genMEtSource = cms.InputTag('genMetTrue'),
+    genMEtSource = cms.InputTag('genMETWithMu'),
     jetSource = cms.InputTag('selectedLayer1JetsEt20Cumulative'),
     #recoTrackSource = cms.InputTag('generalTracks'),
     #pfChargedHadronSource = cms.InputTag('pfAllChargedHadrons'),
@@ -729,10 +733,11 @@ elecMuAnalysisSequence = cms.VPSet(
             'muonHistManager',
             'diTauCandidateHistManagerForElecMu',
             'diTauCandidateZmumuHypothesisHistManagerForElecMu',
+            'jetHistManager',
             'metHistManager',
+            'particleMultiplicityHistManager',
             'vertexHistManager',
-            'triggerHistManagerForElecMu',
-            'jetHistManager'
+            'triggerHistManagerForElecMu'
         ),
         replace = cms.vstring('muonHistManager.muonSource = selectedLayer1MuonsTrkIPcumulative',
                               'electronHistManager.electronSource = selectedLayer1ElectronsTrkIPcumulative',
