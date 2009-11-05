@@ -300,7 +300,7 @@ genPhaseSpaceCutZtoMuTau_Ztautau_from_selZmumu = cms.PSet(
     cut = cms.string('')
 )
 
-plotsOutputFileNameZtautau_from_selZmumu = cms.string('plotsZtoMuTau_Ztautau_from_selZmumu_partXX.root')
+plotsOutputFileNameZtoMuTau_Ztautau_from_selZmumu = cms.string('plotsZtoMuTau_Ztautau_from_selZmumu_partXX.root')
 patTupleOutputFileNameZtoMuTau_Ztautau_from_selZmumu = cms.untracked.string('patTupleZtoMuTau_Ztautau_from_selZmumu_partXX.root')
 #--------------------------------------------------------------------------------
 
