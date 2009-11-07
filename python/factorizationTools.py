@@ -197,7 +197,8 @@ def enableFactorization_makeZtoMuTauPlots(process,
         evtSelDiTauCandidateForMuTauZeroCharge,
         evtSelDiTauCandidateForMuTauAcoplanarity12,
         evtSelDiTauCandidateForMuTauMt1MET,
-        evtSelDiTauCandidateForMuTauPzetaDiff
+        evtSelDiTauCandidateForMuTauPzetaDiff,
+        evtSelDiMuPairZmumuHypothesisVeto
     ]
 
     # defines names of MonitorElements used as numerator and denominator
