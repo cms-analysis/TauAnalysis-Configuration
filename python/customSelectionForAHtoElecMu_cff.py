@@ -26,10 +26,10 @@ selectLayer1METs = patMETSelConfigurator.configure(namespace = locals())
 
 #---------------------------------- electrons -----------------------------------#
 #******* custom reco ********
-allLayer1Electrons.isolation.tracker.deltaR = cms.double(0.3)
-allLayer1Electrons.isolation.tracker.vetos = cms.vstring('0.015','Threshold(1.0)')
-allLayer1Electrons.isolation.ecal.deltaR = cms.double(0.4)
-allLayer1Electrons.isolation.ecal.vetos = cms.vstring(
+allLayer1Electrons.userIsolation.tracker.deltaR = cms.double(0.3)
+allLayer1Electrons.userIsolation.tracker.vetos = cms.vstring('0.015','Threshold(1.0)')
+allLayer1Electrons.userIsolation.ecal.deltaR = cms.double(0.4)
+allLayer1Electrons.userIsolation.ecal.vetos = cms.vstring(
     'EcalBarrel:0.045', #0.045 #egamma default
     'EcalBarrel:RectangularEtaPhiVeto(-0.02,0.02,-0.5,0.5)', #-0.02,0.02,-0.5,0.5
     'EcalEndcaps:0.1', #0.07
@@ -37,7 +37,7 @@ allLayer1Electrons.isolation.ecal.vetos = cms.vstring(
     'EcalBarrel:ThresholdFromTransverse(0.12)', #0.08
     'EcalEndcaps:ThresholdFromTransverse(0.3)'
 )
-allLayer1Electrons.isolation.hcal.deltaR = cms.double(0.4)
+allLayer1Electrons.userIsolation.hcal.deltaR = cms.double(0.4)
 #***** custom selection *****
 selectedLayer1ElectronsId = selectedLayer1ElectronsTightId.clone()
 selectedLayer1ElectronsId.cut = cms.string('(abs(superCluster.eta) < 1.479 & electronID("loose") > 0 & eSuperClusterOverP < 1.05 & eSuperClusterOverP > 0.95) | (abs(superCluster.eta) > 1.479 & electronID("loose") > 0 & eSuperClusterOverP < 1.12 & eSuperClusterOverP > 0.95)')
@@ -158,10 +158,10 @@ cleanLayer1ElectronsSel.selFlags = cms.PSet(
 
 #------------------------------------ muons -------------------------------------#
 #******* custom reco ********
-allLayer1Muons.isolation.tracker.deltaR = cms.double(0.3)
-allLayer1Muons.isolation.ecal.deltaR = cms.double(0.3)
-allLayer1Muons.isolation.hcal.deltaR = cms.double(0.3)
-allLayer1Muons.isolation.user.deltaR = cms.double(0.3)
+allLayer1Muons.userIsolation.tracker.deltaR = cms.double(0.3)
+allLayer1Muons.userIsolation.ecal.deltaR = cms.double(0.3)
+allLayer1Muons.userIsolation.hcal.deltaR = cms.double(0.3)
+allLayer1Muons.userIsolation.user.deltaR = cms.double(0.3)
 #***** custom selection *****
 selectedLayer1MuonsEta = selectedLayer1MuonsEta21.clone(cut = cms.string('abs(eta) < 2.4'))
 selectedLayer1MuonsPt = selectedLayer1MuonsPt15.clone(cut = cms.string('pt > 10.'))
