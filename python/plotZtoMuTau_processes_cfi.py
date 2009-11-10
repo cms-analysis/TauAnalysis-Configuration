@@ -11,7 +11,20 @@ from TauAnalysis.Configuration.recoSampleDefinitionsZtoMuTau_cfi import *
 processZtoMuTau_Ztautau = copy.deepcopy(process_Ztautau)
 processZtoMuTau_Ztautau.config_dqmFileLoader.inputFileNames = cms.vstring(
     'plotsZtoMuTau_Ztautau_part01.root',
-    'plotsZtoMuTau_Ztautau_part02.root'
+    'plotsZtoMuTau_Ztautau_part02.root',
+    'plotsZtoMuTau_Ztautau_part03.root',
+    'plotsZtoMuTau_Ztautau_part04.root',
+    'plotsZtoMuTau_Ztautau_part05.root',
+    'plotsZtoMuTau_Ztautau_part06.root',
+    'plotsZtoMuTau_Ztautau_part07.root',
+    'plotsZtoMuTau_Ztautau_part08.root',
+    'plotsZtoMuTau_Ztautau_part09.root',
+    'plotsZtoMuTau_Ztautau_part10.root',
+    'plotsZtoMuTau_Ztautau_part11.root',
+    'plotsZtoMuTau_Ztautau_part12.root',
+    'plotsZtoMuTau_Ztautau_part13.root',
+    'plotsZtoMuTau_Ztautau_part14.root',
+    'plotsZtoMuTau_Ztautau_part15.root'    
 )
 processZtoMuTau_Ztautau.config_dqmFileLoader.scaleFactor = cms.double(corrFactorZtoMuTau_Ztautau*intLumiZtoMuTau_Data/intLumiZtoMuTau_Ztautau)
 
