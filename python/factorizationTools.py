@@ -159,8 +159,8 @@ def enableFactorization_makeZtoMuTauPlots(process,
         dqmDirectoryOut_InclusivePPmuX = 'harvested/InclusivePPmuX/zMuTauAnalyzer',
         dqmDirectoryIn_PPmuXptGt20 = 'harvested/PPmuXptGt20/zMuTauAnalyzer',
         dqmDirectoryOut_PPmuXptGt20 = 'harvested/PPmuXptGt20_factorized/zMuTauAnalyzer',                                  
-        seqName_addZtoMuTau_qcdSum = "addZtoMuTau_qcdSum",
-        seqName_addZtoMuTau_smSum = "addZtoMuTau_smSum",                                
+        modName_addZtoMuTau_qcdSum = "addZtoMuTau_qcdSum",
+        modName_addZtoMuTau_smSum = "addZtoMuTau_smSum",                                
         seqName_addZtoMuTau = "addZtoMuTau"):
 
     # define list of event selection criteria on "tight" muon isolation branch of the analysis,
@@ -235,16 +235,16 @@ def enableFactorization_makeZtoMuTauPlots(process,
     )
 
     # compute QCD background sum using factorized histograms and FilterStatistics objects
-    addZtoMuTau_qcdSum = getattr(process, seqName_addZtoMuTau_qcdSum)
+    addZtoMuTau_qcdSum = getattr(process, modName_addZtoMuTau_qcdSum)
     addZtoMuTau_qcdSum.qcdSum.dqmDirectories_input = cms.vstring(
         dqmDirectoryOut_InclusivePPmuX + '/',
         dqmDirectoryOut_PPmuXptGt20 + '/'
     )
 
     addZtoMuTau = cms.Sequence( process.scaleZtoMuTau_InclusivePPmuX + process.scaleZtoMuTau_PPmuXptGt20 )
-    addZtoMuTau._seq = addZtoMuTau._seq * getattr(process, seqName_addZtoMuTau_qcdSum)
-    if hasattr(process, seqName_addZtoMuTau_smSum):
-        addZtoMuTau._seq = addZtoMuTau._seq * getattr(process, seqName_addZtoMuTau_smSum)
+    addZtoMuTau._seq = addZtoMuTau._seq * getattr(process, modName_addZtoMuTau_qcdSum)
+    if hasattr(process, modName_addZtoMuTau_smSum):
+        addZtoMuTau._seq = addZtoMuTau._seq * getattr(process, modName_addZtoMuTau_smSum)
     setattr(process, seqName_addZtoMuTau, addZtoMuTau)
 
     if hasattr(process, "plotZtoMuTau"):
