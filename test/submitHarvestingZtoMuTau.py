@@ -24,7 +24,8 @@ inputFilePath = "rfio:" + outputFilePath
 
 # harvest Z --> tau tau 
 submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "Ztautau",
-              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+              replFunction = makeReplacementsHarvesting, replacements =
+              "inputFilePath = " + inputFilePath + "; recoSampleDefinitionsFile = TauAnalysis.Configuration.plotZtoMuTau_processes_cfi",
               job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
 ##submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "Ztautau_from_selZmumu",
 ##              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
@@ -32,36 +33,44 @@ submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", 
 
 ### harvest Z --> mu mu
 ##submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "Zmumu",
-##              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+##              replFunction = makeReplacementsHarvesting, replacements =
+##              "inputFilePath = " + inputFilePath + "; recoSampleDefinitionsFile = TauAnalysis.Configuration.plotZtoMuTau_processes_cfi",
 ##              job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
 
 ### harvest InclusivePPmuX
 ##submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "InclusivePPmuX",
-##              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+##              replFunction = makeReplacementsHarvesting, replacements =
+##              "inputFilePath = " + inputFilePath + "; recoSampleDefinitionsFile = TauAnalysis.Configuration.plotZtoMuTau_processes_cfi",
 ##              job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
 
 ### harvest PPmuXptGt20
 ##for i in range(2):
 ##    submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "PPmuXptGt20_part%(i)02d" % {"i" : (i + 1)},
-##                  replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+##                  replFunction = makeReplacementsHarvesting, replacements =
+##                  "inputFilePath = " + inputFilePath + "; recoSampleDefinitionsFile = TauAnalysis.Configuration.plotZtoMuTau_processes_cfi",
 ##                  job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
 
 ### harvest W/Z + jets
 ##submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "WplusJets",
-##              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+##              replFunction = makeReplacementsHarvesting, replacements =
+##              "inputFilePath = " + inputFilePath + "; recoSampleDefinitionsFile = TauAnalysis.Configuration.plotZtoMuTau_processes_cfi",
 ##              job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
 
 ##submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "ZtautauPlusJets",
-##              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+##              replFunction = makeReplacementsHarvesting, replacements =
+##              "inputFilePath = " + inputFilePath + "; recoSampleDefinitionsFile = TauAnalysis.Configuration.plotZtoMuTau_processes_cfi",
 ##              job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
 ##submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "ZmumuPlusJets",
-##              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+##              replFunction = makeReplacementsHarvesting, replacements =
+##              "inputFilePath = " + inputFilePath + "; recoSampleDefinitionsFile = TauAnalysis.Configuration.plotZtoMuTau_processes_cfi",
 ##              job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
 ##submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "ZeePlusJets",
-##              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+##              replFunction = makeReplacementsHarvesting, replacements =
+##              "inputFilePath = " + inputFilePath + "; recoSampleDefinitionsFile = TauAnalysis.Configuration.plotZtoMuTau_processes_cfi",
 ##              job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
 
 ### harvest TTplusJets
 ##submitToBatch(configFile = "harvestZtoMuTauPlots_cfg.py", channel = "ZtoMuTau", sample = "TTplusJets",
-##              replFunction = makeReplacementsHarvesting, replacements = "inputFilePath = " + inputFilePath,
+##              replFunction = makeReplacementsHarvesting, replacements =
+##              "inputFilePath = " + inputFilePath + "; recoSampleDefinitionsFile = TauAnalysis.Configuration.plotZtoMuTau_processes_cfi",
 ##              job = "harvesting", queue = "1nh", outputFilePath = outputFilePath)
