@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 import copy
 
 from TauAnalysis.Configuration.plotterProcessDefinitions_cfi import *
-from TauAnalysis.Configuration.recoSampleDefinitionsZtoMuTau_cfi import *
+from TauAnalysis.Configuration.recoSampleDefinitionsZtoMuTau_10TeV_cfi import *
 
 #--------------------------------------------------------------------------------
 # define for Z --> mu + tau-jet analysis names of .root files containing histograms
