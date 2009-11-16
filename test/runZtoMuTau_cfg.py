@@ -68,8 +68,12 @@ process.maxEvents = cms.untracked.PSet(
 
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        #'rfio:/castor/cern.ch/user/v/veelken/CMSSW_2_2_3/muTauSkim.root'
-        'file:/afs/cern.ch/user/v/veelken/scratch0/CMSSW_2_2_10/src/TauAnalysis/Configuration/test/muTauSkim.root'
+        'rfio:/castor/cern.ch/user/v/veelken/CMSSW_2_2_3/selEvents_ZtoMuTau_Zmumu_part01.root',
+        'rfio:/castor/cern.ch/user/v/veelken/CMSSW_2_2_3/selEvents_ZtoMuTau_Zmumu_part02.root',
+        'rfio:/castor/cern.ch/user/v/veelken/CMSSW_2_2_3/selEvents_ZtoMuTau_Zmumu_part03.root',
+        'rfio:/castor/cern.ch/user/v/veelken/CMSSW_2_2_3/selEvents_ZtoMuTau_Zmumu_part04.root',
+        'rfio:/castor/cern.ch/user/v/veelken/CMSSW_2_2_3/selEvents_ZtoMuTau_Zmumu_part05.root'
+        #'file:/afs/cern.ch/user/v/veelken/scratch0/CMSSW_2_2_10/src/TauAnalysis/Configuration/test/muTauSkim.root'
     )
     #skipBadFiles = cms.untracked.bool(True) 
 )
@@ -131,13 +135,15 @@ from TauAnalysis.Configuration.factorizationTools import enableFactorization_run
 
 #--------------------------------------------------------------------------------
 #
-process.producePatTupleAll = cms.Sequence( process.producePatTuple + process.producePatTupleZtoMuTauSpecific )
+process.producePatTupleAll = cms.Sequence(process.producePatTuple + process.producePatTupleZtoMuTauSpecific)
 #
 # define "hook" for enabling/disabling production of PAT-tuple event content,
 # depending on whether RECO/AOD or PAT-tuples are used as input for analysis
 #
-#__#patTupleProduction#
-process.p.replace(process.producePatTupleZtoMuTauSpecific, process.producePatTuple + process.producePatTupleZtoMuTauSpecific)
+#__#patTupleProduction_line01#
+#__#patTupleProduction_line02#
+if not hasattr(process, "batchMode"):
+    process.p.replace(process.producePatTupleZtoMuTauSpecific, process.producePatTuple + process.producePatTupleZtoMuTauSpecific)
 #--------------------------------------------------------------------------------
 
 # print-out all python configuration parameter information
