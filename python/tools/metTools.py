@@ -24,7 +24,7 @@ def addPFMet(process,redoGenMet=True,correct=False):
     process.allLayer1Objects.replace(process.layer1METs,
                                      process.layer1METs + process.layer1PFMETs)
 
-def addTCMet(process,):
+def addTCMet(process):
     process.layer1TCMETs = process.layer1METs.clone()
     process.layer1TCMETs.addMuonCorrections = False
     process.layer1TCMETs.addTrigMatch = False
