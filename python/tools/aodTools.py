@@ -1,8 +1,12 @@
 import FWCore.ParameterSet.Config as cms
 
+from PhysicsTools.PatAlgos.tools.coreTools import restrictInputToAOD
 from PhysicsTools.PatAlgos.tools.helpers import massSearchReplaceAnyInputTag 
 
 def switchToAOD(process, triggerHistManager = None, eventDumpPlugin = None):
+
+    # call "standard" PAT function to restrict all InputTags to AOD event content
+    restrictInputToAOD(process, [ "All", ])
 
     # switch collection of ECAL recHits used as input for IsoDeposit computation
     # from list of all ECAL recHits in the event to "reduced" collections
