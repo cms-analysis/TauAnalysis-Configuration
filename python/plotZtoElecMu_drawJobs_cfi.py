@@ -10,10 +10,10 @@ plots_ZtoElecMu = cms.PSet(
     plots = cms.PSet(  
         dqmMonitorElements = cms.vstring(''),
         processes = cms.vstring(
-            'ZmumuPlusJets',
-            #'Zmumu',
-            'ZeePlusJets',
-            #'Zee',
+            #'ZmumuPlusJets',
+            'Zmumu',
+            #'ZeePlusJets',
+            'Zee',
             'WplusJets',
             'TTplusJets',
             'qcdSum',
@@ -28,10 +28,10 @@ plots_ZtoElecMu = cms.PSet(
     labels = cms.vstring('mcNormScale'),                   
     drawOptionSet = cms.string('default'),
     stack = cms.vstring(
-        'ZmumuPlusJets',
-        #'Zmumu',
-        'ZeePlusJets',
-        #'Zee',
+        #'ZmumuPlusJets',
+        'Zmumu',
+        #'ZeePlusJets',
+        'Zee',
         'WplusJets',
         'TTplusJets',
         'qcdSum',
@@ -368,7 +368,7 @@ drawJobConfigurator_ZtoElecMu.add(
             name = "finalSamplePlots_dPhiElectronMuon"
         ),
         drawJobConfigEntry(
-            meName = 'MEtQuantities/RAWplusJESplusMUONplusTAU_MEtPt',
+            meName = 'CaloMEtQuantities/RAWplusJESplusMUONplusTAU_MEtPt',
             title = "MET (final Event sample)",
             xAxis = 'Pt',
             name = "finalSamplePlots_met"
@@ -402,7 +402,13 @@ drawJobConfigurator_ZtoElecMu.add(
             title = "M_{vis}(Electron + Muon) (final Event sample)",
             xAxis = 'Mass',
             name = "finalSamplePlots_mVisible"
-        ),     
+        ),
+        drawJobConfigEntry(
+            meName = 'DiTauCandidateQuantities/VisMassZllCombinedHypothesis',
+            title = "M_{vis}(Electron + Muon), Z #rightarrow #ell^{+} #ell^{-} combined Hypothesis (final Event sample)",
+            xAxis = 'Mass',
+            name = "finalSamplePlots_mVisibleZllCombinedHypothesis"
+        ),
         drawJobConfigEntry(
             meName = 'DiTauCandidateQuantities/CDFmethodMass',
             title = "M(Electron + Muon), CDF method (final Event sample)",
