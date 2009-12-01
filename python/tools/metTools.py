@@ -6,7 +6,6 @@ def addGenMetWithMu(process):
     process.load("TauAnalysis.GenSimTools.genMETWithMu_cff")
     process.producePrePat += process.produceGenMETwithMu
 
-
 def addPFMet(process,redoGenMet=True,correct=False):
     process.load("PhysicsTools.PFCandProducer.pfType1MET_cff")
     process.layer1PFMETs = process.layer1METs.clone()
