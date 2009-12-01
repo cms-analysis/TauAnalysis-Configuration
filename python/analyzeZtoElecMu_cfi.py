@@ -28,7 +28,8 @@ diTauCandidateZmumuHypothesisHistManagerForElecMu.dqmDirectory_store = cms.strin
 from TauAnalysis.Core.jetHistManager_cfi import *
 
 # import config for missing-Et histogram managers
-from TauAnalysis.Core.metHistManager_cfi import *
+from TauAnalysis.Core.caloMEtHistManager_cfi import *
+from TauAnalysis.Core.pfMEtHistManager_cfi import *
 
 # import config for particle multiplicity histogram manager
 from TauAnalysis.Core.particleMultiplicityHistManager_cfi import *
@@ -287,7 +288,8 @@ elecMuEventDump = cms.PSet(
     muonSource = cms.InputTag('selectedLayer1MuonsTrkIPcumulative'),
     tauSource = cms.InputTag('selectedLayer1TausPt20Cumulative'),
     diTauCandidateSource = cms.InputTag('allElecMuPairs'),
-    metSource = cms.InputTag('layer1METs'),
+    caloMEtSource = cms.InputTag('layer1METs'),
+    pfMEtSource = cms.InputTag('layer1PFMETs'),
     genMEtSource = cms.InputTag('genMETWithMu'),
     jetSource = cms.InputTag('selectedLayer1JetsEt20Cumulative'),
     #recoTrackSource = cms.InputTag('generalTracks'),
@@ -313,7 +315,8 @@ elecMuAnalysisSequence = cms.VPSet(
             'genPhaseSpaceEventInfoHistManager',
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
         )
@@ -335,7 +338,8 @@ elecMuAnalysisSequence = cms.VPSet(
             'genPhaseSpaceEventInfoHistManager',
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
         )
@@ -359,7 +363,8 @@ elecMuAnalysisSequence = cms.VPSet(
     #        'genPhaseSpaceEventInfoHistManager',
     #        'electronHistManager',
     #        'muonHistManager',
-    #        'metHistManager',
+    #        'caloMEtHistManager',
+    #        'pfMEtHistManager',
     #        'vertexHistManager',
     #        'triggerHistManagerForElecMu'
     #    )
@@ -376,7 +381,8 @@ elecMuAnalysisSequence = cms.VPSet(
             'genPhaseSpaceEventInfoHistManager',
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
         )
@@ -412,7 +418,8 @@ elecMuAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
         )
@@ -428,7 +435,8 @@ elecMuAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('muonHistManager.muonSource = selectedLayer1MuonsGlobalCumulative')
@@ -442,7 +450,8 @@ elecMuAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('muonHistManager.muonSource = selectedLayer1MuonsEta21Cumulative')
@@ -456,7 +465,8 @@ elecMuAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
         ),
@@ -473,7 +483,8 @@ elecMuAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('electronHistManager.electronSource = selectedLayer1ElectronsTightIdCumulative',
@@ -488,7 +499,8 @@ elecMuAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('electronHistManager.electronSource = selectedLayer1ElectronsAntiCrackCutCumulative',
@@ -503,7 +515,8 @@ elecMuAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('electronHistManager.electronSource = selectedLayer1ElectronsEta21Cumulative',
@@ -518,7 +531,8 @@ elecMuAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
         ),
@@ -579,7 +593,8 @@ elecMuAnalysisSequence = cms.VPSet(
             'electronHistManager',
             'muonHistManager',
             'diTauCandidateHistManagerForElecMu',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
         ),
@@ -636,7 +651,8 @@ elecMuAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'muonHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
         ),
@@ -655,7 +671,8 @@ elecMuAnalysisSequence = cms.VPSet(
             'electronHistManager',
             'muonHistManager',
             'diTauCandidateHistManagerForElecMu',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
         ),
@@ -737,7 +754,8 @@ elecMuAnalysisSequence = cms.VPSet(
             'diTauCandidateHistManagerForElecMu',
             'diTauCandidateZmumuHypothesisHistManagerForElecMu',
             'jetHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'particleMultiplicityHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecMu'
