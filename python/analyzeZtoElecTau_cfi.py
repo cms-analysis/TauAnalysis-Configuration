@@ -299,7 +299,9 @@ elecTauEventDump = cms.PSet(
     hltPathsToPrint = cms.vstring('HLT_IsoEle15_L1I'),
 
     genParticleSource = cms.InputTag('genParticles'),
+    genJetSource = cms.InputTag('iterativeCone5GenJets'),
     genTauJetSource = cms.InputTag('tauGenJets'),
+    
     electronSource = cms.InputTag('cleanLayer1Electrons'),
     #electronSource = cms.InputTag('selectedLayer1ElectronsTrkIPcumulative'),
     tauSource = cms.InputTag('selectedLayer1TausPt20Cumulative'),
@@ -381,7 +383,8 @@ elecTauAnalysisSequence = cms.VPSet(
     #        'genPhaseSpaceEventInfoHistManager',
     #        'electronHistManager',
     #        'tauHistManager',
-    #        'metHistManager',
+    #        'caloMEtHistManager',
+    #        'pfMEtHistManager',
     #        'vertexHistManager',
     #        'triggerHistManagerForElecTau'
     #    )
@@ -398,7 +401,8 @@ elecTauAnalysisSequence = cms.VPSet(
     #        'genPhaseSpaceEventInfoHistManager',
     #        'electronHistManager',
     #        'tauHistManager',
-    #        'metHistManager',
+    #        'caloMEtHistManager',
+    #        'pfMEtHistManager',
     #        'vertexHistManager',
     #        'triggerHistManagerForElecTau'
     #    )
@@ -434,7 +438,8 @@ elecTauAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'tauHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecTau'
         )
@@ -450,7 +455,8 @@ elecTauAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'tauHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('electronHistManager.electronSource = selectedLayer1ElectronsTightIdCumulative')
@@ -464,7 +470,8 @@ elecTauAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'tauHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('electronHistManager.electronSource = selectedLayer1ElectronsAntiCrackCutCumulative')
@@ -478,7 +485,8 @@ elecTauAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'tauHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('electronHistManager.electronSource = selectedLayer1ElectronsEta21Cumulative')
@@ -492,7 +500,8 @@ elecTauAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'tauHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecTau'
         ),
@@ -509,7 +518,8 @@ elecTauAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'tauHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('electronHistManager.electronSource = selectedLayer1ElectronsPt15Cumulative',
@@ -524,7 +534,8 @@ elecTauAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'tauHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager'
         ),
         replace = cms.vstring('electronHistManager.electronSource = selectedLayer1ElectronsPt15Cumulative',
@@ -539,7 +550,8 @@ elecTauAnalysisSequence = cms.VPSet(
         analyzers = cms.vstring(
             'electronHistManager',
             'tauHistManager',
-            'metHistManager',
+            'caloMEtHistManager',
+            'pfMEtHistManager',
             'vertexHistManager',
             'triggerHistManagerForElecTau'
         ),
