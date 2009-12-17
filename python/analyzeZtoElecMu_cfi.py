@@ -281,7 +281,9 @@ elecMuEventDump = cms.PSet(
     hltPathsToPrint = cms.vstring('HLT_IsoEle15_L1I', 'HLT_Mu15', 'HLT_IsoMu11', 'HLT_IsoEle8_IsoMu7'),
     
     genParticleSource = cms.InputTag('genParticles'),
+    genJetSource = cms.InputTag('iterativeCone5GenJets'),
     genTauJetSource = cms.InputTag('tauGenJets'),
+    
     #electronSource = cms.InputTag('cleanLayer1Electrons'),
     electronSource = cms.InputTag('selectedLayer1ElectronsTrkIPcumulative'),
     #muonSource = cms.InputTag('cleanLayer1Muons'),
