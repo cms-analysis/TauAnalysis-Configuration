@@ -75,10 +75,21 @@ process.source = cms.Source("PoolSource",
         ##'rfio:/castor/cern.ch/user/v/veelken/CMSSW_2_2_3/selEvents_ZtoMuTau_Zmumu_part05.root'
         'rfio:/castor/cern.ch/user/v/veelken/CMSSW_2_2_3/selEvents_ZtoMuTau_Ztautau_part01.root',
         'rfio:/castor/cern.ch/user/v/veelken/CMSSW_2_2_3/selEvents_ZtoMuTau_Ztautau_part02.root'
-        ##'file:/afs/cern.ch/user/v/veelken/scratch0/CMSSW_2_2_10/src/TauAnalysis/Configuration/test/muTauSkim.root'
+        #'file:/afs/cern.ch/user/v/veelken/scratch0/CMSSW_2_2_10/src/TauAnalysis/Configuration/test/muTauSkim.root'
     )
     #skipBadFiles = cms.untracked.bool(True) 
 )
+
+# define auxiliary service
+# for handling of systematic uncertainties
+##from TauAnalysis.Core.sysUncertaintyBinner_cfi import *
+##process.SysUncertaintyService = cms.Service("SysUncertaintyService",
+##    config = getSysUncertaintyParameterSets(
+##        [ muonSystematics,
+##          tauSystematics,
+##          theorySystematics ]
+##    )
+##)
 
 #--------------------------------------------------------------------------------
 # define "hooks" for replacing configuration parameters
@@ -126,7 +137,7 @@ process.p = cms.Path(
 # + process.printEventContent    # uncomment to enable dump of event content after PAT-tuple production
   + process.selectZtoMuTauEvents 
   + process.analyzeZtoMuTauEvents
-  + process.saveZtoMuTauPlots 
+  + process.saveZtoMuTauPlots
 )
 
 #--------------------------------------------------------------------------------
