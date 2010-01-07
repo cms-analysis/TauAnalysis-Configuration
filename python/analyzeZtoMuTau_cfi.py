@@ -92,19 +92,6 @@ diTauCandidateCollinearApproxBinningForMuTau =  cms.PSet(
     dqmDirectory_store = cms.string('collinearApproxBinningResults4regions')
 )
 
-# import config for binning results
-# used to estimate systematic uncertainties
-from TauAnalysis.Core.sysUncertaintyBinner_cfi import *
-from TauAnalysis.CandidateTools.sysErrDefinitions_cfi import *
-sysUncertaintyBinnerForMuTau = copy.deepcopy(sysUncertaintyBinner)
-sysUncertaintyBinnerForMuTau.systematics = cms.vstring(
-    getSysUncertaintyNames(
-        [ muonSystematics,
-          tauSystematics,
-          theorySystematics ]
-    )
-)
-
 #--------------------------------------------------------------------------------
 # define event selection criteria
 #--------------------------------------------------------------------------------
@@ -845,8 +832,7 @@ muTauAnalysisSequence = cms.VPSet(
             'pfMEtHistManager',
             'particleMultiplicityHistManager',
             'vertexHistManager',
-            'triggerHistManagerForMuTau',
-            'sysUncertaintyBinnerForMuTau'
+            'triggerHistManagerForMuTau'
         ),
         replace = cms.vstring('muonHistManager.muonSource = selectedLayer1MuonsTrkIPcumulative',
                               'tauHistManager.tauSource = selectedLayer1TausForMuTauMuonVetoCumulative',
