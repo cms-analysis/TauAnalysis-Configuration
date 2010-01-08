@@ -41,7 +41,6 @@ cfgGlobalMuonCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1MuonsGlobalCumulative'),
     src_individual = cms.InputTag('selectedLayer1MuonsGlobalIndividual'),
-    systematics = cms.vstring(muonSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgMuonEtaCut = cms.PSet(
@@ -49,7 +48,6 @@ cfgMuonEtaCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1MuonsEta21Cumulative'),
     src_individual = cms.InputTag('selectedLayer1MuonsEta21Individual'),
-    systematics = cms.vstring(muonSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgMuonPtCut = cms.PSet(
@@ -57,7 +55,6 @@ cfgMuonPtCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1MuonsPt15Cumulative'),
     src_individual = cms.InputTag('selectedLayer1MuonsPt15Individual'),
-    systematics = cms.vstring(muonSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgMuonTrkIsoCut = cms.PSet(
@@ -65,7 +62,6 @@ cfgMuonTrkIsoCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1MuonsTrkIsoCumulative'),
     src_individual = cms.InputTag('selectedLayer1MuonsTrkIsoIndividual'),
-    systematics = cms.vstring(muonSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgMuonEcalIsoCut = cms.PSet(
@@ -73,7 +69,6 @@ cfgMuonEcalIsoCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1MuonsEcalIsoCumulative'),
     src_individual = cms.InputTag('selectedLayer1MuonsEcalIsoIndividual'),
-    systematics = cms.vstring(muonSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgMuonAntiPionCut = cms.PSet(
@@ -81,7 +76,6 @@ cfgMuonAntiPionCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1MuonsPionVetoCumulative'),
     src_individual = cms.InputTag('selectedLayer1MuonsPionVetoIndividual'),
-    systematics = cms.vstring(muonSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgMuonTrkIPcut = cms.PSet(
@@ -89,7 +83,6 @@ cfgMuonTrkIPcut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1MuonsTrkIPcumulative'),
     src_individual = cms.InputTag('selectedLayer1MuonsTrkIPindividual'),
-    systematics = cms.vstring(muonSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 
@@ -99,7 +92,6 @@ cfgTauAntiOverlapWithMuonsVeto = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauAntiOverlapWithMuonsVetoCumulative'),
     src_individual = cms.InputTag('selectedLayer1TausForMuTauAntiOverlapWithMuonsVetoIndividual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgTauEtaCut = cms.PSet(
@@ -107,7 +99,6 @@ cfgTauEtaCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauEta21Cumulative'),
     src_individual = cms.InputTag('selectedLayer1TausEta21Individual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgTauPtCut = cms.PSet(
@@ -115,7 +106,6 @@ cfgTauPtCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauPt20Cumulative'),
     src_individual = cms.InputTag('selectedLayer1TausPt20Individual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgTauLeadTrkCut = cms.PSet(
@@ -123,7 +113,6 @@ cfgTauLeadTrkCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauLeadTrkCumulative'),
     src_individual = cms.InputTag('selectedLayer1TausLeadTrkIndividual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgTauLeadTrkPtCut = cms.PSet(
@@ -131,7 +120,6 @@ cfgTauLeadTrkPtCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauLeadTrkPtCumulative'),
     src_individual = cms.InputTag('selectedLayer1TausLeadTrkPtIndividual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgTauTrkIsoCut = cms.PSet(
@@ -139,7 +127,6 @@ cfgTauTrkIsoCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauTrkIsoCumulative'),
     src_individual = cms.InputTag('selectedLayer1TausTrkIsoIndividual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgTauEcalIsoCut = cms.PSet(
@@ -147,7 +134,6 @@ cfgTauEcalIsoCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauEcalIsoCumulative'),
     src_individual = cms.InputTag('selectedLayer1TausEcalIsoIndividual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgTauProngCut = cms.PSet(
@@ -155,7 +141,6 @@ cfgTauProngCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauProngCumulative'),
     src_individual = cms.InputTag('selectedLayer1TausProngIndividual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgTauChargeCut = cms.PSet(
@@ -163,7 +148,6 @@ cfgTauChargeCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauChargeCumulative'),
     src_individual = cms.InputTag('selectedLayer1TausChargeIndividual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgTauMuonVeto = cms.PSet(
@@ -171,7 +155,6 @@ cfgTauMuonVeto = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedLayer1TausForMuTauMuonVetoCumulative'),
     src_individual = cms.InputTag('selectedLayer1TausMuonVetoIndividual'),
-    systematics = cms.vstring(tauSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 
@@ -181,7 +164,6 @@ cfgDiTauCandidateForMuTauAntiOverlapVeto = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedMuTauPairsAntiOverlapVetoCumulative'),
     src_individual = cms.InputTag('selectedMuTauPairsAntiOverlapVetoIndividual'),
-    systematics = cms.vstring(muTauPairSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgDiTauCandidateForMuTauZeroChargeCut = cms.PSet(
@@ -189,7 +171,6 @@ cfgDiTauCandidateForMuTauZeroChargeCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedMuTauPairsZeroChargeCumulative'),
     src_individual = cms.InputTag('selectedMuTauPairsZeroChargeIndividual'),
-    systematics = cms.vstring(muTauPairSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgDiTauCandidateForMuTauAcoplanarity12Cut = cms.PSet(
@@ -197,7 +178,6 @@ cfgDiTauCandidateForMuTauAcoplanarity12Cut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedMuTauPairsAcoplanarity12Cumulative'),
     src_individual = cms.InputTag('selectedMuTauPairsAcoplanarity12Individual'),
-    systematics = cms.vstring(muTauPairSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgDiTauCandidateForMuTauMt1METcut = cms.PSet(
@@ -205,7 +185,6 @@ cfgDiTauCandidateForMuTauMt1METcut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedMuTauPairsMt1METcumulative'),
     src_individual = cms.InputTag('selectedMuTauPairsMt1METindividual'),
-    systematics = cms.vstring(muTauPairSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 cfgDiTauCandidateForMuTauPzetaDiffCut = cms.PSet(
@@ -213,7 +192,6 @@ cfgDiTauCandidateForMuTauPzetaDiffCut = cms.PSet(
     pluginType = cms.string('PATCandViewMinEventSelector'),
     src_cumulative = cms.InputTag('selectedMuTauPairsPzetaDiffCumulative'),
     src_individual = cms.InputTag('selectedMuTauPairsPzetaDiffIndividual'),
-    systematics = cms.vstring(muTauPairSystematics.keys()),
     minNumber = cms.uint32(1)
 )
 
@@ -223,7 +201,6 @@ cfgDiMuPairZmumuHypothesisVeto = cms.PSet(
     pluginName = cms.string('diMuPairZmumuHypothesisVeto'),
     pluginType = cms.string('PATCandViewMaxEventSelector'),
     src = cms.InputTag('selectedDiMuPairZmumuHypotheses'),
-    #systematics = cms.vstring(muonSystematics.keys()),
     maxNumber = cms.uint32(0)
 )
 
