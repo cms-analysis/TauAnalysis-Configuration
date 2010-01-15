@@ -95,11 +95,6 @@ def composeFactorizationSequence(process,
         dqmSubDirectories_input = cms.vstring(
             composeSubDirectoryNames_plots(evtSel_factorizedLoose + [ None ])
         ),
-        dqmDirectory_factorizedLooseSel = cms.string(dqmDirectoryIn_factorizedLooseEvtSel + "FilterStatistics" + "/"),
-        dqmDirectory_factorizedTightSel = cms.string(dqmDirectoryIn_factorizedTightEvtSel + "FilterStatistics" + "/"),
-        meNameNumerator = cms.string(meName_numerator),
-        meNameDenominator = cms.string(meName_denominator),
-        meType = cms.string("real"),
         dqmDirectory_output = cms.string(dqmDirectoryOut)
     )
 
@@ -110,13 +105,29 @@ def composeFactorizationSequence(process,
         dqmSubDirectories_input = cms.vstring(
             composeSubDirectoryNames_filterStatistics(evtSel_factorizedLoose)
         ),
-        dqmDirectory_factorizedLooseSel = cms.string(dqmDirectoryIn_factorizedLooseEvtSel + "FilterStatistics" + "/"),
-        dqmDirectory_factorizedTightSel = cms.string(dqmDirectoryIn_factorizedTightEvtSel + "FilterStatistics" + "/"),
-        meNameNumerator = cms.string(meName_numerator),
-        meNameDenominator = cms.string(meName_denominator),
-        meType = cms.string("real"),
         dqmDirectory_output = cms.string(dqmDirectoryOut + "FilterStatistics" + "/")
-    )                                       
+    )
+
+    if meName_numerator is not None and meName_denominator is not None:
+        dqmDirectory_factorizedLooseSel = cms.string(dqmDirectoryIn_factorizedLooseEvtSel + "FilterStatistics" + "/")
+        dqmDirectory_factorizedTightSel = cms.string(dqmDirectoryIn_factorizedTightEvtSel + "FilterStatistics" + "/")
+        meType = cms.string("real")
+        
+        setattr(dqmHistScaler_plotsLooseEvtSel, "meNameNumerator", cms.string(meName_numerator))
+        setattr(dqmHistScaler_plotsLooseEvtSel, "meNameDenominator", cms.string(meName_denominator))
+        setattr(dqmHistScaler_plotsLooseEvtSel, "dqmDirectory_factorizedLooseSel", dqmDirectory_factorizedLooseSel)
+        setattr(dqmHistScaler_plotsLooseEvtSel, "dqmDirectory_factorizedTightSel", dqmDirectory_factorizedTightSel)
+        setattr(dqmHistScaler_plotsLooseEvtSel, "meType", meType)
+        
+        setattr(dqmHistScaler_filterStatLooseEvtSel, "meNameNumerator", cms.string(meName_numerator))
+        setattr(dqmHistScaler_filterStatLooseEvtSel, "meNameDenominator", cms.string(meName_denominator))
+        setattr(dqmHistScaler_filterStatLooseEvtSel, "dqmDirectory_factorizedLooseSel", dqmDirectory_factorizedLooseSel)
+        setattr(dqmHistScaler_filterStatLooseEvtSel, "dqmDirectory_factorizedTightSel", dqmDirectory_factorizedTightSel)
+        setattr(dqmHistScaler_filterStatLooseEvtSel, "meType", meType)
+    else:
+        setattr(dqmHistScaler_plotsLooseEvtSel, "scaleFactor", cms.double(1.))
+        
+        setattr(dqmHistScaler_filterStatLooseEvtSel, "scaleFactor", cms.double(1.))
 
     # delete original histograms and FilterStatistics objects
     # after applying factorization
