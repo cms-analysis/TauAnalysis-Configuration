@@ -1,8 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 import copy
 
-from TauAnalysis.Configuration.analysisSequenceTools import switchHistManagers
-from TauAnalysis.Configuration.analysisSequenceTools import replaceHistManagerInputTags
+from TauAnalysis.Configuration.tools.analysisSequenceTools import replaceAnalyzerInputTags
 
 #--------------------------------------------------------------------------------
 # import config for event print-out and analysis sequence of Z --> elec + tau-jet events
@@ -80,7 +79,7 @@ elecTauEventDump_factorizedWithElectronIsolation.triggerConditions = cms.vstring
 #--------------------------------------------------------------------------------
 
 elecTauAnalysisSequence_factorizedWithoutElectronIsolation = copy.deepcopy(elecTauAnalysisSequence)
-replaceHistManagerInputTags(elecTauAnalysisSequence_factorizedWithoutElectronIsolation,
+replaceAnalyzerInputTags(elecTauAnalysisSequence_factorizedWithoutElectronIsolation,
     [ ["selectedLayer1ElectronsTrkIsoCumulative", "selectedLayer1ElectronsTrkIsoLooseIsolationCumulative"],
       ["selectedLayer1ElectronsEcalIsoCumulative", "selectedLayer1ElectronsEcalIsoLooseIsolationCumulative"],
       ["selectedLayer1ElectronsTrkCumulative", "selectedLayer1ElectronsTrkLooseIsolationCumulative"],
