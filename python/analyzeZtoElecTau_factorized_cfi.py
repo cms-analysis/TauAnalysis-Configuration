@@ -66,12 +66,12 @@ evtSelElecTauPairZeeHypothesisVetoLooseElectronIsolation.src = cms.InputTag('ele
 elecTauEventDump_factorizedWithoutElectronIsolation = copy.deepcopy(elecTauEventDump)
 elecTauEventDump_factorizedWithoutElectronIsolation.name = cms.string('elecTauEventDump_factorizedWithoutElectronIsolation')
 elecTauEventDump_factorizedWithoutElectronIsolation.output = cms.string("std::cout")
-elecTauEventDump_factorizedWithoutElectronIsolation.triggerConditions = cms.vstring("")
+elecTauEventDump_factorizedWithoutElectronIsolation.triggerConditions = cms.vstring()
 
 elecTauEventDump_factorizedWithElectronIsolation = copy.deepcopy(elecTauEventDump)
 elecTauEventDump_factorizedWithElectronIsolation.name = cms.string('elecTauEventDump_factorizedWithElectronIsolation')
 elecTauEventDump_factorizedWithElectronIsolation.output = cms.string("std::cout")
-elecTauEventDump_factorizedWithElectronIsolation.triggerConditions = cms.vstring("")
+elecTauEventDump_factorizedWithElectronIsolation.triggerConditions = cms.vstring()
 
 #--------------------------------------------------------------------------------
 # define factorization specific analysis sequences
