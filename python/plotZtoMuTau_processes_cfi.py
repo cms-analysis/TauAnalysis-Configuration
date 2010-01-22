@@ -120,8 +120,8 @@ processZtoMuTau_WplusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
     'plotsZtoMuTau_WplusJets_part02.root',
     'plotsZtoMuTau_WplusJets_part03.root',
     'plotsZtoMuTau_WplusJets_part04.root',
-    'plotsZtoMuTau_WplusJets_part05.root',
-    'plotsZtoMuTau_WplusJets_part06.root',
+    #'plotsZtoMuTau_WplusJets_part05.root',
+    #'plotsZtoMuTau_WplusJets_part06.root',
     'plotsZtoMuTau_WplusJets_part07.root',
     'plotsZtoMuTau_WplusJets_part08.root',
     'plotsZtoMuTau_WplusJets_part09.root',
@@ -142,7 +142,7 @@ processZtoMuTau_WplusJetsSum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 
 processZtoMuTau_InclusivePPmuX = copy.deepcopy(process_InclusivePPmuX)
 processZtoMuTau_InclusivePPmuX.config_dqmFileLoader.inputFileNames = cms.vstring(
-    'plotsZtoMuTau_InclusivePPmuX_part01.root',
+    #'plotsZtoMuTau_InclusivePPmuX_part01.root',
     'plotsZtoMuTau_InclusivePPmuX_part02.root'
 )
 processZtoMuTau_InclusivePPmuX.config_dqmFileLoader.dqmDirectory_store = cms.string('harvested/InclusivePPmuX')
@@ -224,19 +224,19 @@ processZtoMuTau_PPmuXptGt20Sum.config_dqmFileLoader.scaleFactor = cms.double(1.)
 processZtoMuTau_TTplusJets = copy.deepcopy(process_TTplusJets)
 processZtoMuTau_TTplusJets.config_dqmFileLoader.inputFileNames = cms.vstring(
     'plotsZtoMuTau_TTplusJets_part01.root',
-    'plotsZtoMuTau_TTplusJets_part02.root',
+    #'plotsZtoMuTau_TTplusJets_part02.root',
     'plotsZtoMuTau_TTplusJets_part03.root',
     'plotsZtoMuTau_TTplusJets_part04.root',
     'plotsZtoMuTau_TTplusJets_part05.root',
     'plotsZtoMuTau_TTplusJets_part06.root',
-    'plotsZtoMuTau_TTplusJets_part07.root',
+    #'plotsZtoMuTau_TTplusJets_part07.root',
     'plotsZtoMuTau_TTplusJets_part08.root',
-    'plotsZtoMuTau_TTplusJets_part09.root',
+    #'plotsZtoMuTau_TTplusJets_part09.root',
     'plotsZtoMuTau_TTplusJets_part10.root',
     'plotsZtoMuTau_TTplusJets_part11.root',
-    'plotsZtoMuTau_TTplusJets_part12.root',
+    #'plotsZtoMuTau_TTplusJets_part12.root',
     'plotsZtoMuTau_TTplusJets_part13.root',
-    'plotsZtoMuTau_TTplusJets_part14.root',
+    #'plotsZtoMuTau_TTplusJets_part14.root',
     'plotsZtoMuTau_TTplusJets_part15.root',
     'plotsZtoMuTau_TTplusJets_part16.root'
 )
