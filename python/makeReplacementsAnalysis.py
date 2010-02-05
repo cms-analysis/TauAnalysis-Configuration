@@ -120,7 +120,7 @@ def makeReplacementsAnalysis(channel = None, sample = None, replacements = None)
         inputFileNames = "cms.untracked.vstring('rfio:" + inputFilePath + "' + patTupleOutputFileName" + channel + "_" + sample + ")"
         if sample.find("_part") != -1:
 	    inputFileNames = "cms.untracked.vstring(" + inputFileNames[:inputFileNames.rfind("_part")]
-	    inputFileNames += ".value().replace(\'_partXX', '" + sample[sample.rfind("_part"):] + "'))"
+	    inputFileNames += ".value().replace(\'_partXX', '" + sample[sample.rfind("_part"):] + "')))"
         patTupleProduction_line01 = ""
     else:
         raise ValueError("Invalid inputFileType parameter = " + inputFileType + " !!")

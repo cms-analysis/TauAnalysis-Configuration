@@ -37,6 +37,16 @@ def removeModules(process, sequenceName, moduleNamePattern, pyNameSpace):
 
 #--------------------------------------------------------------------------------
 # functions to enable/disable estimation of systematic uncertainties
+# in PAT-tuple production
+#--------------------------------------------------------------------------------
+
+def disableSysUncertainties_patTupleProduction(process):
+    print("<disableSysUncertainties_patTupleProduction>:")
+    
+    process.produceGenObjects.remove(process.produceSysErrGenEventReweights)
+
+#--------------------------------------------------------------------------------
+# functions to enable/disable estimation of systematic uncertainties
 # specific to Z --> muon + tau-jet channel
 #--------------------------------------------------------------------------------
 
@@ -48,12 +58,14 @@ def disableSysUncertainties_runZtoMuTau(process):
 
     process.produceGenObjects.remove(process.produceSysErrGenEventReweights)
 
-    removeModules(process, "selectZtoMuTauEvents", moduleNamePattern, pyNameSpace)
+    if hasattr(process, "selectZtoMuTauEvents"):
+        removeModules(process, "selectZtoMuTauEvents", moduleNamePattern, pyNameSpace)
     if hasattr(process, "selectZtoMuTauEventsLooseMuonIsolation"):
         removeModules(process, "selectZtoMuTauEventsLooseMuonIsolation", moduleNamePattern, pyNameSpace)
 
-    removeAnalyzer(process.analyzeZtoMuTauEvents.analysisSequence, "sysUncertaintyBinnerForMuTau")
-    process.analyzeZtoMuTauEvents.estimateSysUncertainties = cms.bool(False)
+    if hasattr(process, "analyzeZtoMuTauEvents"):
+        removeAnalyzer(process.analyzeZtoMuTauEvents.analysisSequence, "sysUncertaintyBinnerForMuTau")
+        process.analyzeZtoMuTauEvents.estimateSysUncertainties = cms.bool(False)
     if hasattr(process, "analyzeZtoMuTauEvents_factorizedWithMuonIsolation"):
         removeAnalyzer(process.analyzeZtoMuTauEvents_factorizedWithMuonIsolation.analysisSequence, "sysUncertaintyBinnerForMuTau")
         process.analyzeZtoMuTauEvents_factorizedWithMuonIsolation.estimateSysUncertainties = cms.bool(False)
@@ -157,6 +169,24 @@ def disableSysUncertainties_runZtoDiTau(process):
     process.produceGenObjects.remove(process.produceSysErrGenEventReweights)
 
     removeModules(process, "selectZtoDiTauEvents", moduleNamePattern, pyNameSpace)
+
+#--------------------------------------------------------------------------------
+# functions to enable/disable estimation of systematic uncertainties
+# specific to ! --> tau-jet + nu channel
+#--------------------------------------------------------------------------------
+
+def disableSysUncertainties_runWtoTauNu(process):
+    print("<disableSysUncertainties_runWtoTauNu>:")
+    
+    moduleNamePattern = "\w+Sys\w+(Up|Down)"
+    pyNameSpace = None
+
+    process.produceGenObjects.remove(process.produceSysErrGenEventReweights)
+
+    removeModules(process, "selectWtoTauNuEvents", moduleNamePattern, pyNameSpace)
+    if hasattr(process, "selectWtoTauNuEventsLooseIsolation"):
+        removeModules(process, "selectWtoTauNuEventsLooseIsolation", moduleNamePattern, pyNameSpace)
+
 
 
 
