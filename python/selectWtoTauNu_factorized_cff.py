@@ -16,47 +16,47 @@ from TauAnalysis.Configuration.selectWtoTauNu_cff import *
 # tau candidate selection with "loose" tau isolation criteria applied
 cfgTauLeadTrkPtLooseIsolation = copy.deepcopy(cfgTauLeadTrkPt)
 cfgTauLeadTrkPtLooseIsolation.pluginName = "tauLeadTrkPtLooseIsolation"
-cfgTauLeadTrkPtLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1TausForWTauNuLeadTrkPtLooseIsolationCumulative')
-cfgTauLeadTrkPtLooseIsolation.src_individual = cms.InputTag('selectedLayer1TausForWTauNuLeadTrkPtLooseIsolationIndividual')
+cfgTauLeadTrkPtLooseIsolation.src_cumulative = cms.InputTag('selectedPatTausForWTauNuLeadTrkPtLooseIsolationCumulative')
+cfgTauLeadTrkPtLooseIsolation.src_individual = cms.InputTag('selectedPatTausForWTauNuLeadTrkPtLooseIsolationIndividual')
 
 cfgTauEcalIsoLooseIsolation = copy.deepcopy(cfgTauEcalIso)
 cfgTauEcalIsoLooseIsolation.pluginName = "tauEcalIsoLooseIsolation"
-cfgTauEcalIsoLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1TausForWTauNuEcalIsoLooseIsolationCumulative')
-cfgTauEcalIsoLooseIsolation.src_individual = cms.InputTag('selectedLayer1TausForWTauNuEcalIsoLooseIsolationIndividual')
+cfgTauEcalIsoLooseIsolation.src_cumulative = cms.InputTag('selectedPatTausForWTauNuEcalIsoLooseIsolationCumulative')
+cfgTauEcalIsoLooseIsolation.src_individual = cms.InputTag('selectedPatTausForWTauNuEcalIsoLooseIsolationIndividual')
 
 cfgTauTrkIsoLooseIsolation = copy.deepcopy(cfgTauTrkIso)
 cfgTauTrkIsoLooseIsolation.pluginName = "tauTrkIsoLooseIsolation"
-cfgTauTrkIsoLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1TausForWTauNuTrkIsoLooseIsolationCumulative')
-cfgTauTrkIsoLooseIsolation.src_individual = cms.InputTag('selectedLayer1TausForWTauNuTrkIsoLooseIsolationIndividual')
+cfgTauTrkIsoLooseIsolation.src_cumulative = cms.InputTag('selectedPatTausForWTauNuTrkIsoLooseIsolationCumulative')
+cfgTauTrkIsoLooseIsolation.src_individual = cms.InputTag('selectedPatTausForWTauNuTrkIsoLooseIsolationIndividual')
 
 cfgTauMuonVetoLooseIsolation = copy.deepcopy(cfgTauMuonVeto)
 cfgTauMuonVetoLooseIsolation.pluginName = "tauMuonVetoLooseIsolation"
-cfgTauMuonVetoLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1TausForWTauNuMuonVetoLooseIsolationCumulative')
-cfgTauMuonVetoLooseIsolation.src_individual = cms.InputTag('selectedLayer1TausForWTauNuMuonVetoLooseIsolationIndividual')
+cfgTauMuonVetoLooseIsolation.src_cumulative = cms.InputTag('selectedPatTausForWTauNuMuonVetoLooseIsolationCumulative')
+cfgTauMuonVetoLooseIsolation.src_individual = cms.InputTag('selectedPatTausForWTauNuMuonVetoLooseIsolationIndividual')
 
 cfgTauElectronVetoLooseIsolation = copy.deepcopy(cfgTauElectronVeto)
 cfgTauElectronVetoLooseIsolation.pluginName = "tauElectronVetoLooseIsolation"
-cfgTauElectronVetoLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1TausForWTauNuElectronVetoLooseIsolationCumulative')
-cfgTauElectronVetoLooseIsolation.src_individual = cms.InputTag('selectedLayer1TausForWTauNuElectronVetoLooseIsolationIndividual')
+cfgTauElectronVetoLooseIsolation.src_cumulative = cms.InputTag('selectedPatTausForWTauNuElectronVetoLooseIsolationCumulative')
+cfgTauElectronVetoLooseIsolation.src_individual = cms.InputTag('selectedPatTausForWTauNuElectronVetoLooseIsolationIndividual')
 
 cfgTauEcalCrackVetoLooseIsolation = copy.deepcopy(cfgTauEcalCrackVeto)
 cfgTauEcalCrackVetoLooseIsolation.pluginName = "tauEcalCrackVetoLooseIsolation"
-cfgTauEcalCrackVetoLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1TausForWTauNuEcalCrackVetoLooseIsolationCumulative')
-cfgTauEcalCrackVetoLooseIsolation.src_individual = cms.InputTag('selectedLayer1TausForWTauNuEcalCrackVetoLooseIsolationIndividual')
+cfgTauEcalCrackVetoLooseIsolation.src_cumulative = cms.InputTag('selectedPatTausForWTauNuEcalCrackVetoLooseIsolationCumulative')
+cfgTauEcalCrackVetoLooseIsolation.src_individual = cms.InputTag('selectedPatTausForWTauNuEcalCrackVetoLooseIsolationIndividual')
 
 cfgTauProngCutLooseIsolation = copy.deepcopy(cfgTauProngCut)
 cfgTauProngCutLooseIsolation.pluginName = "tauProngLooseIsolation"
-cfgTauProngCutLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1TausForWTauNuProngLooseIsolationCumulative')
-cfgTauProngCutLooseIsolation.src_individual = cms.InputTag('selectedLayer1TausForWTauNuProngLooseIsolationIndividual')
+cfgTauProngCutLooseIsolation.src_cumulative = cms.InputTag('selectedPatTausForWTauNuProngLooseIsolationCumulative')
+cfgTauProngCutLooseIsolation.src_individual = cms.InputTag('selectedPatTausForWTauNuProngLooseIsolationIndividual')
 
 cfgTauChargeCutLooseIsolation = copy.deepcopy(cfgTauChargeCut)
 cfgTauChargeCutLooseIsolation.pluginName = "tauChargeLooseIsolation"
-cfgTauChargeCutLooseIsolation.src_cumulative = cms.InputTag('selectedLayer1TausForWTauNuChargeLooseIsolationCumulative')
-cfgTauChargeCutLooseIsolation.src_individual = cms.InputTag('selectedLayer1TausForWTauNuChargeLooseIsolationIndividual')
+cfgTauChargeCutLooseIsolation.src_cumulative = cms.InputTag('selectedPatTausForWTauNuChargeLooseIsolationCumulative')
+cfgTauChargeCutLooseIsolation.src_individual = cms.InputTag('selectedPatTausForWTauNuChargeLooseIsolationIndividual')
 
 cfgCentralJetVetoLooseIsolation = copy.deepcopy(cfgCentralJetVeto)
 cfgCentralJetVetoLooseIsolation.pluginName = "centralJetVetoLooseIsolation"
-cfgCentralJetVetoLooseIsolation.src = cms.InputTag('selectedLayer1JetsEt15ForWTauNuLooseIsolationCumulative')
+cfgCentralJetVetoLooseIsolation.src = cms.InputTag('selectedPatJetsEt15ForWTauNuLooseIsolationCumulative')
 
 cfgRecoilEnergyFromCaloTowersCutLooseIsolation = copy.deepcopy(cfgRecoilEnergyFromCaloTowersCut)
 cfgRecoilEnergyFromCaloTowersCutLooseIsolation.pluginName = "recoilEnergyFromCaloTowersCutLooseIsolation"

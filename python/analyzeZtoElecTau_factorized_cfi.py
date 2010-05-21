@@ -80,11 +80,11 @@ elecTauEventDump_factorizedWithElectronIsolation.triggerConditions = cms.vstring
 
 elecTauAnalysisSequence_factorizedWithoutElectronIsolation = copy.deepcopy(elecTauAnalysisSequence)
 replaceAnalyzerInputTags(elecTauAnalysisSequence_factorizedWithoutElectronIsolation,
-    [ ["selectedLayer1ElectronsTrkIsoCumulative", "selectedLayer1ElectronsTrkIsoLooseIsolationCumulative"],
-      ["selectedLayer1ElectronsEcalIsoCumulative", "selectedLayer1ElectronsEcalIsoLooseIsolationCumulative"],
-      ["selectedLayer1ElectronsTrkCumulative", "selectedLayer1ElectronsTrkLooseIsolationCumulative"],
-      ["selectedLayer1ElectronsTrkIPcumulative", "selectedLayer1ElectronsTrkIPlooseIsolationCumulative"],
-      ["selectedLayer1ElectronsForElecTauConversionVetoCumulative", "selectedLayer1ElectronsForElecTauConversionVetoLooseIsolationCumulative"],
+    [ ["selectedPatElectronsTrkIsoCumulative", "selectedPatElectronsTrkIsoLooseIsolationCumulative"],
+      ["selectedPatElectronsEcalIsoCumulative", "selectedPatElectronsEcalIsoLooseIsolationCumulative"],
+      ["selectedPatElectronsTrkCumulative", "selectedPatElectronsTrkLooseIsolationCumulative"],
+      ["selectedPatElectronsTrkIPcumulative", "selectedPatElectronsTrkIPlooseIsolationCumulative"],
+      ["selectedPatElectronsForElecTauConversionVetoCumulative", "selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative"],
       ["selectedElecTauPairsAntiOverlapVetoCumulative", "selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative"],
       ["selectedElecTauPairsZeroChargeCumulative", "selectedElecTauPairsZeroChargeLooseElectronIsolationCumulative"],
       ["selectedElecTauPairsAcoplanarity12Cumulative", "selectedElecTauPairsAcoplanarity12LooseElectronIsolationCumulative"],
