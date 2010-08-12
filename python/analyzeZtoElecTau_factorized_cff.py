@@ -37,7 +37,7 @@ analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.name = cms.string('zE
 replaceEventSelections(analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation,
     [ [ evtSelElectronTrkIso, evtSelElectronTrkIsoLooseIsolation ],
       [ evtSelElectronEcalIso, evtSelElectronEcalIsoLooseIsolation ],
-      [ evtSelElectronTrk, evtSelElectronTrkLooseIsolation ],
+      [ evtSelElectronConversionVeto, evtSelElectronConversionVetoLooseIsolation ],
       [ evtSelElectronTrkIP, evtSelElectronTrkIPlooseIsolation ],
       [ evtSelDiTauCandidateForElecTauAntiOverlapVeto, evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation ],
       [ evtSelDiTauCandidateForElecTauZeroCharge, evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation ],

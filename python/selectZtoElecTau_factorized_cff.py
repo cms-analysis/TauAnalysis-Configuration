@@ -24,20 +24,15 @@ cfgElectronEcalIsoCutLooseIsolation.pluginName = "electronEcalIsoCutLooseIsolati
 cfgElectronEcalIsoCutLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsEcalIsoLooseIsolationCumulative')
 cfgElectronEcalIsoCutLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsEcalIsoLooseIsolationIndividual')
 
-cfgElectronTrkCutLooseIsolation = copy.deepcopy(cfgElectronTrkCut)
-cfgElectronTrkCutLooseIsolation.pluginName = "electronTrkCutLooseIsolation"
-cfgElectronTrkCutLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsTrkLooseIsolationCumulative')
-cfgElectronTrkCutLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsTrkLooseIsolationIndividual')
+cfgElectronConversionVetoLooseIsolation = copy.deepcopy(cfgElectronConversionVeto)
+cfgElectronConversionVetoLooseIsolation.pluginName = "electronConversionVetoLooseIsolation"
+cfgElectronConversionVetoLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative')
+cfgElectronConversionVetoLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsForElecTauConversionVetoLooseIsolationIndividual')
 
 cfgElectronTrkIPcutLooseIsolation = copy.deepcopy(cfgElectronTrkIPcut)
 cfgElectronTrkIPcutLooseIsolation.pluginName = "electronTrkIPcutLooseIsolation"
 cfgElectronTrkIPcutLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsTrkIPlooseIsolationCumulative')
 cfgElectronTrkIPcutLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsTrkIPlooseIsolationIndividual')
-
-cfgElectronConversionVetoLooseIsolation = copy.deepcopy(cfgElectronConversionVeto)
-cfgElectronConversionVetoLooseIsolation.pluginName = "electronConversionVetoLooseIsolation"
-cfgElectronConversionVetoLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative')
-cfgElectronConversionVetoLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsForElecTauConversionVetoLooseIsolationIndividual')
 
 # selection of di-tau candidates composed of combination of tau-jet with "loosely" isolated electron
 cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation = copy.deepcopy(cfgDiTauCandidateForElecTauAntiOverlapVeto)
@@ -72,9 +67,8 @@ cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation.src = cms.InputTag('select
 zToElecTauEventSelConfiguratorLooseElectronIsolation = eventSelFlagProdConfigurator(
     [ cfgElectronTrkIsoCutLooseIsolation,
       cfgElectronEcalIsoCutLooseIsolation,
-      cfgElectronTrkCutLooseIsolation,
-      cfgElectronTrkIPcutLooseIsolation,
       cfgElectronConversionVetoLooseIsolation,
+      cfgElectronTrkIPcutLooseIsolation,
       cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation,
       cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation,
       cfgDiTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation,
