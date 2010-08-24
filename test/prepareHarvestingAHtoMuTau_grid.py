@@ -4,13 +4,15 @@ from TauAnalysis.Configuration.recoSampleDefinitionsAHtoMuTau_7TeV_grid_cfi impo
 import os
 
 CHANNEL = 'AHtoMuTau'
-ID = 'Run2'
+ID = 'Run5'
 CASTOR_DIRECTORY = os.path.join(os.environ['CASTOR_HOME'],'AHtoMuTau_grid')
 
 PLOT_OUTPUT_DIRECTORY = '/data1/friis/'
 
 # Where to store temporary files
-WORKING_DIRECTORY = '/tmp/friis/Run2'
+WORKING_DIRECTORY = '/tmp/friis/Run5'
+if not os.path.exists(WORKING_DIRECTORY):
+    os.mkdir(WORKING_DIRECTORY)
 
 files_in_castor = list(castor.nsls(CASTOR_DIRECTORY))
 
@@ -25,6 +27,6 @@ for sample in RECO_SAMPLES.keys():
 
     harvest_jobs.append( (sample, output_path, files_to_merge) )
 
-buildMakefile(harvest_jobs, '/tmp/friis/', 'Makefile.harvesting', merge_per_job=6)
+buildMakefile(harvest_jobs, WORKING_DIRECTORY, 'Makefile.harvest_%s_%s' % (CHANNEL, ID), merge_per_job=7)
 
 
