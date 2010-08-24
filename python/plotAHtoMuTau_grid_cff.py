@@ -14,80 +14,73 @@ import copy
 #
 #--------------------------------------------------------------------------------
 
-TARGET_LUMI = 200
-
 # Define the file loader jobs for each of our analyzed jobs
-_fileLoaderJobs = dict(
-    (sampleName, cms.PSet(
+_fileLoaderJobs = {}
+for sample in samples.FLATTENED_SAMPLES_TO_PLOT:
+    sample_info = samples.RECO_SAMPLES[sample]
+    # Build DQMFileLoader PSet for this sample
+    sample_pset = cms.PSet(
         inputFileNames = cms.vstring(''),
-        dqmDirectory_store = cms.string('/harvested/%s' % sampleName),
-        # Autoscale settings
-        autoscale = cms.bool(True),
-        totalExpectedEventsBeforeSkim = cms.uint32(sample_info['events_processed']),
-        skimEfficiency = cms.double(sample_info['skim_eff']),
-        xSection = cms.double(sample_info['x_sec']),
-        targetIntLumi = cms.double(TARGET_LUMI),
-        filterToUse = cms.string("genPhaseSpaceCut"),
-        filterStatisticsLocation = cms.string('ahMuTauAnalyzer_wBtag/FilterStatistics/'),
-    )) for sampleName, sample_info in ( 
-        (sample, samples.RECO_SAMPLES[sample]) for sample in samples.SAMPLES_TO_ANALYZE )
-)
+        dqmDirectory_store = cms.string('/harvested/%s' % sample),
+    )
+    # Auto scale MC samples
+    if sample_info['type'].lower().find('mc') != -1:
+        sample_pset.autoscale = cms.bool(True)
+        sample_pset.totalExpectedEventsBeforeSkim = cms.uint32(sample_info['events_processed'])
+        sample_pset.skimEfficiency = cms.double(sample_info['skim_eff'])
+        sample_pset.xSection = cms.double(sample_info['x_sec'])
+        sample_pset.targetIntLumi = cms.double(samples.TARGET_LUMI)
+
+        # Define the filter to take the processed events from
+        sample_pset.filterToUse = cms.string("genPhaseSpaceCut")
+        sample_pset.filterStatisticsLocation = cms.string('ahMuTauAnalyzer_woBtag/FilterStatistics/')
+    else:
+        # For data, don't apply any scaling
+        sample_pset.scaleFactor = cms.double(1.0)
+    # If the sample is factorized, we need to change the location of the filter
+    # statistics information
+    if sample_info['factorize']:
+        sample_pset.filterStatisticsLocation = cms.string(
+            'ahMuTauAnalyzer_woBtag_factorizedWithMuonIsolation/FilterStatistics/')
+
+    # Add to our sample dictionary
+    _fileLoaderJobs[sample] = sample_pset
+
+_histAdderJobs = {}
+# Loop over the different merged samples we have defined and 
+# merge them using the HistAdder
+for merge_name in samples.MERGE_SAMPLES.keys():
+    # Don't merge if we don't care about it
+    if merge_name not in samples.SAMPLES_TO_PLOT:
+        continue
+    merge_info = samples.MERGE_SAMPLES[merge_name]
+    for type in ['woBtag', 'wBtag']:
+        # Build the new PSet
+        new_pset = cms.PSet(
+            dqmDirectories_input = cms.vstring([
+                '/harvested/%s/ahMuTauAnalyzer_%s'%(sample,type) 
+                for sample in merge_info['samples']
+            ]),
+            dqmDirectory_output = cms.string(
+                '/harvested/%s/ahMuTauAnalyzer_%s'%(merge_name,type)),
+        )
+        # Add the new PSet to our list
+        _histAdderJobs["merge_%s_%s" % (merge_name, type)] = new_pset
 
 # Build the file loader
-loadAHtoMuTau = cms.EDAnalyzer("DQMFileLoader", **_fileLoaderJobs)
+loadAHtoMuTauSamples = cms.EDAnalyzer("DQMFileLoader", **_fileLoaderJobs)
+# Build the histogram mergers
+mergeSamplesAHtoMuTau = cms.EDAnalyzer('DQMHistAdder', **_histAdderJobs)
 
-# QCD Sum
-addAHtoMuTau_woBtag_qcdSum = cms.EDAnalyzer(
-    "DQMHistAdder", 
-    qcdSum = cms.PSet(
-        dqmDirectories_input = cms.vstring(
-            ['/harvested/%s/ahMuTauAnalyzer_woBtag'%sample for sample in 
-            samples.MERGE_SAMPLES['qcdSum']['samples']]
-        ),
-        dqmDirectory_output = cms.string('/harvested/qcdSum/ahMuTauAnalyzer_woBtag')
-    )                          
-)
+# Add an additional sequence layer that we can hook into when factorization
+# This is necessary because the sample merging step will be changed to access
+# to the factorized samples
+loadAndFactorizeAHtoMuTauSamples = cms.Sequence(loadAHtoMuTauSamples)
 
-addAHtoMuTau_wBtag_qcdSum = cms.EDAnalyzer(
-    "DQMHistAdder", 
-    qcdSum = cms.PSet(
-        dqmDirectories_input = cms.vstring(
-            ['/harvested/%s/ahMuTauAnalyzer_wBtag'%sample for sample in 
-            samples.MERGE_SAMPLES['qcdSum']['samples']]
-        ),
-        dqmDirectory_output = cms.string('/harvested/qcdSum/ahMuTauAnalyzer_wBtag')
-    )                          
-)
 
-# Standard Model BG Sum
-addAHtoMuTau_woBtag_smBgSum = cms.EDAnalyzer(
-    "DQMHistAdder", 
-    smBgSum = cms.PSet(
-        dqmDirectories_input = cms.vstring(
-            ['/harvested/%s/ahMuTauAnalyzer_woBtag'%sample for sample in 
-            samples.MERGE_SAMPLES['smBgSum']['samples']]
-        ),
-        dqmDirectory_output = cms.string('/harvested/smBgSum/ahMuTauAnalyzer_woBtag')
-    )                          
-)
+loadAHtoMuTau = cms.Sequence(loadAndFactorizeAHtoMuTauSamples *
+                             mergeSamplesAHtoMuTau)
 
-addAHtoMuTau_wBtag_smBgSum = cms.EDAnalyzer(
-    "DQMHistAdder", 
-    smBgSum = cms.PSet(
-        dqmDirectories_input = cms.vstring(
-            ['/%s/ahMuTauAnalyzer_wBtag'%sample for sample in 
-            samples.MERGE_SAMPLES['smBgSum']['samples']]
-        ),
-        dqmDirectory_output = cms.string('/smBgSum/ahMuTauAnalyzer_wBtag')
-    )                          
-)
-
-addAHtoMuTau = cms.Sequence(
-    addAHtoMuTau_woBtag_qcdSum *
-    addAHtoMuTau_woBtag_smBgSum *
-    addAHtoMuTau_wBtag_qcdSum *
-    addAHtoMuTau_wBtag_smBgSum
-)
 
 # Define plot processes and styles for each sample
 # These get passed as kwargs to the DQMHistPlotter
@@ -111,6 +104,7 @@ drawJobTemplate.stack = cms.vstring([
     sample for sample in samples.SAMPLES_TO_PLOT 
     if samples.ALL_SAMPLES[sample]['type'].find('bsm') == -1 
 ])
+drawJobTemplate.yAxis = cms.string('numEntries_log')
 
 # Reset the template for the drawJob configurators
 drawJobs.drawJobConfigurator_AHtoMuTau_woBtag.setTemplate(drawJobTemplate)
