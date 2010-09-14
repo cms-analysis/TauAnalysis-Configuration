@@ -52,7 +52,8 @@ _histAdderJobs = {}
 for merge_name in samples.MERGE_SAMPLES.keys():
     # Don't merge if we don't care about it
     if merge_name not in samples.SAMPLES_TO_PLOT:
-        continue
+        if merge_name not in samples.SAMPLES_TO_PRINT:
+            continue
     merge_info = samples.MERGE_SAMPLES[merge_name]
     for type in ['woBtag', 'wBtag']:
         # Build the new PSet
@@ -102,7 +103,8 @@ drawJobTemplate.plots.processes = cms.vstring(samples.SAMPLES_TO_PLOT)
 # Stack all non-BSM sample
 drawJobTemplate.stack = cms.vstring([
     sample for sample in samples.SAMPLES_TO_PLOT 
-    if samples.ALL_SAMPLES[sample]['type'].find('bsm') == -1 
+    if samples.ALL_SAMPLES[sample]['type'].find('bsm') == -1 and
+    samples.ALL_SAMPLES[sample]['type'].find('Data') == -1
 ])
 drawJobTemplate.yAxis = cms.string('numEntries_log')
 
@@ -150,18 +152,20 @@ plotAHtoMuTau_woBtag = cms.EDAnalyzer(
                               
     drawJobs = drawJobs.drawJobConfigurator_AHtoMuTau_woBtag.configure(),
 
-    canvasSizeX = cms.int32(800),
-    canvasSizeY = cms.int32(640),                         
+    #canvasSizeX = cms.int32(800),
+    #canvasSizeY = cms.int32(640),                         
+    canvasSizeX = cms.int32(640),
+    canvasSizeY = cms.int32(800),                         
 
     outputFilePath = cms.string('./plots/'),
     #outputFileName = cms.string('plotsAHtoMuTau_woBtag.ps')
-    indOutputFileName = cms.string('plotAHtoMuTau_woBtag_#PLOT#.png')
+    indOutputFileName = cms.string('plotAHtoMuTau_woBtag_#PLOT#.pdf')
 )
 
 plotAHtoMuTau_wBtag = plotAHtoMuTau_woBtag.clone(
     drawJobs = drawJobs.drawJobConfigurator_AHtoMuTau_wBtag.configure(),
     #outputFileName = cms.string('plotsAHtoMuTau_wBtag.ps')
-    indOutputFileName = cms.string('plotAHtoMuTau_wBtag_#PLOT#.png')
+    indOutputFileName = cms.string('plotAHtoMuTau_wBtag_#PLOT#.pdf')
 )
 
 plotAHtoMuTau = cms.Sequence(plotAHtoMuTau_woBtag * plotAHtoMuTau_wBtag)
