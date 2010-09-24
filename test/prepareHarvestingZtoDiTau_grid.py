@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 
 import TauAnalysis.Configuration.tools.castor as castor
@@ -6,7 +8,7 @@ from TauAnalysis.Configuration.recoSampleDefinitionsZtoDiTau_7TeV_grid_cfi impor
 
 CHANNEL = 'ZtoDiTau'
 ID = '7TeV'
-CASTOR_DIRECTORY = os.path.join(os.environ['CASTOR_HOME'], 'ZtoDiTau_grid')
+CASTOR_DIRECTORY = '/castor/cern.ch/user/v/veelken/CMSSW_3_6_x/plots/ZtoDiTau/'
 
 PLOT_OUTPUT_DIRECTORY = '/data1/veelken/CMSSW_3_6_x/plots/ZtoDiTau'
 
@@ -18,8 +20,7 @@ if not os.path.exists(WORKING_DIRECTORY):
 files_in_castor = castor.nsls(CASTOR_DIRECTORY)
 
 print "Finding CASTOR files"
-files_to_process = [file for file in files_in_castor if 
-                    file.find('_%s_' % ID) != -1]
+files_to_process = [ file for file in files_in_castor if file.find('_%s_' % ID) != -1 ]
 
 print "Sorting by modified time"
 print castor.last_modified(files_to_process[1])
@@ -48,4 +49,5 @@ for sample in SAMPLES_TO_ANALYZE:
 
 buildMakefile(harvest_jobs, WORKING_DIRECTORY, 'Makefile.harvest_%s_%s' % (CHANNEL, ID), merge_per_job=7)
 
+print "execute 'make -f Makefile.harvest_ZtoDiTau_7TeV -j 8 -k' now"
 
