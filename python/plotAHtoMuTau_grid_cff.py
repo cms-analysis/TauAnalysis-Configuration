@@ -125,6 +125,7 @@ plotAHtoMuTau_woBtag = cms.EDAnalyzer(
         IPz = copy.deepcopy(styles.xAxis_ipZ),
         dR = copy.deepcopy(styles.xAxis_dR),
         dPhi = copy.deepcopy(styles.xAxis_dPhi),
+        Chi2 = copy.deepcopy(styles.xAxis_Chi2),
         prob = copy.deepcopy(styles.xAxis_prob),
         posZ = copy.deepcopy(styles.xAxis_posZ),
         Mt = copy.deepcopy(styles.xAxis_transMass),
