@@ -78,10 +78,8 @@ mergeSamplesAHtoMuTau = cms.EDAnalyzer('DQMHistAdder', **_histAdderJobs)
 # to the factorized samples
 loadAndFactorizeAHtoMuTauSamples = cms.Sequence(loadAHtoMuTauSamples)
 
-
 loadAHtoMuTau = cms.Sequence(loadAndFactorizeAHtoMuTauSamples *
                              mergeSamplesAHtoMuTau)
-
 
 # Define plot processes and styles for each sample
 # These get passed as kwargs to the DQMHistPlotter
@@ -112,9 +110,7 @@ drawJobTemplate.yAxis = cms.string('numEntries_log')
 drawJobs.drawJobConfigurator_AHtoMuTau_woBtag.setTemplate(drawJobTemplate)
 drawJobs.drawJobConfigurator_AHtoMuTau_wBtag.setTemplate(drawJobTemplate)
 
-
-plotAHtoMuTau_woBtag = cms.EDAnalyzer(
-    "DQMHistPlotter",
+plotAHtoMuTau_woBtag = cms.EDAnalyzer("DQMHistPlotter",
     processes = cms.PSet(**_processesForAHtoMuTauPlots),
 
     xAxes = cms.PSet(
@@ -169,7 +165,8 @@ plotAHtoMuTau_wBtag = plotAHtoMuTau_woBtag.clone(
     indOutputFileName = cms.string('plotAHtoMuTau_wBtag_#PLOT#.pdf')
 )
 
-plotAHtoMuTau = cms.Sequence(plotAHtoMuTau_woBtag * plotAHtoMuTau_wBtag)
+##plotAHtoMuTau = cms.Sequence(plotAHtoMuTau_woBtag * plotAHtoMuTau_wBtag)
+plotAHtoMuTau = cms.Sequence(plotAHtoMuTau_woBtag)
 
 saveAHtoMuTau = cms.EDAnalyzer("DQMSimpleFileSaver",
     outputFileName = cms.string('plotsAHtoMuTau_all.root')
