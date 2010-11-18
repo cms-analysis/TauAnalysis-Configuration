@@ -7,13 +7,17 @@ import subprocess
 
 channel = 'AHtoMuTau'
 
+registry.overrideJobId('AHtoMuTau', 'Run17')
+
 to_dump = [
-    'data_Mu_Run2010A_Sep17ReReco',
-    'data_Mu_Run2010B_Prompt',
-    'WplusJets',
-    'Ztautau',
-    'PPmuXptGt20Mu15',
-    'PPmuXptGt20Mu10'
+    #'data_Mu_Run2010A_Sep17ReReco',
+    #'data_Mu_Run2010B_Prompt',
+    #'WplusJets',
+    #'Ztautau',
+    #'ZtautauPU156bx',
+    #'PPmuXptGt20Mu15',
+    #'PPmuXptGt20Mu10'
+    'Zmumu'
 ]
 
 _FINAL_CUT = 'evtSelNonCentralJetEt20bTag'
@@ -36,26 +40,38 @@ def location(sample):
             channel, sample, registry.getJobId(channel)))
 
 def output_directory(sample):
-    return sample + "_pickevents"
+    return os.path.join(registry.getHarvestingFilePath(channel),
+                        'get_events', sample + "_pickevents")
 
-# Build each event list
-for sample in to_dump:
-    #continue
-    print "Getting event list for %s sample" % sample
-    output_dir = output_directory(sample)
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-    output_file_name = os.path.join(output_dir, sample + "_events.txt")
-    command = [event_dumper, output_file_name, location(sample),
-               '%s' % get_filter_stats(
-                   samples.RECO_SAMPLES[sample]['factorize'])]
-    print command
-    subprocess.call(command)
+if __name__ == "__main__":
+    # Build each event list
+    for sample in to_dump:
+        #continue
+        print "Getting event list for %s sample" % sample
+        output_dir = output_directory(sample)
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        output_file_name = os.path.join(output_dir, sample + "_events.txt")
+        command = [event_dumper, output_file_name, location(sample),
+                   '%s' % get_filter_stats(
+                       samples.RECO_SAMPLES[sample]['factorize'])]
+        print command
+        subprocess.call(command)
 
-# Call edmPickEvents on each event list
-for sample in to_dump:
-    print "Generating crab cfg for %s sample" % sample
-    command = ['edmPickEvents.py', samples.RECO_SAMPLES[sample]['datasetpath'],
-              sample + "_events.txt", '--crab']
-    print command
-    subprocess.call(command, cwd=output_directory(sample))
+    # Call edmPickEvents on each event list
+    for sample in to_dump:
+        print "Generating crab cfg for %s sample" % sample
+        command = ['edmPickEvents.py', samples.RECO_SAMPLES[sample]['datasetpath'],
+                  sample + "_events.txt", '--crab']
+        print command
+        subprocess.call(command, cwd=output_directory(sample))
+
+    # Submit each job
+    for sample in to_dump:
+        print "Submitting crab jobs"
+        command = ['crab', '-create', '-cfg', 'pickevents_crab.config']
+        print command
+        subprocess.call(command, cwd=output_directory(sample))
+        command = ['crab', '-submit']
+        print command
+        subprocess.call(command, cwd=output_directory(sample))
