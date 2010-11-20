@@ -16,13 +16,16 @@ def switchToAOD(process, triggerHistManager = None, eventDumpPlugin = None):
 
     # disable PAT trigger matching
     # (not yet implemented for photons and jets)
-    process.patDefaultSequence.remove(process.patTriggerSequence)
+    if hasattr(process, "patTriggerSequence"):
+        process.patDefaultSequence.remove(process.patTriggerSequence)
     process.patElectrons.embedHighLevelSelection = cms.bool(False)
     #process.patPhotons.embedHighLevelSelection = cms.bool(False)
     process.patMuons.embedHighLevelSelection = cms.bool(False)
     process.patTaus.embedHighLevelSelection = cms.bool(False)
     #process.patJets.embedHighLevelSelection = cms.bool(False)
     process.patMETs.embedHighLevelSelection = cms.bool(False)
+    if hasattr(process, "patPFMETs"):
+        process.patPFMETs.embedHighLevelSelection = cms.bool(False)
 
     if triggerHistManager is not None:
         triggerHistManager.hltResultsSource = cms.InputTag('')
