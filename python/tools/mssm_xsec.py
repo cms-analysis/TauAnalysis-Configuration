@@ -1,15 +1,11 @@
 #!/usr/bin/env python
-import os
-#import sys
-#arguments = sys.argv[:]
-#sys.argv = []
+import re
 import ROOT
 import pprint
 ROOT.gROOT.SetBatch(True)
 
 # Version copied from /afs/cern.ch/user/t/tvickey/public/out.mhmax.root on Nov16
 _FILE_NAME = '/afs/cern.ch/user/f/friis/public/out.mhmax.Nov16.root'
-#_FILE_NAME = '/afs/cern.ch/user/t/tvickey/public/out.mhmax.root'
 
 picobarns = 1.0
 femtobarns = 1e-3*picobarns
@@ -67,6 +63,42 @@ def query(mA, tan_beta):
     map(add_mass, output['higgses'].iteritems())
     map(add_xsec, output['higgses'].iteritems())
     return output
+
+# Functions that determine whether or not a Higgs (h, H, A) is non-negligble
+_inclusion_ranges = {
+    'A' : lambda massA: True,
+    'H' : lambda massA: massA > 120,
+    'h' : lambda massA: massA < 140,
+}
+def get_cross_section(sample_name, tan_beta, verbose=False):
+    " Get a cross section for a given sample and tan_beta "
+    matcher = re.compile(r"(?P<isBB>bb)*A(?P<massA>\d*)")
+    " Get the cross section given the sample name"
+    match = matcher.match(sample_name)
+    if not match:
+        return None
+    mass = int(match.group('massA'))
+    if verbose:
+        print "Updating cross section for sample %s - mA: %i" % (
+            sample_name, mass)
+    mssm_info = query(mass, tan_beta)
+    production_mechanism = (match.group('isBB') and 'bbH' or 'ggF')
+    # Compute the total cross section, using multiple higgs if necessary
+    total_eff_xsec = 0.0
+    for higgs_type in ['H', 'A', 'h']:
+        # Determine if we care about this higgs for this mA
+        if _inclusion_ranges[higgs_type](mass):
+            higgs_dict = mssm_info['higgses'][higgs_type]
+            br = higgs_dict['BR']
+            # Get the cross section in picobarns
+            xsec = (higgs_dict['xsec'][production_mechanism]/picobarns)
+            if verbose:
+                print "--- %s contributes (BR*xsec) %0.2f * %0.2fpb = %0.2f" % (
+                    higgs_type, br, xsec, br*xsec)
+            total_eff_xsec += xsec*br
+    if verbose:
+        print "--- Total effective xsec: %0.2f pb" % total_eff_xsec
+    return total_eff_xsec
 
 if __name__ == "__main__":
     # Parse arguments
