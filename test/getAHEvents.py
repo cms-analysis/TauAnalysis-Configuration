@@ -3,20 +3,21 @@
 import TauAnalysis.Configuration.recoSampleDefinitionsAHtoMuTau_7TeV_grid_cfi as samples
 import TauAnalysis.Configuration.userRegistry as registry
 import os
+import glob
 import subprocess
 
 channel = 'AHtoMuTau'
 
-registry.overrideJobId('AHtoMuTau', 'Run17')
+registry.overrideJobId('AHtoMuTau', 'Run21')
 
 to_dump = [
-    #'data_Mu_Run2010A_Sep17ReReco',
-    #'data_Mu_Run2010B_Prompt',
-    #'WplusJets',
-    #'Ztautau',
-    #'ZtautauPU156bx',
-    #'PPmuXptGt20Mu15',
-    #'PPmuXptGt20Mu10'
+    'data_Mu_Run2010A_Sep17ReReco',
+    'data_Mu_Run2010B_Prompt',
+    'WplusJets',
+    'Ztautau',
+    'ZtautauPU156bx',
+    'PPmuXptGt20Mu15',
+    'PPmuXptGt20Mu10',
     'Zmumu'
 ]
 
@@ -41,14 +42,16 @@ def location(sample):
 
 def output_directory(sample):
     return os.path.join(registry.getHarvestingFilePath(channel),
-                        'get_events', sample + "_pickevents")
+                        'get_events', sample + "_pickevents2")
 
 if __name__ == "__main__":
     # Build each event list
     for sample in to_dump:
+        continue
         #continue
         print "Getting event list for %s sample" % sample
         output_dir = output_directory(sample)
+        print output_dir
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
         output_file_name = os.path.join(output_dir, sample + "_events.txt")
@@ -60,6 +63,7 @@ if __name__ == "__main__":
 
     # Call edmPickEvents on each event list
     for sample in to_dump:
+        continue
         print "Generating crab cfg for %s sample" % sample
         command = ['edmPickEvents.py', samples.RECO_SAMPLES[sample]['datasetpath'],
                   sample + "_events.txt", '--crab']
@@ -68,10 +72,14 @@ if __name__ == "__main__":
 
     # Submit each job
     for sample in to_dump:
-        print "Submitting crab jobs"
-        command = ['crab', '-create', '-cfg', 'pickevents_crab.config']
-        print command
-        subprocess.call(command, cwd=output_directory(sample))
+        print "Submitting crab jobs for", sample
+        print output_directory(sample)
+        if glob.glob(os.path.join(output_directory(sample), 'crab_0_*')):
+            print "Crab dir already exists, not creating!"
+        else:
+            command = ['crab', '-create', '-cfg', 'pickevents_crab.config']
+            print command
+            subprocess.call(command, cwd=output_directory(sample))
         command = ['crab', '-submit']
         print command
         subprocess.call(command, cwd=output_directory(sample))
