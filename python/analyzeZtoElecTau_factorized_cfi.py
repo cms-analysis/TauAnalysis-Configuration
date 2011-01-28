@@ -15,13 +15,17 @@ from TauAnalysis.Configuration.analyzeZtoElecTau_cfi import *
 #--------------------------------------------------------------------------------
 
 # electron candidate selection with "loose" electron isolation criteria applied
-evtSelElectronTrkIsoLooseIsolation = copy.deepcopy(evtSelElectronTrkIso)
-evtSelElectronTrkIsoLooseIsolation.src_cumulative = cms.InputTag('electronTrkIsoCutLooseIsolation', 'cumulative')
-evtSelElectronTrkIsoLooseIsolation.src_individual = cms.InputTag('electronTrkIsoCutLooseIsolation', 'individual')
+#evtSelElectronTrkIsoLooseIsolation = copy.deepcopy(evtSelElectronTrkIso)
+#evtSelElectronTrkIsoLooseIsolation.src_cumulative = cms.InputTag('electronTrkIsoCutLooseIsolation', 'cumulative')
+#evtSelElectronTrkIsoLooseIsolation.src_individual = cms.InputTag('electronTrkIsoCutLooseIsolation', 'individual')
 
-evtSelElectronEcalIsoLooseIsolation = copy.deepcopy(evtSelElectronEcalIso)
-evtSelElectronEcalIsoLooseIsolation.src_cumulative = cms.InputTag('electronEcalIsoCutLooseIsolation', 'cumulative')
-evtSelElectronEcalIsoLooseIsolation.src_individual = cms.InputTag('electronEcalIsoCutLooseIsolation', 'individual')
+#evtSelElectronEcalIsoLooseIsolation = copy.deepcopy(evtSelElectronEcalIso)
+#evtSelElectronEcalIsoLooseIsolation.src_cumulative = cms.InputTag('electronEcalIsoCutLooseIsolation', 'cumulative')
+#evtSelElectronEcalIsoLooseIsolation.src_individual = cms.InputTag('electronEcalIsoCutLooseIsolation', 'individual')
+
+evtSelElectronIsoLooseIsolation = copy.deepcopy(evtSelElectronIso)
+evtSelElectronIsoLooseIsolation.src_cumulative = cms.InputTag('electronIsoCutLooseIsolation', 'cumulative')
+evtSelElectronIsoLooseIsolation.src_individual = cms.InputTag('electronIsoCutLooseIsolation', 'individual')
 
 evtSelElectronConversionVetoLooseIsolation = copy.deepcopy(evtSelElectronConversionVeto)
 evtSelElectronConversionVetoLooseIsolation.src_cumulative = cms.InputTag('electronConversionVetoLooseIsolation', 'cumulative')
@@ -76,22 +80,10 @@ elecTauEventDump_factorizedWithElectronIsolation.triggerConditions = cms.vstring
 
 elecTauAnalysisSequence_factorizedWithoutElectronIsolation = copy.deepcopy(elecTauAnalysisSequence)
 replaceAnalyzerInputTags(elecTauAnalysisSequence_factorizedWithoutElectronIsolation,
-	[ ["selectedPatElectronsForElecTauTrkIsoCumulative", "selectedPatElectronsForElecTauTrkIsoLooseIsolationCumulative"],
-		["elecTauPairsAfterElectronTrkIso", "elecTauPairsAfterElectronTrkIsoLooseIsolation"],
-		["selectedPatElectronsForElecTauEcalIsoCumulative", "selectedPatElectronsForElecTauEcalIsoLooseIsolationCumulative"],
-		["elecTauPairsAfterElectronEcalIso", "elecTauPairsAfterElectronEcalIsoLooseIsolation"],
+	[ ["selectedPatElectronsForElecTauIsoCumulative", "selectedPatElectronsForElecTauIsoLooseIsolationCumulative"],
+		["elecTauPairsAfterElectronIso", "elecTauPairsAfterElectronIsoLooseIsolation"],
 		["selectedPatElectronsForElecTauConversionVetoCumulative", "selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative"],
-		["elecTauPairsAfterElectronConversionVeto", "elecTauPairsAfterElectronConversionVetoLooseIsolation"],
 		["selectedPatElectronsForElecTauTrkIPcumulative", "selectedPatElectronsForElecTauTrkIPlooseIsolationCumulative"],
-		["elecTauPairsAfterElectronTrkIP", "elecTauPairsAfterElectronTrkIpLooseIsolation"],
-		["elecTauPairsAfterTauLeadTrkFind", "elecTauPairsAfterTauLeadTrkFindLooseIsolation"],
-		["elecTauPairsAfterTauLeadTrkPt", "elecTauPairsAfterTauLeadTrkPtLooseIsolation"],
-		["elecTauPairsAfterTauTaNC", "elecTauPairsAfterTauTaNCLooseIsolation"],
-		["elecTauPairsAfterTauTrkIso", "elecTauPairsAfterTauTrkIsoLooseIsolation"],
-		["elecTauPairsAfterTauEcalIso", "elecTauPairsAfterTauEcalIsoLooseIsolation"],
-		["elecTauPairsAfterTauProng", "elecTauPairsAfterTauProngLooseIsolation"],
-		["elecTauPairsAfterTauCharge", "elecTauPairsAfterTauChargeLooseIsolation"],
-		["elecTauPairsAfterTauElectronVeto", "elecTauPairsAfterTauElectronVetoLooseIsolation"],
 		["elecTauPairsAfterTauEcalCrackVeto", "elecTauPairsAfterTauEcalCrackVetoLooseIsolation"],
 		["selectedElecTauPairsAntiOverlapVetoCumulative", "selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative"],
 		["selectedElecTauPairsZeroChargeCumulative", "selectedElecTauPairsZeroChargeLooseElectronIsolationCumulative"],

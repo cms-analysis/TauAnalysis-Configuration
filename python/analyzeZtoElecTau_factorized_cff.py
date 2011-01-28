@@ -17,7 +17,8 @@ from TauAnalysis.Configuration.tools.factorizationTools import replaceEventSelec
 
 analyzeZtoElecTauEvents_factorizedWithElectronIsolation = copy.deepcopy(analyzeZtoElecTauEvents)
 analyzeZtoElecTauEvents_factorizedWithElectronIsolation.name = cms.string('zElecTauAnalyzer_factorizedWithElectronIsolation')
-analyzeZtoElecTauEvents_factorizedWithElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithElectronIsolation
+if len(analyzeZtoElecTauEvents_factorizedWithElectronIsolation.eventDumps) > 0:
+	analyzeZtoElecTauEvents_factorizedWithElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithElectronIsolation
 analyzeZtoElecTauEvents_factorizedWithElectronIsolation.analysisSequence = elecTauAnalysisSequence_factorizedWithElectronIsolation
 
 #--------------------------------------------------------------------------------
@@ -35,8 +36,7 @@ analyzeZtoElecTauEvents_factorizedWithElectronIsolation.analysisSequence = elecT
 analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation = copy.copy(analyzeZtoElecTauEvents)
 analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.name = cms.string('zElecTauAnalyzer_factorizedWithoutElectronIsolation')
 replaceEventSelections(analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation,
-    [ [ evtSelElectronTrkIso, evtSelElectronTrkIsoLooseIsolation ],
-      [ evtSelElectronEcalIso, evtSelElectronEcalIsoLooseIsolation ],
+    [ [ evtSelElectronIso, evtSelElectronIsoLooseIsolation ],
       [ evtSelElectronConversionVeto, evtSelElectronConversionVetoLooseIsolation ],
       [ evtSelElectronTrkIP, evtSelElectronTrkIPlooseIsolation ],
       [ evtSelDiTauCandidateForElecTauAntiOverlapVeto, evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation ],
@@ -46,6 +46,7 @@ replaceEventSelections(analyzeZtoElecTauEvents_factorizedWithoutElectronIsolatio
       [ evtSelDiTauCandidateForElecTauPzetaDiff, evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation ],
       [ evtSelElecTauPairZeeHypothesisVeto, evtSelElecTauPairZeeHypothesisVetoLooseElectronIsolation ] ]
 )                       
-analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
+if len(analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.eventDumps) > 0:
+	analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
 analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.analysisSequence = elecTauAnalysisSequence_factorizedWithoutElectronIsolation
 

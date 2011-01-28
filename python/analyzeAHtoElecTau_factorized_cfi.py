@@ -15,13 +15,17 @@ from TauAnalysis.Configuration.analyzeAHtoElecTau_cfi import *
 #--------------------------------------------------------------------------------
 
 # electron candidate selection with "loose" electron isolation criteria applied
-evtSelElectronTrkIsoLooseIsolation = copy.deepcopy(evtSelElectronTrkIso)
-evtSelElectronTrkIsoLooseIsolation.src_cumulative = cms.InputTag('electronTrkIsoCutLooseIsolation', 'cumulative')
-evtSelElectronTrkIsoLooseIsolation.src_individual = cms.InputTag('electronTrkIsoCutLooseIsolation', 'individual')
+#evtSelElectronTrkIsoLooseIsolation = copy.deepcopy(evtSelElectronTrkIso)
+#evtSelElectronTrkIsoLooseIsolation.src_cumulative = cms.InputTag('electronTrkIsoCutLooseIsolation', 'cumulative')
+#evtSelElectronTrkIsoLooseIsolation.src_individual = cms.InputTag('electronTrkIsoCutLooseIsolation', 'individual')
 
-evtSelElectronEcalIsoLooseIsolation = copy.deepcopy(evtSelElectronEcalIso)
-evtSelElectronEcalIsoLooseIsolation.src_cumulative = cms.InputTag('electronEcalIsoCutLooseIsolation', 'cumulative')
-evtSelElectronEcalIsoLooseIsolation.src_individual = cms.InputTag('electronEcalIsoCutLooseIsolation', 'individual')
+#evtSelElectronEcalIsoLooseIsolation = copy.deepcopy(evtSelElectronEcalIso)
+#evtSelElectronEcalIsoLooseIsolation.src_cumulative = cms.InputTag('electronEcalIsoCutLooseIsolation', 'cumulative')
+#evtSelElectronEcalIsoLooseIsolation.src_individual = cms.InputTag('electronEcalIsoCutLooseIsolation', 'individual')
+
+evtSelElectronIsoLooseIsolation = copy.deepcopy(evtSelElectronIso)
+evtSelElectronIsoLooseIsolation.src_cumulative = cms.InputTag('electronIsoCutLooseIsolation', 'cumulative')
+evtSelElectronIsoLooseIsolation.src_individual = cms.InputTag('electronIsoCutLooseIsolation', 'individual')
 
 evtSelElectronConversionVetoLooseIsolation = copy.deepcopy(evtSelElectronConversionVeto)
 evtSelElectronConversionVetoLooseIsolation.src_cumulative = cms.InputTag('electronConversionVetoLooseIsolation', 'cumulative')
