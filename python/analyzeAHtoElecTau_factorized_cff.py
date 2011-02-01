@@ -16,7 +16,7 @@ from TauAnalysis.Configuration.tools.factorizationTools import replaceEventSelec
 #--------------------------------------------------------------------------------
 
 analyzeAHtoElecTauEvents_factorizedWithElectronIsolation = copy.deepcopy(analyzeAHtoElecTauEvents)
-analyzeAHtoElecTauEvents_factorizedWithElectronIsolation.name = cms.string('zElecTauAnalyzer_factorizedWithElectronIsolation')
+analyzeAHtoElecTauEvents_factorizedWithElectronIsolation.name = cms.string('ahElecTauAnalyzer_factorizedWithElectronIsolation')
 if len(analyzeAHtoElecTauEvents_factorizedWithElectronIsolation.eventDumps) > 0:
 	analyzeAHtoElecTauEvents_factorizedWithElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithElectronIsolation
 analyzeAHtoElecTauEvents_factorizedWithElectronIsolation.analysisSequence = elecTauAnalysisSequence_factorizedWithElectronIsolation
@@ -34,7 +34,7 @@ analyzeAHtoElecTauEvents_factorizedWithElectronIsolation.analysisSequence = elec
 #--------------------------------------------------------------------------------
 
 analyzeAHtoElecTauEvents_factorizedWithoutElectronIsolation = copy.copy(analyzeAHtoElecTauEvents)
-analyzeAHtoElecTauEvents_factorizedWithoutElectronIsolation.name = cms.string('zElecTauAnalyzer_factorizedWithoutElectronIsolation')
+analyzeAHtoElecTauEvents_factorizedWithoutElectronIsolation.name = cms.string('ahElecTauAnalyzer_factorizedWithoutElectronIsolation')
 replaceEventSelections(analyzeAHtoElecTauEvents_factorizedWithoutElectronIsolation,
     [ [ evtSelElectronIso, evtSelElectronIsoLooseIsolation ],
       [ evtSelElectronConversionVeto, evtSelElectronConversionVetoLooseIsolation ],
