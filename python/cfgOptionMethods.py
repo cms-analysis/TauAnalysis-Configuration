@@ -286,7 +286,6 @@ def _saveFinalEvents(process, save, **kwargs):
             # Drop everything we create
             outputCommands = cms.untracked.vstring(
                 'keep *',
-                'drop *_MEtoEDMConverter_*_*',
                 'drop *_*_*_%s' % process.name_()),
             SelectEvents = cms.untracked.PSet(
                 SelectEvents = cms.vstring('p')
