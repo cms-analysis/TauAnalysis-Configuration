@@ -13,75 +13,82 @@ from TauAnalysis.Configuration.selectZtoElecTau_cff import *
 # specific to factorization
 #--------------------------------------------------------------------------------
 
-# electron candidate selection with "loose" electron isolation criteria applied
-#cfgElectronTrkIsoCutLooseIsolation = copy.deepcopy(cfgElectronTrkIsoCut)
-#cfgElectronTrkIsoCutLooseIsolation.pluginName = "electronTrkIsoCutLooseIsolation"
-#cfgElectronTrkIsoCutLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsForElecTauTrkIsoLooseIsolationCumulative')
-#cfgElectronTrkIsoCutLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsForElecTauTrkIsoLooseIsolationIndividual')
+cfgElectronIsoCutLooseIsolation = cfgElectronIsoCut.clone(
+	pluginName = cms.string("electronIsoCutLooseIsolation"),
+	src_cumulative = cms.InputTag('selectedPatElectronsForElecTauIsoLooseIsolationCumulative'),
+	src_individual = cms.InputTag('selectedPatElectronsForElecTauIsoLooseIsolationIndividual')
+)
 
-#cfgElectronEcalIsoCutLooseIsolation = copy.deepcopy(cfgElectronEcalIsoCut)
-#cfgElectronEcalIsoCutLooseIsolation.pluginName = "electronEcalIsoCutLooseIsolation"
-#cfgElectronEcalIsoCutLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsForElecTauEcalIsoLooseIsolationCumulative')
-#cfgElectronEcalIsoCutLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsForElecTauEcalIsoLooseIsolationIndividual')
+cfgElectronConversionVetoLooseIsolation = cfgElectronConversionVeto.clone(
+	pluginName = cms.string("electronConversionVetoLooseIsolation"),
+	src_cumulative = cms.InputTag('selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative'),
+	src_individual = cms.InputTag('selectedPatElectronsForElecTauConversionVetoLooseIsolationIndividual')
+)
 
-cfgElectronIsoCutLooseIsolation = copy.deepcopy(cfgElectronIsoCut)
-cfgElectronIsoCutLooseIsolation.pluginName = "electronIsoCutLooseIsolation"
-cfgElectronIsoCutLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsForElecTauIsoLooseIsolationCumulative')
-cfgElectronIsoCutLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsForElecTauIsoLooseIsolationIndividual')
-
-cfgElectronConversionVetoLooseIsolation = copy.deepcopy(cfgElectronConversionVeto)
-cfgElectronConversionVetoLooseIsolation.pluginName = "electronConversionVetoLooseIsolation"
-cfgElectronConversionVetoLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative')
-cfgElectronConversionVetoLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsForElecTauConversionVetoLooseIsolationIndividual')
-
-cfgElectronTrkIPcutLooseIsolation = copy.deepcopy(cfgElectronTrkIPcut)
-cfgElectronTrkIPcutLooseIsolation.pluginName = "electronTrkIPcutLooseIsolation"
-cfgElectronTrkIPcutLooseIsolation.src_cumulative = cms.InputTag('selectedPatElectronsForElecTauTrkIPlooseIsolationCumulative')
-cfgElectronTrkIPcutLooseIsolation.src_individual = cms.InputTag('selectedPatElectronsForElecTauTrkIPlooseIsolationIndividual')
+cfgElectronTrkIPcutLooseIsolation = cfgElectronTrkIPcut.clone(
+	pluginName = cms.string("electronTrkIPcutLooseIsolation"),
+	src_cumulative = cms.InputTag('selectedPatElectronsForElecTauTrkIPlooseIsolationCumulative'),
+	src_individual = cms.InputTag('selectedPatElectronsForElecTauTrkIPlooseIsolationIndividual')
+)
 
 # selection of di-tau candidates composed of combination of tau-jet with "loosely" isolated electron
-cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation = copy.deepcopy(cfgDiTauCandidateForElecTauAntiOverlapVeto)
-cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation.pluginName = "diTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation"
-cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation.src_cumulative = cms.InputTag('selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative')
-cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation.src_individual = cms.InputTag('selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationIndividual')
+cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation = cfgDiTauCandidateForElecTauAntiOverlapVeto.clone(
+	pluginName = cms.string("diTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation"),
+	src_cumulative = cms.InputTag('selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative'),
+	src_individual = cms.InputTag('selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationIndividual')
+)
 
-cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation = copy.deepcopy(cfgDiTauCandidateForElecTauZeroChargeCut)
-cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation.pluginName = "diTauCandidateForElecTauZeroChargeCutLooseElectronIsolation"
-cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation.src_cumulative = cms.InputTag('selectedElecTauPairsZeroChargeLooseElectronIsolationCumulative')
-cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation.src_individual = cms.InputTag('selectedElecTauPairsZeroChargeLooseElectronIsolationIndividual')
+cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation = cfgDiTauCandidateForElecTauMt1METCut.clone(
+	pluginName = cms.string("diTauCandidateForElecTauMt1METCutLooseElectronIsolation"),
+	src_cumulative = cms.InputTag('selectedElecTauPairsMt1METlooseElectronIsolationCumulative'),
+	src_individual = cms.InputTag('selectedElecTauPairsMt1METlooseElectronIsolationIndividual')
+)
 
-cfgDiTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation = copy.deepcopy(cfgDiTauCandidateForElecTauAcoplanarity12Cut)
-cfgDiTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation.pluginName = "diTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation"
-cfgDiTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation.src_cumulative = cms.InputTag('selectedElecTauPairsAcoplanarity12LooseElectronIsolationCumulative')
-cfgDiTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation.src_individual = cms.InputTag('selectedElecTauPairsAcoplanarity12LooseElectronIsolationIndividual')
+cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation = cfgDiTauCandidateForElecTauPzetaDiffCut.clone(
+	pluginName = cms.string("diTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation"),
+	src_cumulative = cms.InputTag('selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative'),
+	src_individual = cms.InputTag('selectedElecTauPairsPzetaDiffLooseElectronIsolationIndividual')
+)
 
-cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation = copy.deepcopy(cfgDiTauCandidateForElecTauMt1METCut)
-cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation.pluginName = "diTauCandidateForElecTauMt1METCutLooseElectronIsolation"
-cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation.src_cumulative = cms.InputTag('selectedElecTauPairsMt1METlooseElectronIsolationCumulative')
-cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation.src_individual = cms.InputTag('selectedElecTauPairsMt1METlooseElectronIsolationIndividual')
+cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation = cfgDiTauCandidateForElecTauZeroChargeCut.clone(
+	pluginName = cms.string("diTauCandidateForElecTauZeroChargeCutLooseElectronIsolation"),
+	src_cumulative = cms.InputTag('selectedElecTauPairsZeroChargeLooseElectronIsolationCumulative'),
+	src_individual = cms.InputTag('selectedElecTauPairsZeroChargeLooseElectronIsolationIndividual')
+)
 
-cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation = copy.deepcopy(cfgDiTauCandidateForElecTauPzetaDiffCut)
-cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation.pluginName = "diTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation"
-cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation.src_cumulative = cms.InputTag('selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative')
-cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation.src_individual = cms.InputTag('selectedElecTauPairsPzetaDiffLooseElectronIsolationIndividual')
+cfgDiTauCandidateForElecTauNonZeroChargeCutLooseElectronIsolation = cfgDiTauCandidateForElecTauNonZeroChargeCut.clone(
+	pluginName = cms.string("diTauCandidateForElecTauNonZeroChargeCutLooseElectronIsolation"),
+	src_cumulative = cms.InputTag('selectedElecTauPairsNonZeroChargeLooseElectronIsolationCumulative'),
+	src_individual = cms.InputTag('selectedElecTauPairsNonZeroChargeLooseElectronIsolationIndividual')
+)
+#cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation = copy.deepcopy(cfgElecTauPairZeeHypothesisVeto)
+#cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation.pluginName = "elecTauPairZeeHypothesisVetoLooseElectronIsolation"
+#cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation.src = cms.InputTag('selectedElecTauPairZeeHypothesesLooseElectronIsolation')
 
-cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation = copy.deepcopy(cfgElecTauPairZeeHypothesisVeto)
-cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation.pluginName = "elecTauPairZeeHypothesisVetoLooseElectronIsolation"
-cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation.src = cms.InputTag('selectedElecTauPairZeeHypothesesLooseElectronIsolation')
-
-zToElecTauEventSelConfiguratorLooseElectronIsolation = eventSelFlagProdConfigurator(
+zToElecTauEventSelConfiguratorLooseElectronIsolationOS = eventSelFlagProdConfigurator(
     [ cfgElectronIsoCutLooseIsolation,
       cfgElectronConversionVetoLooseIsolation,
       cfgElectronTrkIPcutLooseIsolation,
       cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation,
-      cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation,
-      cfgDiTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation,
       cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation,
       cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation,
-      cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation ],
+      cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation ],
     boolEventSelFlagProducer = "BoolEventSelFlagProducer",
     pyModuleName = __name__
 )
 
-selectZtoElecTauEventsLooseElectronIsolation = zToElecTauEventSelConfiguratorLooseElectronIsolation.configure()
+produceEventSelFlagsZtoElecTauLooseElectronIsolationOS = zToElecTauEventSelConfiguratorLooseElectronIsolationOS.configure()
 
+zToElecTauEventSelConfiguratorLooseElectronIsolationSS = eventSelFlagProdConfigurator(
+    [ cfgDiTauCandidateForElecTauNonZeroChargeCutLooseElectronIsolation ],
+    boolEventSelFlagProducer = "BoolEventSelFlagProducer",
+    pyModuleName = __name__
+)
+
+produceEventSelFlagsZtoElecTauLooseElectronIsolationSS = zToElecTauEventSelConfiguratorLooseElectronIsolationSS.configure()
+
+produceEventSelFlagsZtoElecTauLooseElectronIsolation = cms.Sequence(
+		produceEventSelFlagsZtoElecTauLooseElectronIsolationOS * produceEventSelFlagsZtoElecTauLooseElectronIsolationSS
+)
+
+selectZtoElecTauEventsLooseElectronIsolation = cms.Sequence( produceEventSelFlagsZtoElecTauLooseElectronIsolation )

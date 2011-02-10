@@ -14,85 +14,90 @@ from TauAnalysis.Configuration.analyzeZtoElecTau_cfi import *
 # define event selection criteria specific to factorization
 #--------------------------------------------------------------------------------
 
-# electron candidate selection with "loose" electron isolation criteria applied
-#evtSelElectronTrkIsoLooseIsolation = copy.deepcopy(evtSelElectronTrkIso)
-#evtSelElectronTrkIsoLooseIsolation.src_cumulative = cms.InputTag('electronTrkIsoCutLooseIsolation', 'cumulative')
-#evtSelElectronTrkIsoLooseIsolation.src_individual = cms.InputTag('electronTrkIsoCutLooseIsolation', 'individual')
+evtSelElectronIsoLooseIsolation = evtSelElectronIso.clone(
+	src_cumulative = cms.InputTag('electronIsoCutLooseIsolation', 'cumulative'),
+	src_individual = cms.InputTag('electronIsoCutLooseIsolation', 'individual')
+)
+evtSelElectronConversionVetoLooseIsolation = evtSelElectronConversionVeto.clone(
+	src_cumulative = cms.InputTag('electronConversionVetoLooseIsolation', 'cumulative'),
+	src_individual = cms.InputTag('electronConversionVetoLooseIsolation', 'individual')
+)
 
-#evtSelElectronEcalIsoLooseIsolation = copy.deepcopy(evtSelElectronEcalIso)
-#evtSelElectronEcalIsoLooseIsolation.src_cumulative = cms.InputTag('electronEcalIsoCutLooseIsolation', 'cumulative')
-#evtSelElectronEcalIsoLooseIsolation.src_individual = cms.InputTag('electronEcalIsoCutLooseIsolation', 'individual')
-
-evtSelElectronIsoLooseIsolation = copy.deepcopy(evtSelElectronIso)
-evtSelElectronIsoLooseIsolation.src_cumulative = cms.InputTag('electronIsoCutLooseIsolation', 'cumulative')
-evtSelElectronIsoLooseIsolation.src_individual = cms.InputTag('electronIsoCutLooseIsolation', 'individual')
-
-evtSelElectronConversionVetoLooseIsolation = copy.deepcopy(evtSelElectronConversionVeto)
-evtSelElectronConversionVetoLooseIsolation.src_cumulative = cms.InputTag('electronConversionVetoLooseIsolation', 'cumulative')
-evtSelElectronConversionVetoLooseIsolation.src_individual = cms.InputTag('electronConversionVetoLooseIsolation', 'individual')
-
-evtSelElectronTrkIPlooseIsolation = copy.deepcopy(evtSelElectronTrkIP)
-evtSelElectronTrkIPlooseIsolation.src_cumulative = cms.InputTag('electronTrkIPcutLooseIsolation', 'cumulative')
-evtSelElectronTrkIPlooseIsolation.src_individual = cms.InputTag('electronTrkIPcutLooseIsolation', 'individual')
+evtSelElectronTrkIPlooseIsolation = evtSelElectronTrkIP.clone(
+	src_cumulative = cms.InputTag('electronTrkIPcutLooseIsolation', 'cumulative'),
+	src_individual = cms.InputTag('electronTrkIPcutLooseIsolation', 'individual')
+)
 
 # selection of di-tau candidates composed of combination of tau with "loosely" isolated electron 
-evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation = copy.deepcopy(evtSelDiTauCandidateForElecTauAntiOverlapVeto)
-evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation', 'cumulative')
-evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation', 'individual')
+evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation = evtSelDiTauCandidateForElecTauAntiOverlapVeto.clone(
+	src_cumulative = cms.InputTag('diTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation', 'cumulative'),
+	src_individual = cms.InputTag('diTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation', 'individual')
+)
 
-evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation = copy.deepcopy(evtSelDiTauCandidateForElecTauZeroCharge)
-evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauZeroChargeCutLooseElectronIsolation', 'cumulative')
-evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauZeroChargeCutLooseElectronIsolation', 'individual')
+evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation = evtSelDiTauCandidateForElecTauMt1MET.clone(
+	src_cumulative = cms.InputTag('diTauCandidateForElecTauMt1METCutLooseElectronIsolation', 'cumulative'),
+	src_individual = cms.InputTag('diTauCandidateForElecTauMt1METCutLooseElectronIsolation', 'individual')
+)
 
-evtSelDiTauCandidateForElecTauAcoplanarity12LooseElectronIsolation = copy.deepcopy(evtSelDiTauCandidateForElecTauAcoplanarity12)
-evtSelDiTauCandidateForElecTauAcoplanarity12LooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation', 'cumulative')
-evtSelDiTauCandidateForElecTauAcoplanarity12LooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauAcoplanarity12CutLooseElectronIsolation', 'individual')
+evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation = evtSelDiTauCandidateForElecTauPzetaDiff.clone(
+	src_cumulative = cms.InputTag('diTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation', 'cumulative'),
+	src_individual = cms.InputTag('diTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation', 'individual')
+)
 
-evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation = copy.deepcopy(evtSelDiTauCandidateForElecTauMt1MET)
-evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauMt1METCutLooseElectronIsolation', 'cumulative')
-evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauMt1METCutLooseElectronIsolation', 'individual')
+evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation = evtSelDiTauCandidateForElecTauZeroCharge.clone(
+	src_cumulative = cms.InputTag('diTauCandidateForElecTauZeroChargeCutLooseElectronIsolation', 'cumulative'),
+	src_individual = cms.InputTag('diTauCandidateForElecTauZeroChargeCutLooseElectronIsolation', 'individual')
+)
 
-evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation = copy.deepcopy(evtSelDiTauCandidateForElecTauPzetaDiff)
-evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation.src_cumulative = cms.InputTag('diTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation', 'cumulative')
-evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation.src_individual = cms.InputTag('diTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation', 'individual')
-
-evtSelElecTauPairZeeHypothesisVetoLooseElectronIsolation = copy.deepcopy(evtSelElecTauPairZeeHypothesisVeto)
-evtSelElecTauPairZeeHypothesisVetoLooseElectronIsolation.src = cms.InputTag('elecTauPairZeeHypothesisVetoLooseElectronIsolation')
+evtSelDiTauCandidateForElecTauNonZeroChargeLooseElectronIsolation = evtSelDiTauCandidateForElecTauNonZeroCharge.clone(
+	src_cumulative = cms.InputTag('diTauCandidateForElecTauNonZeroChargeCutLooseElectronIsolation', 'cumulative'),
+	src_individual = cms.InputTag('diTauCandidateForElecTauNonZeroChargeCutLooseElectronIsolation', 'individual')
+)
 
 #--------------------------------------------------------------------------------
 # define event print-out
 #--------------------------------------------------------------------------------
 
-elecTauEventDump_factorizedWithoutElectronIsolation = copy.deepcopy(elecTauEventDump)
-elecTauEventDump_factorizedWithoutElectronIsolation.name = cms.string('elecTauEventDump_factorizedWithoutElectronIsolation')
-elecTauEventDump_factorizedWithoutElectronIsolation.output = cms.string("std::cout")
-elecTauEventDump_factorizedWithoutElectronIsolation.triggerConditions = cms.vstring()
+elecTauEventDump_factorizedWithoutElectronIsolation = elecTauEventDump.clone(
+	pluginName = cms.string('elecTauEventDump_factorizedWithoutElectronIsolation'),
+	output = cms.string("std::cout"),
+	triggerConditions = cms.vstring()
+)
 
-elecTauEventDump_factorizedWithElectronIsolation = copy.deepcopy(elecTauEventDump)
-elecTauEventDump_factorizedWithElectronIsolation.name = cms.string('elecTauEventDump_factorizedWithElectronIsolation')
-elecTauEventDump_factorizedWithElectronIsolation.output = cms.string("std::cout")
-elecTauEventDump_factorizedWithElectronIsolation.triggerConditions = cms.vstring()
+elecTauEventDump_factorizedWithElectronIsolation = elecTauEventDump.clone(
+	pluginName = cms.string('elecTauEventDump_factorizedWithElectronIsolation'),
+	output = cms.string("std::cout"),
+	triggerConditions = cms.vstring()
+)
 
 #--------------------------------------------------------------------------------
 # define factorization specific analysis sequences
 # (ordered list of event selection criteria and histogram filling)
 #--------------------------------------------------------------------------------
 
-elecTauAnalysisSequence_factorizedWithoutElectronIsolation = copy.deepcopy(elecTauAnalysisSequence)
-replaceAnalyzerInputTags(elecTauAnalysisSequence_factorizedWithoutElectronIsolation,
-	[ ["selectedPatElectronsForElecTauIsoCumulative", "selectedPatElectronsForElecTauIsoLooseIsolationCumulative"],
-		["elecTauPairsAfterElectronIso", "elecTauPairsAfterElectronIsoLooseIsolation"],
-		["selectedPatElectronsForElecTauConversionVetoCumulative", "selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative"],
-		["selectedPatElectronsForElecTauTrkIPcumulative", "selectedPatElectronsForElecTauTrkIPlooseIsolationCumulative"],
-		["elecTauPairsAfterTauEcalCrackVeto", "elecTauPairsAfterTauEcalCrackVetoLooseIsolation"],
-		["selectedElecTauPairsAntiOverlapVetoCumulative", "selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative"],
-		["selectedElecTauPairsZeroChargeCumulative", "selectedElecTauPairsZeroChargeLooseElectronIsolationCumulative"],
-		["selectedElecTauPairsAcoplanarity12Cumulative", "selectedElecTauPairsAcoplanarity12LooseElectronIsolationCumulative"],
-		["selectedElecTauPairsMt1METcumulative", "selectedElecTauPairsMt1METlooseElectronIsolationCumulative"],
-		["selectedElecTauPairsPzetaDiffCumulative", "selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative"],
-		["elecTauPairZeeHypotheses", "elecTauPairZeeHypothesesLooseElectronIsolation"],      
-		["selectedElecTauPairZeeHypotheses", "selectedElecTauPairZeeHypothesesLooseElectronIsolation"],
-		["elecTauPairVisMassHypotheses", "elecTauPairVisMassHypothesesLooseElectronIsolation"] ]
-) 
+inputTagReplacements = [ 
+	["selectedPatElectronsForElecTauIsoCumulative", "selectedPatElectronsForElecTauIsoLooseIsolationCumulative"],
+	["selectedPatElectronsForElecTauConversionVetoCumulative", "selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative"],
+	["selectedPatElectronsForElecTauTrkIPcumulative", "selectedPatElectronsForElecTauTrkIPlooseIsolationCumulative"],
+	["selectedElecTauPairsAntiOverlapVetoCumulative", "selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative"],
+	["selectedElecTauPairsMt1METcumulative", "selectedElecTauPairsMt1METlooseElectronIsolationCumulative"],
+	["selectedElecTauPairsPzetaDiffCumulative", "selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative"],
+	["elecTauPairZeeHypotheses", "elecTauPairZeeHypothesesLooseElectronIsolation"],      
+	["selectedElecTauPairZeeHypotheses", "selectedElecTauPairZeeHypothesesLooseElectronIsolation"]
+]
 
-elecTauAnalysisSequence_factorizedWithElectronIsolation = copy.deepcopy(elecTauAnalysisSequence)
+
+elecTauAnalysisSequenceOS_factorizedWithoutElectronIsolation = copy.deepcopy(elecTauAnalysisSequenceOS)
+inputTagReplacementsOS = copy.deepcopy(inputTagReplacements)
+inputTagReplacementsOS.append([ "selectedElecTauPairsZeroChargeCumulative", "selectedElecTauPairsZeroChargeLooseElectronIsolationCumulative" ])
+replaceAnalyzerInputTags(elecTauAnalysisSequenceOS_factorizedWithoutElectronIsolation, inputTagReplacementsOS)
+
+elecTauAnalysisSequenceOS_factorizedWithElectronIsolation = copy.deepcopy(elecTauAnalysisSequenceOS)
+
+elecTauAnalysisSequenceSS_factorizedWithoutElectronIsolation = copy.deepcopy(elecTauAnalysisSequenceSS)
+inputTagReplacementsSS = copy.deepcopy(inputTagReplacements)
+inputTagReplacementsSS.append([ "selectedElecTauPairsNonZeroChargeCumulative", "selectedMuTauPairsNonZeroChargeLooseElectronIsolationCumulative" ])
+replaceAnalyzerInputTags(elecTauAnalysisSequenceSS_factorizedWithoutElectronIsolation, inputTagReplacementsSS)
+
+elecTauAnalysisSequenceSS_factorizedWithElectronIsolation = copy.deepcopy(elecTauAnalysisSequenceSS)
+

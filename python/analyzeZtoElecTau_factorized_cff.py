@@ -15,11 +15,23 @@ from TauAnalysis.Configuration.tools.factorizationTools import replaceEventSelec
 # for the path with "regular" electron isolation criteria applied
 #--------------------------------------------------------------------------------
 
-analyzeZtoElecTauEvents_factorizedWithElectronIsolation = copy.deepcopy(analyzeZtoElecTauEvents)
-analyzeZtoElecTauEvents_factorizedWithElectronIsolation.name = cms.string('zElecTauAnalyzer_factorizedWithElectronIsolation')
-if len(analyzeZtoElecTauEvents_factorizedWithElectronIsolation.eventDumps) > 0:
-	analyzeZtoElecTauEvents_factorizedWithElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithElectronIsolation
-analyzeZtoElecTauEvents_factorizedWithElectronIsolation.analysisSequence = elecTauAnalysisSequence_factorizedWithElectronIsolation
+analyzeZtoElecTauEventsOS_factorizedWithElectronIsolation = analyzeZtoElecTauEventsOS.clone(
+	name = cms.string('zElecTauAnalyzerOS_factorizedWithElectronIsolation'),
+	analysisSequence = elecTauAnalysisSequenceOS_factorizedWithElectronIsolation
+)
+if len(analyzeZtoElecTauEventsOS_factorizedWithElectronIsolation.eventDumps) > 0:
+	analyzeZtoElecTauEventsOS_factorizedWithElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithElectronIsolation
+
+analyzeZtoElecTauEventsSS_factorizedWithElectronIsolation = analyzeZtoElecTauEventsOS.clone(
+	name = cms.string('zElecTauAnalyzerSS_factorizedWithElectronIsolation'),
+	analysisSequence = elecTauAnalysisSequenceSS_factorizedWithElectronIsolation
+)
+if len(analyzeZtoElecTauEventsSS_factorizedWithElectronIsolation.eventDumps) > 0:
+	analyzeZtoElecTauEventsSS_factorizedWithElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithElectronIsolation
+
+analyzeZtoElecTauSequence_factorizedWithElectronIsolation = cms.Sequence(
+    analyzeZtoElecTauEventsOS_factorizedWithElectronIsolation * analyzeZtoElecTauEventsSS_factorizedWithElectronIsolation
+)
 
 #--------------------------------------------------------------------------------
 # define Z --> tau-jet + electron analysis module
@@ -33,20 +45,43 @@ analyzeZtoElecTauEvents_factorizedWithElectronIsolation.analysisSequence = elecT
 #
 #--------------------------------------------------------------------------------
 
-analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation = copy.copy(analyzeZtoElecTauEvents)
-analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.name = cms.string('zElecTauAnalyzer_factorizedWithoutElectronIsolation')
-replaceEventSelections(analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation,
-    [ [ evtSelElectronIso, evtSelElectronIsoLooseIsolation ],
-      [ evtSelElectronConversionVeto, evtSelElectronConversionVetoLooseIsolation ],
-      [ evtSelElectronTrkIP, evtSelElectronTrkIPlooseIsolation ],
-      [ evtSelDiTauCandidateForElecTauAntiOverlapVeto, evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation ],
-      [ evtSelDiTauCandidateForElecTauZeroCharge, evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation ],
-      [ evtSelDiTauCandidateForElecTauAcoplanarity12, evtSelDiTauCandidateForElecTauAcoplanarity12LooseElectronIsolation ],
-      [ evtSelDiTauCandidateForElecTauMt1MET, evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation ],
-      [ evtSelDiTauCandidateForElecTauPzetaDiff, evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation ],
-      [ evtSelElecTauPairZeeHypothesisVeto, evtSelElecTauPairZeeHypothesisVetoLooseElectronIsolation ] ]
-)                       
-if len(analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.eventDumps) > 0:
-	analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
-analyzeZtoElecTauEvents_factorizedWithoutElectronIsolation.analysisSequence = elecTauAnalysisSequence_factorizedWithoutElectronIsolation
+eventSelectionReplacements =  [ 
+	[ evtSelElectronIso, evtSelElectronIsoLooseIsolation ],
+	[ evtSelElectronConversionVeto, evtSelElectronConversionVetoLooseIsolation ],
+	[ evtSelElectronTrkIP, evtSelElectronTrkIPlooseIsolation ],
+	[ evtSelDiTauCandidateForElecTauAntiOverlapVeto, evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation ],
+	[ evtSelDiTauCandidateForElecTauMt1MET, evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation ],
+	[ evtSelDiTauCandidateForElecTauPzetaDiff, evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation ],
+]
+
+analyzeZtoElecTauEventsOS_factorizedWithoutElectronIsolation = analyzeZtoElecTauEventsOS.clone(
+    name = cms.string('zElecTauAnalyzerOS_factorizedWithoutElectronIsolation')
+)
+
+if len(analyzeZtoElecTauEventsOS_factorizedWithoutElectronIsolation.eventDumps) > 0:
+    analyzeZtoElecTauEventsOS_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
+
+eventSelectionReplacementsOS = copy.deepcopy(eventSelectionReplacements)
+eventSelectionReplacementsOS.append([ evtSelDiTauCandidateForElecTauZeroCharge,
+                                      evtSelDiTauCandidateForElecTauZeroChargeLooseElectronIsolation ])
+replaceEventSelections(analyzeZtoElecTauEventsOS_factorizedWithoutElectronIsolation, eventSelectionReplacementsOS)
+analyzeZtoElecTauEventsOS_factorizedWithoutElectronIsolation.analysisSequence = elecTauAnalysisSequenceOS_factorizedWithoutElectronIsolation
+
+analyzeZtoElecTauEventsSS_factorizedWithoutElectronIsolation = analyzeZtoElecTauEventsSS.clone(
+    name = cms.string('zElecTauAnalyzerSS_factorizedWithoutElectronIsolation')
+)
+
+if len(analyzeZtoElecTauEventsSS_factorizedWithoutElectronIsolation.eventDumps) > 0:
+    analyzeZtoElecTauEventsSS_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
+
+eventSelectionReplacementsSS = copy.deepcopy(eventSelectionReplacements)
+eventSelectionReplacementsSS.append([ evtSelDiTauCandidateForElecTauNonZeroCharge,
+                                      evtSelDiTauCandidateForElecTauNonZeroChargeLooseElectronIsolation ])
+replaceEventSelections(analyzeZtoElecTauEventsSS_factorizedWithoutElectronIsolation, eventSelectionReplacementsSS)
+analyzeZtoElecTauEventsSS_factorizedWithoutElectronIsolation.analysisSequence = elecTauAnalysisSequenceSS_factorizedWithoutElectronIsolation
+
+analyzeZtoElecTauSequence_factorizedWithoutElectronIsolation = cms.Sequence(
+    analyzeZtoElecTauEventsOS_factorizedWithoutElectronIsolation * analyzeZtoElecTauEventsSS_factorizedWithoutElectronIsolation
+)
+
 
