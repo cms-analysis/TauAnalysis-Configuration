@@ -96,7 +96,7 @@ elecTauAnalysisSequenceOS_factorizedWithElectronIsolation = copy.deepcopy(elecTa
 
 elecTauAnalysisSequenceSS_factorizedWithoutElectronIsolation = copy.deepcopy(elecTauAnalysisSequenceSS)
 inputTagReplacementsSS = copy.deepcopy(inputTagReplacements)
-inputTagReplacementsSS.append([ "selectedElecTauPairsNonZeroChargeCumulative", "selectedMuTauPairsNonZeroChargeLooseElectronIsolationCumulative" ])
+inputTagReplacementsSS.append([ "selectedElecTauPairsNonZeroChargeCumulative", "selectedElecTauPairsNonZeroChargeLooseElectronIsolationCumulative" ])
 replaceAnalyzerInputTags(elecTauAnalysisSequenceSS_factorizedWithoutElectronIsolation, inputTagReplacementsSS)
 
 elecTauAnalysisSequenceSS_factorizedWithElectronIsolation = copy.deepcopy(elecTauAnalysisSequenceSS)
