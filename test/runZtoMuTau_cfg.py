@@ -15,7 +15,8 @@ process.MessageLogger.suppressWarning = cms.untracked.vstring("PATTriggerProduce
 process.load('Configuration/StandardSequences/GeometryIdeal_cff')
 process.load('Configuration/StandardSequences/MagneticField_cff')
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = cms.string('START38_V14::All')
+#process.GlobalTag.globaltag = cms.string('START38_V14::All')
+process.GlobalTag.globaltag = cms.string('START311_V2::All')
 
 # import particle data table
 # needed for print-out of generator level information
@@ -92,6 +93,17 @@ process.source = cms.Source("PoolSource",
         #'file:/data1/veelken/CMSSW_3_8_x/skims/ZtoMuTau/selEvents_ZtoMuTau_HPSloose_2011Feb03_veelken_twoOSglobalMuons_RECO.root'
     )                            
     #skipBadFiles = cms.untracked.bool(True)
+)
+
+from PhysicsTools.PatAlgos.tools.cmsswVersionTools import pickRelValInputFiles
+process.source = cms.Source("PoolSource",
+    fileNames = cms.untracked.vstring(
+    pickRelValInputFiles( cmsswVersion  = 'CMSSW_4_1_3'
+                        , relVal        = 'RelValTTbar'
+                        , globalTag     = 'START311_V2'
+                        , numberOfFiles = 1
+                        )
+    )
 )
 
 #--------------------------------------------------------------------------------
@@ -304,4 +316,4 @@ process.patMuonsMuScleFitCorrectedMomentum.doApplyCorrection = cms.bool(False)
 #--------------------------------------------------------------------------------
 
 # print-out all python configuration parameter information
-#print process.dumpPython()
+print process.dumpPython()

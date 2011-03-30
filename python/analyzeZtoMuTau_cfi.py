@@ -943,7 +943,7 @@ muTauAnalysisSequenceOS = cms.VPSet(
             'tauHistManager',
             'diTauCandidateHistManagerForMuTau',
 	    'diTauCandidateSVfitHistManagerForMuTau',
-            'diTauCandidateNSVfitHistManagerForMuTau',
+            #'diTauCandidateNSVfitHistManagerForMuTau',
             'muPairHistManagerByLooseIsolation'
         ),
         replace = cms.vstring(
@@ -971,7 +971,7 @@ muTauAnalysisSequenceOS = cms.VPSet(
             'tauHistManager',
             'diTauCandidateHistManagerForMuTau',
             'diTauCandidateSVfitHistManagerForMuTau',
-            'diTauCandidateNSVfitHistManagerForMuTau',
+            #'diTauCandidateNSVfitHistManagerForMuTau',
             'diTauCandidateZmumuHypothesisHistManagerForMuTau',
             'muPairHistManagerByLooseIsolation',
             'jetHistManager',
@@ -989,7 +989,7 @@ muTauAnalysisSequenceOS = cms.VPSet(
             'diTauCandidateHistManagerForMuTau.diTauCandidateSource = selectedMuTauPairsZeroChargeCumulative',
             'diTauCandidateHistManagerForMuTau.visMassHypothesisSource = muTauPairVisMassHypotheses',
             'diTauCandidateSVfitHistManagerForMuTau.diTauCandidateSource = selectedMuTauPairsZeroChargeCumulative',
-            'diTauCandidateNSVfitHistManagerForMuTau.diTauCandidateSource = selectedMuTauPairsZeroChargeCumulative',
+            #'diTauCandidateNSVfitHistManagerForMuTau.diTauCandidateSource = selectedMuTauPairsZeroChargeCumulative',
             'diTauCandidateZmumuHypothesisHistManagerForMuTau.ZllHypothesisSource = muTauPairZmumuHypotheses',
             'muPairHistManagerByLooseIsolation.diTauCandidateSource = selectedDiMuPairZmumuHypothesesByLooseIsolation'
         )
@@ -1139,7 +1139,7 @@ muTauAnalysisSequenceSS = cms.VPSet(
             'tauHistManager',
             'diTauCandidateHistManagerForMuTau',
             'diTauCandidateSVfitHistManagerForMuTau',
-            'diTauCandidateNSVfitHistManagerForMuTau',
+            #'diTauCandidateNSVfitHistManagerForMuTau',
             'diTauCandidateZmumuHypothesisHistManagerForMuTau',
             'muPairHistManagerByLooseIsolation',
             'jetHistManager',
@@ -1154,7 +1154,7 @@ muTauAnalysisSequenceSS = cms.VPSet(
             'diTauCandidateHistManagerForMuTau.diTauCandidateSource = selectedMuTauPairsNonZeroChargeCumulative',
             'diTauCandidateHistManagerForMuTau.visMassHypothesisSource = muTauPairVisMassHypotheses',
             'diTauCandidateSVfitHistManagerForMuTau.diTauCandidateSource = selectedMuTauPairsNonZeroChargeCumulative',
-            'diTauCandidateNSVfitHistManagerForMuTau.diTauCandidateSource = selectedMuTauPairsNonZeroChargeCumulative',
+            #'diTauCandidateNSVfitHistManagerForMuTau.diTauCandidateSource = selectedMuTauPairsNonZeroChargeCumulative',
             'diTauCandidateZmumuHypothesisHistManagerForMuTau.ZllHypothesisSource = muTauPairZmumuHypotheses',
             'muPairHistManagerByLooseIsolation.diTauCandidateSource = selectedDiMuPairZmumuHypothesesByLooseIsolation'
         )
