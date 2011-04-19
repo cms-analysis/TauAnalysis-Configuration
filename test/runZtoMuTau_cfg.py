@@ -64,15 +64,17 @@ process.maxEvents = cms.untracked.PSet(
 
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/DYtautau_spring11_powhegZ2_1_1_XvY.root'
-        #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/data2011A_tauPlusX_AOD_1_1_MV9.root'
+        #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/DYtautau_spring11_powhegZ2_1_1_XvY.root'
+        'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/data2011A_tauPlusX_AOD_1_1_MV9.root'
+        #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/PPmuXptGt20Mu15_aodsim_1_1_K9X.root'
+        #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/RelValTTbar_RECO.root'
     ),
     #eventsToProcess = cms.untracked.VEventRange('1:4:1749228')
     #skipBadFiles = cms.untracked.bool(True)
 )
 
-##HLTprocessName = "HLT" # use for 2011 Data
-HLTprocessName = "REDIGI311X" # use for Spring'11 reprocessed MC
+HLTprocessName = "HLT" # use for 2011 Data
+##HLTprocessName = "REDIGI311X" # use for Spring'11 reprocessed MC
 
 #--------------------------------------------------------------------------------
 # import utility function for configuring PAT trigger matching
@@ -280,10 +282,16 @@ process.ewkTauId.Prediscriminants.leadTrackPt.Producer     = cms.InputTag('hpsPF
 process.ewkTauId.Prediscriminants.TaNCloose.Producer       = cms.InputTag('hpsPFTauDiscriminationByLooseIsolation')
 process.ewkTauId.Prediscriminants.againstMuon.Producer     = cms.InputTag('hpsPFTauDiscriminationByTightMuonRejection')
 process.ewkTauId.Prediscriminants.againstElectron.Producer = cms.InputTag('hpsPFTauDiscriminationByLooseElectronRejection')
-
+# restrict input to AOD event content
+from TauAnalysis.Configuration.tools.switchToAOD import switchToAOD
+switchToAOD(process)
 # disable muon momentum scale corrections
 process.patMuonsMuScleFitCorrectedMomentum.doApplyCorrection = cms.bool(False)
 #--------------------------------------------------------------------------------
+
+# restrict input to AOD event content
+from TauAnalysis.Configuration.tools.switchToAOD import switchToAOD
+switchToAOD(process)
 
 # print-out all python configuration parameter information
 #print process.dumpPython()
