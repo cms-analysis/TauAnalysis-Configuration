@@ -38,9 +38,9 @@ process.load("TauAnalysis.Configuration.analyzeZtoMuTau_cff")
 #--------------------------------------------------------------------------------
 # print memory consumed by cmsRun
 # (for debugging memory leaks)
-#process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",
-#    ignoreTotal = cms.untracked.int32(1) # default is one
-#)
+process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",
+    ignoreTotal = cms.untracked.int32(1) # default is one
+)
 #
 #process.printGenParticleList = cms.EDAnalyzer("ParticleListDrawer",
 #    src = cms.InputTag("genParticles"),
@@ -65,9 +65,9 @@ process.maxEvents = cms.untracked.PSet(
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
         #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/DYtautau_spring11_powhegZ2_1_1_XvY.root'
-        'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/data2011A_tauPlusX_AOD_1_1_MV9.root'
+        #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/data2011A_tauPlusX_AOD_1_1_MV9.root'
         #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/PPmuXptGt20Mu15_aodsim_1_1_K9X.root'
-        #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/RelValTTbar_RECO.root'
+        'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/RelValTTbar_RECO.root'
     ),
     #eventsToProcess = cms.untracked.VEventRange('1:4:1749228')
     #skipBadFiles = cms.untracked.bool(True)
