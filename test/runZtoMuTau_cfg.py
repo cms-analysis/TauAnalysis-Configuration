@@ -38,9 +38,10 @@ process.load("TauAnalysis.Configuration.analyzeZtoMuTau_cff")
 #--------------------------------------------------------------------------------
 # print memory consumed by cmsRun
 # (for debugging memory leaks)
-process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",
-    ignoreTotal = cms.untracked.int32(1) # default is one
-)
+#process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",
+#    ignoreTotal = cms.untracked.int32(1), # default is one
+#    oncePerEventMode = cms.bool(True)     # default is false --> triggers print-out @ every time memory consumption increases
+#)
 #
 #process.printGenParticleList = cms.EDAnalyzer("ParticleListDrawer",
 #    src = cms.InputTag("genParticles"),
