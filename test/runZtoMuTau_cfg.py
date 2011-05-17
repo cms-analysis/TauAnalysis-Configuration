@@ -7,15 +7,15 @@ process = cms.Process('runZtoMuTau')
 # of electrons, muons and tau-jets with non-standard isolation cones
 process.load('Configuration/StandardSequences/Services_cff')
 process.load('FWCore/MessageService/MessageLogger_cfi')
-#process.MessageLogger.cerr.FwkReport.reportEvery = 100
-process.MessageLogger.cerr.FwkReport.reportEvery = 1
+process.MessageLogger.cerr.FwkReport.reportEvery = 100
+#process.MessageLogger.cerr.FwkReport.reportEvery = 1
 #process.MessageLogger.cerr.threshold = cms.untracked.string('INFO')
 #process.MessageLogger.suppressInfo = cms.untracked.vstring()
 process.MessageLogger.suppressWarning = cms.untracked.vstring("PATTriggerProducer",)
 process.load('Configuration/StandardSequences/GeometryIdeal_cff')
 process.load('Configuration/StandardSequences/MagneticField_cff')
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
-process.GlobalTag.globaltag = cms.string('START38_V14::All')
+process.GlobalTag.globaltag = cms.string('START311_V2::All')
 
 # import particle data table
 # needed for print-out of generator level information
@@ -33,18 +33,14 @@ process.load("TauAnalysis.RecoTools.filterDataQuality_cfi")
 # import sequence for filling of histograms, cut-flow table
 # and of run + event number pairs for events passing event selection
 process.load("TauAnalysis.Configuration.analyzeZtoMuTau_cff")
-
-# import configuration parameters for submission of jobs to CERN batch system
-# (running over skimmed samples stored on CASTOR)
-from TauAnalysis.Configuration.recoSampleDefinitionsZtoMuTau_7TeV_cfi import *
-from TauAnalysis.Configuration.recoSampleDefinitionsZtoMuTau_10TeV_cfi import *
 #--------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------
 # print memory consumed by cmsRun
 # (for debugging memory leaks)
 #process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",
-#    ignoreTotal = cms.untracked.int32(1) # default is one
+#    ignoreTotal = cms.untracked.int32(1), # default is one
+#    oncePerEventMode = cms.bool(True)     # default is false --> triggers print-out @ every time memory consumption increases
 #)
 #
 #process.printGenParticleList = cms.EDAnalyzer("ParticleListDrawer",
@@ -69,36 +65,25 @@ process.maxEvents = cms.untracked.PSet(
 
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        #'/store/relval/CMSSW_3_6_1/RelValZTT/GEN-SIM-RECO/START36_V7-v1/0021/F405BC9A-525D-DF11-AB96-002618943811.root',
-        #'/store/relval/CMSSW_3_6_1/RelValZTT/GEN-SIM-RECO/START36_V7-v1/0020/EE3E8F74-365D-DF11-AE3D-002618FDA211.root'
-        #'file:/data1/veelken/CMSSW_3_6_x/skims/Ztautau_1_1_sXK.root'
-        #'file:/data1/veelken/CMSSW_3_8_x/skims/AHtoMuTau/selEvents_AHtoMuTau_woBtag_runs145762to148058_RECO.root'
-        #'file:/data1/veelken/CMSSW_3_8_x/skims/test/mcDYttPU156bx_GEN_SIM_RECO_1_1_1VV.root'
-        #'file:/data1/friis/PickMikesEvents/mikes_events_2010a.root',
-        #'file:/data1/friis/PickMikesEvents/mikes_events_2010a001.root',
-        #'file:/data1/friis/PickMikesEvents/mikes_events_2010b.root',
-        #'file:/data1/friis/PickMikesEvents/mikes_events_2010b001.root',
-        #'file:/data1/friis/PickMikesEvents/mikes_events_2010b002.root'
-        #'rfio:/castor/cern.ch/user/v/veelken/CMSSW_3_6_x/skims/ZtoMuTau/test/Ztautau_1_1_sXK.root'
-        #'file:/tmp/veelken/Ztautau_1_1_sXK.root'
-        #'file:/data1/veelken/tmp/final_events_AHtoMuTau_ZtautauPOWHEG_Run32_51_0_ZW7.root'
-        #'file:/data2/debugMuon/final_events_AHtoMuTau_data_Mu_Run2010B_Nov4ReReco_RunOnOursJan16.root'
-        'file:/data2/veelken/CMSSW_3_8_x/skims/ZtoMuTau/mcZtautauPU156bx_pythia_1_1_xdF.root'
-        #'file:/data1/veelken/CMSSW_3_8_x/skims/ZtoMuTau/selEvents_ZtoMuTau_approval_2011Mar03_RECO.root'
-        #'file:/data1/veelken/CMSSW_3_8_x/skims/AHtoMuTau/selEvents_AHtoMuTau_HPSloose_2011Jan29_friis_RECO.root'
-        #'file:/data1/veelken/CMSSW_3_8_x/skims/AHtoMuTau/uwOnlyEvents_AHtoMuTau_HPSloose_2011Feb03_bachtis_RECO.root'
-        #'file:/data1/veelken/CMSSW_3_8_x/skims/test/mcZtautauPU156bx_pythiaZ2v3_1kEvents_1_1_F1c.root'
-        #'file:/data1/veelken/CMSSW_3_8_x/skims/ZtoMuTau/selEvents_ZtoMuTau_HPSloose_2011Feb03_veelken_RECO.root'
-        #'file:/data1/veelken/CMSSW_3_8_x/skims/ZtoMuTau/selEvents_ZtoMuTau_HPSloose_2011Feb03_veelken_twoOSglobalMuons_RECO.root'
-    )                            
+        #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/DYtautau_spring11_powhegZ2_1_1_XvY.root'
+        #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/data2011A_tauPlusX_AOD_1_1_MV9.root'
+        #'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/PPmuXptGt20Mu15_aodsim_1_1_K9X.root'
+        'file:/data2/veelken/CMSSW_4_1_x/skims/ZtoMuTau/RelValTTbar_RECO.root'
+    ),
+    #eventsToProcess = cms.untracked.VEventRange('1:4:1749228')
     #skipBadFiles = cms.untracked.bool(True)
 )
+
+HLTprocessName = "HLT" # use for 2011 Data
+##HLTprocessName = "REDIGI311X" # use for Spring'11 reprocessed MC
 
 #--------------------------------------------------------------------------------
 # import utility function for configuring PAT trigger matching
 from PhysicsTools.PatAlgos.tools.trigTools import switchOnTrigger
-switchOnTrigger(process, hltProcess = 'HLT', outputModule = '')
+switchOnTrigger(process, hltProcess = HLTprocessName, outputModule = '')
 process.patTrigger.addL1Algos = cms.bool(True)
+from TauAnalysis.Configuration.cfgOptionMethods import _setTriggerProcess
+_setTriggerProcess(process, cms.InputTag("TriggerResults", "", HLTprocessName))
 #--------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------
@@ -298,10 +283,16 @@ process.ewkTauId.Prediscriminants.leadTrackPt.Producer     = cms.InputTag('hpsPF
 process.ewkTauId.Prediscriminants.TaNCloose.Producer       = cms.InputTag('hpsPFTauDiscriminationByLooseIsolation')
 process.ewkTauId.Prediscriminants.againstMuon.Producer     = cms.InputTag('hpsPFTauDiscriminationByTightMuonRejection')
 process.ewkTauId.Prediscriminants.againstElectron.Producer = cms.InputTag('hpsPFTauDiscriminationByLooseElectronRejection')
-
+# restrict input to AOD event content
+from TauAnalysis.Configuration.tools.switchToAOD import switchToAOD
+switchToAOD(process)
 # disable muon momentum scale corrections
 process.patMuonsMuScleFitCorrectedMomentum.doApplyCorrection = cms.bool(False)
 #--------------------------------------------------------------------------------
+
+# restrict input to AOD event content
+from TauAnalysis.Configuration.tools.switchToAOD import switchToAOD
+switchToAOD(process)
 
 # print-out all python configuration parameter information
 #print process.dumpPython()
