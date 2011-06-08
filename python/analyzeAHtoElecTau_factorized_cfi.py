@@ -84,7 +84,7 @@ sysUncertaintyHistManagerForElecTauLooseElectronIsolation = sysUncertaintyHistMa
 			)
 		),
 		cms.PSet(
-			config = diTauCandidateSVfitHistManagerForElecTau,
+			config = diTauCandidateNSVfitHistManagerForElecTau,
 			systematics = cms.PSet(
 				diTauCandidateSource = getSysUncertaintyParameterSets(
 					[ elecTauPairSystematicsLooseElectronIsolation ]
