@@ -65,6 +65,20 @@ cfgDiTauCandidateForElecTauNonZeroChargeCutLooseElectronIsolation = cfgDiTauCand
 #cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation.pluginName = "elecTauPairZeeHypothesisVetoLooseElectronIsolation"
 #cfgElecTauPairZeeHypothesisVetoLooseElectronIsolation.src = cms.InputTag('selectedElecTauPairZeeHypothesesLooseElectronIsolation')
 
+# selection of event vertex associated to tau-jet + "loosely" isolated electron pair
+cfgPrimaryEventVertexForElecTauLooseElectronIsolation = cfgPrimaryEventVertexForElecTau.clone(
+    pluginName = cms.string('primaryEventVertexForElecTauLooseElectronIsolation'),
+    src = cms.InputTag('selectedPrimaryVertexForElecTauLooseElectronIsolation')
+)
+cfgPrimaryEventVertexQualityForElecTauLooseElectronIsolation = cfgPrimaryEventVertexQualityForElecTau.clone(
+    pluginName = cms.string('primaryEventVertexQualityForElecTauLooseElectronIsolation'),
+    src = cms.InputTag('selectedPrimaryVertexQualityForElecTauLooseElectronIsolation')
+)
+cfgPrimaryEventVertexPositionForElecTauLooseElectronIsolation = cfgPrimaryEventVertexPositionForElecTau.clone(
+    pluginName = cms.string('primaryEventVertexPositionForElecTauLooseElectronIsolation'),
+    src = cms.InputTag('selectedPrimaryVertexPositionForElecTauLooseElectronIsolation')
+)
+
 zToElecTauEventSelConfiguratorLooseElectronIsolationOS = eventSelFlagProdConfigurator(
     [ cfgElectronIsoCutLooseIsolation,
       cfgElectronConversionVetoLooseIsolation,
@@ -72,7 +86,10 @@ zToElecTauEventSelConfiguratorLooseElectronIsolationOS = eventSelFlagProdConfigu
       cfgDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation,
       cfgDiTauCandidateForElecTauMt1METCutLooseElectronIsolation,
       cfgDiTauCandidateForElecTauPzetaDiffCutLooseElectronIsolation,
-      cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation ],
+      cfgDiTauCandidateForElecTauZeroChargeCutLooseElectronIsolation,
+      cfgPrimaryEventVertexForElecTauLooseElectronIsolation,
+      cfgPrimaryEventVertexQualityForElecTauLooseElectronIsolation,
+      cfgPrimaryEventVertexPositionForElecTauLooseElectronIsolation ],
     boolEventSelFlagProducer = "BoolEventSelFlagProducer",
     pyModuleName = __name__
 )

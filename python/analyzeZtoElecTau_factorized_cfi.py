@@ -54,6 +54,18 @@ evtSelDiTauCandidateForElecTauNonZeroChargeLooseElectronIsolation = evtSelDiTauC
 	src_individual = cms.InputTag('diTauCandidateForElecTauNonZeroChargeCutLooseElectronIsolation', 'individual')
 )
 
+# primary event vertex selection
+evtSelPrimaryEventVertexForElecTauLooseElectronIsolation = evtSelPrimaryEventVertexForElecTau.clone(
+    src = cms.InputTag('primaryEventVertexForElecTauLooseElectronIsolation')
+)
+evtSelPrimaryEventVertexQualityForElecTauLooseElectronIsolation = evtSelPrimaryEventVertexQualityForElecTau.clone(
+    src = cms.InputTag('primaryEventVertexQualityForElecTauLooseElectronIsolation')
+)
+evtSelPrimaryEventVertexPositionForElecTauLooseElectronIsolation = evtSelPrimaryEventVertexPositionForElecTau.clone(
+    src = cms.InputTag('primaryEventVertexPositionForElecTauLooseElectronIsolation')
+)
+
+
 #--------------------------------------------------------------------------------
 # define event print-out
 #--------------------------------------------------------------------------------
@@ -76,14 +88,18 @@ elecTauEventDump_factorizedWithElectronIsolation = elecTauEventDump.clone(
 #--------------------------------------------------------------------------------
 
 inputTagReplacements = [ 
-	["selectedPatElectronsForElecTauIsoCumulative", "selectedPatElectronsForElecTauIsoLooseIsolationCumulative"],
-	["selectedPatElectronsForElecTauConversionVetoCumulative", "selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative"],
-	["selectedPatElectronsForElecTauTrkIPcumulative", "selectedPatElectronsForElecTauTrkIPlooseIsolationCumulative"],
-	["selectedElecTauPairsAntiOverlapVetoCumulative", "selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative"],
-	["selectedElecTauPairsMt1METcumulative", "selectedElecTauPairsMt1METlooseElectronIsolationCumulative"],
-	["selectedElecTauPairsPzetaDiffCumulative", "selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative"],
-	["elecTauPairZeeHypotheses", "elecTauPairZeeHypothesesLooseElectronIsolation"],      
-	["selectedElecTauPairZeeHypotheses", "selectedElecTauPairZeeHypothesesLooseElectronIsolation"]
+	[ "selectedPatElectronsForElecTauIsoCumulative", "selectedPatElectronsForElecTauIsoLooseIsolationCumulative" ],
+	[ "selectedPatElectronsForElecTauConversionVetoCumulative", "selectedPatElectronsForElecTauConversionVetoLooseIsolationCumulative" ],
+	[ "selectedPatElectronsForElecTauTrkIPcumulative", "selectedPatElectronsForElecTauTrkIPlooseIsolationCumulative" ],
+	[ "selectedElecTauPairsAntiOverlapVetoCumulative", "selectedElecTauPairsAntiOverlapVetoLooseElectronIsolationCumulative" ],
+	[ "selectedElecTauPairsMt1METcumulative", "selectedElecTauPairsMt1METlooseElectronIsolationCumulative" ],
+	[ "selectedElecTauPairsPzetaDiffCumulative", "selectedElecTauPairsPzetaDiffLooseElectronIsolationCumulative" ],
+	[ "elecTauPairZeeHypotheses", "elecTauPairZeeHypothesesLooseElectronIsolation" ],      
+	[ "selectedElecTauPairZeeHypotheses", "selectedElecTauPairZeeHypothesesLooseElectronIsolation" ],
+    [ "selectedPrimaryVertexForElecTau", "selectedPrimaryVertexForElecTauLooseElectronIsolation" ],
+    [ "selectedPrimaryVertexQualityForElecTau", "selectedPrimaryVertexQualityForElecTauLooseElectronIsolation" ],
+    [ "selectedPrimaryVertexPositionForElecTau", "selectedPrimaryVertexPositionForElecTauLooseElectronIsolation" ],
+    [ "selectedPrimaryVertexHighestPtTrackSumForElecTau", "selectedPrimaryVertexHighestPtTrackSumForElecTauLooseElectronIsolation" ]
 ]
 
 

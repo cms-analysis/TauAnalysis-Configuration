@@ -28,6 +28,7 @@ evtSelElectronTrkIPlooseIsolation = evtSelElectronTrkIP.clone(
 	src_cumulative = cms.InputTag('electronTrkIPcutLooseIsolation', 'cumulative'),
 	src_individual = cms.InputTag('electronTrkIPcutLooseIsolation', 'individual')
 )
+
 # selection of di-tau candidates composed of combination of tau with "loosely" isolated electron 
 evtSelDiTauCandidateForAHtoElecTauAntiOverlapVetoLooseElectronIsolation = evtSelDiTauCandidateForAHtoElecTauAntiOverlapVeto.clone(
 	src_cumulative = cms.InputTag('diTauCandidateForAHtoElecTauAntiOverlapVetoLooseElectronIsolation', 'cumulative'),
@@ -49,6 +50,24 @@ evtSelDiTauCandidateForAHtoElecTauNonZeroChargeLooseElectronIsolation = evtSelDi
 	src_cumulative = cms.InputTag('diTauCandidateForAHtoElecTauNonZeroChargeCutLooseElectronIsolation', 'cumulative'),
 	src_individual = cms.InputTag('diTauCandidateForAHtoElecTauNonZeroChargeCutLooseElectronIsolation', 'individual')
 )
+
+# primary event vertex selection
+evtSelPrimaryEventVertexForElecTauLooseElectronIsolation = cms.PSet(
+    pluginName = cms.string('evtSelPrimaryEventVertexForElecTauLooseElectronIsolation'),
+    pluginType = cms.string('BoolEventSelector'),
+    src = cms.InputTag('primaryEventVertexForElecTauLooseElectronIsolation')
+)
+evtSelPrimaryEventVertexQualityForElecTauLooseElectronIsolation = cms.PSet(
+    pluginName = cms.string('evtSelPrimaryEventVertexQualityForElecTauLooseElectronIsolation'),
+    pluginType = cms.string('BoolEventSelector'),
+    src = cms.InputTag('primaryEventVertexQualityForElecTauLooseElectronIsolation')
+)
+evtSelPrimaryEventVertexPositionForElecTauLooseElectronIsolation = cms.PSet(
+    pluginName = cms.string('evtSelPrimaryEventVertexPositionForElecTauLooseElectronIsolation'),
+    pluginType = cms.string('BoolEventSelector'),
+    src = cms.InputTag('primaryEventVertexPositionForElecTauLooseElectronIsolation')
+)
+
 # central jet veto/b-jet candidate selection
 evtSelNonCentralJetEt20bTagLooseElectronIsolation = cms.PSet(
 	pluginName = cms.string('evtSelNonCentralJetEt20bTag'),
@@ -130,6 +149,12 @@ inputTagReplacements = [
 		"elecTauPairZeeHypothesesForAHtoElecTauLooseElectronIsolation"],
 	["elecTauPairVisMassHypothesesForAHtoElecTau", 
 		"elecTauPairVisMassHypothesesForAHtoElecTauLooseElectronIsolation"],
+    [ "selectedPrimaryVertexForMuTau", 
+        "selectedPrimaryVertexForMuTauLooseMuonIsolation" ],
+    [ "selectedPrimaryVertexQualityForMuTau", 
+        "selectedPrimaryVertexQualityForMuTauLooseMuonIsolation" ],
+    [ "selectedPrimaryVertexPositionForMuTau", 
+        "selectedPrimaryVertexPositionForMuTauLooseMuonIsolation" ],
     ["selectedPatJetsForAHtoElecTauAntiOverlapWithLeptonsVetoCumulative", 
 		"selectedPatJetsForAHtoElecTauAntiOverlapWithLeptonsVetoLooseElectronIsolationCumulative" ],
     ["selectedPatJetsForAHtoElecTauBtagCumulative", 

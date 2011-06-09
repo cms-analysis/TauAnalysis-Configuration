@@ -52,6 +52,10 @@ eventSelectionReplacements =  [
 	[ evtSelDiTauCandidateForElecTauAntiOverlapVeto, evtSelDiTauCandidateForElecTauAntiOverlapVetoLooseElectronIsolation ],
 	[ evtSelDiTauCandidateForElecTauMt1MET, evtSelDiTauCandidateForElecTauMt1METlooseElectronIsolation ],
 	[ evtSelDiTauCandidateForElecTauPzetaDiff, evtSelDiTauCandidateForElecTauPzetaDiffLooseElectronIsolation ],
+    [ evtSelPrimaryEventVertexForElecTau, evtSelPrimaryEventVertexForElecTauLooseElectronIsolation ],
+    [ evtSelPrimaryEventVertexQualityForElecTau, evtSelPrimaryEventVertexQualityForElecTauLooseElectronIsolation ],
+    [ evtSelPrimaryEventVertexPositionForElecTau, evtSelPrimaryEventVertexPositionForElecTauLooseElectronIsolation ]
+
 ]
 
 analyzeZtoElecTauEventsOS_factorizedWithoutElectronIsolation = analyzeZtoElecTauEventsOS.clone(
