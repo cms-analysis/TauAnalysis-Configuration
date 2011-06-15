@@ -21,6 +21,10 @@ def _get_file():
         _FILE.append(ROOT.TFile(_FILE_NAME))
     return _FILE[0]
 
+def santander_matching(mass, xsec_4f, xsec_5f):
+    t = ROOT.TMath.Log(mass/4.75) - 2.0
+    return (1.0/(1.0 + t))*(xsec_4f + t*xsec_5f)
+
 def lookup_value(ma, tanb, histo):
     return lookup_value_impl(ma, tanb, _get_file().Get(histo))
 
@@ -55,13 +59,24 @@ def query(mA, tan_beta):
     def add_xsec(input):
         type, type_info = input
         type_info.setdefault('xsec', {})
-        for prod_type, unit in [('ggF', picobarns), ('bbH', femtobarns)]:
+        for prod_type, unit in [('ggF', picobarns), ('bbH', femtobarns),
+                                ('bbH4f', femtobarns)]:
             type_info['xsec'][prod_type] = unit*lookup(
                 "h_%s_xsec_%s" % (prod_type, type))
+
+    def add_santander(input):
+        # Type gives Higgs type
+        type, type_info = input
+        mass_of_this_type = type_info['mass']
+        xsec_4f = type_info['xsec']['bbH4f']
+        xsec_5f = type_info['xsec']['bbH']
+        type_info['xsec']['santander'] = santander_matching(
+            mass_of_this_type, xsec_4f, xsec_5f)
 
     map(add_br, output['higgses'].iteritems())
     map(add_mass, output['higgses'].iteritems())
     map(add_xsec, output['higgses'].iteritems())
+    map(add_santander, output['higgses'].iteritems())
     return output
 
 # Functions that determine whether or not a Higgs (h, H, A) is non-negligble
