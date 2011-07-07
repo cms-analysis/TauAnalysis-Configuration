@@ -6,9 +6,7 @@ import TauAnalysis.DQMTools.plotterStyleDefinitions_cfi as styles
 
 # List of samples to run in the analysis
 SAMPLES_TO_ANALYZE = [
-        'data_TauPlusX_Run2011A_May10ReReco_T3',
-        #'data_TauPlusX_Run2011A_May10ReReco',
-        'data_TauPlusX_Run2011A_PR_v4',
+        'data_TauPlusElec_Run2011A_PR_T3',
         'Ztautau_powheg_T3',
         'DYtautauM10to20_powheg_T3',
         'qqZll',
@@ -22,33 +20,20 @@ SAMPLES_TO_ANALYZE = [
         'WW_T3','WZ_T3','ZZ_T3',
 ] 
 
-##SAMPLES_TO_ANALYZE = [
-##     'data_TauPlusElec_Run2011A_PR_Pat',
-##     'Ztautau_powheg_Pat',
-##     'DYtautauM10to20_powheg_Pat',
-##     'Zee_powheg_Pat',
-##     'DYeeM10to20_pythia_Pat',
-##     'PhotonPlusJets_Pt15to30_Pat','PhotonPlusJets_Pt30to50_Pat','PhotonPlusJets_Pt50to80_Pat',
-##     'QCD_BCtoE_Pt20to30_Pat','QCD_BCtoE_Pt30to80_Pat','QCD_BCtoE_Pt80to170_Pat',
-##     'QCD_EM_Pt20to30_Pat','QCD_EM_Pt30to80_Pat','QCD_EM_Pt80to170_Pat',
-##     'WplusJets_madgraph_Pat',
-##]
-
-
 # List of samples to include in the final level plots.  May include selections
 # from the MERGE_SAMPLES defined at the bottom.
 SAMPLES_TO_PLOT = [
     'data', 
     'qcdSum', 
     'photonPlusJetsSum',
-    'WplusJets_madgraph',
-    #'TTplusJets_madgraph_Pat',
-    #'VVsum',    
+    'WplusJets_madgraph_T3',
+    'TTplusJets_madgraph_T3',
+    'VVsum',    
     'ZeeSum',
     'ZtautauSum',
+    'qqZll',
     'smBgSum',
     'smSum'
-
 ]
 
 SAMPLES_TO_PRINT = copy.copy(SAMPLES_TO_PLOT)
@@ -63,7 +48,6 @@ SAMPLE_DEFAULTS = {
     'runselection' : '',
     'inputFileType' : 'AOD',
     'hlt_paths' : [ 'HLT_IsoEle12_PFTau15_v3','HLT_Ele12_SW_TighterEleId_L1R_v2'],  ## for 4_1_X, spring11
-    ##'hlt_paths' : [ 'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau20_v2'],    ## for 4_2_X, summer11
     'SE_white_list' : '',
     'SE_black_list' : 'msu.ru',
     'disableDuplicateCheck' : False,
@@ -83,8 +67,8 @@ _picobarns =  1.0
 _femtobarns = 1.0e-3
 
 # Integrated luminosity to normalize
-# 204 May10ReReco + 294 PromptReco
-TARGET_LUMI = (498)/_picobarns 
+# 204 May10ReReco + 702 PromptReco
+TARGET_LUMI = (790)/_picobarns 
 
 #--------------------------------------------------------------------------------
 # NOTE: cross-sections for W and Z production are scaled to next-to-leading order values
@@ -185,79 +169,6 @@ RECO_SAMPLES = {
             'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau15_v1'     : '160431:MIN-161016:MAX',
             'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau15_v2'     : '161217:MIN-163261:MAX',
             'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau15_v4'     : '163269:MIN-163869:MAX'
-        }
-    },
-    'data_TauPlusX_Run2011A_PR_v4' : {  # 702/pb  165071-166861
-        'datasetpath' : '/TauPlusX/Run2011A-PromptReco-v4/AOD', 
-        'lumi_mask' : '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification//Collisions11/7TeV/Prompt/Cert_160404-167151_7TeV_PromptReco_Collisions11_JSON.txt',
-        'conditions' : 'GR_P_V20::All',
-        'number_of_jobs' : 400,
-        'type' : 'Data',
-        'drawOption' : styles.drawOption_Data,
-        'enableSysUncertainties' : False,
-	    'applyVertexMultiplicityReweighting' : False,
-        'applyElectronTriggerEfficiencyCorrection' : False,
-        'applyElectronIsolationEfficiencyCorrection' : False,
-        'applyZrecoilCorrection' : False,
-        'hlt_paths' : {
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau20_v6'     : '165071:MIN-165633:MAX',
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau20_v8'     : '165970:MIN-900000:MAX'
-        }
-    },
-    'data_TauPlusX_Run2011A_May10ReReco' : {  #204.2/pb 160329-163869
-        'datasetpath' : '/TauPlusX/Run2011A-May10ReReco-v1/AOD', 
-        'lumi_mask' : '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification//Collisions11/7TeV/Reprocessing/Cert_160404-163869_7TeV_May10ReReco_Collisions11_JSON.txt',
-        'conditions' : 'GR_R_42_V14::All',
-        'number_of_jobs' : 150,
-        'type' : 'Data',
-        'drawOption' : styles.drawOption_Data,
-        'enableSysUncertainties' : False,
-	    'applyVertexMultiplicityReweighting' : False,
-        'applyElectronTriggerEfficiencyCorrection' : False,
-        'applyElectronIsolationEfficiencyCorrection' : False,
-        'applyZrecoilCorrection' : False,
-        'hlt_paths' : {
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau15_v1'     : '160431:MIN-161016:MAX',
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau15_v2'     : '161217:MIN-163261:MAX',
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau15_v4'     : '163269:MIN-163869:MAX'
-            }
-    },
-    'data_TauPlusX_Run2011A_May10ReReco_T3' : {  #204.2/pb 160329-163869
-        'datasetpath' : '/TauPlusX/jkolb-skimElecTau_423_May10ReReco_v3-2da1106465614f2b4aae43c293e2ca66/USER', 
-        'dbs_url' :  "https://cmsdbsprod.cern.ch:8443/cms_dbs_ph_analysis_01_writer/servlet/DBSServlet",
-        'lumi_mask' : '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification//Collisions11/7TeV/Reprocessing/Cert_160404-163869_7TeV_May10ReReco_Collisions11_JSON.txt',
-        'skim_eff' : 1407306./12485249.,
-        'conditions' : 'GR_R_42_V14::All',
-        'number_of_jobs' : 50,
-        'type' : 'Data',
-        'drawOption' : styles.drawOption_Data,
-        'enableSysUncertainties' : False,
-	    'applyVertexMultiplicityReweighting' : False,
-        'applyElectronTriggerEfficiencyCorrection' : False,
-        'applyElectronIsolationEfficiencyCorrection' : False,
-        'applyZrecoilCorrection' : False,
-        'hlt_paths' : {
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau15_v1'     : '160431:MIN-161016:MAX',
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau15_v2'     : '161217:MIN-163261:MAX',
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau15_v4'     : '163269:MIN-163869:MAX'
-            }
-    },
-    'data_TauPlusX_Run2011A_PR_v4_T3' : {  # 703/pb  165071-167283
-        'datasetpath' : '/TauPlusX/jkolb-skimElecTau_423_v1-48310d22b2ce244ac277cf431005fadd/USER', 
-        'lumi_mask' : '/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification//Collisions11/7TeV/Prompt/Cert_160404-167151_7TeV_PromptReco_Collisions11_JSON.txt',
-        'conditions' : 'GR_P_V20::All',
-        'skim_eff' : '4817397./11868838.',
-        'number_of_jobs' : 100,
-        'type' : 'Data',
-        'drawOption' : styles.drawOption_Data,
-        'enableSysUncertainties' : False,
-	    'applyVertexMultiplicityReweighting' : False,
-        'applyElectronTriggerEfficiencyCorrection' : False,
-        'applyElectronIsolationEfficiencyCorrection' : False,
-        'applyZrecoilCorrection' : False,
-        'hlt_paths' : {
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau20_v6'     : '165071:MIN-165633:MAX',
-            'HLT_Ele15_CaloIdVT_CaloIsoT_TrkIdT_TrkIsoT_LooseIsoPFTau20_v8'     : '165970:MIN-900000:MAX'
         }
     },
     'DYtautauM10to20_powheg' : {
@@ -573,6 +484,7 @@ RECO_SAMPLES = {
         'x_sec' : 157.5*_picobarns, # NLO cross-section from https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSections
         'legendEntry' : plotter.process_TTplusJets.config_dqmHistPlotter.legendEntry.value(),
         'type' : plotter.process_TTplusJets.config_dqmHistPlotter.type.value(),
+        'drawOption' : styles.drawOption_TTplusJets,
         'hlt' : cms.InputTag("TriggerResults", "", "REDIGI311X")
     },
     'TTplusJets_madgraph_Pat' : {
@@ -927,10 +839,10 @@ RECO_SAMPLES = {
 MERGE_SAMPLES = {
     'data' : {
         'samples' : [
-               'data_TauPlusElec_Run2011A_PR_Pat'
-##             'data_TauPlusX_Run2011A_PR_v1',
-##             'data_TauPlusX_Run2011A_PR_v2',
-##             'data_TauPlusX_Run2011A_PR_nonGolden'
+##          'data_TauPlusX_Run2011A_PR_v1',
+##          'data_TauPlusX_Run2011A_PR_v2',
+##          'data_TauPlusX_Run2011A_PR_nonGolden'
+            'data_TauPlusElec_Run2011A_PR_T3'
         ],
         'legendEntry' : 'DATA',
         'type' : 'Data',
@@ -938,12 +850,12 @@ MERGE_SAMPLES = {
     },
     'qcdSum' : {
         'samples' : [
-			'QCD_BCtoE_Pt20to30_Pat',
-			'QCD_BCtoE_Pt30to80_Pat',
-			'QCD_BCtoE_Pt80to170_Pat',
-			'QCD_EM_Pt20to30_Pat',
-			'QCD_EM_Pt30to80_Pat',
-			'QCD_EM_Pt80to170_Pat'
+            'QCD_BCtoE_Pt20to30_T3',
+            'QCD_BCtoE_Pt30to80_T3',
+            'QCD_BCtoE_Pt80to170_T3',
+            'QCD_EM_Pt20to30_T3',
+            'QCD_EM_Pt30to80_T3',
+            'QCD_EM_Pt80to170_T3'
         ],
         'legendEntry' : 'QCD',
         'type' : 'smMC', 
@@ -951,9 +863,9 @@ MERGE_SAMPLES = {
     },
     'photonPlusJetsSum' : {
         'samples' : [
-                        'PhotonPlusJets_Pt15to30_Pat',
-			'PhotonPlusJets_Pt30to50_Pat',
-			'PhotonPlusJets_Pt50to80_Pat'
+            'PhotonPlusJets_Pt15to30_Pat',
+            'PhotonPlusJets_Pt30to50_Pat',
+            'PhotonPlusJets_Pt50to80_Pat'
         ],
         'legendEntry' : plotter.process_gammaPlusJets.config_dqmHistPlotter.legendEntry.value(),
         'type' : 'smMC', 
@@ -973,7 +885,7 @@ MERGE_SAMPLES = {
             'DYtautauM10to20_powheg_Pat',
             'Ztautau_powheg_Pat',
             #'qqZll'
-        ],
+       ],
         'legendEntry' : plotter.process_Ztautau.config_dqmHistPlotter.legendEntry.value(),
         'type' : 'smMC', 
         'drawOption' : styles.drawOption_Ztautau,
@@ -988,66 +900,26 @@ MERGE_SAMPLES = {
         'type' : 'smMC',
         'drawOption' : styles.drawOption_VV
     },
-##     'smBgSum' : {
-##         'samples' : [
-##             'ZeeSum',
-##             'qcdSum',
-##             'photonPlusJetsSum',
-##             'WplusJets_madgraph_Pat',
-##         ],
-##         'legendEntry' : 'SM',
-##         'type' : 'smMC',
-##         'drawOption' : styles.drawOption_QCD
-##     },
-##     'smSum' : {
-##         'samples' : [
-##             'ZtautauSum',
-##             'smBgSum'
-##         ],
-##         'legendEntry' : 'SM',
-##         'type' : 'smSumMC',
-##         'drawOption' : styles.drawOption_QCD
-##     }
-    'smBgSum' : {
-        'samples' : [
-            'DYeeM10to20_pythia_Pat',
-            'Zee_powheg_Pat',
-            'QCD_BCtoE_Pt20to30_Pat',
-            'QCD_BCtoE_Pt30to80_Pat',
-            'QCD_BCtoE_Pt80to170_Pat',
-            'QCD_EM_Pt20to30_Pat',
-            'QCD_EM_Pt30to80_Pat',
-            'QCD_EM_Pt80to170_Pat',
-            'PhotonPlusJets_Pt15to30_Pat',
-            'PhotonPlusJets_Pt30to50_Pat',
-            'PhotonPlusJets_Pt50to80_Pat',   
-            'WplusJets_madgraph_Pat',
-        ],
-        'legendEntry' : 'SM',
-        'type' : 'smMC',
-        'drawOption' : styles.drawOption_QCD
-    },
-    'smSum' : {
-        'samples' : [
-            'DYtautauM10to20_powheg_Pat',
-            'Ztautau_powheg_Pat',    
-            'DYeeM10to20_pythia_Pat',
-            'Zee_powheg_Pat',
-            'QCD_BCtoE_Pt20to30_Pat',
-            'QCD_BCtoE_Pt30to80_Pat',
-            'QCD_BCtoE_Pt80to170_Pat',
-            'QCD_EM_Pt20to30_Pat',
-            'QCD_EM_Pt30to80_Pat',
-            'QCD_EM_Pt80to170_Pat',
-            'PhotonPlusJets_Pt15to30_Pat',
-            'PhotonPlusJets_Pt30to50_Pat',
-            'PhotonPlusJets_Pt50to80_Pat',   
-            'WplusJets_madgraph_Pat',    
-        ],
-        'legendEntry' : 'SM',
-        'type' : 'smSumMC',
-        'drawOption' : styles.drawOption_QCD
-    }    
+     'smBgSum' : {
+         'samples' : [
+             'ZeeSum',
+             'qcdSum',
+             'photonPlusJetsSum',
+             'WplusJets_madgraph_Pat',
+         ],
+         'legendEntry' : 'SM',
+         'type' : 'smMC',
+         'drawOption' : styles.drawOption_QCD
+     },
+     'smSum' : {
+         'samples' : [
+             'ZtautauSum',
+             'smBgSum'
+         ],
+         'legendEntry' : 'SM',
+         'type' : 'smSumMC',
+         'drawOption' : styles.drawOption_QCD
+     }
 }
 
 # List of all subsamples used in any plot job.
