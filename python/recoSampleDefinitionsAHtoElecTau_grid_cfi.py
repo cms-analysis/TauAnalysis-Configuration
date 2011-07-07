@@ -36,16 +36,21 @@ SAMPLES_TO_PLOT = [
     #'A90Sum',
     #'A100Sum',
     #'A120Sum',
+    'A130_T3',
     #'A130Sum',
     #'A140Sum',
     #'A160Sum',
-	#'A180Sum',
+	'A180Sum',
     #'A200Sum',
     #'A300Sum',
+    'A350Sum',
+    #'A400Sum',
+    #'A450Sum',
+    #'A500Sum',
     'qcdSum',
-    #'VVsum',
+    'VVsum',
     'photonPlusJetsSum',
-    #'TTplusJets_madgraph',
+    'TTplusJets_madgraph_T3',
     'WplusJets_madgraph_T3',
     'ZeeSum',
     'ZtautauSum'
@@ -533,8 +538,8 @@ AHtoElecTauSpecific_RECO_SAMPLES = {
         'datasetpath' : "/SUSYBBHToTauTau_M-180_7TeV-pythia6-tauola/jkolb-skimElecTau_413_v1-0e9fbfe284acc4ebc772cd46085d7046/USER",
         'dbs_url' : "https://cmsdbsprod.cern.ch:8443/cms_dbs_ph_analysis_01_writer/servlet/DBSServlet",
         'events_processed' : 110000,
-        'number_of_jobs' : 24564./110000.,
-        'skim_eff' : 1.0,
+        'number_of_jobs' : 25,
+        'skim_eff' : 24564./110000.,
         'x_sec' : (
               32261.*_femtobarns*0.133061 # (bb -> A0)*(A0->tautau)
            +  32063.*_femtobarns*0.133826 # (bb -> H0)*(H0->tautau)
@@ -778,11 +783,11 @@ AHtoElecTauSpecific_RECO_SAMPLES = {
         'hlt' : cms.InputTag("TriggerResults", "", "REDIGI311X")
     },
     'bbA350_T3' : {
-        'datasetpath' : "",
+        'datasetpath' : "/SUSYBBHToTauTau_M-350_7TeV-pythia6-tauola/jkolb-skimElecTau_413_v1-0e9fbfe284acc4ebc772cd46085d7046/USER",
         'dbs_url' : "https://cmsdbsprod.cern.ch:8443/cms_dbs_ph_analysis_01_writer/servlet/DBSServlet",
         'events_processed' : 110000,
         'number_of_jobs' : 25,
-        'skim_eff' : 1.0,
+        'skim_eff' : 31895./110000.,
         'x_sec' : (
                1830.*_femtobarns*0.117009 # (bb -> A0)*(A0->tautau)
            +   1829.*_femtobarns*0.133089 # (bb -> H0)*(H0->tautau)
@@ -809,11 +814,11 @@ AHtoElecTauSpecific_RECO_SAMPLES = {
         'hlt' : cms.InputTag("TriggerResults", "", "REDIGI311X")
     },
     'A400_T3' : {
-        'datasetpath' : "",
+        'datasetpath' : "/SUSYGluGluToHToTauTau_M-400_7TeV-pythia6-tauola/jkolb-skimElecTau_413_v1-0e9fbfe284acc4ebc772cd46085d7046/USER",
         'dbs_url' : "https://cmsdbsprod.cern.ch:8443/cms_dbs_ph_analysis_01_writer/servlet/DBSServlet",
         'events_processed' : 110000,
         'number_of_jobs' : 25,
-        'skim_eff' : 1.0,
+        'skim_eff' : 57826./110000.,  
         'x_sec' : (                 # CV: cross-section * branching-ratio taken directly from Bari .root file
                  1.*_femtobarns*0.1 # (gg -> A0)*(A0->tautau)
            +     1.*_femtobarns*0.1 # (gg -> H0)*(H0->tautau)
