@@ -818,7 +818,7 @@ AHtoElecTauSpecific_RECO_SAMPLES = {
         'dbs_url' : "https://cmsdbsprod.cern.ch:8443/cms_dbs_ph_analysis_01_writer/servlet/DBSServlet",
         'events_processed' : 110000,
         'number_of_jobs' : 25,
-        'skim_eff' : 57826./110000.,  
+        'skim_eff' : 57906./110000.,  
         'x_sec' : (                 # CV: cross-section * branching-ratio taken directly from Bari .root file
                  1.*_femtobarns*0.1 # (gg -> A0)*(A0->tautau)
            +     1.*_femtobarns*0.1 # (gg -> H0)*(H0->tautau)
