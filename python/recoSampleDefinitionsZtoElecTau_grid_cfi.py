@@ -265,7 +265,7 @@ RECO_SAMPLES = {
         'datasetpath' : "/DYToEE_M-10To20_TuneZ2_7TeV-pythia6/Spring11-PU_S1_START311_V1G1-v1/AODSIM",
         'events_processed' : 1933000,
         'skim_eff' : 1.0,
-        'x_sec' : 1.282*2659*_picobarns, # Z + jets correction factor for NLO/LO cross-sections = 1.282 (k-factor for mMuMu > 20 GeV)
+        'x_sec' : 1666.*_picobarns, 
         'legendEntry' : plotter.process_Zee.config_dqmHistPlotter.legendEntry.value(),
         'type' : plotter.process_Zee.config_dqmHistPlotter.type.value(),
         'drawOption' : styles.drawOption_Zee,
@@ -277,7 +277,7 @@ RECO_SAMPLES = {
         'number_of_jobs' : 10,
         'events_processed' : 1933000,
         'skim_eff' : 31175./1933000,
-        'x_sec' : 1.282*2659*_picobarns, # Z + jets correction factor for NLO/LO cross-sections = 1.282 (k-factor for mMuMu > 20 GeV)
+        'x_sec' : 1666.*_picobarns, 
         'legendEntry' : plotter.process_Zee.config_dqmHistPlotter.legendEntry.value(),
         'type' : plotter.process_Zee.config_dqmHistPlotter.type.value(),
         'drawOption' : styles.drawOption_Zee,
@@ -289,7 +289,7 @@ RECO_SAMPLES = {
         'number_of_jobs' : 10,
         'events_processed' : 1933000,
         'skim_eff' : 31175./1933000,
-        'x_sec' : 1.282*2659*_picobarns, # Z + jets correction factor for NLO/LO cross-sections = 1.282 (k-factor for mMuMu > 20 GeV)
+        'x_sec' : 1666.*_picobarns, 
         'legendEntry' : plotter.process_Zee.config_dqmHistPlotter.legendEntry.value(),
         'type' : plotter.process_Zee.config_dqmHistPlotter.type.value(),
         'drawOption' : styles.drawOption_Zee,
