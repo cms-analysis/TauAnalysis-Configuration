@@ -71,15 +71,6 @@ cfgPFMetPt = cms.PSet(
     minNumber = cms.uint32(1)
 )
 
-cfgTauTrkVertex = cms.PSet(
-    pluginName = cms.string('tauTrkVertex'),
-    pluginType = cms.string('PATCandViewMinEventSelector'),
-    src_cumulative = cms.InputTag('selectedPatTausForWTauNuTrkMatchVertexCumulative'),
-    src_individual = cms.InputTag('selectedPatTausForWTauNuTrkMatchVertexIndividual'),
-    systematics = cms.vstring(tauSystematics.keys()),
-    minNumber = cms.uint32(1)
-    )
-
 cfgTauLeadTrk = cms.PSet(
     pluginName = cms.string('tauLeadTrkCut'),
     pluginType = cms.string('PATCandViewMinEventSelector'),
@@ -190,13 +181,12 @@ cfgMuonVeto = cms.PSet(
 
 wToTauNuEventSelConfigurator = eventSelFlagProdConfigurator(
     [ 
-    cfgTrigger,
+    cfgTrigger2,
     cfgPrimaryEventVertex,
     cfgPrimaryEventVertexQuality,
     cfgPrimaryEventVertexPosition,
     cfgTauEtaCut,
     cfgTauPtCut,
-    cfgTauTrkVertex,
     cfgTauLeadTrk,
     cfgTauLeadTrkPt,
     cfgTauMuonVeto,
@@ -210,7 +200,7 @@ wToTauNuEventSelConfigurator = eventSelFlagProdConfigurator(
     cfgTauEcalCrackVeto,
     cfgPFMetPt,
     cfgHtRatioCut,
-    cfgTrigger2
+    cfgTrigger
 #    cfgMetTopologyCut
     ],
     boolEventSelFlagProducer = "BoolEventSelFlagProducer",
@@ -223,7 +213,7 @@ isRecWtoTauNu = cms.EDProducer("BoolEventSelFlagProducer",
                                pluginName = cms.string('isRecWtoTauNu'),
                                pluginType = cms.string('MultiBoolEventSelFlagSelector'),
                                flags = cms.VInputTag(
-    cms.InputTag('Trigger'),
+    cms.InputTag('PseudoTrigger'),
     cms.InputTag('primaryEventVertex'),
     cms.InputTag('primaryEventVertexQuality'),
     cms.InputTag('primaryEventVertexPosition'),
@@ -233,7 +223,7 @@ isRecWtoTauNu = cms.EDProducer("BoolEventSelFlagProducer",
     cms.InputTag('electronVeto'),
     cms.InputTag('PFmetPtCut'),
     cms.InputTag('htRatio'),
-    cms.InputTag('PseudoTrigger')
+    cms.InputTag('Trigger')
 #    cms.InputTag('metTopologyCut')
     )
                                )
