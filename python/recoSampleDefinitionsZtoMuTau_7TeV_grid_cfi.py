@@ -9,7 +9,7 @@ SAMPLES_TO_ANALYZE = [
     #'data_SingleMu_Run2011A_May10ReReco_v1ex',
     #'data_TauPlusX_Run2011A_May10ReReco_v1',
     'data_SingleMu_Run2011A_May10ReReco_skim',
-    #'data_TauPlusX_Run2011A_PromptReco_v4',
+    'data_TauPlusX_Run2011A_PromptReco_v4',
     'DYtautauM10to20_pythia',
     #'Ztautau_pythia',
     #'Ztautau_powheg',
