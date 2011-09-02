@@ -53,17 +53,17 @@ evtSelDiTauCandidateForAHtoElecTauNonZeroChargeLooseElectronIsolation = evtSelDi
 
 # primary event vertex selection
 evtSelPrimaryEventVertexForElecTauLooseElectronIsolation = cms.PSet(
-    pluginName = cms.string('evtSelPrimaryEventVertexForElecTauLooseElectronIsolation'),
+    pluginName = cms.string('evtSelPrimaryEventVertexForElecTau'),
     pluginType = cms.string('BoolEventSelector'),
     src = cms.InputTag('primaryEventVertexForElecTauLooseElectronIsolation')
 )
 evtSelPrimaryEventVertexQualityForElecTauLooseElectronIsolation = cms.PSet(
-    pluginName = cms.string('evtSelPrimaryEventVertexQualityForElecTauLooseElectronIsolation'),
+    pluginName = cms.string('evtSelPrimaryEventVertexQualityForElecTau'),
     pluginType = cms.string('BoolEventSelector'),
     src = cms.InputTag('primaryEventVertexQualityForElecTauLooseElectronIsolation')
 )
 evtSelPrimaryEventVertexPositionForElecTauLooseElectronIsolation = cms.PSet(
-    pluginName = cms.string('evtSelPrimaryEventVertexPositionForElecTauLooseElectronIsolation'),
+    pluginName = cms.string('evtSelPrimaryEventVertexPositionForElecTau'),
     pluginType = cms.string('BoolEventSelector'),
     src = cms.InputTag('primaryEventVertexPositionForElecTauLooseElectronIsolation')
 )
@@ -149,12 +149,12 @@ inputTagReplacements = [
 		"elecTauPairZeeHypothesesForAHtoElecTauLooseElectronIsolation"],
 	["elecTauPairVisMassHypothesesForAHtoElecTau", 
 		"elecTauPairVisMassHypothesesForAHtoElecTauLooseElectronIsolation"],
-    [ "selectedPrimaryVertexForMuTau", 
-        "selectedPrimaryVertexForMuTauLooseMuonIsolation" ],
-    [ "selectedPrimaryVertexQualityForMuTau", 
-        "selectedPrimaryVertexQualityForMuTauLooseMuonIsolation" ],
-    [ "selectedPrimaryVertexPositionForMuTau", 
-        "selectedPrimaryVertexPositionForMuTauLooseMuonIsolation" ],
+    [ "selectedPrimaryVertexForElecTau", 
+        "selectedPrimaryVertexForElecTauLooseElectronIsolation" ],
+    [ "selectedPrimaryVertexQualityForElecTau", 
+        "selectedPrimaryVertexQualityForElecTauLooseElectronIsolation" ],
+    [ "selectedPrimaryVertexPositionForElecTau", 
+        "selectedPrimaryVertexPositionForElecTauLooseElectronIsolation" ],
     ["selectedPatJetsForAHtoElecTauAntiOverlapWithLeptonsVetoCumulative", 
 		"selectedPatJetsForAHtoElecTauAntiOverlapWithLeptonsVetoLooseElectronIsolationCumulative" ],
     ["selectedPatJetsForAHtoElecTauBtagCumulative", 
