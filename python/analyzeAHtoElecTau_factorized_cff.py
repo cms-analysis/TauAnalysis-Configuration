@@ -68,9 +68,9 @@ eventSelectionReplacements =  [
     [ evtSelPrimaryEventVertexForElecTau, evtSelPrimaryEventVertexForElecTauLooseElectronIsolation ],
     [ evtSelPrimaryEventVertexQualityForElecTau, evtSelPrimaryEventVertexQualityForElecTauLooseElectronIsolation ],
     [ evtSelPrimaryEventVertexPositionForElecTau, evtSelPrimaryEventVertexPositionForElecTauLooseElectronIsolation ],
-    [ evtSelNonCentralJetEt20bTag, evtSelNonCentralJetEt20bTagLooseElectronIsolation ],
-    [ evtSelCentralJetEt20, evtSelCentralJetEt20LooseElectronIsolation ],
-    [ evtSelCentralJetEt20bTag, evtSelCentralJetEt20bTagLooseElectronIsolation ] 
+    [ evtSelBtagVeto, evtSelBtagVetoLooseElectronIsolation ],
+    [ evtSelJetEtCut, evtSelJetEtCutLooseElectronIsolation ],
+    [ evtSelBtagCut, evtSelBtagCutLooseElectronIsolation ] 
 ]
 
 eventSelectionReplacementsOS = copy.deepcopy(eventSelectionReplacements)
@@ -85,6 +85,7 @@ replaceSysAnalyzerModules(analyzeAHtoElecTauEventsOS_woBtag_factorizedWithoutEle
 )   
 if analyzeAHtoElecTauEventsOS_woBtag_factorizedWithoutElectronIsolation.eventDumps:
     analyzeAHtoElecTauEventsOS_woBtag_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
+
 replaceEventSelections(analyzeAHtoElecTauEventsOS_woBtag_factorizedWithoutElectronIsolation, eventSelectionReplacementsOS)
 analyzeAHtoElecTauEventsOS_woBtag_factorizedWithoutElectronIsolation.analysisSequence = \
   elecTauAnalysisSequenceOS_woBtag_factorizedWithoutElectronIsolation
@@ -97,6 +98,7 @@ replaceSysAnalyzerModules(analyzeAHtoElecTauEventsOS_wBtag_factorizedWithoutElec
 )
 if analyzeAHtoElecTauEventsOS_wBtag_factorizedWithoutElectronIsolation.eventDumps:
     analyzeAHtoElecTauEventsOS_wBtag_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
+
 replaceEventSelections(analyzeAHtoElecTauEventsOS_wBtag_factorizedWithoutElectronIsolation, eventSelectionReplacementsOS)
 analyzeAHtoElecTauEventsOS_wBtag_factorizedWithoutElectronIsolation.analysisSequence = \
   elecTauAnalysisSequenceOS_wBtag_factorizedWithoutElectronIsolation
@@ -113,6 +115,7 @@ replaceSysAnalyzerModules(analyzeAHtoElecTauEventsSS_woBtag_factorizedWithoutEle
 ) 
 if analyzeAHtoElecTauEventsSS_woBtag_factorizedWithoutElectronIsolation.eventDumps:
     analyzeAHtoElecTauEventsSS_woBtag_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
+
 replaceEventSelections(analyzeAHtoElecTauEventsSS_woBtag_factorizedWithoutElectronIsolation, eventSelectionReplacementsSS)
 analyzeAHtoElecTauEventsSS_woBtag_factorizedWithoutElectronIsolation.analysisSequence = \
   elecTauAnalysisSequenceSS_woBtag_factorizedWithoutElectronIsolation
@@ -125,6 +128,7 @@ replaceSysAnalyzerModules(analyzeAHtoElecTauEventsSS_wBtag_factorizedWithoutElec
 )
 if analyzeAHtoElecTauEventsSS_wBtag_factorizedWithoutElectronIsolation.eventDumps:
     analyzeAHtoElecTauEventsSS_wBtag_factorizedWithoutElectronIsolation.eventDumps[0] = elecTauEventDump_factorizedWithoutElectronIsolation
+
 replaceEventSelections(analyzeAHtoElecTauEventsSS_wBtag_factorizedWithoutElectronIsolation, eventSelectionReplacementsSS)
 analyzeAHtoElecTauEventsSS_wBtag_factorizedWithoutElectronIsolation.analysisSequence = \
   elecTauAnalysisSequenceSS_wBtag_factorizedWithoutElectronIsolation

@@ -46,20 +46,20 @@ cfgDiTauCandidateForAHtoElecTauNonZeroChargeCutLooseElectronIsolation = cfgDiTau
 	src_individual = cms.InputTag('selectedElecTauPairsForAHtoElecTauNonZeroChargeLooseElectronIsolationIndividual')
 )
 
-# central jet veto/b-jet candidate selection
+# jet veto/b-jet candidate selection
 # for not not overlapping with loosely "isolated" electrons
-cfgCentralJetEt20bTagVetoLooseElectronIsolation = cfgCentralJetEt20bTagVeto.clone(
-    pluginName = cms.string('centralJetEt20bTagVetoLooseElectronIsolation'),
+cfgBtagVetoLooseElectronIsolation = cfgBtagVeto.clone(
+    pluginName = cms.string('jetBtagVetoLooseElectronIsolation'),
     src_cumulative = cms.InputTag('selectedPatJetsForAHtoElecTauBtagLooseElectronIsolationCumulative'),
     src_individual = cms.InputTag('selectedPatJetsForAHtoElecTauBtagLooseElectronIsolationIndividual')
 )
-cfgCentralJetEt20CutLooseElectronIsolation = cfgCentralJetEt20Cut.clone(
-    pluginName = cms.string('centralJetEt20CutLooseElectronIsolation'),
-    src_cumulative = cms.InputTag('selectedPatJetsForAHtoElecTauAntiOverlapWithLeptonsVetoLooseElectronIsolationCumulative'),
-    src_individual = cms.InputTag('selectedPatJetsForAHtoElecTauAntiOverlapWithLeptonsVetoLooseElectronIsolationIndividual')
+cfgJetEtCutLooseElectronIsolation = cfgJetEtCut.clone(
+    pluginName = cms.string('jetEtCutLooseElectronIsolation'),
+    src_cumulative = cms.InputTag('selectedPatJetsForAHtoElecTauJetTagLooseElectronIsolationCumulative'),
+    src_individual = cms.InputTag('selectedPatJetsForAHtoElecTauJetTagLooseElectronIsolationIndividual')
 )
-cfgCentralJetEt20bTagCutLooseElectronIsolation = cfgCentralJetEt20bTagCut.clone(
-    pluginName = cms.string('centralJetEt20bTagCutLooseElectronIsolation'),
+cfgBtagCutLooseElectronIsolation = cfgBtagCut.clone(
+    pluginName = cms.string('jetBtagCutLooseElectronIsolation'),
     src_cumulative = cms.InputTag('selectedPatJetsForAHtoElecTauBtagLooseElectronIsolationCumulative'),
     src_individual = cms.InputTag('selectedPatJetsForAHtoElecTauBtagLooseElectronIsolationIndividual')
 )
@@ -75,9 +75,9 @@ ahToElecTauEventSelConfiguratorLooseElectronIsolationOS = eventSelFlagProdConfig
       cfgPrimaryEventVertexForElecTauLooseElectronIsolation,
       cfgPrimaryEventVertexQualityForElecTauLooseElectronIsolation,
       cfgPrimaryEventVertexPositionForElecTauLooseElectronIsolation,
-	  cfgCentralJetEt20bTagVetoLooseElectronIsolation,
-	  cfgCentralJetEt20CutLooseElectronIsolation,
-	  cfgCentralJetEt20bTagCutLooseElectronIsolation ],
+	  cfgBtagVetoLooseElectronIsolation,
+	  cfgJetEtCutLooseElectronIsolation,
+	  cfgBtagCutLooseElectronIsolation ],
     boolEventSelFlagProducer = "BoolEventSelFlagProducer",
     pyModuleName = __name__
 )

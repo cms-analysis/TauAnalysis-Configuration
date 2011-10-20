@@ -68,24 +68,24 @@ evtSelPrimaryEventVertexPositionForElecTauLooseElectronIsolation = cms.PSet(
     src = cms.InputTag('primaryEventVertexPositionForElecTauLooseElectronIsolation')
 )
 
-# central jet veto/b-jet candidate selection
-evtSelNonCentralJetEt20bTagLooseElectronIsolation = cms.PSet(
-	pluginName = cms.string('evtSelNonCentralJetEt20bTag'),
+# jet veto/b-jet candidate selection
+evtSelBtagVetoLooseElectronIsolation = cms.PSet(
+	pluginName = cms.string('evtSelBtagVetoLooseElectronIsolation'),
 	pluginType = cms.string('BoolEventSelector'),
-	src_cumulative = cms.InputTag('centralJetEt20bTagVetoLooseElectronIsolation', 'cumulative'),
-	src_individual = cms.InputTag('centralJetEt20bTagVetoLooseElectronIsolation', 'individual')
+	src_cumulative = cms.InputTag('jetBtagVetoLooseElectronIsolation', 'cumulative'),
+	src_individual = cms.InputTag('jetBtagVetoLooseElectronIsolation', 'individual')
 )
-evtSelCentralJetEt20LooseElectronIsolation = cms.PSet(
-	pluginName = cms.string('evtSelCentralJetEt20'),
+evtSelJetEtCutLooseElectronIsolation = cms.PSet(
+	pluginName = cms.string('evtSelJetEtCutLooseElectronIsolation'),
 	pluginType = cms.string('BoolEventSelector'),
-	src_cumulative = cms.InputTag('centralJetEt20CutLooseElectronIsolation', 'cumulative'),
-	src_individual = cms.InputTag('centralJetEt20CutLooseElectronIsolation', 'individual')
+	src_cumulative = cms.InputTag('jetEtCutLooseElectronIsolation', 'cumulative'),
+	src_individual = cms.InputTag('jetEtCutLooseElectronIsolation', 'individual')
 )
-evtSelCentralJetEt20bTagLooseElectronIsolation = cms.PSet(
-	pluginName = cms.string('evtSelCentralJetEt20bTag'),
+evtSelBtagCutLooseElectronIsolation = cms.PSet(
+	pluginName = cms.string('evtSelBtagCutLooseElectronIsolation'),
 	pluginType = cms.string('BoolEventSelector'),
-	src_cumulative = cms.InputTag('centralJetEt20bTagCutLooseElectronIsolation', 'cumulative'),
-	src_individual = cms.InputTag('centralJetEt20bTagCutLooseElectronIsolation', 'individual')
+	src_cumulative = cms.InputTag('jetBtagCutLooseElectronIsolation', 'cumulative'),
+	src_individual = cms.InputTag('jetBtagCutLooseElectronIsolation', 'individual')
 )
 
 #--------------------------------------------------------------------------------
@@ -157,6 +157,8 @@ inputTagReplacements = [
         "selectedPrimaryVertexPositionForElecTauLooseElectronIsolation" ],
     ["selectedPatJetsForAHtoElecTauAntiOverlapWithLeptonsVetoCumulative", 
 		"selectedPatJetsForAHtoElecTauAntiOverlapWithLeptonsVetoLooseElectronIsolationCumulative" ],
+    ["selectedPatJetsForAHtoElecTauJetTagCumulative", 
+		"selectedPatJetsForAHtoElecTauJetTagLooseElectronIsolationCumulative" ],
     ["selectedPatJetsForAHtoElecTauBtagCumulative", 
 		"selectedPatJetsForAHtoElecTauBtagLooseElectronIsolationCumulative" ]
 ]
