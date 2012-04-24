@@ -469,9 +469,9 @@ muTauEventDump = cms.PSet(
     electronSource = cms.InputTag('cleanPatElectrons'),
     muonSource = cms.InputTag('cleanPatMuons'),
     muonPFIsoExtractor = patMuonPFIsoExtractorTemplate.clone(
-        chargedParticleIso = patMuonPFIsoExtractorValues.chargedParticleIso,
-        neutralHadronIso   = patMuonPFIsoExtractorValues.neutralHadronIso,
-        photonIso          = patMuonPFIsoExtractorValues.photonIso
+        chargedHadronIso = patMuonPFIsoExtractorValues.chargedHadronIso,
+        neutralHadronIso = patMuonPFIsoExtractorValues.neutralHadronIso,
+        photonIso        = patMuonPFIsoExtractorValues.photonIso
     ),
     muonPFIsoCandSource = cms.InputTag('pfNoPileUp'),
     tauSource = cms.InputTag('selectedPatTausPt20Cumulative'),
