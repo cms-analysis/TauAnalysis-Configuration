@@ -22,7 +22,7 @@ def addPFMet(process, correct = False):
     
     return process.makePatMETs
 
-def addCorrectedPFMet(process, isMC, doApplyType0corr, doApplySysShiftCorr, runPeriod, doSmearJets):
+def addCorrectedPFMet(process, isMC, doApplyType0corr, doApplySysShiftCorr, runPeriod, doSmearJets, jecUncertaintyTag, doApplyUnclEnergyResidualCorr):
 
     process.load("PhysicsTools.PatUtils.patPFMETCorrections_cff")
     
@@ -33,6 +33,13 @@ def addCorrectedPFMet(process, isMC, doApplyType0corr, doApplySysShiftCorr, runP
         process.calibratedAK5PFJetsForPFMEtMVA.correctors = cms.vstring("ak5PFL1FastL2L3Residual")
     process.pfMEtMVA.srcCorrJets = cms.InputTag('calibratedAK5PFJetsForPFMEtMVA')
     process.pfMEtMVA.srcLeptons = cms.VInputTag('goodMuons')
+    process.pfMEtMVA.inputFileNames = cms.PSet(
+        DPhi = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbrmetphi_53_June2013_type1.root'),
+        CovU2 = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbru2cov_53_Dec2012.root'),
+        U = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbrmet_53_June2013_type1.root'),
+        CovU1 = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbru1cov_53_Dec2012.root')
+    )
+    process.pfMEtMVA.loadMVAfromDB = cms.bool(False)
     process.pfMEtMVA.verbosity = cms.int32(0)
     process.patPFMetMVA = process.patMETs.clone(
         metSource = cms.InputTag('pfMEtMVA'),
@@ -66,27 +73,32 @@ def addCorrectedPFMet(process, isMC, doApplyType0corr, doApplySysShiftCorr, runP
         addMuonCorrections = cms.bool(False),
         genMETSource = cms.InputTag('genMetTrue')
     )
-    process.patMEtNoPileUpSequence = cms.Sequence(process.noPileUpPFMEtSequence + process.patPFMetNoPileUp + process.patPFchsMetNoPileUp)
+    process.patMEtNoPileUpSequence = cms.Sequence(process.noPileUpPFMEtSequence + process.patPFMetNoPileUp + process.noPileUpPFchsMEtSequence + process.patPFchsMetNoPileUp)
+    ##process.patMEtNoPileUpSequence = cms.Sequence(process.noPileUpPFMEtSequence + process.patPFMetNoPileUp)
     
-    process.makeCorrectedPatMETs = cms.Sequence()
+    process.makeCorrectedPatPFMETs = cms.Sequence()
 
     if isMC:
         import PhysicsTools.PatAlgos.tools.helpers as configtools
         process.type0PFMEtCorrection.remove(process.type0PFMEtCorrectionPFCandToVertexAssociation)
-        process.makeCorrectedPatMETs += process.type0PFMEtCorrectionPFCandToVertexAssociation
-        configtools.cloneProcessingSnippet(process, process.producePatPFMETCorrections, "NoSmearing")
-        process.selectedPatJetsForMETtype1p2CorrNoSmearing.src = cms.InputTag('patJetsNotOverlappingWithLeptonsForMEtUncertainty')
+        process.makeCorrectedPatPFMETs += process.type0PFMEtCorrectionPFCandToVertexAssociation
+        configtools.cloneProcessingSnippet(process, process.producePatPFMETCorrections, "NoSmearing")        
+        process.selectedPatJetsForMETtype1p2CorrNoSmearing.src = cms.InputTag('patJetsNotOverlappingWithLeptonsForJetMEtUncertainty')
         process.selectedPatJetsForMETtype2CorrNoSmearing.src = process.selectedPatJetsForMETtype1p2CorrNoSmearing.src
         configtools.cloneProcessingSnippet(process, process.patMEtMVAsequence, "NoSmearing")
-        process.patMEtNoPileUpSequence.remove(process.type0PFMEtCorrection)
+        process.makeCorrectedPatPFMETs += process.patMEtMVAsequenceNoSmearing
+        ##process.patMEtNoPileUpSequence.remove(process.type0PFMEtCorrection)
         configtools.cloneProcessingSnippet(process, process.patMEtNoPileUpSequence, "NoSmearing")
+        ##process.printEventContentForNoPileUpPFMEtNoSmearing = cms.EDAnalyzer("EventContentAnalyzer")
+        ##process.patMEtNoPileUpSequenceNoSmearing.replace(process.noPileUpPFMEtDataNoSmearing, process.printEventContentForNoPileUpPFMEtNoSmearing + process.noPileUpPFMEtDataNoSmearing)
+        process.makeCorrectedPatPFMETs += process.patMEtNoPileUpSequenceNoSmearing
     else:
         doSmearJets = False
         
     sysShiftCorrParameter = None
     if doApplySysShiftCorr:
         process.load("JetMETCorrections.Type1MET.pfMETsysShiftCorrections_cfi")
-        if runPeriod == "2012RunABC":
+        if runPeriod == "2012RunABCD":
             if isMC:
                 sysShiftCorrParameter = process.pfMEtSysShiftCorrParameters_2012runABCvsNvtx_mc
             else:
@@ -103,21 +115,25 @@ def addCorrectedPFMet(process, isMC, doApplyType0corr, doApplySysShiftCorr, runP
         tauCollection = '',
         jetCollection = cms.InputTag('patJets'),        
         doSmearJets = doSmearJets,
+        jecUncertaintyTag = jecUncertaintyTag,
         makeType1corrPFMEt = True,
         makeType1p2corrPFMEt = True,
         doApplyType0corr = doApplyType0corr,
         sysShiftCorrParameter = sysShiftCorrParameter,
         doApplySysShiftCorr = doApplySysShiftCorr,
+        doApplyUnclEnergyCalibration = (doApplyUnclEnergyResidualCorr & isMC),
         addToPatDefaultSequence = False
     )
-    from PhysicsTools.PatUtils.tools.runType1PFMEtUncertainties import runMVAMEtUncertainties
+    from PhysicsTools.PatUtils.tools.runMVAMEtUncertainties import runMVAMEtUncertainties
     runMVAMEtUncertainties(
         process,
         electronCollection = '',
         photonCollection = '',
-        muonCollection = cms.InputTag('patMuons'),
-        tauCollection = '',
+        muonCollection = cms.InputTag('patMuons'),        
+        tauCollection = '',        
+        jetCollection = cms.InputTag('patJets'),   
         doSmearJets = doSmearJets,
+        jecUncertaintyTag = jecUncertaintyTag,
         addToPatDefaultSequence = False
     )
     from PhysicsTools.PatUtils.tools.runNoPileUpMEtUncertainties import runNoPileUpMEtUncertainties
@@ -127,8 +143,11 @@ def addCorrectedPFMet(process, isMC, doApplyType0corr, doApplySysShiftCorr, runP
         photonCollection = '',
         muonCollection = cms.InputTag('patMuons'),
         tauCollection = '',
+        jetCollection = cms.InputTag('patJets'),    
         doApplyChargedHadronSubtraction = False,
         doSmearJets = doSmearJets,
+        jecUncertaintyTag = jecUncertaintyTag,
+        doApplyUnclEnergyCalibration = (doApplyUnclEnergyResidualCorr & isMC),
         addToPatDefaultSequence = False
     )
     runNoPileUpMEtUncertainties(
@@ -137,32 +156,34 @@ def addCorrectedPFMet(process, isMC, doApplyType0corr, doApplySysShiftCorr, runP
         photonCollection = '',
         muonCollection = cms.InputTag('patMuons'),
         tauCollection = '',
+        jetCollection = cms.InputTag('patJetsAK5PFchs'),    
         doApplyChargedHadronSubtraction = True,
         doSmearJets = doSmearJets,
+        jecUncertaintyFile = "PhysicsTools/PatUtils/data/Summer13_V1_DATA_UncertaintySources_AK5PFchs.txt",
+        jecUncertaintyTag = jecUncertaintyTag,
         addToPatDefaultSequence = False
     )
 
     if isMC:
+        process.makeCorrectedPatPFMETs += process.pfType1MEtUncertaintySequence
+        process.makeCorrectedPatPFMETs += process.pfNoPileUpMEtUncertaintySequence
+        process.makeCorrectedPatPFMETs += process.pfchsNoPileUpMEtUncertaintySequence
+        process.makeCorrectedPatPFMETs += process.pfMVAMEtUncertaintySequence
         process.patPFMet.addGenMET = cms.bool(True)
         process.patPFMetMVA.addGenMET = cms.bool(True)
         process.patPFJetMETtype1p2Corr.jetCorrLabel = cms.string("L3Absolute")
         process.patPFJetMETtype1p2CorrNoSmearing.jetCorrLabel = cms.string("L3Absolute")
-    
-        process.makeCorrectedPatMETs += process.metUncertaintySequence
-        process.makeCorrectedPatMETs += process.producePatPFMETCorrectionsNoSmearing
-        process.makeCorrectedPatMETs += process.patMEtMVAsequenceNoSmearing
-        process.makeCorrectedPatMETs += process.patMEtNoPileUpSequenceNoSmearing
     else:
         process.patPFMet.addGenMET = cms.bool(False)
         process.patPFMetMVA.addGenMET = cms.bool(False)
         process.patPFJetMETtype1p2Corr.jetCorrLabel = cms.string("L2L3Residual")
     
-        process.makeCorrectedPatMETs += process.patJetsNotOverlappingWithLeptonsForMEtUncertainty
+        process.makeCorrectedPatPFMETs += process.patJetsNotOverlappingWithLeptonsForJetMEtUncertainty
         if hasattr(process, "pfMEtSysShiftCorrSequence"):
-            process.makeCorrectedPatMETs += process.pfMEtSysShiftCorrSequence
-        process.makeCorrectedPatMETs += process.producePatPFMETCorrections
-        process.makeCorrectedPatMETs += process.patMEtMVAsequence
-        process.makeCorrectedPatMETs += process.patMEtNoPileUpSequence
+            process.makeCorrectedPatPFMETs += process.pfMEtSysShiftCorrSequence
+        process.makeCorrectedPatPFMETs += process.producePatPFMETCorrections
+        process.makeCorrectedPatPFMETs += process.patMEtMVAsequence
+        process.makeCorrectedPatPFMETs += process.patMEtNoPileUpSequence        
 
     # add MVA MEt with unity response training
     for moduleName in dir(process):
@@ -172,15 +193,16 @@ def addCorrectedPFMet(process, isMC, doApplyType0corr, doApplySysShiftCorr, runP
         if isinstance(module, cms.EDProducer) and module.type_() == "PFMETProducerMVA":
             module_unity = module.clone(
                 inputFileNames = cms.PSet(
-                    DPhi = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbrmetphi_53.root'), # CV: same for unity and non-unity response training
-                    CovU2 = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbru2cov_53_UnityResponse.root'),
-                    U = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbrmet_53_UnityResponse.root'),
-                    CovU1 = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbru1cov_53_UnityResponse.root')
-                )
+                    DPhi = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbrmetphi_53_June2013_type1.root'), # CV: same for unity and non-unity response training
+                    CovU2 = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbru2cov_53_Dec2012.root'),
+                    U = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbrmet_53_June2013_type1_UnityResponse.root'),
+                    CovU1 = cms.FileInPath('JetMETCorrections/METPUSubtraction/data/gbru1cov_53_Dec2012.root')
+                ),
+                loadMVAfromDB = cms.bool(False)
             )
             moduleName_unity = moduleName.replace("pfMEtMVA", "pfMEtMVAunityResponse")
             setattr(process, moduleName_unity, module_unity)
-            process.makeCorrectedPatMETs += module_unity    
+            process.makeCorrectedPatPFMETs += module_unity    
     for moduleName in dir(process):
         if (moduleName.endswith("Up") or moduleName.endswith("Down")) and not isMC:
             continue
@@ -191,103 +213,68 @@ def addCorrectedPFMet(process, isMC, doApplyType0corr, doApplySysShiftCorr, runP
             )
             moduleName_unity = moduleName.replace("patPFMetMVA", "patPFMetMVAunityResponse")
             setattr(process, moduleName_unity, module_unity)
-            process.makeCorrectedPatMETs += module_unity
+            process.makeCorrectedPatPFMETs += module_unity
 
-    # add No-PU MEt without L1Fastjet jet energy corrections
-    for moduleName in dir(process):
-        if ((moduleName.endswith("Up") or moduleName.endswith("Down")) and not moduleName.endswith("NoPileUp")) and not isMC:
-            continue
-        module = getattr(process, moduleName)
-        if isinstance(module, cms.EDProducer) and module.type_() == "NoPileUpPFMEtDataProducer":
-            moduleName_calib_or_corrJets = module.srcJets.value()
-            module_calib_or_corrJets = getattr(process, moduleName_calib_or_corrJets)
-            moduleName_calibJets = None
-            moduleName_corrJets = None
-            moduleName_smearedJets = None
-            ##print "%s: %s" % (moduleName_calib_or_corrJets, module_calib_or_corrJets.type_())
-            if module_calib_or_corrJets.type_() == "ShiftedPFJetProducer":
-                moduleName_corrJets = moduleName_calib_or_corrJets
-                module_corrJets = getattr(process, moduleName_corrJets)
-                moduleName_calibJets = module_corrJets.src.value()
-            elif module_calib_or_corrJets.type_() == "PFJetCorrectionProducer":
-                moduleName_calibJets = moduleName_calib_or_corrJets
-            elif module_calib_or_corrJets.type_() == "SmearedPFJetProducer":
-                moduleName_smearedJets = moduleName_calib_or_corrJets
-                module_smearedJets = getattr(process, moduleName_smearedJets)
-                moduleName_calibJets = module_smearedJets.src.value()
-            else:
-                raise ValueError("Module = %s is of unsupported type = %s !!" % (moduleName_calib_or_corrJets, module_calib_or_corrJets.type_()))
-            if moduleName_calibJets:
-                module_calibJets = getattr(process, moduleName_calibJets)
-                module_calibJets_woL1FastJet = module_calibJets.clone(
-                    correctors = cms.vstring(module_calibJets.correctors[0].replace("L1Fast", ""))
-                )
-                moduleName_calibJets_woL1FastJet = moduleName_calibJets.replace("ForNoPileUpPFMEt", "ForNoPileUpPFMEtWithoutL1FastJet")
-                setattr(process, moduleName_calibJets_woL1FastJet, module_calibJets_woL1FastJet)
-                ##print "adding module %s: %s" % (moduleName_calibJets_woL1FastJet, module_calibJets_woL1FastJet.type_())
-                process.makeCorrectedPatMETs += module_calibJets_woL1FastJet
-            if moduleName_corrJets:
-                module_corrJets = getattr(process, moduleName_corrJets)
-                module_corrJets_woL1FastJet = module_corrJets.clone(
-                    src = cms.InputTag(module_corrJets.src.value().replace("ForNoPileUpPFMEt", "ForNoPileUpPFMEtWithoutL1FastJet")),
-                    jetCorrLabelUpToL3Res = cms.string(module_corrJets.jetCorrLabelUpToL3Res.value().replace("L1Fast", "")),
-                    jetCorrLabelUpToL3 = cms.string(module_corrJets.jetCorrLabelUpToL3.value().replace("L1Fast", ""))
-                )
-                moduleName_corrJets_woL1FastJet = moduleName_corrJets.replace("ForNoPileUpPFMEt", "ForNoPileUpPFMEtWithoutL1FastJet")
-                setattr(process, moduleName_corrJets_woL1FastJet, module_corrJets_woL1FastJet)
-                ##print "adding module %s: %s" % (moduleName_corrJets_woL1FastJet, module_corrJets_woL1FastJet.type_())
-                process.makeCorrectedPatMETs += module_corrJets_woL1FastJet
-            if moduleName_smearedJets:
-                module_smearedJets = getattr(process, moduleName_smearedJets)
-                module_smearedJets_woL1FastJet = module_smearedJets.clone(
-                    src = cms.InputTag(module_smearedJets.src.value().replace("ForNoPileUpPFMEt", "ForNoPileUpPFMEtWithoutL1FastJet")),
-                    jetCorrLabel = cms.string('ak5PFL1Fastjet')
-                )
-                moduleName_smearedJets_woL1FastJet = moduleName_smearedJets.replace("ForNoPileUpPFMEt", "ForNoPileUpPFMEtWithoutL1FastJet")
-                setattr(process, moduleName_smearedJets_woL1FastJet, module_smearedJets_woL1FastJet)
-                ##print "adding module %s: %s" % (moduleName_smearedJets_woL1FastJet, module_smearedJets_woL1FastJet.type_())
-                process.makeCorrectedPatMETs += module_smearedJets_woL1FastJet
-            moduleName_jetId = module.srcJetIds.getModuleLabel()
-            module_jetId = getattr(process, moduleName_jetId)
-            module_jetId_woL1FastJet = module_jetId.clone(
-                jets = cms.InputTag(module_jetId.jets.value().replace("ForNoPileUpPFMEt", "ForNoPileUpPFMEtWithoutL1FastJet"))
-            )
-            moduleName_jetId_woL1FastJet = moduleName_jetId.replace("ForNoPileUpPFMEt", "ForNoPileUpPFMEtWithoutL1FastJet")
-            setattr(process, moduleName_jetId_woL1FastJet, module_jetId_woL1FastJet)
-            ##print "adding module %s: %s" % (moduleName_jetId_woL1FastJet, module_jetId_woL1FastJet.type_())
-            process.makeCorrectedPatMETs += module_jetId_woL1FastJet            
-            module_woL1FastJet = module.clone(
-                jetEnOffsetCorrLabel = cms.string(""),
-                srcJets = cms.InputTag(module.srcJets.value().replace("ForNoPileUpPFMEt", "ForNoPileUpPFMEtWithoutL1FastJet")),
-                srcJetIds = cms.InputTag(module.srcJetIds.value().replace("ForNoPileUpPFMEt", "ForNoPileUpPFMEtWithoutL1FastJet"))
-            )
-            moduleName_woL1FastJet = moduleName.replace("noPileUpPFMEtData", "noPileUpPFMEtDataWithoutL1FastJet")
-            setattr(process, moduleName_woL1FastJet, module_woL1FastJet)
-            process.makeCorrectedPatMETs += module_woL1FastJet
-    for moduleName in dir(process):
-        if ((moduleName.endswith("Up") or moduleName.endswith("Down")) and not moduleName.endswith("NoPileUp")) and not isMC:
-            continue
-        module = getattr(process, moduleName)
-        if isinstance(module, cms.EDProducer) and module.type_() == "NoPileUpPFMEtProducer":
-            module_woL1FastJet = module.clone(
-                srcMVAMEtData = cms.InputTag(module.srcMVAMEtData.value().replace("noPileUpPFMEtData", "noPileUpPFMEtDataWithoutL1FastJet"))
-            )
-            moduleName_woL1FastJet = moduleName.replace("noPileUpPFMEt", "noPileUpPFMEtWithoutL1FastJet")
-            setattr(process, moduleName_woL1FastJet, module_woL1FastJet)
-            process.makeCorrectedPatMETs += module_woL1FastJet
-    for moduleName in dir(process):
-        if ((moduleName.endswith("Up") or moduleName.endswith("Down")) and not moduleName.endswith("NoPileUp")) and not isMC:
-            continue
-        module = getattr(process, moduleName)
-        if isinstance(module, cms.EDProducer) and module.type_() == "PATMETProducer" and moduleName.find("patPFMetNoPileUp") != -1:
-            module_woL1FastJet = module.clone(
-                metSource = cms.InputTag(module.metSource.value().replace("noPileUpPFMEt", "noPileUpPFMEtWithoutL1FastJet"))
-            )
-            moduleName_woL1FastJet = moduleName.replace("patPFMetNoPileUp", "patPFMetNoPileUpWithoutL1FastJet")
-            setattr(process, moduleName_woL1FastJet, module_woL1FastJet)
-            process.makeCorrectedPatMETs += module_woL1FastJet
+    return process.makeCorrectedPatPFMETs
 
-    return process.makeCorrectedPatMETs
+def addCorrectedCaloMet(process, isMC, jecUncertaintyTag, doApplyUnclEnergyResidualCorr):
+    
+    process.makeCorrectedPatCaloMETs = cms.Sequence()
+
+    from PhysicsTools.PatUtils.tools.runType1CaloMEtUncertainties import runType1CaloMEtUncertainties
+    runType1CaloMEtUncertainties(
+        process,
+        electronCollection = '',
+        photonCollection = '',
+        muonCollection = cms.InputTag('patMuons'),
+        tauCollection = '',
+        jetCollection = cms.InputTag('patJetsAK5Calo'),
+        caloTowerCollection = cms.InputTag('towerMaker'),
+        jetCorrPayloadName = "AK5Calo",
+        jetCorrLabelUpToL3 = "ak5CaloL1L2L3",
+        jetCorrLabelUpToL3Res = "ak5CaloL1L2L3Residual",
+        jecUncertaintyFile = "PhysicsTools/PatUtils/data/Fall12_V7_DATA_UncertaintySources_AK5Calo.txt",
+        jecUncertaintyTag = jecUncertaintyTag,
+        addToPatDefaultSequence = False
+    )
+
+    if isMC:
+        process.makeCorrectedPatCaloMETs += process.caloType1MEtUncertaintySequence
+    else:
+        if doApplyUnclEnergyResidualCorr:
+            process.caloJetMETcorr.type2ResidualCorrLabel = cms.string("ak5CaloResidual")
+            process.caloJetMETcorr.type2ResidualCorrEtaMax = cms.double(9.9)
+            process.caloJetMETcorr.type2ResidualCorrOffset = cms.double(1.)
+            process.caloJetMETcorr.type2ExtraCorrFactor = cms.double(1.05)
+            process.caloTowersNotInJets = cms.EDProducer("TPCaloJetsOnCaloTowers",
+                enable = cms.bool(True),
+                verbose = cms.untracked.bool(False),
+                name = cms.untracked.string("caloTowersNotInJets"),
+                topCollection = cms.InputTag('ak5CaloJets'),
+                bottomCollection = cms.InputTag('towerMaker')
+            )
+            process.residualCaloMEtUnclusteredEnCorr = cms.EDProducer("CaloTowerMETcorrInputProducer",
+                src = cms.InputTag('caloTowersNotInJets'),
+                residualCorrLabel = cms.string("ak5CaloResidual"),
+                residualCorrEtaMax = cms.double(9.9),
+                residualCorrOffset = cms.double(1.),
+                isMC = cms.bool(False), # CV: only used to decide whether to apply "unclustered energy" calibration to MC or Data    
+                extraCorrFactor = cms.double(1.05),
+                globalThreshold = cms.double(0.3), # NOTE: this value need to match met.globalThreshold, defined in RecoMET/METProducers/python/CaloMET_cfi.py
+                noHF = cms.bool(False)
+            )            
+            process.produceCaloMETCorrections.replace(process.caloJetMETcorr, process.caloTowersNotInJets + process.caloJetMETcorr + process.residualCaloMEtUnclusteredEnCorr)
+            ##process.caloType1CorrectedMet.srcType1Corrections.append(cms.InputTag('residualCaloMEtUnclusteredEnCorr'))
+            process.caloType1CorrectedMet.applyType2Corrections = cms.bool(True)
+            process.caloType1CorrectedMet.srcUnclEnergySums = cms.VInputTag(
+                cms.InputTag('residualCaloMEtUnclusteredEnCorr'),
+                cms.InputTag("caloJetMETcorr", "type2")
+            )
+            process.caloType1CorrectedMet.type2CorrFormula = cms.string("A")
+            process.caloType1CorrectedMet.type2CorrParameter = cms.PSet(A = cms.double(2.))
+            ##process.caloType1CorrectedMet.verbosity = cms.int32(1)
+    
+    return process.makeCorrectedPatCaloMETs
 
 def addTCMet(process):
     process.layer1TCMETs = process.patMETs.clone()

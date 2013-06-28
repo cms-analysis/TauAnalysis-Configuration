@@ -151,6 +151,7 @@ def submitAnalysisToGrid(configFile = None, channel = None, samples = None,
             'output_file' : ", ".join(output_files),
             'get_edm_output' : saveNtuple,
             # Default MC info
+            'total_number' : (sample_info['type'].find('MC') != -1 and 'events_subset' in sample_info.keys()) and sample_info['events_subset'] or -1,
             'split_type' : (sample_info['type'] == 'Data' or sample_info['type'] == 'embeddedData') and 'lumis' or 'events',
             'lumi_mask' : sample_info['lumi_mask'],
             'runselection' : sample_info['runselection'],
@@ -166,6 +167,5 @@ def submitAnalysisToGrid(configFile = None, channel = None, samples = None,
             crabOptions['return_data'] = 1
             crabOptions['copy_data'] = 0        
 
-        submitToGrid(newConfigFile, jobInfo, crabOptions,
-                     create=create, submit=submit, cfgdir=cfgdir)
+        submitToGrid(newConfigFile, jobInfo, crabOptions, create=create, submit=submit, cfgdir=cfgdir)
         ##submitToGrid(newConfigFile, jobInfo, crabOptions, create=False, submit=False, cfgdir=cfgdir) # CV: only for testing

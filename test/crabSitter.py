@@ -26,18 +26,21 @@ import time
 
 print("<crabSitter>:")
 
-crabFilePath = '/afs/cern.ch/work/v/veelken/CMSSW_5_3_x/crab/TauAnalysis_Skimming'
+##crabFilePath = '/afs/cern.ch/work/v/veelken/CMSSW_5_3_x/crab/TauAnalysis_Skimming'
+crabFilePath = '/afs/cern.ch/work/v/veelken/CMSSW_5_3_x/crab/RecoTauTag_TauAnalysisTools'
+##crabFilePath = '/afs/cern.ch/work/v/veelken/CMSSW_5_3_x/crab/TauAnalysis_Skimming'
 
 statusFileName = 'crabSitter.json'
 
 #jobName_regex = r'crabdirProduceFakeRatePATtuple_(?P<sample>[a-zA-Z0-9_]*)_(?P<channel>[a-zA-Z0-9]*)_patV2_2'
 #jobName_regex = r'crabdir_skimTauIdEffSample_customized_(?P<sample>[a-zA-Z0-9_]*)_(?P<channel>[a-zA-Z0-9]*)_2012Sep12'
-#jobName_regex = r'crabdir_skimGoldenZmumu_customized_(?P<sample>[a-zA-Z0-9_]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_2012Oct09'
-jobName_regex = r'crabdir_skimGenZmumuWithinAcc_(?P<sample>[a-zA-Z0-9_]*)_2012Nov03v4'
+##jobName_regex = r'crabdir_skimGoldenZmumu_customized_(?P<sample>[a-zA-Z0-9_]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_2013Feb14'
+##jobName_regex = r'crabdir_(?P<sample>[a-zA-Z0-9_]*)_tauId_v1_6'
+jobName_regex = r'crabdir_(?P<sample>[a-zA-Z0-9_]*)_antiMuonDiscr_v1_3'
 
 samples = [
     # leave empty to check all samples
-    'ZplusJets_madgraph'
+    ##'QCDmuEnrichedPt470to600'
 ]
 
 jobName_matcher = re.compile(jobName_regex)
@@ -58,8 +61,12 @@ whoami = runCommand('whoami')
 if len(whoami) != 1:
     raise ValueError("Failed to identify userName !!")
 userName = whoami[0].strip()
-#userName = 'inaranjo'
 print("userName = %s" % userName)
+
+# CV: check that crab environment is set
+which_crab = runCommand('which crab')
+if len(which_crab) != 1:
+    raise ValueError("crab environment not set !!")
 
 # delete crabSitter.json file to reset all time-stamps
 #runCommand('%s %s' % (executable_rm, statusFileName))
@@ -83,9 +90,13 @@ def runCommand_via_shell(commandLine, tmpShellScriptFileName = 'crabSitter_tmp.c
 
 def checkOutputFiles(outputFileInfos, outputFileNames, jobId_string, jobIds_force_resubmit):
 
+    #print "<checkOutputFiles>:"
+
     resubmit_job = False
 
     for outputFileName in outputFileNames:
+        #print "checking outputFileName = %s"% outputFileName
+        
         outputFileName_regex = outputFileName.replace('.', '_(?P<jobId>\d+)_(?P<try>\d+)_(?P<hash>[a-zA-Z0-9]+).')
         outputFileName_matcher = re.compile(outputFileName_regex)
 
@@ -96,6 +107,7 @@ def checkOutputFiles(outputFileInfos, outputFileNames, jobId_string, jobIds_forc
                 outputFileJobId = outputFileName_match.group('jobId')
                 if outputFileJobId == jobId_string:
                     outputFileInfos_matched.append(outputFileInfo)
+        #print " found %i copies." % len(outputFileInfos_matched)
         if len(outputFileInfos_matched) == 0:
             resubmit_job = True
         elif len(outputFileInfos_matched) > 1:
@@ -116,9 +128,10 @@ def checkOutputFiles(outputFileInfos, outputFileNames, jobId_string, jobIds_forc
                     outputFileName_keep = outputFileName
                     fileSize_keep = fileSize
                     date_and_time_keep = date_and_time
-                    for outputFileInfo in outputFileInfos_matched:                                    
-                        if outputFileInfo['file'] != outputFileName_keep:
-                            outputFiles_to_delete.append(outputFileInfo['path'])
+            for outputFileInfo in outputFileInfos_matched:                                    
+                if outputFileInfo['file'] != outputFileName_keep:
+                    print "--> deleting copy = %s" % outputFileInfo['path'] 
+                    outputFiles_to_delete.append(outputFileInfo['path'])
             for outputFileName in outputFiles_to_delete:
                 if outputFileName.find("/castor/") != -1 or \
                    outputFileName.find("/dpm/")    != -1:
@@ -177,8 +190,8 @@ time_limit = 1 # force immediate resubmission of all crab jobs stuck in 'Schedul
 forceResubmitAllScheduledJobs = False
 ##forceResubmitAllScheduledJobs = True
 
-#checkJobOutputFiles = True
-checkJobOutputFiles = False
+checkJobOutputFiles = True
+#checkJobOutputFiles = False
 
 shellScriptCommands = []
 
@@ -264,7 +277,7 @@ for crabJob in crabJobs:
             outputFileNames = outputFileName_pattern.split(',')
         else:
             outputFileNames = [ outputFileName_pattern ]
-        print("outputFileNames = %s" % outputFileNames)    
+        #print("outputFileNames = %s" % outputFileNames)    
 
         # read number of jobs from crab log file
         crabLogFileName = os.path.join(crabFilePath, crabJob, 'log/crab.log')
@@ -277,7 +290,9 @@ for crabJob in crabJobs:
                 numJobs = int(numJobs_match.group('numJobs'))
         crabLogFile.close()
         if not numJobs:            
-            raise ValueError("Failed to read number of jobs from log file %s !!" % crabLogFileName)
+            ##raise ValueError("Failed to read number of jobs from log file %s !!" % crabLogFileName)
+            print "Error: Failed to read number of jobs from log file %s !!" % crabLogFileName
+            numJobs = 500
         print "numJobs = %i" % numJobs
 
         # read list of files existing in output file path
@@ -308,7 +323,7 @@ for crabJob in crabJobs:
                         outputFilePath += '/'
                     print("checking DPM files in outputFilePath = %s" % outputFilePath)
                     outputFileInfos = [ outputFileInfo for outputFileInfo in dpm.lsl(outputFilePath) ]
-                    print outputFileInfos
+                    #print outputFileInfos
                     for outputFileInfo in outputFileInfos:
                         if outputFileInfo['size'] == 0 and publishDirHash_matcher.match(outputFileInfo['file']):
                             subDirectory = outputFileInfo['path']
@@ -332,6 +347,7 @@ for crabJob in crabJobs:
         foundStart    = False
         foundEnd      = False
         for crabStatus_line in crabStatus_lines:
+            #print "line = %s" % crabStatus_line 
             # CV: check if job status cannot be determined,
             #     due to crab internal error
             if isCrabFailure:
@@ -373,12 +389,15 @@ for crabJob in crabJobs:
                         print("Info: jobId = %i got aborted --> resubmitting it" % jobId)
                         jobIds_force_resubmit.append(jobId)
                     elif jobStatus in [ 'Done' ] and jobAction in [ 'Terminated' ]:
-                        if jobExitCode1 is None or jobExitCode2 is None:
-                            raise ValueError("Failed to read job exit codes !!")
-                        # resubmit jobs which terminated with error codes immediately
-                        if jobExitCode1 != 0 or jobExitCode2 != 0:
-                            print("Info: jobId = %i terminated with error code = %i:%i --> resubmitting it" % (jobId, jobExitCode1, jobExitCode2))
-                            jobIds_force_resubmit.append(jobId)
+                        if checkJobOutputFiles:
+                            checkOutputFiles(outputFileInfos, outputFileNames, jobId_string, jobIds_force_resubmit)
+                        else:
+                            if jobExitCode1 is None or jobExitCode2 is None:
+                                raise ValueError("Failed to read job exit codes !!")
+                            # resubmit jobs which terminated with error codes
+                            if jobExitCode1 != 0 or jobExitCode2 != 0:
+                                print("Info: jobId = %i terminated with error code = %i:%i --> resubmitting it" % (jobId, jobExitCode1, jobExitCode2))
+                                jobIds_force_resubmit.append(jobId)
                     elif jobStatus in [ 'Created' ] and jobAction in [ 'SubFailed' ]:
                         # try resubmitting jobs which failed to submit
                         print("Info: jobId = %i failed to submit --> trying to resubmit it" % jobId)
@@ -394,7 +413,8 @@ for crabJob in crabJobs:
                         if jobStatus == 'Scheduled' and forceResubmitAllScheduledJobs:
                             print("Info: jobId = %i is in state 'Scheduled' --> resubmitting it" % jobId)
                             jobIds_force_resubmit.append(jobId)
-                    elif jobStatus in [ 'Done' ]:
+                    ##elif jobStatus in [ 'Done' ]:
+                    else:
                         if checkJobOutputFiles:
                             checkOutputFiles(outputFileInfos, outputFileNames, jobId_string, jobIds_force_resubmit)
 

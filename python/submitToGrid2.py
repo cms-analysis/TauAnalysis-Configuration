@@ -35,6 +35,8 @@ user_remote_dir = $user_remote_dir
 #check_user_remote_dir = 0
 
 [GRID]
+rb = CERN
+maxtarballsize = 200
 $SE_white_list
 $SE_black_list
 ''')
@@ -46,23 +48,28 @@ _CRAB_DEFAULTS = {
     'copy_data' : 1,
     'use_server' : 0,
     'get_edm_output' : 0,
-    'scheduler' : 'glite', 
+    'scheduler' : 'remoteGlidein', 
     #------------------------------------
     # for storing output of crab job on castor @ CERN
     ##'storage_element' : 'srm-cms.cern.ch',
     ##'storage_path' : '/srm/managerv2?SFN=/castor/cern.ch',
     ##'publish_data' : 0,
+    'publish_data_name' : "",
+    'dbs_url_for_publication' : "",
     #------------------------------------
     #------------------------------------
-    # for storing output of crab job on eos @ CERN
-    #'storage_element' : 'T2_CH_CERN',
+    # for storing output of crab job on eos @ CERN    
+    'storage_element' : 'T2_CH_CERN',
+    'publish_data' : 0,
+    'publish_data_name' : "",
+    'dbs_url_for_publication' : "",
     #------------------------------------
     #------------------------------------
     # for publishing output in DBS
-    'storage_element' : 'T2_FR_GRIF_LLR',
-    'publish_data' : 1,
-    'publish_data_name' : 'ZmumuRecoilSelection',
-    'dbs_url_for_publication' : 'https://cmsdbsprod.cern.ch:8443/cms_dbs_ph_analysis_01_writer/servlet/DBSServlet', 
+    #'storage_element' : 'T2_FR_GRIF_LLR',
+    #'publish_data' : 1,
+    #'publish_data_name' : 'ZmumuRecoilSelection',
+    #'dbs_url_for_publication' : 'https://cmsdbsprod.cern.ch:8443/cms_dbs_ph_analysis_01_writer/servlet/DBSServlet',
     #------------------------------------
     'lumi_mask' : '',
     'runselection' : ''
@@ -112,7 +119,15 @@ def submitToGrid(configFile, jobInfo, crabOptions, crabFileName_full = None, ui_
         crabFileName_full = os.path.join(submissionDirectory, crabFileName)
         crabFile = open(crabFileName_full, 'w')
         crabConfig = _CRAB_TEMPLATE.substitute(fullCrabOptions)
-        crabFile.write(crabConfig)
+        # CV: remove empty lines
+        #    (referring to unused options)
+        regExpr_comment_line = re.compile("#+[a-zA-Z0-9_=\\s]*")
+        regExpr_empty_line = re.compile("\w+\s*=\s*$")
+        crabConfig_cleaned = ""
+        for line in crabConfig.split('\n'):
+            if not regExpr_comment_line.match(line) and not regExpr_empty_line.match(line):
+                crabConfig_cleaned += "%s\n" % line
+        crabFile.write(crabConfig_cleaned)
         crabFile.close()
     elif ui_working_dir is None:
         raise ValueError('Undefined ui_working_dir !!')

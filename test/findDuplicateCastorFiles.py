@@ -99,7 +99,7 @@ fileName_matcher = re.compile(fileName_regex)
 
 fileNamesAndProperties_dict = {}
 
-print("--> found %i file" % len(files))
+print("--> found %i file(s)" % len(files))
 
 for file in files:
 
